@@ -28,7 +28,7 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
 
 .hero {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 170px;
 
     &__title {
         font-family: "Playfair", serif;

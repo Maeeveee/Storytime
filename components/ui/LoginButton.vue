@@ -7,8 +7,9 @@
 <style scoped lang="scss">
 .login {
     &__button {
-        width: 120px;
-        height: 60px;
+        width: 60px;
+        height: 32px;
+        padding: 14px 30px 14px 30px;
         background-color: #466543;
         display: flex;
         justify-content: center;

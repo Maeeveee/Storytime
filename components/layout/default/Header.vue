@@ -6,16 +6,13 @@ import LoginButton from '~/components/ui/LoginButton.vue';
 <template>
     <div class="nav">
         <div>
-            <img src="/img/Logo.webp" alt="Logo Storytime">
+            <img src="/img/Logo.webp" alt="Logo Storytime" class="nav__logo">
         </div>
 
-        <div class="button-container">
-            <RegisterButton/>
-            <LoginButton/>
+        <div class="nav__button-container">
+            <RegisterButton />
+            <LoginButton />
         </div>
-    </div>
-    <div class="sparator">
-    
     </div>
 </template>
 
@@ -23,29 +20,22 @@ import LoginButton from '~/components/ui/LoginButton.vue';
 .nav {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    padding-left: 110px;
-    padding-right: 110px;
-    height: 80px;
-    width: 1700px;
-}
-
-.title {
-    font-size: large;
-    font-weight: bold;
-}
-
-.button-container {
-    display: flex;
-    gap: 30px;
-}
-
-img {
+    padding: 20px 110px 20px 110px;
+    min-width: 1700px;
     height: 60px;
-    width: auto;
-}
-
-.sparator {
+    margin: auto;
+    position: fixed;
+    background-color: white;
     border-bottom: #f3f3f3 3px solid;
+
+    &__button-container {
+        display: flex;
+        gap: 30px;
+    }
+
+    &__logo {
+        height: 59px;
+        width: 254;
+    }
 }
 </style>

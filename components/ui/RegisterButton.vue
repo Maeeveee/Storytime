@@ -7,8 +7,9 @@
 <style scoped lang="scss">
 .register {
     &__button {
-        width: 151px;
-        height: 60px;
+        width: 60px;
+        height: 32px;
+        padding: 14px 30px 14px 30px;
         display: flex;
         justify-content: center;
         align-items: center;
