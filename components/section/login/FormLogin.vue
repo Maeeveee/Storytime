@@ -27,8 +27,7 @@ import InputForm from '~/components/ui/InputForm.vue';
 <style lang="scss" scoped>
 .login {
     &__form-section {
-        height: 950px;
-        max-width: 825px;
+        width: 825px;
         padding: 2rem 4rem 2rem 4rem;
     }
     

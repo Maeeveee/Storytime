@@ -15,7 +15,6 @@
     &__image-section {
         height: 910px;
         max-width: 805px;
-        margin-left: auto;
         background-color: #F0F5ED;
         margin: 20px 20px 20px 20px;
         padding: 2rem 4rem 2rem 4rem;
