@@ -7,16 +7,16 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
 <template>
     <div class="container">
         <div class="hero">
-            <h1 class="hero__title">Welcome to Storytime</h1>
+            <span class="hero__title">Welcome to Storytime</span>
             <p class="hero__text">The world's most-loved social storytelling platform. Story time connects a global
                 community of 90 million
                 readers and writers through the power of story.</p>
             <div>
                 <input type="text" placeholder="Search Story" class="hero__search">
             </div>
+            <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
 
-        <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
 
         <StoryCarousel />
         <HighlightedStoryBento />
@@ -25,45 +25,60 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
 </template>
 
 <style lang="scss" scoped>
-
 .hero {
     text-align: center;
     padding-top: 170px;
+    margin-bottom: 40px;
 
     &__title {
         font-family: "Playfair", serif;
-        font-optical-sizing: auto;
-        font-weight: bold;
+        font-weight: 700;
         font-style: normal;
-        font-variation-settings: "wdth" 150;
         font-size: 60px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
-        letter-spacing: 0px;
+        line-height: 74px;
+        letter-spacing: 0%;
+        color: #222222;
+        margin-bottom: 25px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     &__text {
-        font-size: x-large;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        line-height: 32px;
+        font-weight: 400;
         color: #4B4B4B;
         max-width: 1412px;
         margin: auto;
     }
 
     &__search {
-        border: 2px solid #878585;
-        width: 1062px;
-        height: 80px;
+        border: 2px solid #CCCCCC;
+        width: 1002px;
+        height: 32px;
         border-radius: 10px;
-        padding-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 40px
+        padding: 24px 30px 24px 30px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        font-size: 24px;
+        line-height: 32px;
+        background-image: url('/icon/formkit--search.svg');
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+        background-size: 30px;
+        &:focus {
+            outline: none;
+        }
+
     }
+
 
     &__image {
         width: 45%;
         display: flex;
         margin: auto;
+        
     }
 }
 </style>
