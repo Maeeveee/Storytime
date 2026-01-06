@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="register__image-section">
-        <img src="/img/Logo.webp" alt="Logo" class="register__image">
+            <img src="/img/Logo.webp" alt="Logo" class="register__image">
             <h1 class="register__title">Join the World’s Most-Loved Social Storytelling Platform!</h1>
-            <p class="register__text">Create an account to explore interesting articles, connect with like-minded people, and share your own stories. </p>
+            <p class="register__text">Create an account to explore interesting articles, connect with like-minded
+                people, and share your own stories. </p>
             <img src="/img/RegisterImage.webp" alt="Register Image">
         </div>
     </div>
@@ -22,9 +23,9 @@
     &__image {
         margin-bottom: 50px;
     }
-    
-    &__title{
-        font-family: "Playfair", serif;
+
+    &__title {
+        font-family: "Playfair Display", serif;
         font-weight: 700;
         font-style: normal;
         font-size: 60px;
@@ -33,7 +34,8 @@
         width: 835px;
         margin-bottom: 30px;
     }
-    &__text{
+
+    &__text {
         font-family: "DM Sans", serif;
         font-weight: 400;
         font-style: normal;

@@ -23,7 +23,7 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 <style lang="scss" scoped>
 .more-categories {
     &__title {
-        font-family: "Playfair", serif;
+        font-family: "Playfair Display", serif;
         font-size: xx-large;
         font-weight: bold;
     }

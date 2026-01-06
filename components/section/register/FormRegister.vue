@@ -8,26 +8,26 @@ import LoginButton from '~/components/ui/LoginButton.vue';
             <h2 class="register__title">Create Account</h2>
             <div>
                 <span class="register__text">Name</span>
-                <InputForm placeholder="Enter Your name" icon-url="" />
+                <InputForm placeholder="Enter Your name" icon-name="formkit:eye" />
             </div>
             <div>
                 <span class="register__text">Email</span>
-                <InputForm placeholder="Enter Your Email" icon-url="" />
+                <InputForm placeholder="Enter Your Email"  />
             </div>
             <div>
                 <span class="register__text">Password</span>
-                <InputForm placeholder="Enter Your Chosen Password" icon-url="" />
+                <InputForm placeholder="Enter Your Chosen Password" />
 
             </div>
             <div>
                 <span class="register__text">Confirm Password</span>
-                <InputForm placeholder="Re-enter Your Chosen Password" icon-url="" />
+                <InputForm placeholder="Re-enter Your Chosen Password" />
             </div>
 
             <LoginButton class="register__button" />
             <div>
-                <span class="register__text">Already have an account? <a href="/pages/Login.vue"
-                        class="register__navigate-login">Login</a></span>
+                <span class="register__text">Already have an account? <NuxtLink href="/Login"
+                        class="register__navigate-login">Login</NuxtLink></span>
             </div>
         </div>
     </div>

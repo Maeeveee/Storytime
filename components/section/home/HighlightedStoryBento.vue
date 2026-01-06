@@ -23,7 +23,7 @@ import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
     }
 
     &__title {
-        font-family: "Playfair", serif;
+        font-family: "Playfair Display", serif;
         font-size: xx-large;
         font-weight: bold;
 

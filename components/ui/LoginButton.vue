@@ -1,6 +1,7 @@
 <template>
     <div>
-        <a href="" class="login__button">Login</a>
+        <NuxtLink href="/login" class="login__button">Login</NuxtLink>
+        
     </div>
 </template>
 

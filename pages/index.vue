@@ -2,6 +2,8 @@
 import StoryCarousel from '~/components/section/home/HighlightedStoryCarousel.vue'
 import MoreCategories from '~/components/section/home/MoreCategories.vue'
 import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBento.vue'
+import InputForm from '~/components/ui/InputForm.vue';
+
 </script>
 
 <template>
@@ -11,8 +13,8 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
             <p class="hero__text">The world's most-loved social storytelling platform. Story time connects a global
                 community of 90 million
                 readers and writers through the power of story.</p>
-            <div>
-                <input type="text" class="hero__input" placeholder="Search Story">
+            <div class="hero__wrapper">
+                <InputForm placeholder="Search Story" icon-name="formkit:search" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
@@ -52,7 +54,7 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
     margin-bottom: 40px;
 
     &__title {
-        font-family: "Playfair", serif;
+        font-family: "Playfair Display", serif;
         font-weight: 700;
         font-style: normal;
         font-size: 60px;
@@ -78,6 +80,12 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
         width: 45%;
         display: flex;
         margin: auto;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 </style>

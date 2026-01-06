@@ -1,8 +1,8 @@
 <template>
     <div>
-        <a href="" class="explore-more__text">Explore More
+        <NuxtLink href="" class="explore-more__text">Explore More
             <Icon class="explore-more__icon" name="formkit:arrowright" />
-        </a>
+        </NuxtLink>
     </div>
 </template>
 

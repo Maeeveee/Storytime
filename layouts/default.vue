@@ -5,8 +5,8 @@ import DefaultFooter from '~/components/layout/default/Footer.vue'
 
 <template>
     <div>
-        <!-- <DefaultHeader /> -->
+        <DefaultHeader />
         <slot/>
-        <!-- <DefaultFooter /> -->
+        <DefaultFooter />
     </div>
 </template>

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-    import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
+import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
 </script>
 
 <template>
     <div class="carouselHeader">
         <h2 class="title">Latest story</h2>
-        <ExploreMoreButton/>
+        <ExploreMoreButton />
     </div>
 
     <hr>
-    
+
     <div>
         content
     </div>
@@ -23,8 +23,8 @@
 }
 
 .title {
-    font-family: "Playfair", serif;
-    font-size:xx-large;
+    font-family: "Playfair Display", serif;
+    font-size: xx-large;
     font-weight: bold;
 
 }
