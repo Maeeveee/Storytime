@@ -1,0 +1,31 @@
+<template>
+    <div class="carouselHeader">
+        <h2 class="title">Latest story</h2>
+        <a href="">Explore more</a>
+    </div>
+
+    <hr>
+    
+    <div>
+        content
+    </div>
+</template>
+
+<style scoped lang="scss">
+.carouselHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+</style>
