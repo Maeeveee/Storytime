@@ -1,7 +1,11 @@
+<script setup lang="ts">
+    import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
+</script>
+
 <template>
     <div class="carouselHeader">
         <h2 class="title">Latest story</h2>
-        <a href="">Explore more</a>
+        <ExploreMoreButton/>
     </div>
 
     <hr>
@@ -18,7 +22,7 @@
 }
 
 .title {
-    font-size: xx-large;
+    font-size:xx-large;
     font-weight: bold;
 }
 

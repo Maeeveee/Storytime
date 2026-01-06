@@ -1,7 +1,11 @@
+<script setup lang="ts">
+    import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
+</script>
+
 <template>
     <div class="MasonryHeader">
         <h2 class="title">Comedy</h2>
-        <a href="">Explore more</a>
+        <ExploreMoreButton/>
     </div>
 
     <hr>
