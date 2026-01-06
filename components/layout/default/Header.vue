@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import RegisterButton from '~/components/ui/RegisterButton.vue';
-
+import LoginButton from '~/components/ui/LoginButton.vue';
 </script>
 
 <template>
@@ -11,8 +11,11 @@ import RegisterButton from '~/components/ui/RegisterButton.vue';
 
         <div class="button-container">
             <RegisterButton/>
-            <LoginButton />
+            <LoginButton/>
         </div>
+    </div>
+    <div class="sparator">
+    
     </div>
 </template>
 
@@ -20,10 +23,11 @@ import RegisterButton from '~/components/ui/RegisterButton.vue';
 .nav {
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
-    padding-left: 80px;
-    padding-right: 80px;
-    height: 100px;
+    padding-top: 10px;
+    padding-left: 110px;
+    padding-right: 110px;
+    height: 80px;
+    width: 1700px;
 }
 
 .title {
@@ -33,11 +37,15 @@ import RegisterButton from '~/components/ui/RegisterButton.vue';
 
 .button-container {
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
 img {
     height: 60px;
     width: auto;
+}
+
+.sparator {
+    border-bottom: #f3f3f3 3px solid;
 }
 </style>
