@@ -3,13 +3,13 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 </script>
 
 <template>
-    <div class="title">
+    <div class="more-categories__title">
         More Categories
     </div>
 
     <hr>
 
-    <div class="CategoriesDisplay">
+    <div class="more-categories__display">
         <CategoriesButton category="Adventure" />
         <CategoriesButton category="Fiction" />
         <CategoriesButton category="Fantasy" />
@@ -20,10 +20,18 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 
 </template>
 
-<style>
-.title {
-    font-size: xx-large;
-    font-weight: bold;
+<style lang="scss" scoped>
+.more-categories {
+    &__title {
+        font-family: "Playfair", serif;
+        font-size: xx-large;
+        font-weight: bold;
+    }
+
+    &__display {
+        display: flex;
+        gap: 1rem;
+    }
 }
 
 hr {
@@ -31,10 +39,5 @@ hr {
     margin-bottom: 1rem;
     border: none;
     border-top: 1px solid #ccc;
-}
-
-.CategoriesDisplay {
-    display: flex;
-    gap: 1rem;
 }
 </style>

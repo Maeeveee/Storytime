@@ -1,15 +1,19 @@
-.container{
-    max-width: 100%;
-    padding-left: 80px;
-    padding-right: 80px;
+@use './reset';
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+body {
+    font-family: 'DM Sans', sans-serif;
+
 }
 
-.hero{
-    text-align: center;
-    padding: 100px 20px;
+.container {
+    max-width: 1700px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: auto;
 }
 
-h1{
+h1 {
     font-size: 48px;
     margin-bottom: 20px;
 }

@@ -22,8 +22,10 @@
 }
 
 .title {
+    font-family: "Playfair", serif;
     font-size:xx-large;
     font-weight: bold;
+
 }
 
 hr {
