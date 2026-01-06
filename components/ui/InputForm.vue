@@ -1,10 +1,11 @@
 <script setup lang="ts">
 defineProps<{ placeholder: string, iconName?:string }>();
+const model = defineModel<string>();
 </script>
 
 <template>
     <div class="input__wrapper">
-        <input type="text" :placeholder="placeholder" class="input" :class="{'input--with-icon': iconName}" />
+        <input v-model="model" type="text" :placeholder="placeholder" class="input" :class="{'input--with-icon': iconName}" />
         <Icon class="input__icon" v-if="iconName" :name="iconName" />
     </div>
 </template>

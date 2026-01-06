@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import ImageLogin from '~/components/section/login/ImageLogin.vue';
-import FormLogin from '~/components/section/login/FormLogin.vue';
-
 definePageMeta({
     layout: 'blank'
 });
@@ -9,7 +6,7 @@ definePageMeta({
 
 <template>
     <div class="auth-container">
-        <FormLogin />
-        <ImageLogin />
+        <SectionLoginFormLogin />
+        <SectionLoginImageLogin />
     </div>
 </template>

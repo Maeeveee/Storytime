@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import RegisterButton from '~/components/ui/RegisterButton.vue';
-import LoginButton from '~/components/ui/LoginButton.vue';
-</script>
-
 <template>
     <div class="nav">
         <div>
@@ -10,8 +5,8 @@ import LoginButton from '~/components/ui/LoginButton.vue';
         </div>
 
         <div class="nav__button-container">
-            <RegisterButton />
-            <LoginButton />
+            <UiAuthButton to="/register" variant="secondary">Register</UiAuthButton>
+            <UiAuthButton to="/login" variant="primary">Login</UiAuthButton>
         </div>
     </div>
 </template>
@@ -25,6 +20,10 @@ import LoginButton from '~/components/ui/LoginButton.vue';
     height: 60px;
     margin: auto;
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     background-color: white;
     border-bottom: #f3f3f3 3px solid;
 
@@ -35,7 +34,7 @@ import LoginButton from '~/components/ui/LoginButton.vue';
 
     &__logo {
         height: 59px;
-        width: 254;
+        width: 254px;
     }
 }
 </style>

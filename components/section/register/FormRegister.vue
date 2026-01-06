@@ -1,30 +1,26 @@
 <script setup lang="ts">
-import InputForm from '~/components/ui/InputForm.vue';
-import LoginButton from '~/components/ui/LoginButton.vue';
 </script>
 <template>
     <div>
         <div class="register__form-section">
             <h2 class="register__title">Create Account</h2>
-            <div>
+            <label>
                 <span class="register__text">Name</span>
-                <InputForm placeholder="Enter Your name" icon-name="formkit:eye" />
-            </div>
-            <div>
+                <UiInputForm placeholder="Enter Your name" icon-name="formkit:eye" />
+            </label>
+            <label>
                 <span class="register__text">Email</span>
-                <InputForm placeholder="Enter Your Email"  />
-            </div>
-            <div>
+                <UiInputForm placeholder="Enter Your Email" />
+            </label>
+            <label>
                 <span class="register__text">Password</span>
-                <InputForm placeholder="Enter Your Chosen Password" />
-
-            </div>
-            <div>
+                <UiInputForm placeholder="Enter Your Chosen Password" />
+            </label>
+            <label>
                 <span class="register__text">Confirm Password</span>
-                <InputForm placeholder="Re-enter Your Chosen Password" />
-            </div>
-
-            <LoginButton class="register__button" />
+                <UiInputForm placeholder="Re-enter Your Chosen Password" />
+            </label>
+            <UiAuthButton to="/register" variant="primary" class="register__button"> Create Account</UiAuthButton>
             <div>
                 <span class="register__text">Already have an account? <NuxtLink href="/Login"
                         class="register__navigate-login">Login</NuxtLink></span>
@@ -60,6 +56,10 @@ import LoginButton from '~/components/ui/LoginButton.vue';
     &__button {
         margin-top: 50px;
         margin-bottom: 43px;
+        max-width: 178px;
+        width: 100%;
+        max-height: 32px;
+        height: 100%;
     }
 
     &__navigate-login {

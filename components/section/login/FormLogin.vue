@@ -1,25 +1,21 @@
-<script setup lang="ts">
-import LoginButton from '~/components/ui/LoginButton.vue';
-import InputForm from '~/components/ui/InputForm.vue';
-</script>
-
 <template>
     <div class="login__form-section">
         <img src="/img/logo.webp" alt="Image Login">
         <h2 class="login__title">Login</h2>
         <div class="login__form">
-            <div>
+            <label>
                 <span class="login__text">Email</span>
-                <InputForm placeholder="Enter your email" />
-            </div>
-            <div>
+                <UiInputForm placeholder="Enter your email" />
+            </label>
+            <label>
                 <span class="login__text">Password</span>
-                <InputForm placeholder="Enter your chosen password" />
-            </div>
+                <UiInputForm placeholder="Enter your chosen password" />
+            </label>
         </div>
-        <LoginButton />
+        <UiAuthButton to="/login" variant="primary" class="login__button">Login</UiAuthButton>
         <div>
-            <span class="login__text">Don't have an account? <NuxtLink class="login__navigate-login" to="/register">Register</NuxtLink></span>
+            <span class="login__text">Don't have an account? <NuxtLink class="login__navigate-login" to="/register">
+                    Register</NuxtLink></span>
         </div>
     </div>
 </template>
@@ -30,7 +26,7 @@ import InputForm from '~/components/ui/InputForm.vue';
         width: 825px;
         padding: 2rem 4rem 2rem 4rem;
     }
-    
+
     &__form {
         display: flex;
         flex-direction: column;

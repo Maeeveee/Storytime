@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import StoryCarousel from '~/components/section/home/HighlightedStoryCarousel.vue'
-import MoreCategories from '~/components/section/home/MoreCategories.vue'
-import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBento.vue'
-import InputForm from '~/components/ui/InputForm.vue';
-
-</script>
-
 <template>
     <div class="container">
         <div class="hero">
@@ -14,41 +6,20 @@ import InputForm from '~/components/ui/InputForm.vue';
                 community of 90 million
                 readers and writers through the power of story.</p>
             <div class="hero__wrapper">
-                <InputForm placeholder="Search Story" icon-name="formkit:search" />
+                <UiInputForm placeholder="Search Story" icon-name="formkit:search" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
 
 
-        <StoryCarousel />
-        <HighlightedStoryBento />
-        <MoreCategories />
+        <SectionHomeHighlightedStoryCarousel />
+        <SectionHomeHighlightedStoryBento />
+        <SectionHomeMoreCategories />
     </div>
 </template>
 
 <style lang="scss" scoped>
 .hero {
-    &__input {
-        border: 2px solid #CCCCCC;
-        width: 1002px;
-        height: 32px;
-        border-radius: 10px;
-        padding: 24px 30px 24px 30px;
-        margin-top: 40px;
-        margin-bottom: 30px;
-        font-size: 24px;
-        line-height: 32px;
-        background-image: url();
-        background-repeat: no-repeat;
-        background-position: right 20px center;
-        background-size: 30px;
-
-        &:focus {
-            outline: none;
-        }
-
-    }
-
     text-align: center;
     padding-top: 170px;
     margin-bottom: 40px;
