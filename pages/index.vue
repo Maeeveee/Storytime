@@ -12,7 +12,7 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
                 community of 90 million
                 readers and writers through the power of story.</p>
             <div>
-                <input type="text" placeholder="Search Story" class="hero__search">
+                <input type="text" class="hero__input" placeholder="Search Story">
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
@@ -26,6 +26,27 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
 
 <style lang="scss" scoped>
 .hero {
+    &__input {
+        border: 2px solid #CCCCCC;
+        width: 1002px;
+        height: 32px;
+        border-radius: 10px;
+        padding: 24px 30px 24px 30px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        font-size: 24px;
+        line-height: 32px;
+        background-image: url();
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+        background-size: 30px;
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
     text-align: center;
     padding-top: 170px;
     margin-bottom: 40px;
@@ -53,32 +74,10 @@ import HighlightedStoryBento from '~/components/section/home/HighlightedStoryBen
         margin: auto;
     }
 
-    &__search {
-        border: 2px solid #CCCCCC;
-        width: 1002px;
-        height: 32px;
-        border-radius: 10px;
-        padding: 24px 30px 24px 30px;
-        margin-top: 40px;
-        margin-bottom: 30px;
-        font-size: 24px;
-        line-height: 32px;
-        background-image: url('/icon/formkit--search.svg');
-        background-repeat: no-repeat;
-        background-position: right 20px center;
-        background-size: 30px;
-        &:focus {
-            outline: none;
-        }
-
-    }
-
-
     &__image {
         width: 45%;
         display: flex;
         margin: auto;
-        
     }
 }
 </style>

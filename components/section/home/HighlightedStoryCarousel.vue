@@ -17,6 +17,7 @@
 
 <style scoped lang="scss">
 .carouselHeader {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
 }
