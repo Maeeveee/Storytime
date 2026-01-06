@@ -59,7 +59,7 @@ import LoginButton from '~/components/ui/LoginButton.vue';
 
     &__button {
         margin-top: 50px;
-        margin-bottom: 50px;
+        margin-bottom: 43px;
     }
 
     &__navigate-login {

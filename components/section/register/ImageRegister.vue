@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="register__image-section">
-            <img src="/img/Logo.webp" alt="Logo" class="register__image">
+            <img src="/img/Logo.webp" alt="Logo" class="register__logo">
             <h1 class="register__title">Join the World’s Most-Loved Social Storytelling Platform!</h1>
             <p class="register__text">Create an account to explore interesting articles, connect with like-minded
                 people, and share your own stories. </p>
-            <img src="/img/RegisterImage.webp" alt="Register Image">
+            <img src="/img/RegisterImage.webp" alt="Register Image" class="register__image">
         </div>
     </div>
 </template>
@@ -13,15 +13,24 @@
 <style scoped lang="scss">
 .register {
     &__image-section {
-        height: 950px;
-        max-width: 825px;
+        height: 910px;
+        max-width: 805px;
         margin-left: auto;
         background-color: #F0F5ED;
+        margin: 20px 20px 20px 20px;
         padding: 2rem 4rem 2rem 4rem;
+        border-radius: 8px;
+    }
+
+    &__logo {
+        margin-bottom: 50px;
+        width: 259px;
+        height: 59px;
     }
 
     &__image {
-        margin-bottom: 50px;
+        width: 752px;
+        height: 547px;
     }
 
     &__title {

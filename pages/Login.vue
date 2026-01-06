@@ -9,7 +9,7 @@ definePageMeta({
 
 <template>
     <div class="auth-container">
-        <ImageLogin />
         <FormLogin />
+        <ImageLogin />
     </div>
 </template>
