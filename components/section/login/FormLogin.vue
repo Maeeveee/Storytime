@@ -7,11 +7,11 @@
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <UiInputForm placeholder="Enter Your Email" variant="primary" />
+                <UiInputForm id="Email" placeholder="Enter Your Email" variant="primary" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <UiInputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                <UiInputForm id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
             <UiAuthButton to="/login" variant="primary" class="login__button"> Login</UiAuthButton>
             <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"

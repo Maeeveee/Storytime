@@ -6,5 +6,5 @@ export interface Article {
     authorName: string;
     authorAvatar: string;
     createdDate: string;
-    category: string;
+    category?: string;
 }

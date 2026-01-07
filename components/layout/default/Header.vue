@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px 110px 20px 110px;
-    min-width: 1700px;
+    max-width: 1700px;
     height: 60px;
     margin: auto;
     position: fixed;

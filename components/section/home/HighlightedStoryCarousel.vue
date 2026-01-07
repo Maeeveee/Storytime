@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import StoryCard from '~/components/ui/StoryCard.vue';
-import { articles } from '~/data/articles';
+import  { articles } from '~/data/articles';
 </script>
 
 <template>
@@ -13,7 +12,7 @@ import { articles } from '~/data/articles';
 
     <div class="carousel-container">
         <div v-for="article in articles" :key="article.id">
-            <StoryCard :-article-item="article" />
+            <UiStoryCard :article-item="article" />
         </div>
     </div>
 </template>
@@ -40,8 +39,12 @@ import { articles } from '~/data/articles';
 
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    scroll-snap-type: mandatory;
+    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+
+    >div{
+        scroll-snap-align: start;
+    }
 
 }
 
