@@ -51,14 +51,13 @@ const props = withDefaults(defineProps<IProps>(), {
     }
 
     &--large {
-        width: 1123%;
+        width: 1123px;
         height: 1318px;
 
         .card__image {
             width: 1123px;
             height: 1066px;
         }
-
     }
 
     &--small {

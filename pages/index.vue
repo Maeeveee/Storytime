@@ -15,7 +15,7 @@
         </div>
 
         <SectionHomeHighlightedStoryCarousel />
-        <SectionHomeHighlightedStoryBento />
+        <SectionHomeHighlightedStoryBento category="comedy"/>
         <SectionHomeMoreCategories />
     </div>
 </template>

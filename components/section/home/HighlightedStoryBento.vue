@@ -1,13 +1,27 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
 
-const comedyArticles = computed(() =>
-    articles.filter(article => article.category === 'comedy').slice(0, 3));
+interface Props {
+    category: string;
+    title?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    title: ''
+});
+
+const filteredArticles = computed(() =>
+    articles.filter(article => article.category === props.category).slice(0, 3));
+
+const displayTitle = computed(() => {
+    if (props.title) return props.title;
+    return props.category.charAt(0).toUpperCase() + props.category.slice(1);
+});
 </script>
 
 <template>
     <div class="bento__header">
-        <h2 class="bento__title">Comedy</h2>
+        <h2 class="bento__title">{{ displayTitle }}</h2>
         <UiExploreMoreButton />
     </div>
 
@@ -15,11 +29,11 @@ const comedyArticles = computed(() =>
 
     <div class="bento__grid">
         <div class="bento__left">
-            <UiStoryCard v-if="comedyArticles[0]" :article-item="comedyArticles[0]" variant="large" hide-category />
+            <UiStoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" hide-category />
         </div>
         <div class="bento__right">
-            <UiStoryCard v-if="comedyArticles[1]" :article-item="comedyArticles[1]" variant="small" hide-category/>
-            <UiStoryCard v-if="comedyArticles[2]" :article-item="comedyArticles[2]" variant="small" hide-category/>
+            <UiStoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" hide-category />
+            <UiStoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" hide-category />
         </div>
     </div>
 </template>
@@ -39,21 +53,20 @@ const comedyArticles = computed(() =>
         line-height: 58px;
     }
 
-    &__grid{
+    &__grid {
         display: flex;
         gap: 30px;
     }
 
-    &__left{
+    &__left {
         flex-shrink: 0;
     }
 
-    &__right{
+    &__right {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         gap: 46px;
     }
 }
-
 </style>
