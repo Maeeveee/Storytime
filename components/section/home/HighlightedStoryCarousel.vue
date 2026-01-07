@@ -1,18 +1,55 @@
 <script setup lang="ts">
 import  { articles } from '~/data/articles';
+
+interface Props{
+    category?: string;
+    title?: string;
+    hideCategory?: boolean;
+    limit?: number;
+}
+
+const props = withDefaults(defineProps<Props>(),{
+    category: '',
+    title: '',
+    hideCategory: false,
+    limit: 0
+})
+
+const filteredArticles = computed(() => {
+    let result = [...articles];
+
+    if(props.category){
+        result = result.filter(article => article.category === props.category);
+    }
+
+    if (props.limit > 0) {
+        result = result.slice(0, props.limit);
+    }
+
+    return result;
+});
+
+const displayTitle = computed(() =>{
+    if (props.title) return props.title;
+    if (props.category) {
+        return props.category.charAt(0).toUpperCase() + props.category.slice(1);
+    } 
+    return 'Latest Story'
+})
+
 </script>
 
 <template>
     <div class="carouselHeader">
-        <h2 class="title">Latest story</h2>
+        <h2 class="title">{{ displayTitle }}</h2>
         <UiExploreMoreButton />
     </div>
 
-    <hr>
+    <UiDivider />
 
     <div class="carousel-container">
-        <div v-for="article in articles" :key="article.id">
-            <UiStoryCard :article-item="article" />
+        <div v-for="article in filteredArticles" :key="article.id">
+            <UiStoryCard :article-item="article" :hide-category="hideCategory"/>
         </div>
     </div>
 </template>
@@ -44,14 +81,8 @@ import  { articles } from '~/data/articles';
 
     >div{
         scroll-snap-align: start;
+        flex-shrink: 0;
     }
 
-}
-
-hr {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border: none;
-    border-top: 1px solid #ccc;
 }
 </style>

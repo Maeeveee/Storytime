@@ -50,6 +50,26 @@ const props = withDefaults(defineProps<IProps>(), {
         cursor: pointer;
     }
 
+    &--default {
+        width: 547px;
+        height: 736px;
+
+        .card__image {
+            width: 547px;
+            height: 500px;
+        }
+
+        .card__title {
+            font-size: 24px;
+            line-height: 32px;
+            height: 64px;
+        }
+
+        .card__description {
+            height: 54px;
+        }
+    }
+
     &--large {
         width: 1123px;
         height: 1318px;
@@ -58,6 +78,15 @@ const props = withDefaults(defineProps<IProps>(), {
             width: 1123px;
             height: 1066px;
         }
+
+        .card__title {
+            height: 92px;
+        }
+
+        .card__description {
+            height: 54px;
+        }
+
     }
 
     &--small {
@@ -71,6 +100,8 @@ const props = withDefaults(defineProps<IProps>(), {
 
         .card__title {
             font-size: 20px;
+            line-height: 28px;
+            height: 56px;
             margin-top: 12px;
             margin-bottom: 8px;
         }
@@ -78,11 +109,7 @@ const props = withDefaults(defineProps<IProps>(), {
         .card__description {
             font-size: 14px;
             line-height: 20px;
-            max-height: 40px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            height: 40px;
         }
 
         .card__footer {
@@ -103,6 +130,7 @@ const props = withDefaults(defineProps<IProps>(), {
     &__image-wrapper {
         overflow: hidden;
         border-radius: 8px;
+        flex-shrink: 0;
     }
 
     &__image {
@@ -116,6 +144,16 @@ const props = withDefaults(defineProps<IProps>(), {
             opacity: 0.7;
             transform: scale(1.05);
         }
+    }
+
+    &__content{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &__header {
+        flex-grow: 1;
     }
 
     &__title {
