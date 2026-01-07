@@ -16,6 +16,7 @@
 
         <SectionHomeHighlightedStoryCarousel />
         <SectionHomeHighlightedStoryBento category="comedy"/>
+        <SectionHomeHighlightedStoryCarousel category="romance" hide-category/>
         <SectionHomeMoreCategories />
     </div>
 </template>

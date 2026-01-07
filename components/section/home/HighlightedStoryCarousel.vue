@@ -70,8 +70,6 @@ const displayTitle = computed(() =>{
 
 .carousel-container {
     display: flex;
-    justify-content: start;
-    align-items: start;
     gap: 20px;
 
     overflow-x: auto;
@@ -79,6 +77,7 @@ const displayTitle = computed(() =>{
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 
+    padding-bottom: 16px;
     >div{
         scroll-snap-align: start;
         flex-shrink: 0;
