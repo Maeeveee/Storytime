@@ -1,64 +1,89 @@
 <template>
-    <div class="login__form-section">
-        <img src="/img/logo.webp" alt="Image Login">
-        <h2 class="login__title">Login</h2>
-        <div class="login__form">
-            <label>
-                <span class="login__text">Email</span>
-                <UiInputForm placeholder="Enter your email" />
-            </label>
-            <label>
-                <span class="login__text">Password</span>
-                <UiInputForm placeholder="Enter your chosen password" />
-            </label>
+    <section class="section-wrapper">
+        <div class="login__logo">
+            <UiLogo />
         </div>
-        <UiAuthButton to="/login" variant="primary" class="login__button">Login</UiAuthButton>
-        <div>
-            <span class="login__text">Don't have an account? <NuxtLink class="login__navigate-login" to="/register">
-                    Register</NuxtLink></span>
+        <div class="login__wrapper">
+            <h2 class="login__title">Login</h2>
+            <label for="Email" class="login__label">
+                <span>Email</span>
+                <UiInputForm placeholder="Enter Your Email" variant="primary" />
+            </label>
+            <label for="Password" class="login__label">
+                <span>Password</span>
+                <UiInputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+            </label>
+            <UiAuthButton to="/login" variant="primary" class="login__button"> Login</UiAuthButton>
+            <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"
+                    class="login__navigate-register">Register
+                </NuxtLink></span>
         </div>
-    </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>
-.login {
-    &__form-section {
-        width: 825px;
-        padding: 2rem 4rem 2rem 4rem;
-    }
+.section-wrapper {
+    width: 825px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 910px;
+    margin: 20px 20px 20px 20px;
+    padding: 2rem 4rem 2rem 4rem;
+    border-radius: 8px;
+}
 
-    &__form {
+.login {
+    &__wrapper {
+        max-width: 577px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        margin-left: auto;
+        margin-top: 100px;
     }
 
     &__title {
-        font-family: "DM Sans", serif;
-        font-size: 44px;
         font-weight: 700;
+        font-size: 44px;
         line-height: 58px;
-        margin-bottom: 50px;
+        color: #222222;
     }
 
-    &__text {
+    &__label {
+        font-weight: 400px;
         font-size: 18px;
         line-height: 23px;
-        font-weight: 400;
         color: #4B4B4B;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
     }
 
-    &__button {
-        margin-top: 50px;
-        margin-bottom: 50px;
-    }
-
-    &__navigate-login {
+    &__navigate-register {
         font-weight: 700;
         text-decoration: none;
         color: #466543;
         margin-top: 30px;
+    }
+
+    &__navigate-text {
+        font-weight: 400px;
+        font-size: 18px;
+        line-height: 23px;
+        color: #4B4B4B;
+    }
+
+    &__button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 60px;
+        max-height: 32px;
+    }
+
+    &__logo {
+        width: 256px;
+        height: 59px;
+        margin-bottom: 50px;
     }
 }
 </style>

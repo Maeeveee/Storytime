@@ -24,7 +24,6 @@
 .hero {
     text-align: center;
     padding-top: 170px;
-    margin-bottom: 40px;
 
     &__title {
         font-family: "Playfair Display", serif;

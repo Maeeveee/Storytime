@@ -1,48 +1,66 @@
 <template>
-    <div class="login__image-section">
-        <h1 class="login__title">Welcome Back to Storytime!</h1>
-        <p class="login__text">Dive back into captivating stories, follow your favorite authors, and continue sharing
-            your own tales.</p>
+    <section class="login__image-wrapper">
+        <div class="login__image-header">
+            <h2 class="login__image-title">
+                Welcome Back to Story Time!
+            </h2>
+            <p class="login__image-subtitle">
+                Dive back into captivating stories, follow your favorite authors, and continue sharing your own tales.
+            </p>
+        </div>
         <img src="/img/LoginImage.webp" alt="Login Image" class="login__image">
-    </div>
+    </section>
 </template>
 
 <style scoped lang="scss">
 .login {
-    &__image-section {
-        height: 910px;
-        width: 825px;
+    &__image-wrapper {
         background-color: #F0F5ED;
-        margin-top: 20px;
-        padding: 2rem 4rem 2rem 4rem;
+        margin: 20px;
+        border-radius: 8px;
+        max-width: 960px;
+        width: 100%;
+        max-height: 980px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 
-    &__title {
+    &__image-header {
+        max-width: 686px;
+        padding: 4rem 4rem 0rem 4rem;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__image-title {
+        max-width: 549px;
         font-family: "Playfair Display", serif;
         font-weight: 700;
-        font-style: normal;
         font-size: 60px;
         line-height: 74px;
         color: #222222;
-        width: 686px;
-        height: 264px;
-        margin-bottom: 30px;
-        margin-top: 50px;
     }
 
-    &__image {
-        width: 917px;
-        height: 600px;
-    }
-
-    &__text {
-        font-family: "DM Sans", serif;
+    &__image-subtitle {
         font-weight: 400;
-        font-style: normal;
         font-size: 28px;
         line-height: 38px;
         color: #4B4B4B;
-        margin-bottom: 30px;
     }
+
+    &__image {
+        width: 752px;
+        height: 547px;
+        margin: 4rem 4rem 4rem 4rem;
+        display: flex;
+        justify-content: left;
+        align-items: start;
+    }
+
 }
 </style>

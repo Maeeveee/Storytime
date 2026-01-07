@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
 </script>
 
 <template>
     <div class="bento__header">
         <h2 class="bento__title">Comedy</h2>
-        <ExploreMoreButton />
+        <UiExploreMoreButton />
     </div>
 
     <hr>
