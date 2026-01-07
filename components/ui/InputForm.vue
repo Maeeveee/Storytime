@@ -1,11 +1,12 @@
 <script setup lang="ts">
-defineProps<{ placeholder: string, iconName?:string, variant?: 'primary' | 'secondary' }>();
+defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary' }>();
 const model = defineModel<string>();
 </script>
 
 <template>
     <div class="input__wrapper">
-        <input v-model="model" type="text" :placeholder="placeholder" class="input" :class="[`input--${variant ?? 'primary'}`]" />
+        <input v-model="model" type="text" :placeholder="placeholder" class="input"
+            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']" />
         <Icon class="input__icon" v-if="iconName" :name="iconName" />
     </div>
 </template>
@@ -19,8 +20,8 @@ const model = defineModel<string>();
     line-height: 32px;
     width: 100%;
     height: 100%;
-    
-    &--primary{
+
+    &--primary {
         max-height: 23px;
 
         &:focus {
@@ -28,9 +29,14 @@ const model = defineModel<string>();
         }
     }
 
-    &--secondary{
+    &--secondary {
         max-height: 32px;
     }
+
+    &--with-icon {
+        padding-right: 60px;
+    }
+
 
     &:focus {
         outline: none;
@@ -38,15 +44,17 @@ const model = defineModel<string>();
 
     &__icon {
         position: absolute;
-        right: 5px;
+        right: 20px;
         top: 50%;
         transform: translateY(-50%);
         font-size: 30px;
         color: #4b4b4b;
     }
 
-    &__wrapper{
+    &__wrapper {
         position: relative;
+        width: 100%;
+        display: flex;
     }
 
 }
