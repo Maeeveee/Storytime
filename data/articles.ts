@@ -1,4 +1,6 @@
-export const articles = [
+import type { Article } from "~/types/article";
+
+export const articles :Article[]= [
   {
     id: 1,
     image: "https://picsum.photos/400/300?random=1",
@@ -177,6 +179,6 @@ export const articles = [
     authorAvatar: "https://picsum.photos/50/50?random=28",
     authorName: "Ben Carter",
     createdDate: "2025-07-28",
-    category: "comedy"
+    category: "comedy",
   },
 ];
