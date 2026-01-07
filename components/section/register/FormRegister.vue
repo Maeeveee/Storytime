@@ -4,22 +4,24 @@
     <div>
         <div class="register__form-section">
             <h2 class="register__title">Create Account</h2>
-            <label>
-                <span class="register__text">Name</span>
-                <UiInputForm placeholder="Enter Your name" icon-name="formkit:eye" />
-            </label>
-            <label>
-                <span class="register__text">Email</span>
-                <UiInputForm placeholder="Enter Your Email" />
-            </label>
-            <label>
-                <span class="register__text">Password</span>
-                <UiInputForm placeholder="Enter Your Chosen Password" />
-            </label>
-            <label>
-                <span class="register__text">Confirm Password</span>
-                <UiInputForm placeholder="Re-enter Your Chosen Password" />
-            </label>
+            <div>
+                <label class="register__label">
+                    <span class="register__text">Name</span>
+                    <UiInputForm placeholder="Enter Your name" variant="primary" />
+                </label>
+                <label class="register__label">
+                    <span class="register__text">Email</span>
+                    <UiInputForm placeholder="Enter Your Email" variant="primary"/>
+                </label>
+                <label class="register__label">
+                    <span class="register__text">Password</span>
+                    <UiInputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
+                </label>
+                <label class="register__label">
+                    <span class="register__text">Confirm Password</span>
+                    <UiInputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
+                </label>
+            </div>
             <UiAuthButton to="/register" variant="primary" class="register__button"> Create Account</UiAuthButton>
             <div>
                 <span class="register__text">Already have an account? <NuxtLink href="/Login"
@@ -67,6 +69,17 @@
         text-decoration: none;
         color: #466543;
         margin-top: 30px;
+    }
+
+    &__label {
+        max-width: 577px;
+        width: 100%;
+        max-height: 144px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
     }
 }
 </style>
