@@ -17,21 +17,22 @@
 <style lang="scss" scoped>
 .bento {
     &__header {
+        margin-top: 100px;
         display: flex;
         justify-content: space-between;
     }
 
     &__title {
         font-family: "Playfair Display", serif;
-        font-size: xx-large;
-        font-weight: bold;
-
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 58px;
     }
 }
 
 hr {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: none;
     border-top: 1px solid #ccc;
 }

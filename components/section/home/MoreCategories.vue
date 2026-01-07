@@ -23,20 +23,22 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 <style lang="scss" scoped>
 .more-categories {
     &__title {
+        margin-top: 100px;
         font-family: "Playfair Display", serif;
-        font-size: xx-large;
-        font-weight: bold;
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 58px;
     }
 
     &__display {
         display: flex;
-        gap: 1rem;
+        gap: 8px;
     }
 }
 
 hr {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: none;
     border-top: 1px solid #ccc;
 }

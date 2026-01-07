@@ -222,8 +222,8 @@ const Articles: Ref<Article[]> = ref([
 
 .title {
     font-family: "Playfair Display", serif;
-    font-size:44px;
-    font-weight:600;
+    font-size: 44px;
+    font-weight: 600;
     line-height: 58px;
 }
 
