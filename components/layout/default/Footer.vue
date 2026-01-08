@@ -1,7 +1,13 @@
+<script setup lang="ts">
+const currentyear = new Date().getFullYear();
+
+const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights reserved.`;
+
+</script>
 <template>
-    <div class="">
+    <div class="footer">
         <div class="footer__content">
-            <h5 class="footer__text"> © 2024 Timedoor Indonesia. All rights reserved.</h5>
+            <h5 class="footer__text"> {{ copyright }}</h5>
             <div class="footer__icons">
                 <Icon name="entypo-social:facebook" />
                 <Icon name="entypo-social:instagram" />
@@ -14,9 +20,8 @@
 <style scoped lang="scss">
 .footer {
     &__content {
-        margin-top: 80px;
-        padding: 20px 100px 20px 100px;
-        min-width: 1700px;
+        margin-top: 200px;
+        padding: 0 110px;
         display: flex;
         align-items: center;
         justify-content: space-between;

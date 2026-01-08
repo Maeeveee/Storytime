@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
-
 interface Props {
     category?: string;
     title?: string;

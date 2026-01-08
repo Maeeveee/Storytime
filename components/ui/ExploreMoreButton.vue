@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NuxtLink href="" class="explore-more__text">Explore More
+        <NuxtLink to="/all-story" class="explore-more__text">Explore More
             <Icon class="explore-more__icon" name="formkit:arrowright" />
         <div class="explore-more__underline"></div>
         </NuxtLink>
