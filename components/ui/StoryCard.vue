@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-    <NuxtLink :to="`/story-detail/${props.articleItem.id}`" class="card" :class="`card--${variant}`">
+    <NuxtLink :to="`/story/${props.articleItem.title}`" class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <img :src="props.articleItem.image" alt="Story Image" class="card__image">
         </div>

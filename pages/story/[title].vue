@@ -4,10 +4,10 @@ import HighlightedStoryCarousel from '~/components/section/home/HighlightedStory
 import StorySection from '~/components/section/storyDetail/storySection.vue';
 
 const route = useRoute();
-const id = route.params.id;
+const title = route.params.title;
 
 const article = computed(() => {
-    return articles.find(article => article.id === Number(id));
+    return articles.find(article => article.title === title);
 });
 </script>
 

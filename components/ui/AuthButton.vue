@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ to: string, variant?: 'primary' | 'secondary' }>()
+defineProps<{ to?: string, variant?: 'primary' | 'secondary' }>()
 </script>
 
 <template>
