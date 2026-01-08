@@ -48,6 +48,14 @@ const props = withDefaults(defineProps<IProps>(), {
 
     &:hover {
         cursor: pointer;
+        .card__image {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .card__title {
+            color: #466543;
+        }
     }
 
     &--default {
@@ -99,17 +107,18 @@ const props = withDefaults(defineProps<IProps>(), {
         }
 
         .card__title {
-            font-size: 20px;
-            line-height: 28px;
-            height: 56px;
+            font-size: 36px;
+            line-height: 46px;
+            height: 46px;
             margin-top: 12px;
-            margin-bottom: 8px;
+            margin-bottom: 50px;
         }
 
         .card__description {
-            font-size: 14px;
-            line-height: 20px;
-            height: 40px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            height: 80px;
         }
 
         .card__footer {
@@ -123,7 +132,9 @@ const props = withDefaults(defineProps<IProps>(), {
 
         .card__author-name,
         .card__created-at {
-            font-size: 14px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
         }
     }
 
@@ -139,11 +150,6 @@ const props = withDefaults(defineProps<IProps>(), {
         border-radius: 8px;
         object-fit: cover;
         transition: opacity 0.3s, transform 0.3s;
-
-        &:hover {
-            opacity: 0.7;
-            transform: scale(1.05);
-        }
     }
 
     &__content{
@@ -163,10 +169,6 @@ const props = withDefaults(defineProps<IProps>(), {
         color: #4b4b4b;
         margin-top: 20px;
         margin-bottom: 20px;
-
-        &:hover {
-            color: #466543;
-        }
     }
 
     &__description {
