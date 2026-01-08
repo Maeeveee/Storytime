@@ -14,12 +14,9 @@ const props = withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-    <NuxtLink to="/story-detail" class="card" :class="`card--${variant}`">
+    <NuxtLink :to="`/story-detail/${props.articleItem.id}`" class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <img :src="props.articleItem.image" alt="Story Image" class="card__image">
-            <div v-if="variant !== 'default'" class="">
-                <UiBookmark :variant="variant" />
-            </div>
         </div>
         <div class="card__content">
             <div class="card__header">
@@ -49,6 +46,7 @@ const props = withDefaults(defineProps<IProps>(), {
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    margin-bottom: 40px;
 
     &:hover {
         cursor: pointer;
@@ -73,9 +71,9 @@ const props = withDefaults(defineProps<IProps>(), {
         }
 
         .card__title {
-            font-size: 24px;
-            line-height: 32px;
-            height: 64px;
+            font-size: 36px;
+            line-height: 46px;
+            margin-bottom: 20px;
         }
 
         .card__description {
@@ -236,12 +234,6 @@ const props = withDefaults(defineProps<IProps>(), {
         font-size: 18px;
         line-height: 23px;
         color: #466543;
-    }
-
-    &__bookmark {
-        position: absolute;
-        top: 0;
-        right: 0;
     }
 }
 </style>

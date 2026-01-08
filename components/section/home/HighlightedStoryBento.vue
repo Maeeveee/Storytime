@@ -29,11 +29,11 @@ const displayTitle = computed(() => {
 
     <div class="bento__grid">
         <div class="bento__left">
-            <UiStoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" hide-category />
+            <UiStoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" />
         </div>
         <div class="bento__right">
-            <UiStoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" hide-category />
-            <UiStoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" hide-category />
+            <UiStoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
+            <UiStoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
         </div>
     </div>
 </template>

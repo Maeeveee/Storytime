@@ -1,10 +1,10 @@
-<script>
+<script setup lang="ts">
 
 </script>
 
 <template>
     <div class="breadcrumb__wrapper">
-    <NuxtLink to="/" class="breadcrumb__text">Home</NuxtLink> <span class="breadcrumb__text">/</span> <NuxtLink to="#" class="breadcrumb__text">Title</NuxtLink>
+    <NuxtLink to="/" class="breadcrumb__text">Home</NuxtLink> <span class="breadcrumb__text">/</span> <NuxtLink to="#" class="breadcrumb__text">title</NuxtLink>
     </div>
 </template>
 

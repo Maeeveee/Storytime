@@ -10,7 +10,7 @@
 <style scoped lang="scss">
 .explore-more {
     &__icon {
-        font-size: xx-large;
+        font-size: 24px;
     }
 
     &__text {

@@ -16,7 +16,7 @@
 
         <SectionHomeHighlightedStoryCarousel />
         <SectionHomeHighlightedStoryBento category="comedy"/>
-        <SectionHomeHighlightedStoryCarousel category="romance" hide-category/>
+        <SectionHomeHighlightedStoryCarousel category="romance"/>
         <SectionHomeHighlightedStoryBento category="horror"/>
         <SectionHomeMoreCategories />
     </main>
