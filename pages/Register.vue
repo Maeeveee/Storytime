@@ -8,8 +8,8 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="auth-container">
+    <main class="auth-container">
         <ImageRegister />
         <FormRegister />
-    </div>
+    </main>
 </template>

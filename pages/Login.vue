@@ -5,8 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="auth-container">
+    <main class="auth-container">
         <SectionLoginFormLogin />
         <SectionLoginImageLogin />
-    </div>
+    </main>
 </template>

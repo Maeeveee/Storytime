@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <main class="container">
         <div class="hero">
             <div class="hero__text-wrapper">
                 <span class="hero__title">Welcome to Storytime</span>
@@ -19,7 +19,7 @@
         <SectionHomeHighlightedStoryCarousel category="romance" hide-category/>
         <SectionHomeHighlightedStoryBento category="horror"/>
         <SectionHomeMoreCategories />
-    </div>
+    </main>
 </template>
 
 <style lang="scss" scoped>

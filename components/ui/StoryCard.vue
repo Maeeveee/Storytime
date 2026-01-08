@@ -14,9 +14,12 @@ const props = withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-    <div class="card" :class="`card--${variant}`">
+    <NuxtLink to="/story-detail" class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <img :src="props.articleItem.image" alt="Story Image" class="card__image">
+            <div v-if="variant !== 'default'" class="">
+                <UiBookmark :variant="variant" />
+            </div>
         </div>
         <div class="card__content">
             <div class="card__header">
@@ -36,7 +39,7 @@ const props = withDefaults(defineProps<IProps>(), {
                 </div>
             </div>
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <style scoped lang="scss">
@@ -45,9 +48,11 @@ const props = withDefaults(defineProps<IProps>(), {
     height: 100%;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
+
         .card__image {
             opacity: 0.8;
             transform: scale(1.05);
@@ -152,7 +157,7 @@ const props = withDefaults(defineProps<IProps>(), {
         transition: opacity 0.3s, transform 0.3s;
     }
 
-    &__content{
+    &__content {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -231,6 +236,12 @@ const props = withDefaults(defineProps<IProps>(), {
         font-size: 18px;
         line-height: 23px;
         color: #466543;
+    }
+
+    &__bookmark {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
 </style>
