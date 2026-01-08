@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import  { articles } from '~/data/articles';
+import { articles } from '~/data/articles';
 
-interface Props{
+interface Props {
     category?: string;
     title?: string;
     hideCategory?: boolean;
     limit?: number;
 }
 
-const props = withDefaults(defineProps<Props>(),{
+const props = withDefaults(defineProps<Props>(), {
     category: '',
     title: '',
     hideCategory: false,
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(),{
 const filteredArticles = computed(() => {
     let result = [...articles];
 
-    if(props.category){
+    if (props.category) {
         result = result.filter(article => article.category === props.category);
     }
 
@@ -29,11 +29,11 @@ const filteredArticles = computed(() => {
     return result;
 });
 
-const displayTitle = computed(() =>{
+const displayTitle = computed(() => {
     if (props.title) return props.title;
     if (props.category) {
         return props.category.charAt(0).toUpperCase() + props.category.slice(1);
-    } 
+    }
     return 'Latest Story'
 })
 
@@ -49,7 +49,7 @@ const displayTitle = computed(() =>{
 
     <div class="carousel-container">
         <div v-for="article in filteredArticles" :key="article.id">
-            <UiStoryCard :article-item="article" :hide-category="hideCategory"/>
+            <UiStoryCard :article-item="article" :hide-category="hideCategory" />
         </div>
     </div>
 </template>
@@ -78,7 +78,8 @@ const displayTitle = computed(() =>{
     scroll-behavior: smooth;
 
     padding-bottom: 16px;
-    >div{
+
+    >div {
         scroll-snap-align: start;
         flex-shrink: 0;
     }
