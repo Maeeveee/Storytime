@@ -1,5 +1,5 @@
 <template>
-    <hr />
+    <hr class="divider" />
 </template>
 
 <style scoped lang="scss">

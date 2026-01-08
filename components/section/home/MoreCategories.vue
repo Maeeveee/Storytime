@@ -7,7 +7,7 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
         More Categories
     </div>
 
-    <hr>
+    <UiDivider />
 
     <div class="more-categories__display">
         <CategoriesButton category="Adventure" />
