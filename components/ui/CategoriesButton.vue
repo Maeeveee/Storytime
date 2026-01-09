@@ -3,7 +3,7 @@ defineProps<{ category?: string }>();
 </script>
 
 <template>
-    <div>
+    <div class="categories">
         <NuxtLink href="" class="categories__button">{{ category }}</NuxtLink>
     </div>
 </template>
