@@ -2,16 +2,15 @@
 const currentyear = new Date().getFullYear();
 
 const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights reserved.`;
-
 </script>
 <template>
     <div class="footer">
         <div class="footer__content">
-            <h5 class="footer__text"> {{ copyright }}</h5>
+            <h5 class="footer__text">{{ copyright }}</h5>
             <div class="footer__icons">
-                <Icon name="entypo-social:facebook" />
-                <Icon name="entypo-social:instagram" />
-                <Icon name="entypo-social:youtube" />
+                <Icon name="entypo-social:facebook" class="footer__icons__icon" />
+                <Icon name="entypo-social:instagram" class="footer__icons__icon" />
+                <Icon name="entypo-social:youtube" class="footer__icons__icon" />
             </div>
         </div>
     </div>
@@ -25,8 +24,7 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-top: #4B4B4B 1px solid;
-
+        border-top: #4b4b4b 1px solid;
     }
 
     &__text {
@@ -35,13 +33,19 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
         font-weight: 500;
         font-size: 20px;
         line-height: 26px;
-        color: #4B4B4B;
+        color: #4b4b4b;
     }
 
     &__icons {
         font-size: 40px;
         display: flex;
         gap: 20px;
+
+        &__icon {
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
     }
 }
 </style>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
-import ConfirmModal from '~/components/ui/ConfirmModal.vue';
 </script>
 <template>
     <main class="create">
