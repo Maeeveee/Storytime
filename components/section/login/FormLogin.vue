@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Button from '~/components/ui/Button.vue';
+import InputForm from '~/components/ui/InputForm.vue';
+</script>
 <template>
     <section class="section-wrapper">
         <div class="login__logo">
@@ -7,13 +11,13 @@
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <UiInputForm id="Email" placeholder="Enter Your Email" variant="primary" />
+                <InputForm id="Email" placeholder="Enter Your Email" variant="primary" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <UiInputForm id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                <InputForm id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
-            <UiAuthButton to="/login" variant="primary" class="login__button"> Login</UiAuthButton>
+            <Button action="#" variant="primary" class="login__button"> Login</Button>
             <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"
                     class="login__navigate-register">Register
                 </NuxtLink></span>
@@ -76,8 +80,8 @@
     &__button {
         margin-top: 20px;
         margin-bottom: 20px;
-        max-width: 60px;
-        max-height: 32px;
+        max-width: 120px;
+        max-height: 60px;
     }
 
     &__logo {

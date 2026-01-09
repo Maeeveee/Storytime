@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import InputForm from '~/components/ui/InputForm.vue';
+import Button from '~/components/ui/Button.vue';
 </script>
 <template>
     <div>
@@ -7,22 +9,22 @@
             <div>
                 <label class="register__label">
                     <span class="register__text">Name</span>
-                    <UiInputForm placeholder="Enter Your name" variant="primary" />
+                    <InputForm placeholder="Enter Your name" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Email</span>
-                    <UiInputForm placeholder="Enter Your Email" variant="primary"/>
+                    <InputForm placeholder="Enter Your Email" variant="primary"/>
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <UiInputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
+                    <InputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <UiInputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
+                    <InputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye"/>
                 </label>
             </div>
-            <UiAuthButton to="/register" variant="primary" class="register__button"> Create Account</UiAuthButton>
+            <Button action="#" variant="primary" class="register__button"> Create Account</Button>
             <div>
                 <span class="register__text">Already have an account? <NuxtLink href="/Login"
                         class="register__navigate-login">Login</NuxtLink></span>
@@ -58,10 +60,8 @@
     &__button {
         margin-top: 50px;
         margin-bottom: 43px;
-        max-width: 178px;
-        width: 100%;
-        max-height: 32px;
-        height: 100%;
+        max-width: 238px;
+        max-height: 60px;
     }
 
     &__navigate-login {

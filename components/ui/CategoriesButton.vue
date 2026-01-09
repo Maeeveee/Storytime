@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ category: string }>();
+defineProps<{ category?: string }>();
 </script>
 
 <template>

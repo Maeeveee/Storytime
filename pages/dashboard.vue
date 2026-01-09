@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MyStory from '~/components/section/profile/myStory.vue';
-import AuthButton from '~/components/ui/AuthButton.vue';
+import Button from '~/components/ui/Button.vue';
 </script>
 <template>
     <main class="dashboard">
@@ -12,7 +12,7 @@ import AuthButton from '~/components/ui/AuthButton.vue';
                     <h4 class="dashboard__email">rizal@gmail.com</h4>
                     <h4 class="dashboard__user-description">sang penulis</h4>
                 </div>
-                <AuthButton variant="primary">Edit Profile</AuthButton>
+                <Button action="#" variant="primary">Edit Profile</Button>
             </div>
         </div>
         <div>

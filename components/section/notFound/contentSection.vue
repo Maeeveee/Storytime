@@ -1,12 +1,13 @@
 <script setup lang="ts">
-
+import Button from '~/components/ui/Button.vue';
 </script>
 <template>
     <section class="content-section">
         <h1 class="content-section__title">404</h1>
         <h5 class="content-section__subtitle">Page Not Found</h5>
-        <p class="content-section__description">Oops! It looks like this page doesn't exist. Please check the URL or return to the homepage.</p>
-        <UiAuthButton variant="primary" to="/" class="content-section__button">Back to Home</UiAuthButton>
+        <p class="content-section__description">Oops! It looks like this page doesn't exist. Please check the URL or
+            return to the homepage.</p>
+            <Button to="/" variant="primary" class="content-section__button">Back to Home</Button>
     </section>
 </template>
 <style scoped lang="scss">

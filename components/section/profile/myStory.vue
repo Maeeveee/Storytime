@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
 import StoryCard from '~/components/ui/StoryCard.vue';
-import AuthButton from '~/components/ui/AuthButton.vue';
+import Button from '~/components/ui/Button.vue';
 interface Props {
     category?: string;
     title?: string;
@@ -40,7 +40,7 @@ const filteredArticles = computed(() => {
                 <div class="my-story__write-width">
                     <h2 class="my-story__title">Write your story</h2>
                     <p class="my-story__quote">Share your unique voice with the world – start writing your story today!</p>
-                    <AuthButton variant="primary">Write Story</AuthButton>
+                    <Button action="#" variant="primary">Write Story</Button>
                 </div>
             </div>
             <div class="my-story__content-grid">

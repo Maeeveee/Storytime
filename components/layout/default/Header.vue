@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import Logo from '~/components/ui/Logo.vue';
+import Button from '~/components/ui/Button.vue';
 </script>
 <template>
     <div class="nav">
         <Logo class="nav__logo" />
 
         <div class="nav__button-container">
-            <UiAuthButton to="/register" variant="secondary">Register</UiAuthButton>
-            <UiAuthButton to="/login" variant="primary">Login</UiAuthButton>
+            <Button to="/register" variant="secondary">Register</Button>
+            <Button to="/login" variant="primary">Login</Button>
         </div>
     </div>
 </template>
