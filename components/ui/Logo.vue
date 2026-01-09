@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <NuxtLink to="/" class="logo">
         <img src="/img/Logo.webp" class="logo__size" alt="Logo Storytime">
-    </div>
+    </NuxtLink>
 </template>
 
 <style scoped lang="scss">

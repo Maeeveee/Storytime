@@ -1,3 +1,7 @@
+<script setup lang="ts">
+    import DisplayStory from '~/components/section/home/DisplayStory.vue';
+</script>
+
 <template>
     <main class="container">
         <div class="hero">
@@ -14,10 +18,10 @@
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
 
-        <SectionHomeHighlightedStoryCarousel />
-        <SectionHomeHighlightedStoryBento category="comedy"/>
-        <SectionHomeHighlightedStoryCarousel category="romance"/>
-        <SectionHomeHighlightedStoryBento category="horror"/>
+        <DisplayStory display="carousel" title="Latest Story"/>
+        <DisplayStory category="comedy" display="bento" />
+        <DisplayStory category="romance" display="flex" />
+        <DisplayStory category="horror" display="bento" />
         <SectionHomeMoreCategories />
     </main>
 </template>

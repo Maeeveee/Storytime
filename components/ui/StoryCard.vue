@@ -21,17 +21,19 @@ const props = withDefaults(defineProps<IProps>(), {
         <div class="card__content">
             <div class="card__header">
                 <h2 class="card__title">{{ props.articleItem.title }}</h2>
-                <p class="card__description">{{ props.articleItem.shortContent }}</p>
             </div>
-            <div class="card__footer">
-                <div class="card__author-info">
-                    <img :src="props.articleItem.authorAvatar" alt="Author Avatar" class="card__author-avatar">
-                    <span class="card__author-name">{{ props.articleItem.authorName }}</span>
-                </div>
-                <div class="card__story-info">
-                    <span class="card__created-at">{{ props.articleItem.createdDate }}</span>
-                    <div v-if="!hideCategory" class="card__genre-badge">
-                        <span class="card__genre">{{ props.articleItem.category }}</span>
+            <div>
+                <p class="card__description">{{ props.articleItem.shortContent }}</p>
+                <div class="card__footer">
+                    <div class="card__author-info">
+                        <img :src="props.articleItem.authorAvatar" alt="Author Avatar" class="card__author-avatar">
+                        <span class="card__author-name">{{ props.articleItem.authorName }}</span>
+                    </div>
+                    <div class="card__story-info">
+                        <span class="card__created-at">{{ props.articleItem.createdDate }}</span>
+                        <div v-if="!hideCategory" class="card__genre-badge">
+                            <span class="card__genre">{{ props.articleItem.category }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,17 +130,6 @@ const props = withDefaults(defineProps<IProps>(), {
             margin-top: 12px;
         }
 
-        .card__author-avatar {
-            width: 30px;
-            height: 30px;
-        }
-
-        .card__author-name,
-        .card__created-at {
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 23px;
-        }
     }
 
     &__image-wrapper {

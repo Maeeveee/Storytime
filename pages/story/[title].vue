@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
-import HighlightedStoryCarousel from '~/components/section/home/HighlightedStoryCarousel.vue';
 import StorySection from '~/components/section/storyDetail/storySection.vue';
-
+import DisplayStory from '~/components/section/home/DisplayStory.vue';
 const route = useRoute();
 const title = route.params.title;
 
@@ -13,7 +12,7 @@ const article = computed(() => {
 
 <template>
     <main>
-        <UiBreadcrumb class="story-detail__breadcrumb"/>
+        <UiBreadcrumb class="story-detail__breadcrumb" />
         <div class="story-detail__container">
             <div class="story-detail__header">
                 <div class="story-detail__header">
@@ -26,7 +25,7 @@ const article = computed(() => {
                 </div>
             </div>
             <StorySection v-if="article" :article-item="article" />
-            <HighlightedStoryCarousel />
+            <DisplayStory :category="article?.category" display="flex" title="Similar Story" />
         </div>
     </main>
 </template>
@@ -38,7 +37,7 @@ const article = computed(() => {
         margin: auto;
     }
 
-    &__breadcrumb{
+    &__breadcrumb {
         margin-top: 100px;
     }
 

@@ -1,8 +1,9 @@
+<script setup lang="ts">
+import Logo from '~/components/ui/Logo.vue';
+</script>
 <template>
     <div class="nav">
-        <div>
-            <img src="/img/Logo.webp" alt="Logo Storytime" class="nav__logo">
-        </div>
+        <Logo class="nav__logo" />
 
         <div class="nav__button-container">
             <UiAuthButton to="/register" variant="secondary">Register</UiAuthButton>
@@ -15,7 +16,7 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 110px 20px 110px;
+    padding: 23px 110px 23px 110px;
     max-width: 1700px;
     height: 60px;
     margin: auto;
@@ -33,8 +34,9 @@
     }
 
     &__logo {
-        height: 59px;
         width: 254px;
+        height: 59px;
     }
+
 }
 </style>
