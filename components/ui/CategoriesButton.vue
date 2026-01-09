@@ -4,7 +4,7 @@ defineProps<{ category?: string }>();
 
 <template>
     <div class="categories">
-        <NuxtLink href="" class="categories__button">{{ category }}</NuxtLink>
+        <NuxtLink to="/story/" class="categories__button">{{ category }}</NuxtLink>
     </div>
 </template>
 
@@ -20,7 +20,7 @@ defineProps<{ category?: string }>();
         justify-content: center;
         align-items: center;
         border-radius: 12px;
-
+        text-decoration: none;
         font-size: 28px;
         font-weight: 500;
         &:hover {
@@ -28,6 +28,7 @@ defineProps<{ category?: string }>();
             color: black;
             cursor: pointer;
         }
+        
     }
 }
 </style>

@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
     category: '',
     title: '',
     hideCategory: false,
-    limit: 0
+    limit: 12
 })
 
 const filteredArticles = computed(() => {
@@ -41,7 +41,7 @@ const categories = computed(() => {
 <template>
     <main class="all-story">
         <h1 class="all-story__title">All Story</h1>
-        <Breadcrumb />
+        <Breadcrumb  />
         <div class="all-story__filter">
             <div class="all-story__dropdown">
                 <label for="order" class="all-story__label">Sort By</label>

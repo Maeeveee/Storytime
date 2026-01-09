@@ -12,11 +12,14 @@ const article = computed(() => {
 
 <template>
     <main>
-        <UiBreadcrumb class="story-detail__breadcrumb" />
+        <UiBreadcrumb class="story-detail__breadcrumb" :title="article?.title" />
         <div class="story-detail__container">
             <div class="story-detail__header">
                 <div class="story-detail__header">
-                    <h4 class="story-detail__date">{{ article?.createdDate }}</h4>
+                    <div class="story-detail__header__sub">
+                        <h4 class="story-detail__date">{{ article?.createdDate }}</h4>
+                        <span class="story-detail__genre-badge">{{ article?.category }}</span>
+                    </div>
                     <h1 class="story-detail__title">{{ article?.title }}</h1>
                     <div class="story-detail__author-info">
                         <img :src="article?.authorAvatar" alt="author avatar" class="story-detail__author-avatar">
@@ -49,6 +52,11 @@ const article = computed(() => {
         margin-top: 30px;
         gap: 50px;
         margin-bottom: 30px;
+
+        &__sub {
+            display: flex;
+            gap: 20px;
+        }
     }
 
     &__date {
@@ -88,6 +96,17 @@ const article = computed(() => {
     &__carousel-width {
         max-width: 1700px;
         margin: auto;
+    }
+
+    &__genre-badge {
+        background-color: #F0F5ED;
+        border-radius: 8px;
+        padding: 8px 12px;
+        display: inline-block;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: #466543;
     }
 }
 </style>

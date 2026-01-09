@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
     category: '',
     title: '',
     display: 'flex',
-    limit: 10
+    limit: 6
 });
 
 const filteredArticles = computed(() => {

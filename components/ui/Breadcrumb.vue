@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
 
-
-const route = useRoute();
-const id = route.params.id;
-
-const article = computed(() => {
-    return articles.find(article => article.id === Number(id));
-});
+defineProps<{ title?: string }>();
 </script>
 
 <template>
     <div class="breadcrumb__wrapper">
         <NuxtLink to="/" class="breadcrumb__text">Home</NuxtLink> <span class="breadcrumb__text">/</span>
-        <NuxtLink to="#" class="breadcrumb__text">{{ article?.title || "All Story" }}</NuxtLink>
+        <NuxtLink to="#" class="breadcrumb__text">{{ title || "All Story" }}</NuxtLink>
     </div>
 </template>
 
