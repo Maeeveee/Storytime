@@ -20,7 +20,6 @@ const filteredArticles = computed(() => {
     let result = [...articles];
 
     if (props.display === 'carousel') {
-
         if (props.category) {
             result = result.filter(article => article.category === props.category);
         }

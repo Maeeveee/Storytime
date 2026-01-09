@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import { articles } from '~/data/articles';
 import CategoriesButton from '~/components/ui/CategoriesButton.vue';
+
+const categories = computed(() => {
+    const uniqueCategories = Array.from(new Set(articles.map(article => article.category)));
+    return uniqueCategories.map(category => ({ category }));
+})
+
 </script>
 
 <template>
@@ -10,12 +17,9 @@ import CategoriesButton from '~/components/ui/CategoriesButton.vue';
     <UiDivider />
 
     <div class="more-categories__display">
-        <CategoriesButton category="Adventure" />
-        <CategoriesButton category="Fiction" />
-        <CategoriesButton category="Fantasy" />
-        <CategoriesButton category="Drama" />
-        <CategoriesButton category="Heartfelt" />
-        <CategoriesButton category="Mystery" />
+        <div v-for="category in categories" :key="category.category">
+            <CategoriesButton :category="category.category" />
+        </div>
     </div>
 
 </template>
