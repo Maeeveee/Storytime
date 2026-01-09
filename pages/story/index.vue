@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { articles } from '~/data/articles';
 import Breadcrumb from '~/components/ui/Breadcrumb.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Pagination from '~/components/ui/Pagination.vue';
-import { articles } from '~/data/articles';
 interface Props {
     category?: string;
     title?: string;
@@ -31,6 +31,12 @@ const filteredArticles = computed(() => {
 
     return result;
 });
+
+const categories = computed(() => {
+    const uniqueCategories = Array.from(new Set(articles.map(article => article.category)));
+    return uniqueCategories.map(category => ({ category }));
+})
+
 </script>
 <template>
     <main class="all-story">
@@ -47,15 +53,8 @@ const filteredArticles = computed(() => {
                 </select>
                 <label for="category" class="all-story__label">Category</label>
                 <select name="sort by category" id="category" class="all-story__selected-item">
-                    <option value="comedy" class="all-story__item">Comedy</option>
-                    <option value="romance" class="all-story__item">Romance</option>
-                    <option value="horror" class="all-story__item">Horror</option>
-                    <option value="adventure" class="all-story__item">Adventure</option>
-                    <option value="fiction" class="all-story__item">Fiction</option>
-                    <option value="fantasy" class="all-story__item">Fantasy</option>
-                    <option value="drama" class="all-story__item">Drama</option>
-                    <option value="heartfelt" class="all-story__item">Heartfelt</option>
-                    <option value="mystery" class="all-story__item">Mystery</option>
+                    <option v-for="category in categories" :key="category.category" :value="category.category"
+                        class="all-story__item">{{ category.category }}</option>
                 </select>
             </div>
             <InputForm class="all-story__input" placeholder="Search story..." icon-name="formkit:search" />
