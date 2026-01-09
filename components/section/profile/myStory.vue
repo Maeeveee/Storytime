@@ -41,7 +41,7 @@ const filteredArticles = computed(() => {
                     <h2 class="my-story__title">Write your story</h2>
                     <p class="my-story__quote">Share your unique voice with the world – start writing your story today!
                     </p>
-                    <Button action="#" variant="primary">Write Story</Button>
+                    <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
 

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
+
+
+const click = () => {
+    alert("tes")
+}
 </script>
 <template>
     <section class="section-wrapper">
@@ -17,7 +22,7 @@ import InputForm from '~/components/ui/InputForm.vue';
                 <span>Password</span>
                 <InputForm id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
-            <Button action="#" variant="primary" class="login__button"> Login</Button>
+            <Button @click="click" variant="primary" class="login__button"> Login</Button>
             <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"
                     class="login__navigate-register">Register
                 </NuxtLink></span>

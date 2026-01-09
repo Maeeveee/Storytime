@@ -1,12 +1,12 @@
 <script setup lang="ts">
-defineProps<{ action?: string, to?: string, variant?: 'primary' | 'secondary' }>()
+defineProps<{  to?: string, variant?: 'primary' | 'secondary' }>()
 </script>
 
 <template>
     <NuxtLink v-if="to" :to="to" class="button" :class="[`button--${variant ?? 'primary'}`]">
         <slot />
     </NuxtLink>
-    <button v-else :action="action" class="button" :class="[`button--${variant ?? 'primary'}`]">
+    <button v-else class="button" :class="[`button--${variant ?? 'primary'}`]" v-bind="$attrs">
         <slot />
     </button>
 </template>
