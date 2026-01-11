@@ -2,13 +2,27 @@
 import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 
+const email = ref('')
+const password = ref('')
+const isLoading = ref(false)
 
-const click = () => {
-    alert("tes")
+const router = useRouter()
+
+const handleLogin = async () => {
+    isLoading.value = true
+    await new Promise(resolve => setTimeout(resolve, 800))
+    
+    if (email.value === 'user@test.com' && password.value === 'password') {
+        await router.push({ path: '/', query: { login: 'success' } })
+    } else {
+        alert('Invalid credentials. Try: user@test.com / password')
+    }
+    isLoading.value = false
 }
 </script>
 <template>
     <section class="section-wrapper">
+        
         <div class="login__logo">
             <UiLogo />
         </div>
@@ -16,13 +30,15 @@ const click = () => {
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <InputForm id="Email" placeholder="Enter Your Email" variant="primary" />
+                <InputForm v-model="email" id="Email" placeholder="Enter Your Email" variant="primary" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <InputForm id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                <InputForm v-model="password" type="password" id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
-            <Button @click="click" variant="primary" class="login__button"> Login</Button>
+            <Button :disabled="isLoading" @click="handleLogin" variant="primary" class="login__button">
+                 {{ isLoading ? 'Loading...' : 'Login' }}
+            </Button>
             <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"
                     class="login__navigate-register">Register
                 </NuxtLink></span>

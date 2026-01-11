@@ -64,72 +64,84 @@ const props = withDefaults(defineProps<IProps>(), {
     }
 
     &--default {
-        width: 547px;
-        height: 736px;
+        width: 34.1875rem; 
+        max-width: 100%;
+        height: auto;
 
         .card__image {
-            width: 547px;
-            height: 500px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 547/500;
         }
 
         .card__title {
-            font-size: 36px;
-            line-height: 46px;
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
         }
 
         .card__description {
-            height: 54px;
+            min-height: 3.375rem;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
         }
     }
 
     &--large {
-        width: 1123px;
-        height: 1318px;
+        width: 70.1875rem;
+        max-width: 100%;
+        height: auto;
 
         .card__image {
-            width: 1123px;
-            height: 1066px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1123/1066;
         }
 
         .card__title {
-            height: 92px;
+            min-height: 5.75rem;
         }
 
         .card__description {
-            height: 54px;
+            min-height: 3.375rem;
         }
 
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 
     &--small {
-        width: 547px;
-        height: 636px;
+        width: 34.1875rem;
+        max-width: 100%;
+        height: auto;
 
         .card__image {
-            width: 547px;
-            height: 400px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 547/400;
         }
 
         .card__title {
-            font-size: 36px;
-            line-height: 46px;
-            height: 46px;
-            margin-top: 12px;
-            margin-bottom: 50px;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            line-height: 1.3;
+            min-height: 2.875rem;
+            margin-top: 0.75rem;
+            margin-bottom: 3.125rem;
         }
 
         .card__description {
             font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
-            height: 80px;
+            font-size: 1.125rem;
+            line-height: 1.5;
+            min-height: 5rem;
         }
 
-        .card__footer {
-            margin-top: 12px;
+        @media (max-width: 768px) {
+            width: 100%;
         }
-
     }
 
     &__image-wrapper {
@@ -139,8 +151,8 @@ const props = withDefaults(defineProps<IProps>(), {
     }
 
     &__image {
-        width: 547px;
-        height: 500px;
+        width: 100%;
+        height: 100%;
         border-radius: 8px;
         object-fit: cover;
         transition: opacity 0.3s, transform 0.3s;

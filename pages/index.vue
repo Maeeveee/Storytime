@@ -1,9 +1,30 @@
 <script setup lang="ts">
     import DisplayStory from '~/components/section/home/DisplayStory.vue';
+    import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
+
+    const route = useRoute()
+    const router = useRouter()
+    const showLoginToast = ref(false)
+
+    onMounted(() => {
+        if (route.query.login === 'success') {
+            showLoginToast.value = true
+            router.replace({ query: {} })
+            setTimeout(() => {
+                showLoginToast.value = false
+            }, 3000)
+        }
+    })
 </script>
 
 <template>
     <main class="container">
+        <Teleport to="body">
+            <div v-if="showLoginToast" class="toast-wrapper">
+                <ConfirmToast text="Login Successful!" />
+            </div>
+        </Teleport>
+
         <div class="hero">
             <div class="hero__text-wrapper">
                 <span class="hero__title">Welcome to Storytime</span>
@@ -75,6 +96,26 @@
         margin-bottom: 30px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+.toast-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    animation: slideInCenter 0.3s ease-out;
+}
+
+@keyframes slideInCenter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
     }
 }
 </style>

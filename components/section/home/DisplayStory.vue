@@ -124,7 +124,7 @@ const displayTitle = computed(() => {
 
         padding-bottom: 16px;
 
-        >div {
+        > * {
             scroll-snap-align: start;
             flex-shrink: 0;
         }
