@@ -25,25 +25,52 @@ const categories = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.more-categories {
-    &__title {
-        margin-top: 100px;
-        font-family: "Playfair Display", serif;
-        font-size: 44px;
-        font-weight: 600;
-        line-height: 58px;
+@media screen and (max-width: 768px) {
+    .more-categories {
+        &__title {
+            margin-top: 100px;
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 50px;
+        }
+
+        &__display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
     }
 
-    &__display {
-        display: flex;
-        gap: 8px;
+    hr {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border: none;
+        border-top: 1px solid #ccc;
     }
 }
 
-hr {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border: none;
-    border-top: 1px solid #ccc;
+@media screen and (min-width: 768px) {
+    .more-categories {
+        &__title {
+            margin-top: 100px;
+            font-family: "Playfair Display", serif;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 58px;
+        }
+
+        &__display {
+            display: flex;
+            gap: 8px;
+        }
+    }
+
+    hr {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
 }
 </style>
