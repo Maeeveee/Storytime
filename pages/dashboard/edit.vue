@@ -9,7 +9,7 @@ import Button from '~/components/ui/Button.vue';
                 <Icon name="formkit:arrowleft" class="create__back-icon" />
             </NuxtLink>
             <h1 class="">
-                Write Story
+                Edit Story
             </h1>
         </div>
         <div>
@@ -34,7 +34,7 @@ import Button from '~/components/ui/Button.vue';
             </label>
             <div class="create__button">
                 <Button action="#" variant="secondary">cancel</Button>
-                <Button action="#" variant="primary">Post Story</Button>
+                <Button action="#" variant="primary">Update Story</Button>
             </div>
         </div>
     </main>
