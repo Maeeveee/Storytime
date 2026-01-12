@@ -27,7 +27,7 @@ const props = defineProps<{ error: NuxtError }>()
             justify-content: center;
             align-items: center;
             grid-template-columns: 1fr 1fr;
-            padding-top: 170px;
+            padding-top: 150px;
         }
     }
 }
@@ -35,6 +35,7 @@ const props = defineProps<{ error: NuxtError }>()
 @media screen and (min-width: 768px) {
     .not-found {
         &__container {
+            margin-top: 170px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             padding-top: 170px;
