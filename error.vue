@@ -7,18 +7,38 @@ const props = defineProps<{ error: NuxtError }>()
 <template>
     <NuxtLayout>
         <main class="not-found__container">
-            <SectionNotFoundImageSection />
+            <SectionNotFoundImageSection class="device__mobile" />
             <SectionNotFoundContentSection :status-code="error.statusCode" />
         </main>
     </NuxtLayout>
 </template>
 
 <style scoped lang="scss">
-.not-found {
-    &__container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding-top: 170px;
+@media screen and (max-width: 768px) {
+    .device {
+        &__mobile {
+            display: none;
+        }
+    }
+
+    .not-found {
+        &__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 170px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .not-found {
+        &__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 170px;
+        }
     }
 }
 </style>
