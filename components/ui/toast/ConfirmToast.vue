@@ -18,6 +18,7 @@ defineProps<{ text: string }>();
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 
     &__content {
         display: flex;
