@@ -42,7 +42,9 @@ const categories = computed(() => {
     <main class="all-story">
         <h1 class="all-story__title">All Story</h1>
         <Breadcrumb />
-        <InputForm class="all-story__input--mobile" placeholder="Search story..." icon-name="formkit:search" />
+        <div class="all-story__input--mobile">
+            <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+        </div>
         <div class="all-story__filter">
             <div class="all-story__dropdown">
                 <label for="order" class="all-story__label">Sort By</label>
@@ -58,12 +60,15 @@ const categories = computed(() => {
                         class="all-story__item">{{ category.category }}</option>
                 </select>
             </div>
-            <InputForm class="all-story__input--dekstop" placeholder="Search story..." icon-name="formkit:search" />
+
+            <div class="all-story__input--dekstop">
+                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+            </div>
         </div>
 
         <div class="all-story__content">
             <div v-for="article in filteredArticles" :key="article.id">
-                <StoryCard :article-item="article" :hide-category="hideCategory" variant="small"/>
+                <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" />
             </div>
         </div>
         <div class="all-story__pagination">
@@ -93,12 +98,9 @@ const categories = computed(() => {
         }
 
         &__input {
-            margin: auto;
-
             &--mobile {
+                padding: 10px 15px;
                 display: block;
-                margin-top: 20px;
-
             }
 
             &--dekstop {
@@ -135,7 +137,6 @@ const categories = computed(() => {
             color: var(--color-text-secondary);
         }
 
-
         &__content {
             margin: 20px;
             display: grid;
@@ -148,7 +149,6 @@ const categories = computed(() => {
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
     }
 }
@@ -174,13 +174,13 @@ const categories = computed(() => {
         }
 
         &__input {
-            max-width: 547px;
 
-            &--mobile{
+            &--mobile {
                 display: none;
             }
 
-            &--dekstop{
+            &--dekstop {
+                max-width: 547px;
                 display: block;
             }
         }

@@ -29,7 +29,7 @@ const filteredArticles = computed(() => {
         }
 
     } else {
-        result = articles.filter(article => article.category === props.category).slice(0, 3);
+        result = articles.filter(article => article.category === props.category).slice(0, 4);
     }
 
     return result;
@@ -68,10 +68,11 @@ const displayTitle = computed(() => {
         </div>
 
         <div class="display__grid__mobile">
-            <div class="display__flex">
+            <div class="display__grid">
                 <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="small" />
                 <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
                 <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
+                <StoryCard v-if="filteredArticles[3]" :article-item="filteredArticles[3]" variant="small" />
             </div>
         </div>
     </div>
@@ -108,7 +109,7 @@ const displayTitle = computed(() => {
             max-width: 400px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 15px;
             &__dekstop {
                 display: none;
             }

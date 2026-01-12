@@ -82,6 +82,7 @@ const props = withDefaults(defineProps<IProps>(), {
             }
 
             .card__description {
+                text-align: justify;
                 min-height: 3.375rem;
             }
 
@@ -106,6 +107,7 @@ const props = withDefaults(defineProps<IProps>(), {
             }
 
             .card__description {
+                text-align: justify;
                 min-height: 3.375rem;
             }
 
@@ -120,12 +122,12 @@ const props = withDefaults(defineProps<IProps>(), {
             height: auto;
 
             .card__image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1/1;
+                width: 160px;
+                height: 160px;
             }
 
             .card__title {
+                width: 160px;
                 font-size: 18px;
                 line-height: 1.3;
                 min-height: 2.875rem;
@@ -133,6 +135,8 @@ const props = withDefaults(defineProps<IProps>(), {
             }
 
             .card__description {
+                width: 160px;
+                text-align: justify;
                 font-weight: 400;
                 font-size: 1.125rem;
                 min-height: 5rem;
@@ -141,6 +145,28 @@ const props = withDefaults(defineProps<IProps>(), {
                 text-overflow: ellipsis;
                 word-wrap: break-word;
                 overflow: hidden;
+            }
+
+            .card__author-avatar {
+                display: none;
+            }
+
+            .card__author-name{
+                font-size: 14px;
+            }
+
+            .card__genre-badge {
+                background-color: #F0F5ED;
+                border-radius: 8px;
+                padding: 4px 8px;
+                display: inline-block;
+            }
+
+            .card__genre {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 23px;
+                color: #466543;
             }
 
             @media (max-width: 768px) {
