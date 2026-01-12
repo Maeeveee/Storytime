@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
+import Logo from '~/components/ui/Logo.vue';
+
 
 const email = ref('')
 const password = ref('')
@@ -23,7 +25,7 @@ const handleLogin = async () => {
 <template>
     <section class="section-wrapper">
         <div class="login__logo">
-            <UiLogo />
+            <Logo />
         </div>
         <div class="login__wrapper">
             <h2 class="login__title">Login</h2>
@@ -52,7 +54,7 @@ const handleLogin = async () => {
         width: 825px;
         margin-top: auto;
         margin-bottom: auto;
-        margin: 20px 20px 20px 20px;
+        margin: 20px;
         border-radius: 8px;
     }
 

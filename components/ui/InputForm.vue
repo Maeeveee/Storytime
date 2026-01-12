@@ -35,7 +35,7 @@ const model = defineModel<string>();
         }
 
         &--with-icon {
-            padding-right:0;
+            padding-right:50px;
         }
 
 
