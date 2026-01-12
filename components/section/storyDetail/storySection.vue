@@ -19,26 +19,53 @@ defineProps<{ articleItem: Article; }>()
 </template>
 
 <style scoped lang="scss">
-.story-section {
+@media screen and (max-width: 768px) {
+    .story-section {
+        &__content-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            gap: 40px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    &__content-wrapper {
-        padding-left: 16px;
-        padding-right: 16px;
-        gap: 40px;
-        display: flex;
+        &__image {
+            width: 310px;
+            height: 350px;
+            border-radius: 8px;
+        }
+
+        &__article-text {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            color: var(--color-text);
+            text-align: justify;
+        }
     }
+}
 
-    &__image {
-        width: 547px;
-        height: 600px;
-        border-radius: 8px;
-    }
+@media screen and (min-width: 768px) {
+    .story-section {
+        &__content-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            gap: 40px;
+            display: flex;
+        }
 
-    &__article-text{
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 27px;
-        color: var(--color-text);
+        &__image {
+            width: 547px;
+            height: 600px;
+            border-radius: 8px;
+        }
+
+        &__article-text {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            color: var(--color-text);
+        }
     }
 }
 </style>
