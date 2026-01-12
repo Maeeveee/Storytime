@@ -41,7 +41,7 @@ const article = computed(() => {
         }
 
         &__story-content{
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         &__header {
