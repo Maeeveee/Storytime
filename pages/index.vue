@@ -1,21 +1,22 @@
 <script setup lang="ts">
-    import DisplayStory from '~/components/section/home/DisplayStory.vue';
-    import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
-    import Categories from '~/components/section/home/Categories.vue';
+import DisplayStory from '~/components/section/home/DisplayStory.vue';
+import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
+import Categories from '~/components/section/home/Categories.vue';
+import InputForm from '~/components/ui/InputForm.vue';
 
-    const route = useRoute()
-    const router = useRouter()
-    const showLoginToast = ref(false)
+const route = useRoute()
+const router = useRouter()
+const showLoginToast = ref(false)
 
-    onMounted(() => {
-        if (route.query.login === 'success') {
-            showLoginToast.value = true
-            router.replace({ query: {} })
-            setTimeout(() => {
-                showLoginToast.value = false
-            }, 3000)
-        }
-    })
+onMounted(() => {
+    if (route.query.login === 'success') {
+        showLoginToast.value = true
+        router.replace({ query: {} })
+        setTimeout(() => {
+            showLoginToast.value = false
+        }, 3000)
+    }
+})
 </script>
 
 <template>
@@ -35,12 +36,12 @@
                     readers and writers through the power of story.</p>
             </div>
             <div class="hero__wrapper">
-                <UiInputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
 
-        <DisplayStory display="carousel" title="Latest Story"/>
+        <DisplayStory display="carousel" title="Latest Story" />
         <DisplayStory category="comedy" display="bento" />
         <DisplayStory category="romance" display="flex" />
         <DisplayStory category="horror" display="bento" />
@@ -50,54 +51,108 @@
 
 <style lang="scss" scoped>
 .hero {
-    text-align: center;
-    padding-top: 170px;
 
-    &__title {
-        font-family: "Playfair Display", serif;
-        font-weight: 700;
-        font-style: normal;
-        font-size: 60px;
-        line-height: 74px;
-        letter-spacing: 0%;
-        color: #222222;
-        margin-bottom: 25px;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
+    @media screen and (max-width:768px) {
+        text-align: center;
+        padding-block: 80px;
 
-    &__text-wrapper {
-        max-width: 1412px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
+        &__title {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 42px;
+            line-height: 54px;
+            letter-spacing: 0%;
+            color: #222222;
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
 
-
-        &__text {
-            font-size: 24px;
-            margin-top: 25px;
-            margin-bottom: 30px;
-            line-height: 32px;
-            font-weight: 400;
-            color: #4B4B4B;
-            max-width: 1412px;
+        &__text-wrapper {
+            max-width: 700px;
+            width: 100%;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+
+            &__text {
+                font-size: 18px;
+                margin-top: 25px;
+                margin-bottom: 30px;
+                line-height: 24px;
+                font-weight: 400;
+                color: #4B4B4B;
+                max-width: 1412px;
+                margin: auto;
+            }
+        }
+
+
+        &__image {
+            width: 90%;
+            display: flex;
+            margin: auto;
+        }
+
+        &__wrapper {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
+    @media screen and (min-width:768px) {
+        text-align: center;
+        padding: 170px;
 
-    &__image {
-        width: 45%;
-        display: flex;
-        margin: auto;
+        &__title {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 60px;
+            line-height: 74px;
+            letter-spacing: 0%;
+            color: #222222;
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        &__text-wrapper {
+            max-width: 1412px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+
+
+            &__text {
+                font-size: 24px;
+                margin-top: 25px;
+                margin-bottom: 30px;
+                line-height: 32px;
+                font-weight: 400;
+                color: #4B4B4B;
+                max-width: 1412px;
+                margin: auto;
+            }
+        }
+
+
+        &__image {
+            width: 45%;
+            display: flex;
+            margin: auto;
+        }
+
+        &__wrapper {
+            max-width: 1002px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
-    &__wrapper {
-        max-width: 1002px;
-        margin-top: 40px;
-        margin-bottom: 30px;
-        margin-left: auto;
-        margin-right: auto;
-    }
 }
 
 .toast-wrapper {
@@ -114,6 +169,7 @@
         opacity: 0;
         transform: translate(-50%, -20px);
     }
+
     to {
         opacity: 1;
         transform: translate(-50%, 0);

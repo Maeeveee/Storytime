@@ -7,7 +7,7 @@ import Button from '~/components/ui/Button.vue';
         <Logo class="nav__logo" />
 
 
-        <Icon name="formkit:open" class="nav__hamburger"/>
+        <Icon name="formkit:open" class="nav__hamburger" />
         <div class="nav__button-container">
             <Button to="/register" variant="secondary">Register</Button>
             <Button to="/login" variant="primary">Login</Button>
@@ -40,7 +40,7 @@ import Button from '~/components/ui/Button.vue';
             height: 50px;
         }
 
-        &__hamburger{
+        &__hamburger {
             display: block;
             font-size: 30px;
         }
@@ -71,7 +71,7 @@ import Button from '~/components/ui/Button.vue';
             height: 59px;
         }
 
-        &__hamburger{
+        &__hamburger {
             display: none;
         }
 
