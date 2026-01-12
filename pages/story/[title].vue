@@ -37,14 +37,12 @@ const article = computed(() => {
         &__container {
             max-width: 1700px;
             margin: auto;
-            padding-inline: 10px;
-
+            padding-inline: 8px;
         }
 
         &__story-content{
             margin-bottom: 40px;
         }
-
 
         &__header {
             display: flex;
@@ -63,7 +61,7 @@ const article = computed(() => {
 
         &__date {
             font-weight: 400;
-            font-size: 20px;
+            font-size: 12px;
             line-height: 26px;
             color: var(--color-text-secondary);
         }
@@ -72,8 +70,8 @@ const article = computed(() => {
             font-family: var(--font-display);
             color: var(--color-text);
             font-weight: 700;
-            font-size: 40px;
-            line-height: 54px;
+            font-size: 24px;
+            line-height: 30px;
             text-align: center;
         }
 
@@ -86,13 +84,13 @@ const article = computed(() => {
 
         &__author-name {
             font-weight: 500;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 20px;
         }
 
         &__author-avatar {
-            height: 40px;
-            width: 40px;
+            height: 30px;
+            width: 30px;
             border-radius: 50%;
         }
 
@@ -104,10 +102,10 @@ const article = computed(() => {
         &__genre-badge {
             background-color: #F0F5ED;
             border-radius: 8px;
-            padding: 8px 12px;
+            padding: 4px 8px;
             display: inline-block;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 12px;
             line-height: 23px;
             color: #466543;
         }

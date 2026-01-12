@@ -22,21 +22,19 @@ defineProps<{ articleItem: Article; }>()
 @media screen and (max-width: 768px) {
     .story-section {
         &__content-wrapper {
-            padding-left: 16px;
-            padding-right: 16px;
             gap: 40px;
             display: flex;
             flex-direction: column;
         }
 
         &__image {
-            width: 310px;
-            height: 350px;
+            width: 350px;
+            height: 254px;
             border-radius: 8px;
         }
 
         &__article-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 27px;
             color: var(--color-text);

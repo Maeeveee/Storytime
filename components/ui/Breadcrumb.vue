@@ -13,7 +13,7 @@ defineProps<{ title?: string }>();
 @media screen and (max-width: 768px) {
     .breadcrumb {
         &__wrapper {
-            height: 82px;
+            height: 70px;
             background-color: var(--color-primary-light);
             display: flex;
             align-items: center;
@@ -22,7 +22,7 @@ defineProps<{ title?: string }>();
 
         &__text {
             font-weight: 500;
-            font-size: 20px;
+            font-size: 12px;
             line-height: 26px;
             color: var(--color-primary);
             text-decoration: none;
