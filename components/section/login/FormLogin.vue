@@ -11,7 +11,7 @@ const router = useRouter()
 const handleLogin = async () => {
     isLoading.value = true
     await new Promise(resolve => setTimeout(resolve, 800))
-    
+
     if (email.value === 'user@test.com' && password.value === 'password') {
         await router.push({ path: '/', query: { login: 'success' } })
     } else {
@@ -22,7 +22,6 @@ const handleLogin = async () => {
 </script>
 <template>
     <section class="section-wrapper">
-        
         <div class="login__logo">
             <UiLogo />
         </div>
@@ -34,10 +33,11 @@ const handleLogin = async () => {
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <InputForm v-model="password" type="password" id="Password" placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                <InputForm v-model="password" type="password" id="Password" placeholder="Enter Your Chosen Password"
+                    variant="primary" icon-name="formkit:eye" />
             </label>
             <Button :disabled="isLoading" @click="handleLogin" variant="primary" class="login__button">
-                 {{ isLoading ? 'Loading...' : 'Login' }}
+                {{ isLoading ? 'Loading...' : 'Login' }}
             </Button>
             <span class="login__navigate-text">Don't have an account? <NuxtLink href="/register"
                     class="login__navigate-register">Register
@@ -47,68 +47,135 @@ const handleLogin = async () => {
 </template>
 
 <style lang="scss" scoped>
-.section-wrapper {
-    width: 825px;
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 910px;
-    margin: 20px 20px 20px 20px;
-    padding: 2rem 4rem 2rem 4rem;
-    border-radius: 8px;
+@media screen and (max-width: 768px) {
+    .section-wrapper {
+        width: 825px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin: 20px 20px 20px 20px;
+        border-radius: 8px;
+    }
+
+    .login {
+        &__wrapper {
+            max-width: 577px;
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-top: 100px;
+        }
+
+        &__title {
+            font-weight: 700;
+            font-size: 44px;
+            line-height: 58px;
+            color: #222222;
+        }
+
+        &__label {
+            font-weight: 400px;
+            font-size: 18px;
+            line-height: 23px;
+            color: #4B4B4B;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        &__navigate-register {
+            font-weight: 700;
+            text-decoration: none;
+            color: #466543;
+            margin-top: 30px;
+        }
+
+        &__navigate-text {
+            font-weight: 400px;
+            font-size: 18px;
+            line-height: 23px;
+            color: #4B4B4B;
+        }
+
+        &__button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            max-width: 120px;
+            max-height: 60px;
+        }
+
+        &__logo {
+            width: 256px;
+            height: 59px;
+            margin-bottom: 50px;
+        }
+    }
 }
 
-.login {
-    &__wrapper {
-        max-width: 577px;
-        display: flex;
-        flex-direction: column;
-        margin-left: auto;
-        margin-top: 100px;
+@media screen and (min-width: 768px) {
+    .section-wrapper {
+        width: 825px;
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 910px;
+        margin: 20px 20px 20px 20px;
+        padding: 2rem 4rem 2rem 4rem;
+        border-radius: 8px;
     }
 
-    &__title {
-        font-weight: 700;
-        font-size: 44px;
-        line-height: 58px;
-        color: #222222;
-    }
+    .login {
+        &__wrapper {
+            max-width: 577px;
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-top: 100px;
+        }
 
-    &__label {
-        font-weight: 400px;
-        font-size: 18px;
-        line-height: 23px;
-        color: #4B4B4B;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
-    }
+        &__title {
+            font-weight: 700;
+            font-size: 44px;
+            line-height: 58px;
+            color: #222222;
+        }
 
-    &__navigate-register {
-        font-weight: 700;
-        text-decoration: none;
-        color: #466543;
-        margin-top: 30px;
-    }
+        &__label {
+            font-weight: 400px;
+            font-size: 18px;
+            line-height: 23px;
+            color: #4B4B4B;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    &__navigate-text {
-        font-weight: 400px;
-        font-size: 18px;
-        line-height: 23px;
-        color: #4B4B4B;
-    }
+        &__navigate-register {
+            font-weight: 700;
+            text-decoration: none;
+            color: #466543;
+            margin-top: 30px;
+        }
 
-    &__button {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        max-width: 120px;
-        max-height: 60px;
-    }
+        &__navigate-text {
+            font-weight: 400px;
+            font-size: 18px;
+            line-height: 23px;
+            color: #4B4B4B;
+        }
 
-    &__logo {
-        width: 256px;
-        height: 59px;
-        margin-bottom: 50px;
+        &__button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            max-width: 120px;
+            max-height: 60px;
+        }
+
+        &__logo {
+            width: 256px;
+            height: 59px;
+            margin-bottom: 50px;
+        }
     }
 }
 </style>
