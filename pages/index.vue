@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import DisplayStory from '~/components/section/home/DisplayStory.vue';
     import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
+    import Categories from '~/components/section/home/Categories.vue';
 
     const route = useRoute()
     const router = useRouter()
@@ -43,7 +44,7 @@
         <DisplayStory category="comedy" display="bento" />
         <DisplayStory category="romance" display="flex" />
         <DisplayStory category="horror" display="bento" />
-        <SectionHomeMoreCategories />
+        <Categories />
     </main>
 </template>
 
