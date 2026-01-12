@@ -77,59 +77,119 @@ const displayTitle = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.display {
-    &__header {
-        margin-top: 160px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__title {
-        font-family: "Playfair Display", serif;
-        font-size: 44px;
-        font-weight: 600;
-        line-height: 58px;
-    }
-
-    &__grid {
-        display: flex;
-        gap: 30px;
-
-        &__left {
-            flex-shrink: 0;
-        }
-
-        &__right {
+@media screen and (max-width: 768px) {
+    .display {
+        &__header {
+            margin-top: 160px;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            gap: 46px;
-        }
-    }
-
-    &__flex {
-        display: flex;
-        gap: 29px;
-    }
-
-
-    &__carousel {
-        display: flex;
-        gap: 20px;
-
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-
-        padding-bottom: 16px;
-
-        > * {
-            scroll-snap-align: start;
-            flex-shrink: 0;
         }
 
-    }
+        &__title {
+            font-family: "Playfair Display", serif;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 58px;
+        }
 
+        &__grid {
+            display: flex;
+            gap: 30px;
+
+            &__left {
+                flex-shrink: 0;
+            }
+
+            &__right {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 46px;
+            }
+        }
+
+        &__flex {
+            display: flex;
+            gap: 29px;
+        }
+
+
+        &__carousel {
+            display: flex;
+            gap: 20px;
+
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            padding-bottom: 16px;
+
+            >* {
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+        .display {
+        &__header {
+            margin-top: 160px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__title {
+            font-family: "Playfair Display", serif;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 58px;
+        }
+
+        &__grid {
+            display: flex;
+            gap: 30px;
+
+            &__left {
+                flex-shrink: 0;
+            }
+
+            &__right {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 46px;
+            }
+        }
+
+        &__flex {
+            display: flex;
+            gap: 29px;
+        }
+
+
+        &__carousel {
+            display: flex;
+            gap: 20px;
+
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            padding-bottom: 16px;
+
+            >* {
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+
+        }
+
+    }
 }
 </style>

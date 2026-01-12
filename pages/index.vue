@@ -50,9 +50,8 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.hero {
-
-    @media screen and (max-width:768px) {
+@media screen and (max-width:768px) {
+    .hero {
         text-align: center;
         padding-block: 80px;
 
@@ -87,7 +86,6 @@ onMounted(() => {
             }
         }
 
-
         &__image {
             width: 90%;
             display: flex;
@@ -102,7 +100,30 @@ onMounted(() => {
         }
     }
 
-    @media screen and (min-width:768px) {
+    .toast-wrapper {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        animation: slideInCenter 0.3s ease-out;
+    }
+
+    @keyframes slideInCenter {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+@media screen and (min-width:768px) {
+    .hero {
         text-align: center;
         padding: 170px;
 
@@ -124,7 +145,6 @@ onMounted(() => {
             display: flex;
             flex-direction: column;
 
-
             &__text {
                 font-size: 24px;
                 margin-top: 25px;
@@ -136,7 +156,6 @@ onMounted(() => {
                 margin: auto;
             }
         }
-
 
         &__image {
             width: 45%;
@@ -153,26 +172,25 @@ onMounted(() => {
         }
     }
 
-}
-
-.toast-wrapper {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    animation: slideInCenter 0.3s ease-out;
-}
-
-@keyframes slideInCenter {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -20px);
+    .toast-wrapper {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        animation: slideInCenter 0.3s ease-out;
     }
 
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
+    @keyframes slideInCenter {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     }
 }
 </style>

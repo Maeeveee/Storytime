@@ -16,8 +16,8 @@ import Button from '~/components/ui/Button.vue';
 </template>
 
 <style scoped lang="scss">
-.nav {
-    @media screen and (max-width:768px) {
+@media screen and (max-width:768px) {
+    .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -45,8 +45,10 @@ import Button from '~/components/ui/Button.vue';
             font-size: 30px;
         }
     }
+}
 
-    @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+    .nav {
         display: flex;
         justify-content: space-between;
         padding: 23px 110px 23px 110px;
