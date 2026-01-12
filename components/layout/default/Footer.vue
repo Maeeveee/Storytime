@@ -19,7 +19,7 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
 @media screen and (max-width: 768px) {
     .footer {
         &__content {
-            margin-top: 200px;
+            margin-top: 50px;
             padding:10px;
             display: flex;
             align-items: center;
