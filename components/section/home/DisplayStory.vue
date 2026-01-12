@@ -69,9 +69,9 @@ const displayTitle = computed(() => {
 
         <div class="display__grid__mobile">
             <div class="display__flex">
-                <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="default" />
-                <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="default" />
-                <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="default" />
+                <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="small" />
+                <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
+                <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
             </div>
         </div>
     </div>
@@ -105,6 +105,10 @@ const displayTitle = computed(() => {
         }
 
         &__grid {
+            max-width: 400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
             &__dekstop {
                 display: none;
             }

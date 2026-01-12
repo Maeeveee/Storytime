@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <style scoped lang="scss">
 @media screen and (max-width: 768px) {
-.card {
+    .card {
         width: 100%;
         height: 100%;
         display: flex;
@@ -122,22 +122,25 @@ const props = withDefaults(defineProps<IProps>(), {
             .card__image {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 547/400;
+                aspect-ratio: 1/1;
             }
 
             .card__title {
-                font-size: clamp(1.5rem, 4vw, 2.25rem);
+                font-size: 18px;
                 line-height: 1.3;
                 min-height: 2.875rem;
                 margin-top: 0.75rem;
-                margin-bottom: 3.125rem;
             }
 
             .card__description {
                 font-weight: 400;
                 font-size: 1.125rem;
-                line-height: 1.5;
                 min-height: 5rem;
+                max-height: 3.6em;
+                display: block;
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                overflow: hidden;
             }
 
             @media (max-width: 768px) {
