@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
-
 defineProps<{ title?: string }>();
 </script>
 
@@ -12,23 +10,45 @@ defineProps<{ title?: string }>();
 </template>
 
 <style scoped lang="scss">
-.breadcrumb {
-    &__wrapper {
-        height: 82px;
-        background-color: var(--color-primary-light);
-        display: flex;
-        align-items: center;
-        padding-inline: 110px;
-    }
+@media screen and (max-width: 768px) {
+    .breadcrumb {
+        &__wrapper {
+            height: 82px;
+            background-color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            padding-inline: 20px;
+        }
 
-    &__text {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 26px;
-        color: var(--color-primary);
-        text-decoration: none;
-        margin-right: 16px;
+        &__text {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--color-primary);
+            text-decoration: none;
+            margin-right: 16px;
+        }
     }
+}
 
+@media screen and (min-width: 768px) {
+    .breadcrumb {
+        &__wrapper {
+            height: 82px;
+            background-color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            padding-inline: 110px;
+        }
+
+        &__text {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--color-primary);
+            text-decoration: none;
+            margin-right: 16px;
+        }
+    }
 }
 </style>
