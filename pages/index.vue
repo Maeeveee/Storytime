@@ -54,6 +54,7 @@ onMounted(() => {
     .hero {
         text-align: center;
         padding-block: 80px;
+        margin-bottom: 170px;
 
         &__title {
             font-family: "Playfair Display", serif;

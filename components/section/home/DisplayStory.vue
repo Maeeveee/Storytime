@@ -54,13 +54,25 @@ const displayTitle = computed(() => {
 
     <UiDivider />
 
-    <div v-if="props.display === 'bento'" class="display__grid">
-        <div class="display__grid__left">
-            <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" />
+    <div v-if="props.display === 'bento'">
+        <div class="display__grid__dekstop">
+            <div class="display__grid">
+                <div class="display__grid__left">
+                    <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" />
+                </div>
+                <div class="display__grid__left">
+                    <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
+                    <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
+                </div>
+            </div>
         </div>
-        <div class="display__grid__right">
-            <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
-            <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
+
+        <div class="display__grid__mobile">
+            <div class="display__flex">
+                <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="default" />
+                <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="default" />
+                <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="default" />
+            </div>
         </div>
     </div>
 
@@ -78,6 +90,67 @@ const displayTitle = computed(() => {
 
 <style lang="scss" scoped>
 @media screen and (max-width: 768px) {
+    .display {
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__title {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 50px;
+        }
+
+        &__grid {
+            &__dekstop {
+                display: none;
+            }
+
+        }
+
+        &__flex {
+            display: flex;
+            gap: 20px;
+
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            padding-bottom: 16px;
+
+            >* {
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+        }
+
+
+        &__carousel {
+            display: flex;
+            gap: 20px;
+
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            padding-bottom: 16px;
+
+            >* {
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
     .display {
         &__header {
             margin-top: 160px;
@@ -106,63 +179,9 @@ const displayTitle = computed(() => {
                 justify-content: space-between;
                 gap: 46px;
             }
-        }
 
-        &__flex {
-            display: flex;
-            gap: 29px;
-        }
-
-
-        &__carousel {
-            display: flex;
-            gap: 20px;
-
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-
-            padding-bottom: 16px;
-
-            >* {
-                scroll-snap-align: start;
-                flex-shrink: 0;
-            }
-
-        }
-
-    }
-}
-
-@media screen and (min-width: 768px) {
-        .display {
-        &__header {
-            margin-top: 160px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        &__title {
-            font-family: "Playfair Display", serif;
-            font-size: 44px;
-            font-weight: 600;
-            line-height: 58px;
-        }
-
-        &__grid {
-            display: flex;
-            gap: 30px;
-
-            &__left {
-                flex-shrink: 0;
-            }
-
-            &__right {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                gap: 46px;
+            &__mobile {
+                display: none;
             }
         }
 
