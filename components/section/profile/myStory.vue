@@ -62,91 +62,185 @@ const filteredArticles = computed(() => {
     </section>
 </template>
 <style scoped lang="scss">
-.my-story {
-    margin: 65px 110px 40px 110px;
+@media screen and (max-width: 768px) {
 
-    &__write-width {
-        max-width: 390px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    .my-story {
+        margin: 65px 110px 40px 110px;
+
+        &__write-width {
+            max-width: 390px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        &__title {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 46px;
+            color: var(--color-text);
+        }
+
+        &__quote {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: var(--color-text);
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        &__write-content {
+            width: 546px;
+            height: 250px;
+            border: 1px solid var(--color-border);
+            padding: 80px 77px 110px 78px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        &__content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 99px;
+        }
+
+        &__content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 29px;
+        }
+
+        &__no-story-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-left: 200px;
+        }
+
+        &__no-story-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        &__no-story-image {
+            width: 529px;
+            height: 546px;
+        }
+
+        &__no-story-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 58px;
+            margin-bottom: 30px;
+            color: var(--color-text);
+        }
+
+        &__no-story-text {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 32px;
+            color: var(--color-text);
+        }
     }
+}
 
-    &__title {
-        font-weight: 700;
-        font-size: 36px;
-        line-height: 46px;
-        color: var(--color-text);
-    }
+@media screen and (min-width: 768px) {
 
-    &__quote {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
-        color: var(--color-text);
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
+    .my-story {
+        margin: 65px 110px 40px 110px;
 
-    &__write-content {
-        width: 546px;
-        height: 250px;
-        border: 1px solid var(--color-border);
-        padding: 80px 77px 110px 78px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: sticky;
-        top: 120px;
-    }
+        &__write-width {
+            max-width: 390px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-    &__content-wrapper {
-        display: flex;
-        gap: 30px;
-        margin-top: 99px;
-    }
+        &__title {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 46px;
+            color: var(--color-text);
+        }
 
-    &__content-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 29px;
-    }
+        &__quote {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: var(--color-text);
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
 
-    &__no-story-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        margin-left: 200px;
-    }
+        &__write-content {
+            width: 546px;
+            height: 250px;
+            border: 1px solid var(--color-border);
+            padding: 80px 77px 110px 78px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 120px;
+        }
 
-    &__no-story-header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
+        &__content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 99px;
+        }
 
-    &__no-story-image {
-        width: 529px;
-        height: 546px;
-    }
+        &__content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 29px;
+        }
 
-    &__no-story-title {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 44px;
-        line-height: 58px;
-        margin-bottom: 30px;
-        color: var(--color-text);
-    }
+        &__no-story-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-left: 200px;
+        }
 
-    &__no-story-text {
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
-        color: var(--color-text);
+        &__no-story-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        &__no-story-image {
+            width: 529px;
+            height: 546px;
+        }
+
+        &__no-story-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 58px;
+            margin-bottom: 30px;
+            color: var(--color-text);
+        }
+
+        &__no-story-text {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 32px;
+            color: var(--color-text);
+        }
     }
 }
 </style>
