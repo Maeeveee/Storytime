@@ -175,10 +175,19 @@ const categories = computed(() => {
 
         &__input {
             max-width: 547px;
+
+            &--mobile{
+                display: none;
+            }
+
+            &--dekstop{
+                display: block;
+            }
         }
 
         &__dropdown {
             display: flex;
+            align-items: center;
             gap: 30px;
         }
 
