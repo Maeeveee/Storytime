@@ -44,31 +44,42 @@ const filteredArticles = computed(() => {
                     <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
-
-            <div class="my-story__no-story-wrapper">
+            <!-- <div class="my-story__no-story-wrapper">
                 <div class="my-story__no-story-header">
                     <h1 class="my-story__no-story-title">No Stories Yet</h1>
                     <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your fitness journey
                         today!</h4>
                 </div>
                 <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
-            </div>
-            <!-- <div class="my-story__content-grid">
-                <div v-for="article in filteredArticles" :key="article.id">
-                    <StoryCard :article-item="article" :hide-category="hideCategory" />
-                </div>
             </div> -->
+            <div class="my-story__content-grid">
+                <div v-for="article in filteredArticles" :key="article.id">
+                    <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" />
+                </div>
+            </div>
         </div>
     </section>
 </template>
 <style scoped lang="scss">
 @media screen and (max-width: 768px) {
-
     .my-story {
-        margin: 65px 110px 40px 110px;
+        margin-block: 30px;
+        margin-inline: 20px;
+
+        &__write-content {
+            width: 200px;
+            height: 50px;
+            border: 1px solid var(--color-border);
+            padding: 80px 77px 70px 78px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
         &__write-width {
-            max-width: 390px;
+            max-width: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -77,38 +88,27 @@ const filteredArticles = computed(() => {
 
         &__title {
             font-weight: 700;
-            font-size: 36px;
-            line-height: 46px;
+            font-size: 24px;
+            line-height: 20px;
             color: var(--color-text);
         }
 
         &__quote {
             font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
+            font-size: 14px;
+            line-height: 20px;
             color: var(--color-text);
             margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        &__write-content {
-            width: 546px;
-            height: 250px;
-            border: 1px solid var(--color-border);
-            padding: 80px 77px 110px 78px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: sticky;
-            top: 120px;
+            margin-bottom: 10px;
         }
 
         &__content-wrapper {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 30px;
-            margin-top: 99px;
+            margin-top: 30px;
         }
 
         &__content-grid {
@@ -120,34 +120,32 @@ const filteredArticles = computed(() => {
         &__no-story-wrapper {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 20px;
-            margin-left: 200px;
         }
 
         &__no-story-header {
             text-align: center;
-            margin-bottom: 60px;
         }
 
         &__no-story-image {
             width: 529px;
             height: 546px;
+            display: none;
         }
 
         &__no-story-title {
             font-family: var(--font-display);
             font-weight: 600;
-            font-size: 44px;
-            line-height: 58px;
+            font-size: 22px;
+            line-height: 29px;
             margin-bottom: 30px;
             color: var(--color-text);
         }
 
         &__no-story-text {
             font-weight: 400;
-            font-size: 24px;
-            line-height: 32px;
+            font-size: 16px;
+            line-height: 18px;
             color: var(--color-text);
         }
     }
