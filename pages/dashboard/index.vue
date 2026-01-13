@@ -27,21 +27,24 @@ import Button from '~/components/ui/Button.vue';
             height: 150px;
             background-color: var(--color-primary-light);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        
+
         &__profile-section {
             margin: auto;
-            display: flex;            
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 10px;
         }
 
         &__profile-image {
-            width: 50px;
-            height: 50px;
+            margin: auto;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 1px solid var(--color-primary);
         }
@@ -58,7 +61,7 @@ import Button from '~/components/ui/Button.vue';
             color: var(--color-text);
             margin-bottom: 8px;
         }
-        
+
         &__email {
             font-weight: 400;
             font-size: 16px;
