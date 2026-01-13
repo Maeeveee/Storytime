@@ -50,149 +50,116 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width:768px) {
-    .hero {
-        text-align: center;
+.hero {
+    text-align: center;
+
+    @include mobile {
         padding-block: 80px;
         margin-bottom: 170px;
+    }
 
-        &__title {
-            font-family: "Playfair Display", serif;
-            font-weight: 700;
-            font-style: normal;
+    @include desktop {
+        padding: 170px;
+    }
+
+    &__title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-style: normal;
+        letter-spacing: 0%;
+        color: var(--color-text);
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        @include mobile {
             font-size: 42px;
             margin-bottom: 25px;
             line-height: 54px;
-            letter-spacing: 0%;
-            color: #222222;
-            margin-bottom: 25px;
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
 
-        &__text-wrapper {
+        @include desktop {
+            font-size: 60px;
+            margin-bottom: 30px;
+            line-height: 74px;
+        }
+    }
+
+    &__text-wrapper {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        @include mobile {
             max-width: 700px;
             width: 100%;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
+        }
 
-            &__text {
+        @include desktop {
+            max-width: 1412px;
+        }
+
+        &__text {
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            max-width: 1412px;
+            margin: auto;
+            margin-top: 25px;
+            margin-bottom: 30px;
+
+            @include mobile {
                 font-size: 18px;
-                margin-top: 25px;
-                margin-bottom: 30px;
                 line-height: 24px;
-                font-weight: 400;
-                color: #4B4B4B;
-                max-width: 1412px;
-                margin: auto;
+            }
+
+            @include desktop {
+                font-size: 24px;
+                line-height: 32px;
             }
         }
+    }
 
-        &__image {
+    &__image {
+        display: flex;
+        margin: auto;
+
+        @include mobile {
             width: 90%;
-            display: flex;
-            margin: auto;
         }
 
-        &__wrapper {
-            margin-top: 40px;
-            margin-bottom: 30px;
-            margin-left: auto;
-            margin-right: auto;
+        @include desktop {
+            width: 45%;
         }
     }
 
-    .toast-wrapper {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        animation: slideInCenter 0.3s ease-out;
-    }
+    &__wrapper {
+        margin-top: 40px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
 
-    @keyframes slideInCenter {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(-50%, 0);
+        @include desktop {
+            max-width: 1002px;
         }
     }
 }
 
-@media screen and (min-width:768px) {
-    .hero {
-        text-align: center;
-        padding: 170px;
+.toast-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    animation: slideInCenter 0.3s ease-out;
+}
 
-        &__title {
-            font-family: "Playfair Display", serif;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 60px;
-            margin-bottom: 30px;
-            line-height: 74px;
-            letter-spacing: 0%;
-            color: #222222;
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        &__text-wrapper {
-            max-width: 1412px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-
-            &__text {
-                font-size: 24px;
-                margin-top: 25px;
-                margin-bottom: 30px;
-                line-height: 32px;
-                font-weight: 400;
-                color: #4B4B4B;
-                max-width: 1412px;
-                margin: auto;
-            }
-        }
-
-        &__image {
-            width: 45%;
-            display: flex;
-            margin: auto;
-        }
-
-        &__wrapper {
-            max-width: 1002px;
-            margin-top: 40px;
-            margin-bottom: 30px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+@keyframes slideInCenter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
     }
 
-    .toast-wrapper {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        animation: slideInCenter 0.3s ease-out;
-    }
-
-    @keyframes slideInCenter {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
     }
 }
 </style>

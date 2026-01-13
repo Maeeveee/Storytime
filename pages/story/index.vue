@@ -61,7 +61,7 @@ const categories = computed(() => {
                 </select>
             </div>
 
-            <div class="all-story__input--dekstop">
+            <div class="all-story__input--desktop">
                 <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
             </div>
         </div>
@@ -77,158 +77,138 @@ const categories = computed(() => {
     </main>
 </template>
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .all-story {
-        &__title {
-            margin: 0 10px;
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 44px;
-            line-height: 58px;
+.all-story {
+    &__title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 44px;
+        line-height: 58px;
+        color: var(--color-text);
 
+        @include mobile {
+            margin: 0 10px;
             display: none;
         }
 
-        &__filter {
+        @include desktop {
+            margin: 170px 110px 40px 110px;
+        }
+    }
+
+    &__filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+
+        @include mobile {
             padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: auto;
         }
 
-        &__input {
-            &--mobile {
+        @include desktop {
+            padding: 40px 110px;
+            max-width: 1700px;
+        }
+    }
+
+    &__input {
+        &--mobile {
+            @include mobile {
                 padding: 10px 15px;
                 display: block;
             }
 
-            &--dekstop {
+            @include desktop {
                 display: none;
             }
         }
 
-        &__dropdown {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        &__selected-item {
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 20px;
-            background-color: transparent;
-            border: none;
-
-            &:hover {
-                color: var(--color-primary);
-            }
-        }
-
-        &__item {
-            color: var(--color-text);
-        }
-
-        &__label {
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 20px;
-            color: var(--color-text-secondary);
-        }
-
-        &__content {
-            margin: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        &__pagination {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-}
-
-@media screen and (min-width: 768px) {
-
-    .all-story {
-        &__title {
-            margin: 170px 110px 40px 110px;
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 44px;
-            line-height: 58px;
-        }
-
-        &__filter {
-            padding: 40px 110px;
-            max-width: 1700px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: auto;
-        }
-
-        &__input {
-
-            &--mobile {
+        &--desktop {
+            @include mobile {
                 display: none;
             }
 
-            &--dekstop {
+            @include desktop {
                 max-width: 547px;
                 display: block;
             }
         }
+    }
 
-        &__dropdown {
-            display: flex;
-            align-items: center;
+    &__dropdown {
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            gap: 10px;
+        }
+
+        @include desktop {
             gap: 30px;
         }
+    }
 
-        &__selected-item {
-            font-weight: 500;
+    &__selected-item {
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        color: var(--color-text);
+
+        @include mobile {
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        @include desktop {
             font-size: 24px;
             line-height: 32px;
-            background-color: transparent;
-            border: none;
-
-            &:hover {
-                color: var(--color-primary);
-            }
         }
 
-        &__item {
-            color: var(--color-text);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+
+    &__item {
+        color: var(--color-text);
+    }
+
+    &__label {
+        font-weight: 400;
+        color: var(--color-text-secondary);
+
+        @include mobile {
+            font-size: 18px;
+            line-height: 20px;
         }
 
-        &__label {
-            font-weight: 400;
+        @include desktop {
             font-size: 24px;
             line-height: 32px;
-            color: var(--color-text-secondary);
+        }
+    }
+
+    &__content {
+        display: grid;
+
+        @include mobile {
+            margin: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
-
-        &__content {
-            margin: 66px 110px 66px 110px;
-            display: grid;
+        @include desktop {
+            margin: 66px 110px;
             grid-template-columns: repeat(3, 1fr);
             gap: 29px;
         }
+    }
 
-        &__pagination {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
+    &__pagination {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 </style>

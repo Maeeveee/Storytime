@@ -42,103 +42,135 @@ const props = withDefaults(defineProps<IProps>(), {
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .card {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        text-decoration: none;
-        margin-bottom: 40px;
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    margin-bottom: 40px;
 
-        &:hover {
-            cursor: pointer;
+    &:hover {
+        cursor: pointer;
 
-            .card__image {
-                opacity: 0.8;
-                transform: scale(1.05);
-            }
-
-            .card__title {
-                color: #466543;
-            }
+        .card__image {
+            opacity: 0.8;
+            transform: scale(1.05);
         }
 
-        &--default {
-            width: 34.1875rem;
-            max-width: 100%;
+        .card__title {
+            color: var(--color-primary);
+        }
+    }
+
+    &--default {
+        width: 34.1875rem;
+        max-width: 100%;
+        height: auto;
+
+        .card__image {
+            width: 100%;
             height: auto;
 
-            .card__image {
-                width: 100%;
-                height: auto;
+            @include mobile {
                 aspect-ratio: 500/420;
             }
 
-            .card__title {
-                font-size: clamp(1.5rem, 4vw, 2.25rem);
-                line-height: 1.3;
-                margin-bottom: 1.25rem;
-            }
-
-            .card__description {
-                text-align: justify;
-                min-height: 3.375rem;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
+            @include desktop {
+                aspect-ratio: 547/500;
             }
         }
 
-        &--large {
-            width: 70.1875rem;
-            max-width: 100%;
-            height: auto;
+        .card__title {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+        }
 
-            .card__image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1123/1066;
-            }
+        .card__description {
+            min-height: 3.375rem;
 
-            .card__title {
-                min-height: 5.75rem;
-            }
-
-            .card__description {
+            @include mobile {
                 text-align: justify;
-                min-height: 3.375rem;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
             }
         }
 
-        &--small {
-            width: 34.1875rem;
-            max-width: 100%;
-            height: auto;
+        @include mobile {
+            width: 100%;
+        }
+    }
 
-            .card__image {
+    &--large {
+        width: 70.1875rem;
+        max-width: 100%;
+        height: auto;
+
+        .card__image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1123/1066;
+        }
+
+        .card__title {
+            min-height: 5.75rem;
+        }
+
+        .card__description {
+            min-height: 3.375rem;
+
+            @include mobile {
+                text-align: justify;
+            }
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    &--small {
+        width: 34.1875rem;
+        max-width: 100%;
+        height: auto;
+
+        .card__image {
+            @include mobile {
                 width: 160px;
                 height: 160px;
             }
 
-            .card__title {
+            @include desktop {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 547/400;
+            }
+        }
+
+        .card__title {
+            line-height: 1.3;
+
+            @include mobile {
                 width: 160px;
                 font-size: 18px;
-                line-height: 1.3;
                 min-height: 2.875rem;
                 margin-top: 0.75rem;
             }
 
-            .card__description {
+            @include desktop {
+                font-size: clamp(1.5rem, 4vw, 2.25rem);
+                min-height: 2.875rem;
+                margin-top: 0.75rem;
+                margin-bottom: 3.125rem;
+            }
+        }
+
+        .card__description {
+            font-weight: 400;
+            min-height: 5rem;
+
+            @include mobile {
                 width: 160px;
-                font-weight: 400;
                 font-size: 0.9rem;
-                min-height: 5rem;
                 max-height: 3.6em;
                 display: block;
                 text-overflow: ellipsis;
@@ -146,329 +178,157 @@ const props = withDefaults(defineProps<IProps>(), {
                 overflow: hidden;
             }
 
-            .card__author-avatar {
+            @include desktop {
+                font-size: 1.125rem;
+                line-height: 1.5;
+            }
+        }
+
+        .card__author-avatar {
+            @include mobile {
                 display: none;
             }
+        }
 
-            .card__author-name{
+        .card__author-name {
+            @include mobile {
                 font-size: 14px;
             }
+        }
 
-            .card__genre-badge {
-                background-color: #F0F5ED;
+        .card__genre-badge {
+            @include mobile {
+                background-color: var(--color-primary-light);
                 border-radius: 8px;
                 padding: 4px 8px;
                 display: inline-block;
             }
+        }
 
-            .card__genre {
+        .card__genre {
+            @include mobile {
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 23px;
-                color: #466543;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
+                color: var(--color-primary);
             }
         }
 
-        &__image-wrapper {
-            overflow: hidden;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        &__image {
+        @include mobile {
             width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            transition: opacity 0.3s, transform 0.3s;
         }
+    }
 
-        &__content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
+    &__image-wrapper {
+        overflow: hidden;
+        border-radius: 8px;
+        flex-shrink: 0;
+    }
 
-        &__header {
-            flex-grow: 1;
-        }
+    &__image {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        transition: opacity 0.3s, transform 0.3s;
+    }
 
-        &__title {
-            font-weight: 700;
-            font-size: 36px;
-            line-height: 46px;
-            color: #4b4b4b;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
 
-        &__description {
-            max-height: 80px;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
-            color: #4b4b4b;
-        }
+    &__header {
+        flex-grow: 1;
+    }
 
-        &__footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 46px;
+        color: var(--color-text-secondary);
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        &__author-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    &__description {
+        max-height: 80px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: var(--color-text-secondary);
+    }
 
-        &__author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
 
-        &__author-name {
-            font-weight: 500;
+    &__author-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &__author-name {
+        font-weight: 500;
+        color: var(--color-text);
+
+        @include mobile {
             font-size: 18px;
             line-height: 20px;
-            color: #222222;
         }
 
-        &__story-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        @include desktop {
+            font-size: 20px;
+            line-height: 26px;
         }
+    }
 
-        &__created-at {
-            font-weight: 400;
+    &__story-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__created-at {
+        font-weight: 400;
+        color: var(--color-text);
+
+        @include mobile {
             font-size: 14px;
             line-height: 20px;
-            color: #222222;
-
             display: none;
         }
 
-        &__genre-badge {
-            background-color: #F0F5ED;
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: inline-block;
-        }
-
-        &__genre {
-            font-weight: 400;
+        @include desktop {
             font-size: 18px;
             line-height: 23px;
-            color: #466543;
         }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .card {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        text-decoration: none;
-        margin-bottom: 40px;
+    &__genre-badge {
+        background-color: var(--color-primary-light);
+        border-radius: 8px;
+        padding: 8px 12px;
+        display: inline-block;
+    }
 
-        &:hover {
-            cursor: pointer;
-
-            .card__image {
-                opacity: 0.8;
-                transform: scale(1.05);
-            }
-
-            .card__title {
-                color: #466543;
-            }
-        }
-
-        &--default {
-            width: 34.1875rem;
-            max-width: 100%;
-            height: auto;
-
-            .card__image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 547/500;
-            }
-
-            .card__title {
-                font-size: clamp(1.5rem, 4vw, 2.25rem);
-                line-height: 1.3;
-                margin-bottom: 1.25rem;
-            }
-
-            .card__description {
-                min-height: 3.375rem;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
-            }
-        }
-
-        &--large {
-            width: 70.1875rem;
-            max-width: 100%;
-            height: auto;
-
-            .card__image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1123/1066;
-            }
-
-            .card__title {
-                min-height: 5.75rem;
-            }
-
-            .card__description {
-                min-height: 3.375rem;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
-            }
-        }
-
-        &--small {
-            width: 34.1875rem;
-            max-width: 100%;
-            height: auto;
-
-            .card__image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 547/400;
-            }
-
-            .card__title {
-                font-size: clamp(1.5rem, 4vw, 2.25rem);
-                line-height: 1.3;
-                min-height: 2.875rem;
-                margin-top: 0.75rem;
-                margin-bottom: 3.125rem;
-            }
-
-            .card__description {
-                font-weight: 400;
-                font-size: 1.125rem;
-                line-height: 1.5;
-                min-height: 5rem;
-            }
-
-            @media (max-width: 768px) {
-                width: 100%;
-            }
-        }
-
-        &__image-wrapper {
-            overflow: hidden;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        &__image {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        &__content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        &__header {
-            flex-grow: 1;
-        }
-
-        &__title {
-            font-weight: 700;
-            font-size: 36px;
-            line-height: 46px;
-            color: #4b4b4b;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        &__description {
-            max-height: 80px;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
-            color: #4b4b4b;
-        }
-
-        &__footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        &__author-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        &__author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        &__author-name {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 26px;
-            color: #222222;
-        }
-
-        &__story-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        &__created-at {
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 23px;
-            color: #222222;
-        }
-
-        &__genre-badge {
-            background-color: #F0F5ED;
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: inline-block;
-        }
-
-        &__genre {
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 23px;
-            color: #466543;
-        }
+    &__genre {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: var(--color-primary);
     }
 }
 </style>

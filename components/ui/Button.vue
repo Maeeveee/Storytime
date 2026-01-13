@@ -12,80 +12,46 @@ defineProps<{ to?: string, variant?: 'primary' | 'secondary' }>()
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .button {
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include mobile {
         padding: 10px 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 8px;
-        text-decoration: none;
         font-size: 18px;
-        cursor: pointer;
+    }
 
-        &__navigation {
-            height: 32px;
-        }
+    @include desktop {
+        padding: 14px 30px;
+        font-size: 24px;
+    }
 
+    &__navigation {
+        height: 32px;
+    }
 
-        &--primary {
-            background-color: #466543;
-            border: 2px solid #466543;
-            color: white;
+    &--primary {
+        background-color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        color: var(--color-white);
 
-            &:hover {
-                background-color: #3b5338;
-            }
-        }
-
-        &--secondary {
-            background-color: transparent;
-            border: 2px solid #466543;
-            color: #466543;
-
-            &:hover {
-                border-color: #000000;
-                color: #000000;
-            }
+        &:hover {
+            background-color: var(--color-primary-dark);
         }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .button {
-        padding: 14px 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 24px;
-        cursor: pointer;
+    &--secondary {
+        background-color: transparent;
+        border: 2px solid var(--color-primary);
+        color: var(--color-primary);
 
-        &__navigation {
-            height: 32px;
-        }
-
-
-        &--primary {
-            background-color: #466543;
-            border: 2px solid #466543;
-            color: white;
-
-            &:hover {
-                background-color: #3b5338;
-            }
-        }
-
-        &--secondary {
-            background-color: transparent;
-            border: 2px solid #466543;
-            color: #466543;
-
-            &:hover {
-                border-color: #000000;
-                color: #000000;
-            }
+        &:hover {
+            border-color: var(--color-text);
+            color: var(--color-text);
         }
     }
 }

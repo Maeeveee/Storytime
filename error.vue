@@ -14,27 +14,25 @@ const props = defineProps<{ error: NuxtError }>()
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .device {
-        &__mobile {
+.device {
+    &__mobile {
+        @include mobile {
             display: none;
-        }
-    }
-
-    .not-found {
-        &__container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            grid-template-columns: 1fr 1fr;
-            padding-top: 150px;
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .not-found {
-        &__container {
+.not-found {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mobile {
+            padding-top: 150px;
+        }
+
+        @include desktop {
             margin-top: 170px;
             display: grid;
             grid-template-columns: 1fr 1fr;

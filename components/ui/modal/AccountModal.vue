@@ -13,69 +13,41 @@
     </div>
 </template>
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .modal {
-        max-width: 185px;
-        background-color: white;
-        position: absolute;
+.modal {
+    max-width: 185px;
+    background-color: var(--color-white);
+    position: absolute;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+
+    @include mobile {
         right: 30px;
-        border-radius: 8px;
-        border: 1px solid var(--color-border);
-
-        &__button {
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-            background-color: white;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &__text {
-            padding-block: 16px;
-            padding-inline: 20px;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 26px;
-            color: var(--color-text);
-        }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .modal {
-        max-width: 185px;
-        background-color: white;
-        position: absolute;
+    &__button {
+        width: 100%;
+        border: none;
         border-radius: 8px;
-        border: 1px solid var(--color-border);
+        background-color: var(--color-white);
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &__button {
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-            background-color: white;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-
-            &:hover{
-                background-color: rgb(225, 225, 225);
+        @include desktop {
+            &:hover {
+                background-color: var(--color-border-light);
             }
         }
+    }
 
-        &__text {
-            padding-block: 16px;
-            padding-inline: 20px;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 26px;
-            color: var(--color-text);
-        }
+    &__text {
+        padding-block: 16px;
+        padding-inline: 20px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 26px;
+        color: var(--color-text);
     }
 }
 </style>

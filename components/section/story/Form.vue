@@ -60,70 +60,17 @@ const props = withDefaults(defineProps<props>(), {
     </main>
 </template>
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .create {
+.create {
+    @include mobile {
         padding: 20px;
-
-        &__button {
-            display: flex;
-            gap: 41px;
-            margin-top: 60px;
-        }
-
-        &__navigation-wrapper {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 30px;
-            line-height: 29px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 60px;
-            color: var(--color-text);
-        }
-
-        &__back-icon {
-            color: var(--color-text);
-        }
-
-        &__label {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 30px;
-
-            &__title {
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 23px;
-                color: var(--color-text-secondary);
-            }
-        }
-
-        &__input-image {
-            width: 300px;
-            height: 250px;
-            border-radius: 8px;
-            border: 2px solid var(--color-border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--color-text-secondary);
-            flex-direction: column;
-        }
-
-        &__input-icon {
-            width: 100px;
-            height: 100px;
-        }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .create {
+    @include desktop {
         padding: 220px 110px 60px;
+    }
 
-        &__cancel {
+    &__cancel {
+        @include desktop {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -141,59 +88,76 @@ const props = withDefaults(defineProps<props>(), {
                 color: var(--color-white);
             }
         }
+    }
 
-        &__button {
-            display: flex;
-            gap: 41px;
-            margin-top: 60px;
+    &__button {
+        display: flex;
+        gap: 41px;
+        margin-top: 60px;
+    }
+
+    &__navigation-wrapper {
+        font-family: var(--font-display);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        margin-bottom: 60px;
+        color: var(--color-text);
+
+        @include mobile {
+            font-size: 30px;
+            line-height: 29px;
+            gap: 30px;
         }
 
-        &__navigation-wrapper {
-            font-family: var(--font-display);
-            font-weight: 600;
+        @include desktop {
             font-size: 44px;
             line-height: 58px;
-            display: flex;
-            align-items: center;
             gap: 84px;
-            margin-bottom: 60px;
-            color: var(--color-text);
+        }
+    }
+
+    &__back-icon {
+        color: var(--color-text);
+    }
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 30px;
+
+        &__title {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+            color: var(--color-text-secondary);
+        }
+    }
+
+    &__input-image {
+        border-radius: 8px;
+        border: 2px solid var(--color-border);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-text-secondary);
+        flex-direction: column;
+
+        @include mobile {
+            width: 300px;
+            height: 250px;
         }
 
-        &__back-icon {
-            color: var(--color-text);
-        }
-
-        &__label {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 30px;
-
-            &__title {
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 23px;
-                color: var(--color-text-secondary);
-            }
-        }
-
-        &__input-image {
+        @include desktop {
             width: 500px;
             height: 400px;
-            border-radius: 8px;
-            border: 2px solid var(--color-border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--color-text-secondary);
-            flex-direction: column;
         }
+    }
 
-        &__input-icon {
-            width: 100px;
-            height: 100px;
-        }
+    &__input-icon {
+        width: 100px;
+        height: 100px;
     }
 }
 </style>

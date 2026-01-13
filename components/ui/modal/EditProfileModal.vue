@@ -58,99 +58,91 @@ import InputForm from '../InputForm.vue';
     </div>
 </template>
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .modal {
-        padding: 40px;
-    }
-}
+.modal {
+    padding: 40px;
 
-
-@media screen and (min-width: 768px) {
-    .modal {
+    @include desktop {
         z-index: 1;
         top: 100px;
         left: 250px;
         margin: auto;
-        padding: 40px;
         max-width: 1430px;
         width: 100%;
         position: fixed;
         border-radius: 8px;
         background-color: var(--color-white);
         border: 1px solid var(--color-border);
+    }
 
-        &__header {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1430px;
+        width: 100%;
+        margin-bottom: 40px;
+
+        &__title {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 46px;
+            color: var(--color-text);
+        }
+
+        &__icon {
+            font-size: 30px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+        &__image-section {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1430px;
-            width: 100%;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
 
+            &__image {
+                max-width: 200px;
+                max-height: 200px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__profile-section {
+            &__label {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 30px;
+                gap: 20px;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 23px;
+                color: var(--color-text-secondary);
+            }
+        }
+
+        &__right {
             &__title {
                 font-weight: 700;
                 font-size: 36px;
                 line-height: 46px;
-                color: var(--color-text);
-            }
-
-            &__icon {
-                font-size: 30px;
-
-                &:hover{
-                    cursor: pointer;
-                }
-            }
-
-        }
-
-        &__content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            &__image-section {
-                display: flex;
-                align-items: center;
-                gap: 30px;
                 margin-bottom: 30px;
-
-                &__image {
-                    max-width: 200px;
-                    max-height: 200px;
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            &__profile-section {
-                &__label {
-                    display: flex;
-                    flex-direction: column;
-                    margin-bottom: 30px;
-                    gap: 20px;
-                    font-weight: 400;
-                    font-size: 18px;
-                    line-height: 23px;
-                    color: var(--color-text-secondary);
-                }
-
-            }
-
-            &__right{
-                &__title{
-                    font-weight: 700;
-                    font-size: 36px;
-                    line-height: 46px;
-                    margin-bottom: 30px;
-                }
             }
         }
+    }
 
-        &__footer {
-            display: flex;
-            gap: 44px;
-        }
-
+    &__footer {
+        display: flex;
+        gap: 44px;
     }
 }
 </style>

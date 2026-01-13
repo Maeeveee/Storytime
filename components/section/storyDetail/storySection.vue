@@ -28,80 +28,72 @@ function openModal() {
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .device {
-        &--mobile {
+.device {
+    &--mobile {
+        @include mobile {
             display: none;
-        }
-    }
-
-
-    .story-section {
-        &__content-wrapper {
-            gap: 40px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        &__hide-button {
-            border: none;
-            background-color: var(--color-white);
-        }
-
-        &__image {
-            width: 350px;
-            height: 254px;
-            border-radius: 8px;
-        }
-
-        &__article-text {
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 27px;
-            color: var(--color-text);
-            text-align: justify;
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .story-section {
-        &__modal {
-            display: none;
+.story-section {
+    &__modal {
+        display: none;
 
-            &__show {
-                display: block;
-            }
+        &__show {
+            display: block;
+        }
+    }
+
+    &__content-wrapper {
+        gap: 40px;
+        display: flex;
+
+        @include mobile {
+            flex-direction: column;
         }
 
-        &__hide-button {
-            border: none;
-            background-color: var(--color-white);
-        }
-
-
-        &__content-wrapper {
+        @include desktop {
             padding-left: 16px;
             padding-right: 16px;
-            gap: 40px;
-            display: flex;
+        }
+    }
+
+    &__hide-button {
+        border: none;
+        background-color: var(--color-white);
+    }
+
+    &__image {
+        border-radius: 8px;
+
+        @include mobile {
+            width: 350px;
+            height: 254px;
         }
 
-        &__image {
+        @include desktop {
             width: 547px;
             height: 600px;
-            border-radius: 8px;
 
             &:hover {
                 cursor: pointer;
             }
         }
+    }
 
-        &__article-text {
+    &__article-text {
+        font-weight: 400;
+        line-height: 27px;
+        color: var(--color-text);
+
+        @include mobile {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        @include desktop {
             font-size: 18px;
-            font-weight: 400;
-            line-height: 27px;
-            color: var(--color-text);
         }
     }
 }

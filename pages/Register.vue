@@ -16,15 +16,14 @@ definePageMeta({
 
 <style scoped lang="scss">
 .device {
-
-    @media screen and (max-width: 768px) {
-        &__mobile {
+    &__mobile {
+        @include mobile {
             display: none;
         }
     }
 
-    @media screen and (min-width: 768px) {
-        &__dekstop {
+    &__desktop {
+        @include desktop {
             display: block;
         }
     }

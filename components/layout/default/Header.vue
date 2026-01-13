@@ -43,125 +43,99 @@ function dropdownToggleMobile() {
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width:768px) {
-    .dropdown {
-        &__button {
-            border: none;
-            background-color: white;
-            display: flex;
-        }
+.dropdown {
+    &__button {
+        border: none;
+        background-color: var(--color-white);
+        display: flex;
+    }
 
-        &__content {
+    &__content {
+        display: none;
+    }
+
+    &__show {
+        display: block;
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--color-white);
+    border-bottom: var(--color-border-light) 3px solid;
+
+    @include mobile {
+        align-items: center;
+        height: 40px;
+        padding: 20px;
+    }
+
+    @include desktop {
+        padding: 23px 110px;
+        max-width: 1700px;
+        height: 60px;
+        position: fixed;
+    }
+
+    &__button-container {
+        @include mobile {
             display: none;
         }
 
-
-        &__show {
-            display: block;
-
+        @include desktop {
+            display: flex;
+            gap: 30px;
         }
     }
 
-    .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 40px;
-        margin: auto;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        background-color: white;
-        border-bottom: #f3f3f3 3px solid;
-        padding: 20px;
-
-        &__button-container {
-            display: none;
-        }
-
-        &__logo {
+    &__logo {
+        @include mobile {
             width: 150px;
             height: 30px;
         }
 
-        &__hamburger {
-            display: block;
-            font-size: 30px;
-        }
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .dropdown {
-        &__button {
-            border: none;
-            background-color: white;
-            display: flex;
-        }
-
-        &__content {
-            display: none;
-        }
-
-
-        &__show {
-            display: block;
-
-        }
-    }
-
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        padding: 23px 110px 23px 110px;
-        max-width: 1700px;
-        height: 60px;
-        margin: auto;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        background-color: white;
-        border-bottom: #f3f3f3 3px solid;
-
-        &__button-container {
-            display: flex;
-            gap: 30px;
-        }
-
-        &__logo {
+        @include desktop {
             width: 254px;
             height: 59px;
         }
-
-        &__hamburger {
-            display: none;
-        }
-
-        &__login {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            &__image {
-                width: 65px;
-                margin-right: 10px;
-            }
-
-            &__name {
-                font-weight: 700;
-                font-size: 24px;
-                line-height: 32px;
-            }
-
-            &__icon {
-                font-size: 30px;
-            }
-        }
-
     }
 
+    &__hamburger {
+        @include mobile {
+            display: block;
+            font-size: 30px;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &__login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__image {
+            width: 65px;
+            margin-right: 10px;
+        }
+
+        &__name {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        &__icon {
+            font-size: 30px;
+        }
+    }
 }
 </style>

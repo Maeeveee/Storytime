@@ -20,14 +20,8 @@
     </div>
 </template>
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .modal {
-        padding: 60px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .overlay {
+.overlay {
+    @include desktop {
         position: fixed;
         top: 0;
         bottom: 0;
@@ -35,11 +29,14 @@
         left: 0;
         display: flex;
         justify-content: center;
-        background-color: #000000da;
+        background-color: rgba(0, 0, 0, 0.85);
     }
+}
 
-    .modal {
-        padding: 60px;
+.modal {
+    padding: 60px;
+
+    @include desktop {
         border-radius: 8px;
         z-index: 1;
         top: 120px;
@@ -50,15 +47,19 @@
         position: fixed;
         background-color: var(--color-white);
         border: 1px solid var(--color-border);
+    }
 
-        &__cancel {
+    &__cancel {
+        @include desktop {
             display: flex;
             justify-content: end;
             position: fixed;
             top: 140px;
             right: 400px;
+        }
 
-            &__button {
+        &__button {
+            @include desktop {
                 width: 40px;
                 height: 40px;
                 background-color: var(--color-primary);
@@ -71,43 +72,54 @@
                     cursor: pointer;
                 }
             }
+        }
 
-            &__icon {
+        &__icon {
+            @include desktop {
                 font-size: 30px;
                 color: var(--color-white);
             }
         }
+    }
 
-        &__wrapper {
+    &__wrapper {
+        @include desktop {
             display: flex;
             flex-direction: column;
         }
+    }
 
-        &__main-image {
+    &__main-image {
+        @include desktop {
             margin: auto;
             width: 900px;
             height: 500px;
             border-radius: 8px;
         }
+    }
 
-        &__secondary-image {
-            &--active {
+    &__secondary-image {
+        &--active {
+            @include desktop {
                 width: 202px;
                 height: 200px;
                 border-radius: 8px;
                 opacity: 1;
             }
+        }
 
-            &--inactive {
+        &--inactive {
+            @include desktop {
                 width: 202px;
                 height: 200px;
                 border-radius: 8px;
                 opacity: 0.6;
             }
-
         }
+    }
 
-        &__flex-image {
+    &__flex-image {
+        @include desktop {
             margin-top: 30px;
             display: flex;
             justify-content: center;

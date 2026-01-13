@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MyStory from '~/components/section/profile/myStory.vue';
+import MyStory from '~/components/section/profile/MyStory.vue';
 import Button from '~/components/ui/Button.vue';
 import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
 
@@ -30,136 +30,138 @@ function editProfile() {
     </main>
 </template>
 <style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-    .device{
-        &--mobile{
+.device {
+    &--mobile {
+        @include mobile {
             display: none;
-        }
-
-    }
-
-
-    .dashboard {
-        &__header {
-            height: 150px;
-            background-color: var(--color-primary-light);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &__profile-section {
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        &__profile-image {
-            margin: auto;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 1px solid var(--color-primary);
-        }
-
-        &__profile-user {
-            display: flex;
-            flex-direction: column;
-        }
-
-        &__title {
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 24px;
-            color: var(--color-text);
-            margin-bottom: 8px;
-        }
-
-        &__email {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 16px;
-            color: var(--color-text);
-            margin-bottom: 8px;
-        }
-
-        &__user-description {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 16px;
-            color: var(--color-text-secondary);
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .modal {
-        &__content {
+.modal {
+    &__content {
+        @include desktop {
             display: none;
         }
-
-        &__show {
-            display: block;
-        }
-
     }
 
-    .dashboard {
-        margin-top: 100px;
+    &__show {
+        display: block;
+    }
+}
 
-        &__header {
+.dashboard {
+    @include desktop {
+        margin-top: 100px;
+    }
+
+    &__header {
+        background-color: var(--color-primary-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include mobile {
+            height: 150px;
+        }
+
+        @include desktop {
             width: 1920px;
             height: 400px;
-            background-color: var(--color-primary-light);
+        }
+    }
+
+    &__profile-section {
+        margin: auto;
+        align-items: center;
+
+        @include mobile {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+            gap: 10px;
         }
 
-        &__profile-section {
+        @include desktop {
             max-width: 1700px;
-            margin: auto;
             display: flex;
             gap: 39px;
-            align-items: center;
             padding: 100px 240px;
         }
+    }
 
-        &__profile-image {
+    &__profile-image {
+        border-radius: 50%;
+        border: 1px solid var(--color-primary);
+
+        @include mobile {
+            margin: auto;
+            width: 70px;
+            height: 70px;
+        }
+
+        @include desktop {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
-            border: 1px solid var(--color-primary);
         }
+    }
 
-        &__profile-user {
+    &__profile-user {
+        display: flex;
+        flex-direction: column;
+
+        @include desktop {
             width: 976.5px;
-            display: flex;
-            flex-direction: column;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        color: var(--color-text);
+
+        @include mobile {
+            font-size: 24px;
+            line-height: 24px;
+            margin-bottom: 8px;
         }
 
-        &__title {
-            font-weight: 700;
+        @include desktop {
             font-size: 36px;
             line-height: 46px;
-            color: var(--color-text);
             margin-bottom: 10px;
         }
+    }
 
-        &__email {
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 32px;
-            color: var(--color-text);
-            margin-bottom: 30px;
+    &__email {
+        font-weight: 400;
+        color: var(--color-text);
+
+        @include mobile {
+            font-size: 16px;
+            line-height: 16px;
+            margin-bottom: 8px;
         }
 
-        &__user-description {
-            font-weight: 400;
+        @include desktop {
             font-size: 24px;
             line-height: 32px;
-            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+        }
+    }
+
+    &__user-description {
+        font-weight: 400;
+        color: var(--color-text-secondary);
+
+        @include mobile {
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        @include desktop {
+            font-size: 24px;
+            line-height: 32px;
         }
     }
 }

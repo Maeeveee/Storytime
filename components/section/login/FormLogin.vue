@@ -49,131 +49,79 @@ const handleLogin = async () => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-    .section-wrapper {
-        width: 825px;
-        margin-top: auto;
-        margin-bottom: auto;
+.section-wrapper {
+    width: 825px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 8px;
+
+    @include mobile {
         margin: 20px;
-        border-radius: 8px;
     }
 
-    .login {
-        &__wrapper {
-            max-width: 577px;
-            display: flex;
-            flex-direction: column;
-            margin-left: auto;
-            margin-top: 100px;
-        }
+    @include desktop {
+        height: 910px;
+        margin: 20px;
+        padding: 2rem 4rem;
+    }
+}
 
-        &__title {
-            font-weight: 700;
-            font-size: 44px;
-            line-height: 58px;
-            color: #222222;
-        }
+.login {
+    &__wrapper {
+        max-width: 577px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-top: 100px;
+    }
 
-        &__label {
-            font-weight: 400px;
-            font-size: 18px;
-            line-height: 23px;
-            color: #4B4B4B;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
+    &__title {
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 58px;
+        color: var(--color-text);
+    }
 
-        &__navigate-register {
-            font-weight: 700;
-            text-decoration: none;
-            color: #466543;
-            margin-top: 30px;
-        }
+    &__label {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: var(--color-text-secondary);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-        &__navigate-text {
-            font-weight: 400px;
-            font-size: 18px;
-            line-height: 23px;
-            color: #4B4B4B;
-        }
+    &__navigate-register {
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--color-primary);
+        margin-top: 30px;
+    }
 
-        &__button {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            max-width: 120px;
-            max-height: 60px;
-        }
+    &__navigate-text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: var(--color-text-secondary);
+    }
 
-        &__logo {
+    &__button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 120px;
+        max-height: 60px;
+    }
+
+    &__logo {
+        @include mobile {
             width: 150px;
             height: 30px;
             margin: auto;
         }
-    }
-}
 
-@media screen and (min-width: 768px) {
-    .section-wrapper {
-        width: 825px;
-        margin-top: auto;
-        margin-bottom: auto;
-        height: 910px;
-        margin: 20px 20px 20px 20px;
-        padding: 2rem 4rem 2rem 4rem;
-        border-radius: 8px;
-    }
-
-    .login {
-        &__wrapper {
-            max-width: 577px;
-            display: flex;
-            flex-direction: column;
-            margin-left: auto;
-            margin-top: 100px;
-        }
-
-        &__title {
-            font-weight: 700;
-            font-size: 44px;
-            line-height: 58px;
-            color: #222222;
-        }
-
-        &__label {
-            font-weight: 400px;
-            font-size: 18px;
-            line-height: 23px;
-            color: #4B4B4B;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        &__navigate-register {
-            font-weight: 700;
-            text-decoration: none;
-            color: #466543;
-            margin-top: 30px;
-        }
-
-        &__navigate-text {
-            font-weight: 400px;
-            font-size: 18px;
-            line-height: 23px;
-            color: #4B4B4B;
-        }
-
-        &__button {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            max-width: 120px;
-            max-height: 60px;
-        }
-
-        &__logo {
+        @include desktop {
             width: 256px;
             height: 59px;
             margin-bottom: 50px;

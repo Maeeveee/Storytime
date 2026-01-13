@@ -10,44 +10,36 @@ defineProps<{ title?: string }>();
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .breadcrumb {
-        &__wrapper {
+.breadcrumb {
+    &__wrapper {
+        background-color: var(--color-primary-light);
+        display: flex;
+        align-items: center;
+
+        @include mobile {
             height: 70px;
-            background-color: var(--color-primary-light);
-            display: flex;
-            align-items: center;
             padding-inline: 20px;
         }
 
-        &__text {
-            font-weight: 500;
-            font-size: 12px;
-            line-height: 26px;
-            color: var(--color-primary);
-            text-decoration: none;
-            margin-right: 16px;
-        }
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .breadcrumb {
-        &__wrapper {
+        @include desktop {
             height: 82px;
-            background-color: var(--color-primary-light);
-            display: flex;
-            align-items: center;
             padding-inline: 110px;
         }
+    }
 
-        &__text {
-            font-weight: 500;
+    &__text {
+        font-weight: 500;
+        line-height: 26px;
+        color: var(--color-primary);
+        text-decoration: none;
+        margin-right: 16px;
+
+        @include mobile {
+            font-size: 12px;
+        }
+
+        @include desktop {
             font-size: 20px;
-            line-height: 26px;
-            color: var(--color-primary);
-            text-decoration: none;
-            margin-right: 16px;
         }
     }
 }

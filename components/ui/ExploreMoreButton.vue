@@ -8,76 +8,50 @@
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 768px) {
-    .explore-more {
-        &__icon {
+.explore-more {
+    &__icon {
+        @include mobile {
             font-size: 18px;
         }
 
-        &__text {
-            color: #4B4B4B;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 32px;
-            display: flex;
-            align-items: center;
-
-            &:hover {
-                color: #466543;
-                text-decoration: none;
-                cursor: pointer;
-            }
-        }
-
-        &__underline {
-            width: 0;
-            height: 2px;
-            background-color: #466543;
-            transition: width 0.3s ease;
-
-            &:hover {
-                border-bottom: 2px solid #466543;
-                width: 100%;
-                margin-top: 4px;
-            }
+        @include desktop {
+            font-size: 24px;
         }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .explore-more {
-        &__icon {
+    &__text {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-weight: 400;
+        line-height: 32px;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            font-size: 18px;
+        }
+
+        @include desktop {
             font-size: 24px;
         }
 
-        &__text {
-            color: #4B4B4B;
+        &:hover {
+            color: var(--color-primary);
             text-decoration: none;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 32px;
-            display: flex;
-            align-items: center;
-
-            &:hover {
-                color: #466543;
-                text-decoration: none;
-                cursor: pointer;
-            }
+            cursor: pointer;
         }
+    }
 
-        &__underline {
-            width: 0;
-            height: 2px;
-            background-color: #466543;
-            transition: width 0.3s ease;
+    &__underline {
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary);
+        transition: width 0.3s ease;
 
-            &:hover {
-                border-bottom: 2px solid #466543;
-                width: 100%;
-                margin-top: 4px;
-            }
+        &:hover {
+            border-bottom: 2px solid var(--color-primary);
+            width: 100%;
+            margin-top: 4px;
         }
     }
 }
