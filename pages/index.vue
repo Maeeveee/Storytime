@@ -29,14 +29,14 @@ onMounted(() => {
 
         <div class="hero">
             <div class="hero__text-wrapper">
-                <span class="hero__title">Welcome to Storytime</span>
+                <span class="hero__title">Hi, Rizal <br> Welcome to Storytime</span>
                 <p class="hero__text-wrapper__text">The world's most-loved social storytelling platform. Story time
                     connects a global
                     community of 90 million
                     readers and writers through the power of story.</p>
             </div>
             <div class="hero__wrapper">
-                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"  />
+                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
@@ -61,6 +61,7 @@ onMounted(() => {
             font-weight: 700;
             font-style: normal;
             font-size: 42px;
+            margin-bottom: 25px;
             line-height: 54px;
             letter-spacing: 0%;
             color: #222222;
@@ -133,10 +134,10 @@ onMounted(() => {
             font-weight: 700;
             font-style: normal;
             font-size: 60px;
+            margin-bottom: 30px;
             line-height: 74px;
             letter-spacing: 0%;
             color: #222222;
-            margin-bottom: 25px;
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
 

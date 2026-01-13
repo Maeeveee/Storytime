@@ -61,6 +61,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+
+            &:hover{
+                background-color: rgb(225, 225, 225);
+            }
         }
 
         &__text {

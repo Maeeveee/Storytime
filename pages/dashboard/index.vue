@@ -14,7 +14,7 @@ function editProfile() {
             <div class="dashboard__profile-section">
                 <img class="dashboard__profile-image" src="/img/user.webp" alt="">
                 <div class="dashboard__profile-user">
-                    <h2 class="dashboard__title">rizal</h2>
+                    <h2 class="dashboard__title">Rizal</h2>
                     <h4 class="dashboard__email">rizal@gmail.com</h4>
                     <h4 class="dashboard__user-description">Sang penulis</h4>
                 </div>
