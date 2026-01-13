@@ -28,19 +28,24 @@ const props = withDefaults(defineProps<props>(), {
             <ClientOnly>
                 <label for="title" class="create__label">
                     <span class="create__label__title">Title</span>
-                    <InputForm id="title" placeholder="Enter a story title"/>
+                    <InputForm id="title" placeholder="Enter a story title" />
                 </label>
                 <label for="category" class="create__label">
                     <span class="create__label__title">Category</span>
-                    <InputForm id="category" placeholder="Select a category"/>
+                    <InputForm id="category" placeholder="Select a category" />
                 </label>
                 <label for="content" class="create__label">
                     <span class="create__label__title">Content</span>
-                    <InputForm id="content" placeholder="Enter a content here"/>
+                    <InputForm id="content" placeholder="Enter a content here" />
                 </label>
                 <label for="cover" class="create__label">
                     <span class="create__label__title">Cover Image</span>
                     <div id="cover" class="create__input-image">
+                        <!-- <div class="create__cancel">
+                            <span class="create__cancel__button">
+                                <Icon class="create__cancel__icon" name="iconoir:xmark" />
+                            </span>
+                        </div> -->
                         <Icon name="ph:image-thin" class="create__input-icon" />
                         <span>Choose Image</span>
                     </div>
@@ -117,6 +122,25 @@ const props = withDefaults(defineProps<props>(), {
 @media screen and (min-width: 768px) {
     .create {
         padding: 220px 110px 60px;
+
+        &__cancel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 130px;
+            left: 550px;
+
+            &__button {
+                background-color: var(--color-primary);
+                border-radius: 50%;
+            }
+
+            &__icon {
+                font-size: 35px;
+                color: var(--color-white);
+            }
+        }
 
         &__button {
             display: flex;
