@@ -15,7 +15,7 @@ function openModal() {
             <div class="story-section__image-wrapper">
                 <button v-on:click="openModal" class="story-section__hide-button">
                     <img :src="articleItem.image" :alt="articleItem.title" class="story-section__image">
-                    <ViewCoverModal id="image" class="story-section__modal" />
+                    <ViewCoverModal id="image" class="story-section__modal device--mobile" />
                 </button>
             </div>
             <div class="story-section__content-wrapper">
@@ -29,11 +29,23 @@ function openModal() {
 
 <style scoped lang="scss">
 @media screen and (max-width: 768px) {
+    .device {
+        &--mobile {
+            display: none;
+        }
+    }
+
+
     .story-section {
         &__content-wrapper {
             gap: 40px;
             display: flex;
             flex-direction: column;
+        }
+
+        &__hide-button {
+            border: none;
+            background-color: var(--color-white);
         }
 
         &__image {
@@ -62,7 +74,7 @@ function openModal() {
             }
         }
 
-        &__hide-button{
+        &__hide-button {
             border: none;
             background-color: var(--color-white);
         }
@@ -80,7 +92,7 @@ function openModal() {
             height: 600px;
             border-radius: 8px;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
             }
         }
