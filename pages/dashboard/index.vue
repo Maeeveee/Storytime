@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import MyStory from '~/components/section/profile/myStory.vue';
 import Button from '~/components/ui/Button.vue';
+import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
+
+function editProfile() {
+    document.getElementById("modal-content")?.classList.toggle("modal__show")
+}
+
 </script>
 <template>
     <main class="dashboard">
@@ -12,7 +18,10 @@ import Button from '~/components/ui/Button.vue';
                     <h4 class="dashboard__email">rizal@gmail.com</h4>
                     <h4 class="dashboard__user-description">sang penulis</h4>
                 </div>
-                <Button action="#" variant="primary">Edit Profile</Button>
+                <Button action="#" @click="editProfile" variant="primary">Edit Profile</Button>
+                <div class="modal">
+                    <EditProfileModal id="modal-content" class="modal__content" />
+                </div>
             </div>
         </div>
         <div>
@@ -80,6 +89,17 @@ import Button from '~/components/ui/Button.vue';
 }
 
 @media screen and (min-width: 768px) {
+    .modal {
+        &__content {
+            display: none;
+        }
+
+        &__show {
+            display: block;
+        }
+
+    }
+
     .dashboard {
         margin-top: 100px;
 
