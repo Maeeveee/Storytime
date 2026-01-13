@@ -58,7 +58,7 @@ import Logo from '~/components/ui/Logo.vue';
             font-size: 44px;
             font-weight: 700;
             line-height: 58px;
-            margin-bottom: 30px;
+            margin-block: 30px;
         }
 
         &__text {
@@ -94,9 +94,10 @@ import Logo from '~/components/ui/Logo.vue';
         }
 
         &__logo {
-            width: 256px;
-            height: 59px;
-            margin-bottom: 50px;
+            width: 150px;
+            height: 30px;
+            margin: auto;
+            margin-left: 100px;
         }
     }
 }

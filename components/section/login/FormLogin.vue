@@ -107,9 +107,9 @@ const handleLogin = async () => {
         }
 
         &__logo {
-            width: 256px;
-            height: 59px;
-            margin-bottom: 50px;
+            width: 150px;
+            height: 30px;
+            margin: auto;
         }
     }
 }
