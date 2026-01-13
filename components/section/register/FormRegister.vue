@@ -13,21 +13,19 @@ import Logo from '~/components/ui/Logo.vue';
             <div>
                 <label class="register__label">
                     <span class="register__text">Name</span>
-                    <InputForm placeholder="Enter Your name" variant="primary" editor="false" />
+                    <InputForm placeholder="Enter Your name" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Email</span>
-                    <InputForm placeholder="Enter Your Email" variant="primary" editor="false" />
+                    <InputForm placeholder="Enter Your Email" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <InputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye"
-                        editor="false" />
+                    <InputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <InputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye"
-                        editor="false" />
+                    <InputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
                 </label>
             </div>
             <Button action="#" variant="primary" class="register__button"> Create Account</Button>

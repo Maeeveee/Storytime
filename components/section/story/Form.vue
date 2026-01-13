@@ -28,15 +28,15 @@ const props = withDefaults(defineProps<props>(), {
             <ClientOnly>
                 <label for="title" class="create__label">
                     <span class="create__label__title">Title</span>
-                    <InputForm id="title" placeholder="Enter a story title" editor="false" />
+                    <InputForm id="title" placeholder="Enter a story title"/>
                 </label>
                 <label for="category" class="create__label">
                     <span class="create__label__title">Category</span>
-                    <InputForm id="category" placeholder="Select a category" editor="false" />
+                    <InputForm id="category" placeholder="Select a category"/>
                 </label>
                 <label for="content" class="create__label">
                     <span class="create__label__title">Content</span>
-                    <InputForm id="content" placeholder="Enter a content here" editor="true" />
+                    <InputForm id="content" placeholder="Enter a content here"/>
                 </label>
                 <label for="cover" class="create__label">
                     <span class="create__label__title">Cover Image</span>

@@ -36,7 +36,7 @@ onMounted(() => {
                     readers and writers through the power of story.</p>
             </div>
             <div class="hero__wrapper">
-                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"  />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>

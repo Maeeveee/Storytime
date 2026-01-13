@@ -3,7 +3,7 @@
 // import { ClassicEditor, Essentials, Paragraph, Bold, Italic } from 'ckeditor5';
 // import { Ckeditor } from '@ckeditor/ckeditor5-vue';
 // import 'ckeditor5/ckeditor5.css';
-defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary', editor: 'true' | 'false' }>();
+defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary', editor?: 'true' | 'false' }>();
 const model = defineModel<string>();
 
 // const config = computed(() => {
