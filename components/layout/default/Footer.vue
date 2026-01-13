@@ -22,6 +22,7 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
             margin-top: 50px;
             padding:10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: space-between;
             border-top: #4b4b4b 1px solid;
@@ -29,7 +30,7 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
 
         &__text {
             margin-top: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             font-weight: 500;
             font-size: 15px;
             line-height: 20px;
