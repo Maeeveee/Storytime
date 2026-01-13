@@ -9,12 +9,12 @@
                     <Icon class="modal__cancel__icon" name="iconoir:xmark" />
                 </span>
             </div>
-            <img src="/img/solid.webp" alt="" class="modal__main-image">
+            <img src="/img/solid.webp" alt="Main Image" class="modal__main-image">
             <div class="modal__flex-image">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image--active">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
+                <img src="/img/solid.webp" alt="Secondary Image" class="modal__secondary-image--inactive">
+                <img src="/img/solid.webp" alt="Secondary Image" class="modal__secondary-image--active">
+                <img src="/img/solid.webp" alt="Secondary Image" class="modal__secondary-image--inactive">
+                <img src="/img/solid.webp" alt="Secondary Image" class="modal__secondary-image--inactive">
             </div>
         </div>
     </div>
