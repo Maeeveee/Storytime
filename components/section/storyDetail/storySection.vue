@@ -1,13 +1,22 @@
 <script setup lang="ts">
 import type { Article } from '~/types/article';
+import ViewCoverModal from '~/components/ui/modal/ViewCoverModal.vue';
 defineProps<{ articleItem: Article; }>()
+
+function openModal() {
+    document.getElementById("image")?.classList.toggle("story-section__modal__show")
+}
+
 </script>
 
 <template>
     <section class="container">
         <div class="story-section__content-wrapper">
             <div class="story-section__image-wrapper">
-                <img :src="articleItem.image" :alt="articleItem.title" class="story-section__image">
+                <button v-on:click="openModal" class="story-section__hide-button">
+                    <img :src="articleItem.image" :alt="articleItem.title" class="story-section__image">
+                    <ViewCoverModal id="image" class="story-section__modal" />
+                </button>
             </div>
             <div class="story-section__content-wrapper">
                 <article class="story-section__article-text">
@@ -45,6 +54,20 @@ defineProps<{ articleItem: Article; }>()
 
 @media screen and (min-width: 768px) {
     .story-section {
+        &__modal {
+            display: none;
+
+            &__show {
+                display: block;
+            }
+        }
+
+        &__hide-button{
+            border: none;
+            background-color: var(--color-white);
+        }
+
+
         &__content-wrapper {
             padding-left: 16px;
             padding-right: 16px;
