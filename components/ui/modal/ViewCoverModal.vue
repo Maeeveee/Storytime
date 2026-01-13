@@ -27,6 +27,17 @@
 }
 
 @media screen and (min-width: 768px) {
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #000000da;
+    }
+
     .modal {
         padding: 60px;
         border-radius: 8px;
@@ -56,7 +67,7 @@
                 justify-content: center;
                 align-items: center;
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                 }
             }
