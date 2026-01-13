@@ -68,7 +68,7 @@ import InputForm from '../InputForm.vue';
 @media screen and (min-width: 768px) {
     .modal {
         z-index: 1;
-        top: 120px;
+        top: 100px;
         left: 250px;
         margin: auto;
         padding: 40px;
@@ -85,9 +85,10 @@ import InputForm from '../InputForm.vue';
             align-items: center;
             max-width: 1430px;
             width: 100%;
+            margin-bottom: 40px;
 
             &__title {
-                font-weight: 700px;
+                font-weight: 700;
                 font-size: 36px;
                 line-height: 46px;
                 color: var(--color-text);
@@ -95,6 +96,10 @@ import InputForm from '../InputForm.vue';
 
             &__icon {
                 font-size: 30px;
+
+                &:hover{
+                    cursor: pointer;
+                }
             }
 
         }
