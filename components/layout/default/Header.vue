@@ -6,7 +6,6 @@ import Button from '~/components/ui/Button.vue';
     <div class="nav">
         <Logo class="nav__logo" />
 
-
         <Icon name="formkit:open" class="nav__hamburger" />
         <div class="nav__button-container">
             <Button to="/register" variant="secondary">Register</Button>
@@ -21,7 +20,7 @@ import Button from '~/components/ui/Button.vue';
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 60px;
+        height: 40px;
         margin: auto;
         top: 0;
         left: 0;
@@ -36,8 +35,8 @@ import Button from '~/components/ui/Button.vue';
         }
 
         &__logo {
-            width: 200px;
-            height: 50px;
+            width: 150px;
+            height: 30px;
         }
 
         &__hamburger {

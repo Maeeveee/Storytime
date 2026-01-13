@@ -136,9 +136,8 @@ const props = withDefaults(defineProps<IProps>(), {
 
             .card__description {
                 width: 160px;
-                text-align: justify;
                 font-weight: 400;
-                font-size: 1.125rem;
+                font-size: 0.9rem;
                 min-height: 5rem;
                 max-height: 3.6em;
                 display: block;
