@@ -79,6 +79,10 @@ function openModal() {
             width: 547px;
             height: 600px;
             border-radius: 8px;
+
+            &:hover{
+                cursor: pointer;
+            }
         }
 
         &__article-text {

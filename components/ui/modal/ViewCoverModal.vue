@@ -11,10 +11,10 @@
             </div>
             <img src="/img/solid.webp" alt="" class="modal__main-image">
             <div class="modal__flex-image">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image">
-                <img src="/img/solid.webp" alt="" class="modal__secondary-image">
+                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
+                <img src="/img/solid.webp" alt="" class="modal__secondary-image--active">
+                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
+                <img src="/img/solid.webp" alt="" class="modal__secondary-image--inactive">
             </div>
         </div>
     </div>
@@ -55,6 +55,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                &:hover{
+                    cursor: pointer;
+                }
             }
 
             &__icon {
@@ -76,9 +80,20 @@
         }
 
         &__secondary-image {
-            width: 202px;
-            height: 200px;
-            border-radius: 8px;
+            &--active {
+                width: 202px;
+                height: 200px;
+                border-radius: 8px;
+                opacity: 1;
+            }
+
+            &--inactive {
+                width: 202px;
+                height: 200px;
+                border-radius: 8px;
+                opacity: 0.6;
+            }
+
         }
 
         &__flex-image {
