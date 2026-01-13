@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import Logo from '~/components/ui/Logo.vue';
-import Button from '~/components/ui/Button.vue';
+import ConfirmContent from '~/components/ui/modal/ConfirmContent.vue';
 
 const isDropdownOpen = ref(false);
 const isDropdownMobileOpen = ref(false)
+
+const modal = useModal();
+const toast = useToast();
 
 const dropdownRef = ref<HTMLElement | null>(null);
 
@@ -21,6 +24,25 @@ function handleClickOutside(e: MouseEvent) {
         isDropdownMobileOpen.value = false;
     }
 }
+
+function handleLogout() {
+    isDropdownOpen.value = false
+    isDropdownMobileOpen.value = false
+
+    modal.open({
+        component: ConfirmContent,
+        props: {
+            title: 'Logout',
+            message: 'Apakah anda yakin ingin keluar?',
+            confirmText: 'Logout',
+            cancelText: 'Batal'
+        },
+        onConfirm: () => {
+            toast.success('Berhasil logout!');
+            navigateTo('/login')
+        },
+    })
+}
 </script>
 <template>
     <div class="nav" ref="dropdownRef">
@@ -33,7 +55,7 @@ function handleClickOutside(e: MouseEvent) {
             <Transition name="dropdown">
                 <div v-if="isDropdownMobileOpen" class="dropdown__content">
                     <NuxtLink to="/dashboard" class="dropdown__item">Profile</NuxtLink>
-                    <NuxtLink to="/register" class="dropdown__item">Logout</NuxtLink>
+                    <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
                 </div>
             </Transition>
         </div>
@@ -49,7 +71,7 @@ function handleClickOutside(e: MouseEvent) {
                     <Transition name="dropdown">
                         <div v-if="isDropdownOpen" class="dropdown__content">
                             <NuxtLink to="/dashboard" class="dropdown__item">Profile</NuxtLink>
-                            <NuxtLink to="/register" class="dropdown__item">Logout</NuxtLink>
+                            <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
                         </div>
                     </Transition>
                 </div>
@@ -95,6 +117,14 @@ function handleClickOutside(e: MouseEvent) {
         &:hover {
             background-color: var(--color-border-light);
         }
+
+        &--button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
     }
 }
 

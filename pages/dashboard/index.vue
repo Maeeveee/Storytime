@@ -3,10 +3,17 @@ import MyStory from '~/components/section/profile/MyStory.vue';
 import Button from '~/components/ui/Button.vue';
 import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
 
-function editProfile() {
-    document.getElementById("modal-content")?.classList.toggle("modal__show")
-}
+const modal = useModal();
+const toast = useToast();
 
+function editProfile() {
+    modal.open({
+        component: EditProfileModal,
+        onConfirm: () => {
+            toast.success('Profile berhasil diupdate')
+        },
+    });
+}
 </script>
 <template>
     <main class="dashboard">
@@ -19,9 +26,6 @@ function editProfile() {
                     <h4 class="dashboard__user-description">Sang penulis</h4>
                 </div>
                 <Button @click="editProfile" variant="primary">Edit Profile</Button>
-                <div class="modal">
-                    <EditProfileModal id="modal-content" class="modal__content device--mobile" />
-                </div>
             </div>
         </div>
         <div>
@@ -30,26 +34,6 @@ function editProfile() {
     </main>
 </template>
 <style lang="scss" scoped>
-.device {
-    &--mobile {
-        @include mobile {
-            display: none;
-        }
-    }
-}
-
-.modal {
-    &__content {
-        @include desktop {
-            display: none;
-        }
-    }
-
-    &__show {
-        display: block;
-    }
-}
-
 .dashboard {
     @include desktop {
         margin-top: 100px;

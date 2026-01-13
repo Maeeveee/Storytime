@@ -4,7 +4,7 @@ import Button from '../Button.vue';
 interface Props {
     title?: string;
     message?: string;
-    confimText?: string;
+    confirmText?: string;
     cancelText?: string;
     confirmVariant?: 'primary' | 'secondary' | 'danger';
 }
@@ -12,7 +12,7 @@ interface Props {
 withDefaults(defineProps<Props>(), {
     title: 'Konfirmasi',
     message: 'Apakah anda yakin?',
-    confimrText: 'Ya',
+    confirmText: 'Ya',
     cancelText: 'Batal',
     confirmVariant: 'primary',
 });
@@ -31,7 +31,7 @@ const emit = defineEmits<{
                 {{ cancelText }}
             </Button>
             <Button variant="primary" @click="emit('confirm')">
-                {{ confimText }}
+                {{ confirmText }}
             </Button>
         </div>
     </div>
