@@ -16,9 +16,11 @@ function editProfile() {
                 <div class="dashboard__profile-user">
                     <h2 class="dashboard__title">rizal</h2>
                     <h4 class="dashboard__email">rizal@gmail.com</h4>
-                    <h4 class="dashboard__user-description">sang penulis</h4>
+                    <h4 class="dashboard__user-description">Avid reader and aspiring writer. Lover of mysteries,
+                        thrillers, and sci-fi. Coffee enthusiast and nature explorer. Always on the lookout for new
+                        stories and adventures.</h4>
                 </div>
-                <Button action="#" @click="editProfile" variant="primary">Edit Profile</Button>
+                <Button @click="editProfile" variant="primary">Edit Profile</Button>
                 <div class="modal">
                     <EditProfileModal id="modal-content" class="modal__content" />
                 </div>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
+
 </script>
 <template>
-    <div class="modal">
+    <div class="modal" id="modal">
         <div class="modal__header">
             <h2 class="modal__header__title">Edit Profile</h2>
             <Icon class="modal__header__icon" name="formkit:close" />
@@ -73,7 +74,6 @@ import InputForm from '../InputForm.vue';
         padding: 40px;
         max-width: 1430px;
         width: 100%;
-        height: 100%;
         position: fixed;
         border-radius: 8px;
         background-color: var(--color-white);
