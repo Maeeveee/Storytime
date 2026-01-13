@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import Logo from '~/components/ui/Logo.vue';
 import Button from '~/components/ui/Button.vue';
+import AccountModal from '~/components/ui/modal/AccountModal.vue';
+
+function dropdowntoggle() {
+    document.getElementById("dropdown")?.classList.toggle("dropdown__show")
+}
+
 </script>
 <template>
     <div class="nav">
@@ -8,8 +14,22 @@ import Button from '~/components/ui/Button.vue';
 
         <Icon name="formkit:open" class="nav__hamburger" />
         <div class="nav__button-container">
-            <Button to="/register" variant="secondary">Register</Button>
-            <Button to="/login" variant="primary">Login</Button>
+            <div class="not-login">
+                <!-- <Button to="/register" variant="secondary">Register</Button>
+                <Button to="/login" variant="primary">Login</Button> -->
+            </div>
+
+            <div class="nav__login">
+                <img class="nav__login__image" src="/img/user.webp" alt="test">
+                <div class="dropdown">
+                    <button class="dropdown__button" v-on:click="dropdowntoggle()">
+                        <h4 class="nav__login__name">Rizal</h4>
+                        <Icon class="nav__login__icon" name="mdi:chevron-down" />
+                    </button>
+                    <AccountModal id="dropdown" class="dropdown__content" />
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -47,6 +67,25 @@ import Button from '~/components/ui/Button.vue';
 }
 
 @media screen and (min-width: 768px) {
+
+    .dropdown {
+        &__button {
+            border: none;
+            background-color: white;
+            display: flex;
+        }
+
+        &__content {
+            display: none;
+        }
+
+
+        &__show{
+            display: block;
+
+        }
+    }
+
     .nav {
         display: flex;
         justify-content: space-between;
@@ -74,6 +113,27 @@ import Button from '~/components/ui/Button.vue';
 
         &__hamburger {
             display: none;
+        }
+
+        &__login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__image {
+                width: 65px;
+                margin-right: 10px;
+            }
+
+            &__name {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            &__icon {
+                font-size: 30px;
+            }
         }
 
     }

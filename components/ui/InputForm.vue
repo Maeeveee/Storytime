@@ -1,27 +1,13 @@
 <script setup lang="ts">
-// import { ref, computed } from 'vue';
-// import { ClassicEditor, Essentials, Paragraph, Bold, Italic } from 'ckeditor5';
-// import { Ckeditor } from '@ckeditor/ckeditor5-vue';
-// import 'ckeditor5/ckeditor5.css';
-defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary', editor?: 'true' | 'false' }>();
+defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary' }>();
 const model = defineModel<string>();
-
-// const config = computed(() => {
-//     return {
-//         plugins: [Essentials, Paragraph, Bold, Italic],
-//         toolbar: ['undo', 'redo', '|', 'bold', 'italic', '|', 'formatPainter']
-//     }
-// })
-
 </script>
 
 <template>
     <div class="input__wrapper">
-        <input v-if="editor === 'false'" v-model="model" type="text" :placeholder="placeholder" class="input"
+        <input v-model="model" type="text" :placeholder="placeholder" class="input"
             :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']" />
         <Icon class="input__icon" v-if="iconName" :name="iconName" />
-
-        <!-- <Ckeditor v-else <input v-model="model" :editor="ClassicEditor" :config="config" />/> -->
     </div>
 </template>
 
@@ -49,7 +35,7 @@ const model = defineModel<string>();
         }
 
         &--with-icon {
-            padding-right: 50px;
+            padding-right:50px;
         }
 
 
