@@ -31,12 +31,12 @@ const handleLogin = async () => {
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <InputForm v-model="email" id="Email" placeholder="Enter Your Email" variant="primary" />
+                <InputForm v-model="email" id="Email" placeholder="Enter Your Email" variant="primary" editor="false" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
                 <InputForm v-model="password" type="password" id="Password" placeholder="Enter Your Chosen Password"
-                    variant="primary" icon-name="formkit:eye" />
+                    variant="primary" icon-name="formkit:eye" editor="false" />
             </label>
             <Button :disabled="isLoading" @click="handleLogin" variant="primary" class="login__button">
                 {{ isLoading ? 'Loading...' : 'Login' }}

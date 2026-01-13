@@ -2,11 +2,11 @@
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 
-interface props{
-    title: 'write'|'edit'
+interface props {
+    title: 'write' | 'edit'
 }
 
-const props = withDefaults(defineProps<props>(),{
+const props = withDefaults(defineProps<props>(), {
     title: 'write'
 });
 
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<props>(),{
             <NuxtLink to="/dashboard/">
                 <Icon name="formkit:arrowleft" class="create__back-icon" />
             </NuxtLink>
-            <h1 v-if="title==='write'" class="">
+            <h1 v-if="title === 'write'" class="">
                 Write Story
             </h1>
             <h1 v-else class="">
@@ -25,25 +25,27 @@ const props = withDefaults(defineProps<props>(),{
             </h1>
         </div>
         <div>
-            <label for="title" class="create__label">
-                <span class="create__label__title">Title</span>
-                <InputForm id="title" placeholder="Enter a story title" />
-            </label>
-            <label for="category" class="create__label">
-                <span class="create__label__title">Category</span>
-                <InputForm id="category" placeholder="Select a category" />
-            </label>
-            <label for="content" class="create__label">
-                <span class="create__label__title">Content</span>
-                <InputForm id="content" placeholder="Enter a content here" />
-            </label>
-            <label for="cover" class="create__label">
-                <span class="create__label__title">Cover Image</span>
-                <div id="cover" class="create__input-image">
-                    <Icon name="ph:image-thin" class="create__input-icon" />
-                    <span>Choose Image</span>
-                </div>
-            </label>
+            <ClientOnly>
+                <label for="title" class="create__label">
+                    <span class="create__label__title">Title</span>
+                    <InputForm id="title" placeholder="Enter a story title" editor="false" />
+                </label>
+                <label for="category" class="create__label">
+                    <span class="create__label__title">Category</span>
+                    <InputForm id="category" placeholder="Select a category" editor="false" />
+                </label>
+                <label for="content" class="create__label">
+                    <span class="create__label__title">Content</span>
+                    <InputForm id="content" placeholder="Enter a content here" editor="true" />
+                </label>
+                <label for="cover" class="create__label">
+                    <span class="create__label__title">Cover Image</span>
+                    <div id="cover" class="create__input-image">
+                        <Icon name="ph:image-thin" class="create__input-icon" />
+                        <span>Choose Image</span>
+                    </div>
+                </label>
+            </ClientOnly>
             <div class="create__button">
                 <Button action="#" variant="secondary">cancel</Button>
                 <Button v-if="title === 'write'" action="#" variant="primary">Post Story</Button>
