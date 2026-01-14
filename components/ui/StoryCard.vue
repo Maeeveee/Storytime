@@ -37,14 +37,14 @@ function handleDelete() {
 </script>
 
 <template>
-    <NuxtLink :to="`/story/${props.articleItem.title}`" class="card" :class="`card--${variant}`">
+    <article class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <div v-if="isEdit" class="card__icon-wrapper">
                 <NuxtLink to="/dashboard/edit" class="card__icon__background">
                     <Icon class="card__icon__text" name="lucide:edit" />
                 </NuxtLink>
-                <button class="card__icon__background">
-                    <Icon class="card__icon__text" name="lucide:trash-2" @click="handleDelete" />
+                <button class="card__icon__background" @click="handleDelete">
+                    <Icon class="card__icon__text" name="lucide:trash-2" />
                 </button>
             </div>
             <img :src="props.articleItem.image" alt="Story Image" class="card__image">
@@ -69,7 +69,8 @@ function handleDelete() {
                 </div>
             </div>
         </div>
-    </NuxtLink>
+        <NuxtLink :to="`/story/${props.articleItem.title}`" class="card__link"></NuxtLink>
+    </article>
 </template>
 
 <style scoped lang="scss">
@@ -80,6 +81,15 @@ function handleDelete() {
     flex-direction: column;
     text-decoration: none;
     margin-bottom: 40px;
+    position: relative;
+
+    &__link{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
     &:hover {
         cursor: pointer;
