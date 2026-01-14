@@ -3,8 +3,12 @@ import type { Article } from '~/types/article';
 import ViewCoverModal from '~/components/ui/modal/ViewCoverModal.vue';
 defineProps<{ articleItem: Article; }>()
 
-function openModal() {
-    document.getElementById("image")?.classList.toggle("story-section__modal__show")
+const modal = useModal();
+
+function viewCover(){
+    modal.open({
+        component: ViewCoverModal
+    });
 }
 
 </script>
@@ -13,9 +17,8 @@ function openModal() {
     <section class="container">
         <div class="story-section__content-wrapper">
             <div class="story-section__image-wrapper">
-                <button v-on:click="openModal" class="story-section__hide-button">
+                <button @click="viewCover" class="story-section__hide-button">
                     <img :src="articleItem.image" :alt="articleItem.title" class="story-section__image">
-                    <ViewCoverModal id="image" class="story-section__modal device--mobile" />
                 </button>
             </div>
             <div class="story-section__content-wrapper">
@@ -28,23 +31,7 @@ function openModal() {
 </template>
 
 <style scoped lang="scss">
-.device {
-    &--mobile {
-        @include mobile {
-            display: none;
-        }
-    }
-}
-
 .story-section {
-    &__modal {
-        display: none;
-
-        &__show {
-            display: block;
-        }
-    }
-
     &__content-wrapper {
         gap: 40px;
         display: flex;

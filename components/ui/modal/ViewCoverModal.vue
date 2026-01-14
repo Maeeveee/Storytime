@@ -1,13 +1,21 @@
 <script setup lang="ts">
 
+const emit = defineEmits<{
+    close: [];
+}>();
+
+function handleCancel() {
+    emit('close');
+}
+
 </script>
 <template>
     <div class="modal">
         <div class="modal__wrapper">
             <div class="modal__cancel">
-                <span class="modal__cancel__button">
+                <button class="modal__cancel__button" @click="handleCancel">
                     <Icon class="modal__cancel__icon" name="iconoir:xmark" />
-                </span>
+                </button>
             </div>
             <img src="/img/solid.webp" alt="Main Image" class="modal__main-image">
             <div class="modal__flex-image">
@@ -34,9 +42,9 @@
 }
 
 .modal {
-    padding: 60px;
 
     @include desktop {
+        padding: 60px;
         border-radius: 8px;
         z-index: 1;
         top: 120px;
@@ -67,11 +75,19 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                border: none;
 
                 &:hover {
                     cursor: pointer;
+                    background-color: var(--color-primary-dark);
+
                 }
             }
+
+            @include mobile {
+                display: none;
+            }
+
         }
 
         &__icon {
@@ -96,24 +112,43 @@
             height: 500px;
             border-radius: 8px;
         }
+
+        @include mobile {
+            margin: auto;
+            width: 300px;
+            height: 200px;
+            border-radius: 8px;
+        }
     }
 
     &__secondary-image {
         &--active {
+            border-radius: 8px;
+            opacity: 1;
+
             @include desktop {
                 width: 202px;
                 height: 200px;
-                border-radius: 8px;
-                opacity: 1;
+            }
+
+            @include mobile {
+                width: 60px;
+                height: 60px;
             }
         }
 
         &--inactive {
+            border-radius: 8px;
+            opacity: 0.6;
+
             @include desktop {
                 width: 202px;
                 height: 200px;
-                border-radius: 8px;
-                opacity: 0.6;
+            }
+
+            @include mobile {
+                width: 60px;
+                height: 60px;
             }
         }
     }
@@ -124,6 +159,13 @@
             display: flex;
             justify-content: center;
             gap: 30px;
+        }
+
+        @include mobile {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
     }
 }

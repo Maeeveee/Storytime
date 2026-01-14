@@ -66,8 +66,10 @@ function handleBackdropClick(e: MouseEvent) {
 
 .modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
     background: none;
     border: none;
     font-size: 24px;
