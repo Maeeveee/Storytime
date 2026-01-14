@@ -40,6 +40,13 @@ defineProps<{ title?: string }>();
 
         @include desktop {
             font-size: 20px;
+
+            &:hover{
+                text-decoration: underline;
+                text-decoration-thickness: 3px;
+                text-underline-offset: 10px;
+            }
+
         }
     }
 }

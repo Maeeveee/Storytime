@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
 import StoryCard from '~/components/ui/StoryCard.vue';
-import ExploreMoreButton from '~/components/ui/ExploreMoreButton.vue';
+import NavigationButton from '~/components/ui/NavigationButton.vue';
 interface Props {
     category?: string;
     title?: string;
@@ -49,7 +49,7 @@ const displayTitle = computed(() => {
 <template>
     <div class="display__header">
         <h2 class="display__title">{{ displayTitle }}</h2>
-        <ExploreMoreButton />
+        <NavigationButton />
     </div>
 
     <UiDivider />
