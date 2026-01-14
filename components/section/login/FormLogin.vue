@@ -17,7 +17,6 @@ const handleLogin = async () => {
         navigateTo('/')
     } else {
         toast.error('Invalid credentials. Try: user@test.com / password')
-        navigateTo('#')
     }
     isLoading.value = false
 }

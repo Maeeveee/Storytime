@@ -11,12 +11,11 @@ const password = ref('')
 const confirmPassword = ref('')
 
 function handleRegister() {
-    if (name.value != null && email.value != null && confirmPassword.value == password.value) {
+    if (name.value && email.value && password.value && confirmPassword.value === password.value) {
         toast.success('Register Successful!')
         navigateTo('/')
     }else{
         toast.error('please fill form below correctly')
-        navigateTo('#')
     }
 }
 

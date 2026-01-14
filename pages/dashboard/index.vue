@@ -10,7 +10,7 @@ function editProfile() {
     modal.open({
         component: EditProfileModal,
         onConfirm: () => {
-            toast.success('Profile berhasil diupdate')
+            toast.success('Successfully edit your profile')
         },
     });
 }

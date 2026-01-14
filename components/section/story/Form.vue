@@ -3,13 +3,28 @@ import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 import TiptapEditor from '~/components/ui/TiptapEditor.vue';
 
-interface props {
+const toast = useToast();
+
+interface Props {
     title: 'write' | 'edit'
 }
 
-const props = withDefaults(defineProps<props>(), {
+const props = withDefaults(defineProps<Props>(), {
     title: 'write'
 });
+
+function handleStory() {
+    if (props.title === 'write') {
+        toast.success('Successfully post a story')
+        navigateTo('/dashboard')
+    } else {
+        toast.success('Successfully edit a story')
+        navigateTo('/dashboard')
+
+    }
+
+}
+
 
 </script>
 <template>
@@ -54,8 +69,8 @@ const props = withDefaults(defineProps<props>(), {
             </ClientOnly>
             <div class="create__button">
                 <Button action="#" variant="secondary">cancel</Button>
-                <Button v-if="title === 'write'" action="#" variant="primary">Post Story</Button>
-                <Button v-else action="#" variant="primary">Update Story</Button>
+                <Button v-if="title === 'write'" @click="handleStory" variant="primary">Post Story</Button>
+                <Button v-else @click="handleStory" variant="primary">Update Story</Button>
             </div>
         </div>
     </main>
