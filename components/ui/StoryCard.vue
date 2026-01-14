@@ -80,10 +80,14 @@ function handleDelete() {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    margin-bottom: 40px;
+    margin-bottom: vw(40);
     position: relative;
 
-    &__link{
+    @include mobile {
+        margin-bottom: vw-mobile(24);
+    }
+
+    &__link {
         position: absolute;
         top: 0;
         left: 0;
@@ -105,7 +109,7 @@ function handleDelete() {
     }
 
     &--default {
-        width: 34.1875rem;
+        width: vw(547);
         max-width: 100%;
         height: auto;
 
@@ -123,16 +127,21 @@ function handleDelete() {
         }
 
         .card__title {
-            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-size: fluid-type(24, 36);
             line-height: 1.3;
-            margin-bottom: 1.25rem;
+            margin-bottom: vw(20);
+
+            @include mobile {
+                margin-bottom: vw-mobile(12);
+            }
         }
 
         .card__description {
-            min-height: 3.375rem;
+            min-height: vw(54);
 
             @include mobile {
                 text-align: justify;
+                min-height: vw-mobile(40);
             }
         }
 
@@ -142,7 +151,7 @@ function handleDelete() {
     }
 
     &--large {
-        width: 70.1875rem;
+        width: vw(1123);
         max-width: 100%;
         height: auto;
 
@@ -153,14 +162,19 @@ function handleDelete() {
         }
 
         .card__title {
-            min-height: 5.75rem;
+            min-height: vw(92);
+
+            @include mobile {
+                min-height: auto;
+            }
         }
 
         .card__description {
-            min-height: 3.375rem;
+            min-height: vw(54);
 
             @include mobile {
                 text-align: justify;
+                min-height: vw-mobile(40);
             }
         }
 
@@ -170,14 +184,14 @@ function handleDelete() {
     }
 
     &--small {
-        width: 34.1875rem;
+        width: vw(547);
         max-width: 100%;
         height: auto;
 
         .card__image {
             @include mobile {
-                width: 160px;
-                height: 160px;
+                width: vw-mobile(160);
+                height: vw-mobile(160);
             }
 
             @include desktop {
@@ -191,28 +205,29 @@ function handleDelete() {
             line-height: 1.3;
 
             @include mobile {
-                width: 160px;
-                font-size: 18px;
-                min-height: 2.875rem;
-                margin-top: 0.75rem;
+                width: vw-mobile(160);
+                font-size: vw-mobile(18);
+                min-height: vw-mobile(46);
+                margin-top: vw-mobile(12);
             }
 
             @include desktop {
-                font-size: clamp(1.5rem, 4vw, 2.25rem);
-                min-height: 2.875rem;
-                margin-top: 0.75rem;
-                margin-bottom: 3.125rem;
+                font-size: fluid-type(24, 36);
+                min-height: vw(46);
+                margin-top: vw(12);
+                margin-bottom: vw(50);
             }
         }
 
         .card__description {
             font-weight: 400;
-            min-height: 5rem;
+            min-height: vw(80);
 
             @include mobile {
-                width: 160px;
-                font-size: 0.9rem;
+                width: vw-mobile(160);
+                font-size: vw-mobile(14);
                 max-height: 3.6em;
+                min-height: vw-mobile(60);
                 display: block;
                 text-overflow: ellipsis;
                 word-wrap: break-word;
@@ -220,7 +235,7 @@ function handleDelete() {
             }
 
             @include desktop {
-                font-size: 1.125rem;
+                font-size: vw(18);
                 line-height: 1.5;
             }
         }
@@ -233,15 +248,15 @@ function handleDelete() {
 
         .card__author-name {
             @include mobile {
-                font-size: 14px;
+                font-size: vw-mobile(14);
             }
         }
 
         .card__genre-badge {
             @include mobile {
                 background-color: var(--color-primary-light);
-                border-radius: 8px;
-                padding: 4px 8px;
+                border-radius: vw-mobile(8);
+                padding: vw-mobile(4) vw-mobile(8);
                 display: inline-block;
             }
         }
@@ -249,8 +264,8 @@ function handleDelete() {
         .card__genre {
             @include mobile {
                 font-weight: 400;
-                font-size: 12px;
-                line-height: 23px;
+                font-size: vw-mobile(12);
+                line-height: vw-mobile(23);
                 color: var(--color-primary);
             }
         }
@@ -262,22 +277,20 @@ function handleDelete() {
 
     &__icon-wrapper {
         z-index: 2;
+        position: absolute;
+        display: flex;
 
         @include desktop {
-            gap: 30px;
-            position: absolute;
-            margin-bottom: 40px;
-            margin-right: 39px;
-            display: flex;
+            gap: vw(30);
+            margin-bottom: vw(40);
+            margin-right: vw(39);
 
         }
 
         @include mobile {
-            gap: 15px;
-            position: absolute;
-            margin-bottom: 15px;
-            margin-right: 15px;
-            display: flex;
+            gap: vw-mobile(15);
+            margin-bottom: vw-mobile(15);
+            margin-right: vw-mobile(15);
         }
 
     }
@@ -294,13 +307,13 @@ function handleDelete() {
             align-items: center;
 
             @include desktop {
-                width: 65px;
-                height: 65px;
+                width: vw(65);
+                height: vw(65);
             }
 
             @include mobile {
-                width: 40px;
-                height: 40px;
+                width: vw-mobile(40);
+                height: vw-mobile(40);
             }
 
             &:hover {
@@ -311,11 +324,11 @@ function handleDelete() {
         &__text {
 
             @include desktop {
-                font-size: 42px;
+                font-size: vw(42);
             }
 
             @include mobile {
-                font-size: 22px;
+                font-size: vw-mobile(22);
             }
         }
     }
@@ -325,16 +338,24 @@ function handleDelete() {
         display: flex;
         justify-content: end;
         align-items: end;
-        border-radius: 8px;
+        border-radius: vw(8);
         flex-shrink: 0;
+
+        @include mobile {
+            border-radius: vw-mobile(8);
+        }
     }
 
     &__image {
         width: 100%;
         height: 100%;
-        border-radius: 8px;
+        border-radius: vw(8);
         object-fit: cover;
         transition: opacity 0.3s, transform 0.3s;
+
+        @include mobile {
+            border-radius: vw-mobile(8);
+        }
     }
 
     &__content {
@@ -349,39 +370,65 @@ function handleDelete() {
 
     &__title {
         font-weight: 700;
-        font-size: 36px;
-        line-height: 46px;
+        font-size: vw(36);
+        line-height: vw(46);
         color: var(--color-text-secondary);
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: vw(20);
+        margin-bottom: vw(20);
+
+        @include mobile {
+            font-size: vw-mobile(24);
+            line-height: vw-mobile(32);
+            margin-top: vw-mobile(12);
+            margin-bottom: vw-mobile(12);
+        }
     }
 
     &__description {
-        max-height: 80px;
+        max-height: vw(80);
         font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
+        font-size: vw(18);
+        line-height: vw(27);
         color: var(--color-text-secondary);
+
+        @include mobile {
+            max-height: vw-mobile(60);
+            font-size: vw-mobile(14);
+            line-height: vw-mobile(21);
+        }
     }
 
     &__footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 20px;
+        margin-top: vw(20);
+
+        @include mobile {
+            margin-top: vw-mobile(12);
+        }
     }
 
     &__author-info {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: vw(12);
+
+        @include mobile {
+            gap: vw-mobile(8);
+        }
     }
 
     &__author-avatar {
-        width: 50px;
-        height: 50px;
+        width: vw(50);
+        height: vw(50);
         border-radius: 50%;
         object-fit: cover;
+
+        @include mobile {
+            width: vw-mobile(36);
+            height: vw-mobile(36);
+        }
     }
 
     &__author-name {
@@ -389,20 +436,24 @@ function handleDelete() {
         color: var(--color-text);
 
         @include mobile {
-            font-size: 18px;
-            line-height: 20px;
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(20);
         }
 
         @include desktop {
-            font-size: 20px;
-            line-height: 26px;
+            font-size: vw(20);
+            line-height: vw(26);
         }
     }
 
     &__story-info {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: vw(20);
+
+        @include mobile {
+            gap: vw-mobile(12);
+        }
     }
 
     &__created-at {
@@ -410,29 +461,39 @@ function handleDelete() {
         color: var(--color-text);
 
         @include mobile {
-            font-size: 14px;
-            line-height: 20px;
+            font-size: vw-mobile(14);
+            line-height: vw-mobile(20);
             display: none;
         }
 
         @include desktop {
-            font-size: 18px;
-            line-height: 23px;
+            font-size: vw(18);
+            line-height: vw(23);
         }
     }
 
     &__genre-badge {
         background-color: var(--color-primary-light);
-        border-radius: 8px;
-        padding: 8px 12px;
+        border-radius: vw(8);
+        padding: vw(8) vw(12);
         display: inline-block;
+
+        @include mobile {
+            border-radius: vw-mobile(8);
+            padding: vw-mobile(4) vw-mobile(8);
+        }
     }
 
     &__genre {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 23px;
+        font-size: vw(18);
+        line-height: vw(23);
         color: var(--color-primary);
+
+        @include mobile {
+            font-size: vw-mobile(14);
+            line-height: vw-mobile(18);
+        }
     }
 }
 </style>
