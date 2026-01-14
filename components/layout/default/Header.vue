@@ -96,7 +96,6 @@ function handleLogout() {
         position: absolute;
         top: 100%;
         right: 0;
-        margin-top: 8px;
         min-width: 150px;
         background-color: var(--color-white);
         border-radius: 8px;
@@ -104,6 +103,15 @@ function handleLogout() {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         z-index: 100;
+
+        @include desktop {
+            margin-top: 20px;
+        }
+
+        @include mobile {
+            margin-top: 8px;
+        }
+
     }
 
     &__item {
