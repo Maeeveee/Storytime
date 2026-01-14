@@ -41,32 +41,31 @@ function handleStory() {
             </h1>
         </div>
         <div>
-            <ClientOnly>
-                <label for="title" class="create__label">
-                    <span class="create__label__title">Title</span>
-                    <InputForm id="title" placeholder="Enter a story title" />
-                </label>
-                <label for="category" class="create__label">
-                    <span class="create__label__title">Category</span>
-                    <InputForm id="category" placeholder="Select a category" />
-                </label>
-                <label for="content" class="create__label">
-                    <span class="create__label__title">Content</span>
-                    <TiptapEditor />
-                </label>
-                <label for="cover" class="create__label">
-                    <span class="create__label__title">Cover Image</span>
-                    <div id="cover" class="create__input-image">
-                        <!-- <div class="create__cancel">
+            <label for="title" class="create__label">
+                <span class="create__label__title">Title</span>
+                <InputForm id="title" placeholder="Enter a story title" />
+            </label>
+            <label for="category" class="create__label">
+                <span class="create__label__title">Category</span>
+                <InputForm id="category" placeholder="Select a category" />
+            </label>
+            <label for="content" class="create__label">
+                <span class="create__label__title">Content</span>
+                <TiptapEditor />
+            </label>
+            <label for="cover" class="create__label">
+                <span class="create__label__title">Cover Image</span>
+                <div id="cover" class="create__input-image">
+                    <!-- <div class="create__cancel">
                             <span class="create__cancel__button">
                                 <Icon class="create__cancel__icon" name="iconoir:xmark" />
                             </span>
                         </div> -->
-                        <Icon name="ph:image-thin" class="create__input-icon" />
-                        <span>Choose Image</span>
-                    </div>
-                </label>
-            </ClientOnly>
+                    <Icon name="ph:image-thin" class="create__input-icon" />
+                    <span>Choose Image</span>
+                    <input type="file">
+                </div>
+            </label>
             <div class="create__button">
                 <Button action="#" variant="secondary">cancel</Button>
                 <Button v-if="title === 'write'" @click="handleStory" variant="primary">Post Story</Button>
