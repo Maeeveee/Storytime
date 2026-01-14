@@ -3,21 +3,21 @@ import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import Logo from '~/components/ui/Logo.vue';
 
-
 const email = ref('')
 const password = ref('')
 const isLoading = ref(false)
-
-const router = useRouter()
+const toast = useToast();
 
 const handleLogin = async () => {
     isLoading.value = true
     await new Promise(resolve => setTimeout(resolve, 800))
 
     if (email.value === 'user@test.com' && password.value === 'password') {
-        await router.push({ path: '/', query: { login: 'success' } })
+        toast.success('Login successful!')
+        navigateTo('/')
     } else {
-        alert('Invalid credentials. Try: user@test.com / password')
+        toast.error('Invalid credentials. Try: user@test.com / password')
+        navigateTo('#')
     }
     isLoading.value = false
 }

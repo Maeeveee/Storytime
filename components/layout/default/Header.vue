@@ -119,6 +119,9 @@ function handleLogout() {
         }
 
         &--button {
+            text-align: start;
+            font-size: 15px;
+            width: 150px;
             background: none;
             border: none;
             cursor: pointer;

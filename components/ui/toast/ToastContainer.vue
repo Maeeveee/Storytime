@@ -30,7 +30,8 @@ const iconMap: Record<string, string> = {
 .toast-container {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 35%;
+    width: 600px;
     z-index: 2000;
     display: flex;
     flex-direction: column;
@@ -59,32 +60,24 @@ const iconMap: Record<string, string> = {
     }
 
     &--success {
-        border-left: 4px solid var(--color-primary);
-
         .toast__icon {
             color: var(--color-primary);
         }
     }
 
     &--error {
-        border-left: 4px solid #dc3545;
-
         .toast__icon {
             color: #dc3545;
         }
     }
 
     &--warning {
-        border-left: 4px solid #ffc107;
-
         .toast__icon {
             color: #ffc107;
         }
     }
 
     &--info {
-        border-left: 4px solid #0dcaf0;
-
         .toast__icon {
             color: #0dcaf0;
         }

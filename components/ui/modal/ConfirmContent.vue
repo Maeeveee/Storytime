@@ -23,7 +23,7 @@ const emit = defineEmits<{
 }>();
 </script>
 <template>
-    <div class="confimr-modal">
+    <div class="confirm-modal">
         <h2 class="confirm-modal__title">{{ title }}</h2>
         <p class="confirm-modal__message">{{ message }}</p>
         <div class="confirm-modal__actions">
