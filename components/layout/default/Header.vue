@@ -33,12 +33,12 @@ function handleLogout() {
         component: ConfirmContent,
         props: {
             title: 'Logout',
-            message: 'Apakah anda yakin ingin keluar?',
+            message: 'Are you sure want to logout?',
             confirmText: 'Logout',
-            cancelText: 'Batal'
+            cancelText: 'Cancel'
         },
         onConfirm: () => {
-            toast.success('Berhasil logout!');
+            toast.success('You have successfully logged out');
             navigateTo('/login')
         },
     })

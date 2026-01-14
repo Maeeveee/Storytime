@@ -13,7 +13,7 @@ const handleLogin = async () => {
     await new Promise(resolve => setTimeout(resolve, 800))
 
     if (email.value === 'user@test.com' && password.value === 'password') {
-        toast.success('Login successful!')
+        toast.success('You have successfully logged in')
         navigateTo('/')
     } else {
         toast.error('Invalid credentials. Try: user@test.com / password')

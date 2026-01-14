@@ -12,9 +12,9 @@ const confirmPassword = ref('')
 
 function handleRegister() {
     if (name.value && email.value && password.value && confirmPassword.value === password.value) {
-        toast.success('Register Successful!')
+        toast.success('You have successfully registered')
         navigateTo('/')
-    }else{
+    } else {
         toast.error('please fill form below correctly')
     }
 }
@@ -38,13 +38,13 @@ function handleRegister() {
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <InputForm v-model="password" placeholder="Enter Your Chosen Password"
-                        variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="password" placeholder="Enter Your Chosen Password" variant="primary"
+                        icon-name="formkit:eye" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <InputForm v-model="confirmPassword" placeholder="Re-enter Your Chosen Password"
-                        variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="confirmPassword" placeholder="Re-enter Your Chosen Password" variant="primary"
+                        icon-name="formkit:eye" />
                 </label>
             </div>
             <Button @click="handleRegister" variant="primary" class="register__button"> Create Account</Button>

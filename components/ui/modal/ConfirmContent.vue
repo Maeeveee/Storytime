@@ -10,10 +10,10 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-    title: 'Konfirmasi',
-    message: 'Apakah anda yakin?',
-    confirmText: 'Ya',
-    cancelText: 'Batal',
+    title: 'Confirmation',
+    message: 'Are you sure?',
+    confirmText: 'Yes',
+    cancelText: 'Cancel',
     confirmVariant: 'primary',
 });
 
