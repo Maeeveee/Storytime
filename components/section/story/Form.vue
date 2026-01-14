@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
+import TiptapEditor from '~/components/ui/TiptapEditor.vue';
 
 interface props {
     title: 'write' | 'edit'
@@ -36,7 +37,7 @@ const props = withDefaults(defineProps<props>(), {
                 </label>
                 <label for="content" class="create__label">
                     <span class="create__label__title">Content</span>
-                    <InputForm id="content" placeholder="Enter a content here" />
+                    <TiptapEditor />
                 </label>
                 <label for="cover" class="create__label">
                     <span class="create__label__title">Cover Image</span>
