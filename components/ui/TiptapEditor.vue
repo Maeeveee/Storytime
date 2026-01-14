@@ -41,7 +41,8 @@ onBeforeUnmount(() => {
     background-color: var(--color-white);
     cursor: pointer;
     border-radius: 8px;
-
+    margin-bottom: 5px;
+    margin-right: 5px;
     &:hover {
         background-color: var(--color-border);
     }
