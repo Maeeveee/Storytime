@@ -51,4 +51,3 @@ export function useModal() {
         state: modalState, open, close, confirm
     };
 }
-
