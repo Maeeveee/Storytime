@@ -2,6 +2,24 @@
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 import Logo from '~/components/ui/Logo.vue';
+
+const toast = useToast();
+
+const name = ref('')
+const email = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+
+function handleRegister() {
+    if (name.value != null && email.value != null && confirmPassword.value == password.value) {
+        toast.success('Register Successful!')
+        navigateTo('/')
+    }else{
+        toast.error('please fill form below correctly')
+        navigateTo('#')
+    }
+}
+
 </script>
 <template>
     <div>
@@ -13,22 +31,24 @@ import Logo from '~/components/ui/Logo.vue';
             <div>
                 <label class="register__label">
                     <span class="register__text">Name</span>
-                    <InputForm placeholder="Enter Your name" variant="primary" />
+                    <InputForm v-model="name" placeholder="Enter Your name" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Email</span>
-                    <InputForm placeholder="Enter Your Email" variant="primary" />
+                    <InputForm v-model="email" placeholder="Enter Your Email" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <InputForm placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="password" placeholder="Enter Your Chosen Password"
+                        variant="primary" icon-name="formkit:eye" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <InputForm placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="confirmPassword" placeholder="Re-enter Your Chosen Password"
+                        variant="primary" icon-name="formkit:eye" />
                 </label>
             </div>
-            <Button action="#" variant="primary" class="register__button"> Create Account</Button>
+            <Button @click="handleRegister" variant="primary" class="register__button"> Create Account</Button>
             <div>
                 <span class="register__text">Already have an account? <NuxtLink href="/Login"
                         class="register__navigate-login">Login</NuxtLink></span>
