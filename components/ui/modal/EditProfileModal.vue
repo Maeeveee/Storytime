@@ -53,21 +53,23 @@ function handleCancel() {
 
             <div class="edit-profile__right">
                 <h2 class="edit-profile__subtitle">Change Password</h2>
-                <label class="edit-profile__label">
-                    <span>Old Password</span>
-                    <InputForm v-model="oldPassword" type="password" placeholder="Enter your old password"
-                        variant="primary" />
-                </label>
-                <label class="edit-profile__label">
-                    <span>New Password</span>
-                    <InputForm v-model="newPassword" type="password" placeholder="Enter your new password"
-                        variant="primary" />
-                </label>
-                <label class="edit-profile__label">
-                    <span>Confirm New Password</span>
-                    <InputForm v-model="confirmPassword" type="password" placeholder="Re-enter your new password"
-                        variant="primary" />
-                </label>
+                <div class="edit-profile__fields">
+                    <label class="edit-profile__label">
+                        <span>Old Password</span>
+                        <InputForm v-model="oldPassword" type="password" placeholder="Enter your old password"
+                            variant="primary" />
+                    </label>
+                    <label class="edit-profile__label">
+                        <span>New Password</span>
+                        <InputForm v-model="newPassword" type="password" placeholder="Enter your new password"
+                            variant="primary" />
+                    </label>
+                    <label class="edit-profile__label">
+                        <span>Confirm New Password</span>
+                        <InputForm v-model="confirmPassword" type="password" placeholder="Re-enter your new password"
+                            variant="primary" />
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -80,7 +82,7 @@ function handleCancel() {
 <style scoped lang="scss">
 .edit-profile {
     width: 100%;
-    
+
     @include desktop {
         min-width: 800px;
         max-width: 1200px;
@@ -104,7 +106,7 @@ function handleCancel() {
     &__content {
         display: grid;
         gap: 30px;
-        
+
         @include desktop {
             grid-template-columns: 1fr 1fr;
         }
