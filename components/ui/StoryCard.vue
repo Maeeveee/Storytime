@@ -1,21 +1,52 @@
 <script setup lang="ts">
 import type { Article } from "~/types/article";
+import ConfirmContent from "./modal/ConfirmContent.vue";
+
 
 interface IProps {
     articleItem: Article;
     hideCategory?: boolean;
     variant?: 'default' | 'large' | 'small';
+    isEdit?: boolean;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
     hideCategory: false,
-    variant: 'default'
+    variant: 'default',
+    isEdit: false,
 });
+
+const modal = useModal();
+const toast = useToast();
+
+function handleDelete() {
+    modal.open({
+        component: ConfirmContent,
+        props: {
+            title: 'Delete Story',
+            message: 'Are you sure want to delete this story?',
+            confirmText: 'Delete',
+            cancelText: 'Cancel'
+        },
+        onConfirm: () => {
+            toast.success('Successfully delete a story')
+        },
+    })
+}
+
 </script>
 
 <template>
     <NuxtLink :to="`/story/${props.articleItem.title}`" class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
+            <div v-if="isEdit" class="card__icon-wrapper">
+                <NuxtLink to="/dashboard/edit" class="card__icon__background">
+                    <Icon class="card__icon__text" name="lucide:edit" />
+                </NuxtLink>
+                <button class="card__icon__background">
+                    <Icon class="card__icon__text" name="lucide:trash-2" @click="handleDelete" />
+                </button>
+            </div>
             <img :src="props.articleItem.image" alt="Story Image" class="card__image">
         </div>
         <div class="card__content">
@@ -219,8 +250,71 @@ const props = withDefaults(defineProps<IProps>(), {
         }
     }
 
+    &__icon-wrapper {
+        z-index: 2;
+
+        @include desktop {
+            gap: 30px;
+            position: absolute;
+            margin-bottom: 40px;
+            margin-right: 39px;
+            display: flex;
+
+        }
+
+        @include mobile {
+            gap: 15px;
+            position: absolute;
+            margin-bottom: 15px;
+            margin-right: 15px;
+            display: flex;
+        }
+
+    }
+
+
+    &__icon {
+        &__background {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include desktop {
+                width: 65px;
+                height: 65px;
+            }
+
+            @include mobile {
+                width: 40px;
+                height: 40px;
+            }
+
+            &:hover {
+                background-color: var(--color-primary-dark);
+            }
+        }
+
+        &__text {
+
+            @include desktop {
+                font-size: 42px;
+            }
+
+            @include mobile {
+                font-size: 22px;
+            }
+        }
+    }
+
     &__image-wrapper {
         overflow: hidden;
+        display: flex;
+        justify-content: end;
+        align-items: end;
         border-radius: 8px;
         flex-shrink: 0;
     }
