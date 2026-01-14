@@ -31,13 +31,17 @@ const iconMap: Record<string, string> = {
     position: fixed;
     top: 20px;
     left: 35%;
-    width: 600px;
     z-index: 2000;
     display: flex;
     flex-direction: column;
     gap: 12px;
 
+    @include desktop {
+        width: 600px;
+    }
+
     @include mobile {
+        width: 300px;
         left: 20px;
         right: 20px;
     }
