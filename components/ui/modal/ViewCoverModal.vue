@@ -42,7 +42,6 @@ function handleCancel() {
 }
 
 .modal {
-
     @include desktop {
         padding: 60px;
         border-radius: 8px;
@@ -144,6 +143,11 @@ function handleCancel() {
             @include desktop {
                 width: 202px;
                 height: 200px;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: ease 0.2s;
+                }
             }
 
             @include mobile {
