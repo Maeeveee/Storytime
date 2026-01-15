@@ -34,32 +34,40 @@ const iconMap: Record<string, string> = {
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    gap: 12px;
 
     @include desktop {
-        width: 600px;
+        gap: vw(12);
+        width: vw(600);
     }
 
     @include mobile {
-        width: 300px;
-        left: 20px;
-        right: 20px;
+        gap: vw-mobile(12);
+        width: vw-mobile(300);
+        left: vw-mobile(20);
+        right: vw-mobile(20);
     }
 }
 
 .toast {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
     background-color: var(--color-white);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    min-width: 300px;
-    max-width: 500px;
+
+    @include desktop {
+        gap: vw(12);
+        padding: vw(16) vw(20);
+        min-width: vw(300);
+        max-width: vw(500);
+
+    }
 
     @include mobile {
+        gap: vw-mobile(12);
+        padding: vw-mobile(16) vw-mobile(20);
         min-width: unset;
+        max-width: vw-mobile(500);
         width: 100%;
     }
 
@@ -95,8 +103,16 @@ const iconMap: Record<string, string> = {
     &__message {
         flex-grow: 1;
         font-weight: 500;
-        font-size: 16px;
         color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(16);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(16);
+
+        }
     }
 
     &__close {
@@ -104,9 +120,18 @@ const iconMap: Record<string, string> = {
         border: none;
         cursor: pointer;
         color: var(--color-text-secondary);
-        font-size: 18px;
-        padding: 4px;
         flex-shrink: 0;
+
+        @include desktop {
+            font-size: vw(18);
+            padding: vw(4);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(18);
+            padding: vw-mobile(4);
+        }
+
 
         &:hover {
             color: var(--color-text);

@@ -27,9 +27,9 @@
         }
 
         @include mobile {
-            height: 910px vw-mobile(910);
-            max-width: 805px vw-mobile(805);
-            margin: 20px 20px 20px 20px vw-mobile(20);
+            height: vw-mobile(910);
+            max-width: vw-mobile(805);
+            margin: vw-mobile(20);
             padding-block: vw(16);
             padding-inline: vw(32);
         }
