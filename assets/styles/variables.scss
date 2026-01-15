@@ -89,9 +89,9 @@ $breakpoint-desktop: 1440px;
     }
 }
 
-@mixin font-vw($dekstop-px, $mobile-px: null) {
+@mixin font-vw($desktop-px, $mobile-px: null) {
     @include desktop {
-        font-size: vw($dekstop-px);
+        font-size: vw($desktop-px);
     }
 
     @if $mobile-px {
