@@ -62,20 +62,40 @@ function handleBackdropClick(e: MouseEvent) {
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    @include desktop {
+        padding: vw(40);
+    }
+
+    @include mobile {
+        padding: vw-mobile(40);
+    }
+
 }
 
 .modal-close {
     position: absolute;
     top: 0;
     right: 0;
-    margin-top: 10px;
-    margin-right: 10px;
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
     color: var(--color-text-secondary);
     transition: color 0.2s;
+
+    @include desktop {
+        font-size: vw(24);
+        margin-top: vw(10);
+        margin-right: vw(10);
+
+    }
+
+    @include mobile {
+        font-size: vw-mobile(24);
+        margin-top: vw-mobile(10);
+        margin-right: vw-mobile(10);
+
+    }
 
     &:hover {
         color: var(--color-text);

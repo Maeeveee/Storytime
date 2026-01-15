@@ -15,34 +15,73 @@ import Button from '../Button.vue';
 </template>
 <style scoped lang="scss">
 .modal {
-    width: 401px;
-    height: 263px;
-    padding: 40px;
+    @include desktop {
+        width: vw(401);
+        height: vw(263);
+        padding: vw(40);
+    }
+
+    @include mobile {
+        width: vw-mobile(401);
+        height: vw-mobile(263);
+        padding: vw-mobile(40);
+    }
 
     &__header {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        margin-bottom: 30px;
+
+        @include desktop {
+            gap: vw(20);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+            margin-bottom: vw-mobile(30);
+        }
 
         &__title {
             font-weight: 700;
-            font-size: 36px;
-            line-height: 46px;
             color: var(--color-text);
+
+            @include desktop {
+                font-size: vw(36);
+                line-height: vw(46);
+            }
+
+            @include mobile {
+                font-size: vw-mobile(36);
+                line-height: vw-mobile(46);
+            }
         }
 
         &__description {
             font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
             color: var(--color-text);
+
+            @include desktop {
+                font-size: vw(18);
+                line-height: vw(27);
+            }
+
+            @include mobile {
+                font-size: vw-mobile(18);
+                line-height: vw-mobile(27);
+            }
         }
     }
 
     &__button {
         display: flex;
-        gap: 44px;
+
+        @include desktop {
+            gap: vw(44);
+        }
+
+        @include mobile {
+            gap: vw-mobile(44);
+        }
     }
 
 }

@@ -44,24 +44,49 @@ const emit = defineEmits<{
 
     &__title {
         font-weight: 700;
-        font-size: 28px;
-        line-height: 36px;
         color: var(--color-text);
-        margin-bottom: 16px;
+
+        @include desktop {
+            font-size: vw(28);
+            line-height: vw(36);
+            margin-bottom: vw(16);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(28);
+            line-height: vw-mobile(36);
+            margin-bottom: vw-mobile(16);
+        }
     }
 
     &__message {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
         color: var(--color-text-secondary);
-        margin-bottom: 30px;
+
+        @include desktop {
+            font-size: vw(18);
+            line-height: vw(27);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(27);
+            margin-bottom: vw-mobile(30);
+        }
     }
 
     &__actions {
         display: flex;
         justify-content: center;
-        gap: 20px;
+
+        @include desktop {
+            gap: vw(20);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+        }
     }
 }
 </style>

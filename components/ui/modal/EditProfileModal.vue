@@ -84,68 +84,131 @@ function handleCancel() {
     width: 100%;
 
     @include desktop {
-        min-width: 800px;
-        max-width: 1200px;
+        min-width: vw(800);
+        max-width: vw(1200);
     }
 
     &__title {
         font-weight: 700;
-        font-size: 36px;
-        line-height: 46px;
         color: var(--color-text);
-        margin-bottom: 40px;
+
+        @include desktop {
+            font-size: vw(36);
+            line-height: vw(46);
+            margin-bottom: vw(40);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(36);
+            line-height: vw-mobile(46);
+            margin-bottom: vw-mobile(40);
+
+        }
     }
 
     &__subtitle {
         font-weight: 700;
-        font-size: 28px;
-        line-height: 36px;
-        margin-bottom: 30px;
+
+        @include desktop {
+            font-size: vw(28);
+            line-height: vw(36);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(28);
+            line-height: vw-mobile(36);
+            margin-bottom: vw-mobile(30);
+        }
     }
 
     &__content {
         display: grid;
-        gap: 30px;
 
         @include desktop {
             grid-template-columns: 1fr 1fr;
+            gap: vw(30);
+        }
+
+        @include mobile {
+            gap: vw-mobile(30);
+
         }
     }
 
     &__image-section {
         display: flex;
         align-items: center;
-        gap: 30px;
-        margin-bottom: 30px;
+
+        @include desktop {
+            gap: vw(30);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            gap: vw-mobile(30);
+            margin-bottom: vw-mobile(30);
+        }
     }
 
     &__avatar {
-        width: 150px;
-        height: 150px;
         border-radius: 50%;
         object-fit: cover;
+
+        @include desktop {
+            width: vw(150);
+            height: vw(150);
+        }
+
+        @include mobile {
+            width: vw-mobile(150);
+            height: vw-mobile(150);
+        }
     }
 
     &__fields {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+
+        @include desktop {
+            gap: vw(20);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+        }
     }
 
     &__label {
         display: flex;
         flex-direction: column;
-        gap: 8px;
         font-weight: 400;
-        font-size: 16px;
         color: var(--color-text-secondary);
+
+        @include desktop {
+            gap: vw(8);
+            font-size: vw(16);
+        }
+
+        @include mobile {
+            gap: vw-mobile(8);
+            font-size: vw-mobile(16);
+        }
     }
 
     &__actions {
         display: flex;
         justify-content: flex-start;
-        gap: 20px;
-        margin-top: 40px;
+
+        @include desktop {
+            gap: vw(20);
+            margin-top: vw(40);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+            margin-top: vw-mobile(40);
+        }
     }
 }
 </style>
