@@ -9,12 +9,12 @@
 <style scoped lang="scss">
 .explore-more {
     &__icon {
-        @include mobile {
-            font-size: 18px;
+        @include desktop {
+            font-size: vw(24);
         }
 
-        @include desktop {
-            font-size: 24px;
+        @include mobile {
+            font-size: vw-mobile(18);
         }
     }
 
@@ -22,23 +22,26 @@
         color: var(--color-text-secondary);
         text-decoration: none;
         font-weight: 400;
-        line-height: 32px;
         display: flex;
         align-items: center;
 
-        @include mobile {
-            font-size: 18px;
+        @include desktop {
+            font-size: vw(24);
+            line-height: vw(32);
         }
 
-        @include desktop {
-            font-size: 24px;
+        @include mobile {
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(32);
         }
+
 
         &:hover {
             color: var(--color-primary);
             text-decoration: none;
             cursor: pointer;
-            &:hover{
+
+            &:hover {
                 text-decoration: underline;
                 text-decoration-thickness: 3px;
                 text-underline-offset: 10px;
