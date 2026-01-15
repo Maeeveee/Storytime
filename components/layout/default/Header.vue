@@ -54,7 +54,7 @@ function handleLogout() {
             </button>
             <Transition name="dropdown">
                 <div v-if="isDropdownMobileOpen" class="dropdown__content">
-                    <NuxtLink to="/dashboard" class="dropdown__item">Profile</NuxtLink>
+                    <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
                     <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
                 </div>
             </Transition>
@@ -70,7 +70,7 @@ function handleLogout() {
                     </button>
                     <Transition name="dropdown">
                         <div v-if="isDropdownOpen" class="dropdown__content">
-                            <NuxtLink to="/dashboard" class="dropdown__item">Profile</NuxtLink>
+                            <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
                             <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
                         </div>
                     </Transition>
@@ -96,7 +96,6 @@ function handleLogout() {
         position: absolute;
         top: 100%;
         right: 0;
-        min-width: 150px;
         background-color: var(--color-white);
         border-radius: 8px;
         border: 1px solid var(--color-border);
@@ -105,35 +104,54 @@ function handleLogout() {
         z-index: 100;
 
         @include desktop {
-            margin-top: 20px;
+            margin-top: vw(20);
+            min-width: vw(150);
         }
 
         @include mobile {
-            margin-top: 8px;
+            margin-top: vw-mobile(8);
+            min-width: vw-mobile(100);
         }
 
     }
 
     &__item {
         display: block;
-        padding: 12px 20px;
         text-decoration: none;
         color: var(--color-text);
         font-weight: 500;
         transition: background-color 0.2s;
+
+        @include desktop {
+            padding: vw(12) vw(20);
+        }
+
+        @include mobile {
+            padding: vw-mobile(8) vw-mobile(16);
+        }
+
 
         &:hover {
             background-color: var(--color-border-light);
         }
 
         &--button {
+            width: 100%;
             text-align: start;
-            font-size: 15px;
-            width: 150px;
             background: none;
             border: none;
             cursor: pointer;
             font-family: inherit;
+
+            @include desktop {
+                font-size: vw(20);
+                max-width: vw(150);
+            }
+
+            @include mobile {
+                font-size: vw-mobile(15);
+                max-width: vw-mobile(150);
+            }
         }
 
     }
@@ -161,50 +179,50 @@ function handleLogout() {
     background-color: var(--color-white);
     border-bottom: var(--color-border-light) 3px solid;
 
-    @include mobile {
-        align-items: center;
-        height: 40px;
-        padding: 20px;
-    }
-
     @include desktop {
-        padding: 23px 110px;
-        max-width: 1700px;
-        height: 60px;
+        padding: vw(23) vw(110);
+        max-width: vw(1700);
+        height: vw(60);
         position: fixed;
     }
 
-    &__button-container {
-        @include mobile {
-            display: none;
-        }
+    @include mobile {
+        align-items: center;
+        height: vw-mobile(40);
+        padding: vw-mobile(20);
+    }
 
+    &__button-container {
         @include desktop {
             display: flex;
-            gap: 30px;
+            gap: vw(30);
+        }
+
+        @include mobile {
+            display: none;
         }
     }
 
     &__logo {
-        @include mobile {
-            width: 150px;
-            height: 30px;
+        @include desktop {
+            width: vw(254);
+            height: vw(59);
         }
 
-        @include desktop {
-            width: 254px;
-            height: 59px;
+        @include mobile {
+            width: vw-mobile(150);
+            height: vw-mobile(30);
         }
     }
 
     &__hamburger {
-        @include mobile {
-            display: block;
-            font-size: 30px;
-        }
-
         @include desktop {
             display: none;
+        }
+
+        @include mobile {
+            display: block;
+            font-size: vw-mobile(30);
         }
     }
 
@@ -213,18 +231,24 @@ function handleLogout() {
         align-items: center;
 
         &__image {
-            width: 65px;
-            margin-right: 10px;
+            @include desktop {
+                width: vw(65);
+                margin-left: vw(10);
+            }
         }
 
         &__name {
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 32px;
+            @include desktop {
+                font-weight: 700;
+                font-size: vw(24);
+                line-height: vw(32);
+            }
         }
 
         &__icon {
-            font-size: 30px;
+            @include desktop {
+                font-size: vw(30);
+            }
         }
     }
 }

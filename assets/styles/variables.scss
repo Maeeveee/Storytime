@@ -48,9 +48,7 @@ $max-viewport: 1920px;
     $min-vw-value: ensure-px($min-vw);
     $max-vw-value: ensure-px($max-vw);
 
-    @return clamp(#{$min-value},
-        calc(#{$min-value} + (#{$max-value} - #{$min-value}) * ((100vw - #{$min-vw-value}) / (#{$max-vw-value} - #{$min-vw-value}))),
-        #{$max-value});
+    @return clamp(#{$min-value}, calc(#{$min-value} + (#{$max-value} - #{$min-value}) * ((100vw - #{$min-vw-value}) / (#{$max-vw-value} - #{$min-vw-value}))), #{$max-value});
 }
 
 @function fluid-type($min-px, $max-px) {
