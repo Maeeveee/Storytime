@@ -44,19 +44,19 @@ const filteredArticles = computed(() => {
                     <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
-            <!-- <div class="my-story__no-story-wrapper">
+            <div class="my-story__no-story-wrapper">
                 <div class="my-story__no-story-header">
                     <h1 class="my-story__no-story-title">No Stories Yet</h1>
                     <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your fitness journey
                         today!</h4>
                 </div>
                 <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
-            </div> -->
-            <div class="my-story__content-grid">
+            </div>
+            <!-- <div class="my-story__content-grid">
                 <div v-for="article in filteredArticles" :key="article.id">
                     <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true" />
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
@@ -81,8 +81,8 @@ const filteredArticles = computed(() => {
         align-items: center;
 
         @include desktop {
-            width: 546px vw(546);
-            height: 250px vw(250);
+            width: vw(546);
+            height: vw(250);
             padding: vw(80) vw(77) vw(110) vw(78);
             position: sticky;
             top: vw(120);
