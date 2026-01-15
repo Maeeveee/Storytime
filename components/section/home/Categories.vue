@@ -45,12 +45,12 @@ const categories = computed(() => {
 
     &__display {
         grid-template-columns: 1fr 1fr;
-        
+
         @include desktop {
             display: flex;
             gap: vw(8);
         }
-        
+
         @include mobile {
             display: grid;
             gap: vw-mobile(8);
@@ -61,7 +61,15 @@ const categories = computed(() => {
 hr {
     border: none;
     border-top: 1px solid #ccc;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+
+    @include desktop {
+        margin-top: vw(16);
+        margin-bottom: vw(16);
+    }
+
+    @include mobile {
+        margin-top: vw-mobile(16);
+        margin-bottom: vw-mobile(16);
+    }
 }
 </style>

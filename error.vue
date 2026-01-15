@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
-
+import ContentSection from './components/section/notFound/contentSection.vue';
+import ImageSection from './components/section/notFound/ImageSection.vue';
 const props = defineProps<{ error: NuxtError }>()
 </script>
 
 <template>
     <NuxtLayout>
         <main class="not-found__container">
-            <SectionNotFoundImageSection class="device__mobile" />
-            <SectionNotFoundContentSection :status-code="error.statusCode" />
+            <ImageSection class="device__mobile" />
+            <ContentSection :status-code="error.statusCode" />
         </main>
     </NuxtLayout>
 </template>
@@ -29,14 +30,14 @@ const props = defineProps<{ error: NuxtError }>()
         align-items: center;
 
         @include mobile {
-            padding-top: 150px;
+            padding-top: vw-mobile(150);
         }
 
         @include desktop {
-            margin-top: 170px;
             display: grid;
+            margin-top: vw(170);
+            padding-top: vw(170);
             grid-template-columns: 1fr 1fr;
-            padding-top: 170px;
         }
     }
 }

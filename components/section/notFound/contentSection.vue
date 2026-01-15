@@ -50,44 +50,69 @@ const errorData = computed(() => {
     align-items: center;
 
     @include desktop {
-        margin-bottom: 180px;
+        margin-bottom: vw(180);
     }
 
     &__title {
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 160px;
-        line-height: 194px;
         color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(160);
+            line-height: vw(194);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(160);
+            line-height: vw-mobile(194);
+        }
     }
 
     &__subtitle {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 44px;
-        line-height: 58px;
-        margin-bottom: 20px;
         color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(44);
+            line-height: vw(58);
+            margin-bottom: vw(20);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(44);
+            line-height: vw-mobile(58);
+            margin-bottom: vw-mobile(20);
+        }
     }
 
     &__description {
-        max-width: 835px;
         font-weight: 400;
-        line-height: 32px;
         color: var(--color-text-secondary);
         text-align: center;
 
-        @include mobile {
-            font-size: 18px;
+        @include desktop {
+            max-width: vw(835);
+            line-height: vw(32);
+            font-size: vw(24);
         }
 
-        @include desktop {
-            font-size: 24px;
+        @include mobile {
+            max-width: vw-mobile(835);
+            line-height: vw-mobile(32);
+            font-size: vw-mobile(18);
         }
     }
 
     &__button {
-        margin-top: 40px;
+        @include desktop {
+            margin-top: vw(40);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(40);
+        }
     }
 }
 </style>
