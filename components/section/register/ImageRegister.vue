@@ -15,44 +15,90 @@
 <style scoped lang="scss">
 .register {
     &__image-section {
-        height: 910px;
-        max-width: 805px;
         background-color: #F0F5ED;
-        margin: 20px 20px 20px 20px;
-        padding: 2rem 4rem 2rem 4rem;
         border-radius: 8px;
+
+        @include desktop {
+            height: vw(910);
+            max-width: vw(805);
+            margin: vw(20);
+            padding-block: vw(16);
+            padding-inline: vw(32);
+        }
+
+        @include mobile {
+            height: 910px vw-mobile(910);
+            max-width: 805px vw-mobile(805);
+            margin: 20px 20px 20px 20px vw-mobile(20);
+            padding-block: vw(16);
+            padding-inline: vw(32);
+        }
     }
 
     &__image {
-        width: 752px;
-        height: 547px;
+        @include desktop {
+            width: vw(752);
+            height: vw(547);
+        }
+
+        @include mobile {
+            width: vw-mobile(752);
+            height: vw-mobile(547);
+        }
     }
 
     &__title {
         font-family: "Playfair Display", serif;
         font-weight: 700;
         font-style: normal;
-        font-size: 60px;
-        line-height: 74px;
-        color: #222222;
-        width: 835px;
-        margin-bottom: 30px;
+        color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(60);
+            line-height: vw(74);
+            width: vw(835);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(60);
+            line-height: vw-mobile(74);
+            width: vw-mobile(835);
+            margin-bottom: vw-mobile(30);
+        }
     }
 
     &__text {
         font-family: "DM Sans", serif;
         font-weight: 400;
         font-style: normal;
-        font-size: 28px;
-        line-height: 38px;
-        color: #4B4B4B;
-        margin-bottom: 30px;
+        color: var(--color-text-secondary);
+
+        @include desktop {
+            font-size: vw(28);
+            line-height: vw(38);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(28);
+            line-height: vw-mobile(38);
+            margin-bottom: vw-mobile(30);
+        }
     }
 
-    &__logo{
-        width: 256px;
-        height: 59px;
-        margin-bottom: 50px;
+    &__logo {
+        @include desktop {
+            width: vw(256);
+            height: vw(59);
+            margin-bottom: vw(50);
+        }
+
+        @include mobile {
+            width: vw-mobile(256);
+            height: vw-mobile(59);
+            margin-bottom: vw-mobile(50);
+        }
     }
 }
 </style>

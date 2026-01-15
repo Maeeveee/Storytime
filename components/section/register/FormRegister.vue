@@ -75,78 +75,107 @@ function handleRegister() {
         margin-bottom: auto;
         border-radius: 8px;
 
-        @include mobile {
-            margin: 20px;
+        @include desktop {
+            margin-right: auto;
+            width: vw(825);
+            margin-top: vw(77.5);
+            margin-left: vw(50);
         }
 
-        @include desktop {
-            width: 825px;
-            margin-right: auto;
-            margin-top: 77.5px;
-            margin-left: 50px;
+        @include mobile {
+            margin: vw-mobile(20);
         }
     }
 
     &__title {
         font-family: var(--font-primary);
-        font-size: 44px;
         font-weight: 700;
-        line-height: 58px;
-
-        @include mobile {
-            margin-block: 30px;
-        }
 
         @include desktop {
-            margin-bottom: 50px;
+            margin-bottom: vw(50);
+            line-height: vw(58);
+            font-size: vw(44);
+        }
+
+        @include mobile {
+            margin-block: vw-mobile(30);
+            line-height: vw-mobile(58);
+            font-size: vw-mobile(44);
         }
     }
 
     &__text {
-        font-size: 18px;
-        line-height: 23px;
         font-weight: 400;
         color: var(--color-text-secondary);
+
+        @include desktop {
+            font-size: vw(18);
+            line-height: vw(23);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(23);
+        }
     }
 
     &__button {
-        margin-top: 50px;
-        margin-bottom: 43px;
-        max-width: 238px;
-        max-height: 60px;
+        @include desktop {
+            margin-top: vw(50);
+            margin-bottom: vw(43);
+            max-width: vw(238);
+            max-height: vw(60);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(50);
+            margin-bottom: vw-mobile(43);
+            max-width: vw-mobile(238);
+            max-height: vw-mobile(60);
+        }
     }
 
     &__navigate-login {
         font-weight: 700;
         text-decoration: none;
         color: var(--color-primary);
-        margin-top: 30px;
+
+        @include desktop {
+            margin-top: vw(30);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(30);
+        }
     }
 
     &__label {
-        max-width: 577px;
         width: 100%;
-        max-height: 144px;
         height: 100%;
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
-
-        @include mobile {
-            gap: 10px;
-        }
 
         @include desktop {
-            gap: 20px;
+            margin-top: vw(20);
+            max-height: vw(144);
+            max-width: vw(577);
+            gap: vw(20);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(20);
+            max-height: vw-mobile(144);
+            max-width: vw-mobile(577);
+            gap: vw-mobile(10);
         }
     }
 
     &__logo {
         @include mobile {
-            width: 150px;
-            height: 30px;
+            width: vw-mobile(150);
+            height: vw-mobile(30);
+            margin-left: vw-mobile(100);
             margin: auto;
-            margin-left: 100px;
         }
     }
 }
