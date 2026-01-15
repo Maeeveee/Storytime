@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
-import ContentSection from './components/section/notFound/contentSection.vue';
+import ContentSection from './components/section/notFound/ContentSection.vue';
 import ImageSection from './components/section/notFound/ImageSection.vue';
 const props = defineProps<{ error: NuxtError }>()
 </script>
