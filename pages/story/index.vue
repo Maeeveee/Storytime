@@ -85,13 +85,13 @@ const categories = computed(() => {
         line-height: 58px;
         color: var(--color-text);
 
+        @include desktop {
+            margin: 170px 110px 40px 110px;
+        }
+
         @include mobile {
             margin: 0 10px;
             display: none;
-        }
-
-        @include desktop {
-            margin: 170px 110px 40px 110px;
         }
     }
 
@@ -101,37 +101,39 @@ const categories = computed(() => {
         align-items: center;
         margin: auto;
 
-        @include mobile {
-            padding: 20px;
-        }
-
         @include desktop {
             padding: 40px 110px;
             max-width: 1700px;
+        }
+
+        @include mobile {
+            padding: 20px;
         }
     }
 
     &__input {
         &--mobile {
+
+            @include desktop {
+                display: none;
+            }
+
             @include mobile {
                 padding: 10px 15px;
                 display: block;
             }
-
-            @include desktop {
-                display: none;
-            }
         }
 
         &--desktop {
-            @include mobile {
-                display: none;
-            }
-
             @include desktop {
                 max-width: 547px;
                 display: block;
             }
+
+            @include mobile {
+                display: none;
+            }
+
         }
     }
 
@@ -139,13 +141,14 @@ const categories = computed(() => {
         display: flex;
         align-items: center;
 
+        @include desktop {
+            gap: 30px;
+        }
+
         @include mobile {
             gap: 10px;
         }
 
-        @include desktop {
-            gap: 30px;
-        }
     }
 
     &__selected-item {
@@ -154,15 +157,16 @@ const categories = computed(() => {
         border: none;
         color: var(--color-text);
 
+        @include desktop {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
         @include mobile {
             font-size: 18px;
             line-height: 20px;
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
-        }
 
         &:hover {
             color: var(--color-primary);
@@ -177,19 +181,26 @@ const categories = computed(() => {
         font-weight: 400;
         color: var(--color-text-secondary);
 
+        @include desktop {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
         @include mobile {
             font-size: 18px;
             line-height: 20px;
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
-        }
     }
 
     &__content {
         display: grid;
+
+        @include desktop {
+            margin: 66px 110px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 29px;
+        }
 
         @include mobile {
             margin: 20px;
@@ -197,11 +208,6 @@ const categories = computed(() => {
             gap: 15px;
         }
 
-        @include desktop {
-            margin: 66px 110px;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 29px;
-        }
     }
 
     &__pagination {
