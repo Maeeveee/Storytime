@@ -5,7 +5,7 @@ defineProps<{ articleItem: Article; }>()
 
 const modal = useModal();
 
-function viewCover(){
+function viewCover() {
     modal.open({
         component: ViewCoverModal
     });
@@ -33,16 +33,17 @@ function viewCover(){
 <style scoped lang="scss">
 .story-section {
     &__content-wrapper {
-        gap: 40px;
         display: flex;
 
-        @include mobile {
-            flex-direction: column;
+        @include desktop {
+            gap: vw(40);
+            padding-left: vw(16);
+            padding-right: vw(16);
         }
 
-        @include desktop {
-            padding-left: 16px;
-            padding-right: 16px;
+        @include mobile {
+            gap: vw-mobile(40);
+            flex-direction: column;
         }
     }
 
@@ -54,33 +55,34 @@ function viewCover(){
     &__image {
         border-radius: 8px;
 
-        @include mobile {
-            width: 350px;
-            height: 254px;
-        }
-
         @include desktop {
-            width: 547px;
-            height: 600px;
+            width: vw(547);
+            height: vw(600);
 
             &:hover {
                 cursor: pointer;
             }
         }
+
+        @include mobile {
+            width: vw-mobile(320);
+            height: vw-mobile(254);
+        }
     }
 
     &__article-text {
         font-weight: 400;
-        line-height: 27px;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 16px;
-            text-align: justify;
+        @include desktop {
+            font-size: vw(18);
+            line-height: vw(27);
         }
 
-        @include desktop {
-            font-size: 18px;
+        @include mobile {
+            font-size: vw-mobile(16);
+            line-height: vw-mobile(27);
+            text-align: justify;
         }
     }
 }
