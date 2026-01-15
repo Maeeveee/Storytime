@@ -56,14 +56,15 @@ onMounted(() => {
 .hero {
     text-align: center;
 
-    @include mobile {
-        padding-block: 80px;
-        margin-bottom: 170px;
+    @include desktop {
+        padding: vw(170);
     }
 
-    @include desktop {
-        padding: 170px;
+    @include mobile {
+        padding-block: vw-mobile(80);
+        margin-bottom: vw-mobile(170);
     }
+
 
     &__title {
         font-family: var(--font-display);
@@ -73,16 +74,16 @@ onMounted(() => {
         color: var(--color-text);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        @include mobile {
-            font-size: 42px;
-            margin-bottom: 25px;
-            line-height: 54px;
+        @include desktop {
+            font-size: vw(60);
+            margin-bottom: vw(30);
+            line-height: vw(74);
         }
 
-        @include desktop {
-            font-size: 60px;
-            margin-bottom: 30px;
-            line-height: 74px;
+        @include mobile {
+            font-size: vw-mobile(42);
+            margin-bottom: vw-mobile(25);
+            line-height: vw-mobile(54);
         }
     }
 
@@ -91,31 +92,34 @@ onMounted(() => {
         display: flex;
         flex-direction: column;
 
-        @include mobile {
-            max-width: 700px;
-            width: 100%;
+        @include desktop {
+            max-width: vw(1412);
         }
 
-        @include desktop {
-            max-width: 1412px;
+        @include mobile {
+            max-width: vw-mobile(700);
+            width: 100%;
         }
 
         &__text {
             font-weight: 400;
             color: var(--color-text-secondary);
-            max-width: 1412px;
             margin: auto;
-            margin-top: 25px;
-            margin-bottom: 30px;
-
-            @include mobile {
-                font-size: 18px;
-                line-height: 24px;
-            }
 
             @include desktop {
-                font-size: 24px;
-                line-height: 32px;
+                max-width: vw(1412);
+                margin-top: vw(25);
+                margin-bottom: vw(30);
+                font-size: vw(24);
+                line-height: vw(32);
+            }
+
+            @include mobile {
+                max-width: vw-mobile(1412);
+                margin-top: vw-mobile(25);
+                margin-bottom: vw-mobile(30);
+                font-size: vw-mobile(18);
+                line-height: vw-mobile(24);
             }
         }
     }
@@ -124,23 +128,29 @@ onMounted(() => {
         display: flex;
         margin: auto;
 
-        @include mobile {
-            width: 90%;
-        }
-
         @include desktop {
             width: 45%;
+        }
+
+        @include mobile {
+            width: 90%;
         }
     }
 
     &__wrapper {
-        margin-top: 40px;
-        margin-bottom: 30px;
         margin-left: auto;
         margin-right: auto;
 
         @include desktop {
-            max-width: 1002px;
+            max-width: vw(1002);
+            margin-top: vw(40);
+            margin-bottom: vw(30);
+        }
+
+        @include mobile {
+            max-width: vw-mobile(1002);
+            margin-top: vw-mobile(40);
+            margin-bottom: vw-mobile(30);
         }
     }
 }
