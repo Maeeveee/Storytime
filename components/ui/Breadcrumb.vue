@@ -16,37 +16,38 @@ defineProps<{ title?: string }>();
         display: flex;
         align-items: center;
 
-        @include mobile {
-            height: 70px;
-            padding-inline: 20px;
+        @include desktop {
+            height: vw(82);
+            padding-inline: vw(110);
         }
 
-        @include desktop {
-            height: 82px;
-            padding-inline: 110px;
+        @include mobile {
+            height: vw-mobile(70);
+            padding-inline: vw-mobile(20);
         }
     }
 
     &__text {
         font-weight: 500;
-        line-height: 26px;
         color: var(--color-primary);
         text-decoration: none;
-        margin-right: 16px;
-
-        @include mobile {
-            font-size: 12px;
-        }
 
         @include desktop {
-            font-size: 20px;
+            margin-right: vw(16);
+            line-height: vw(26);
+            font-size: vw(20);
 
-            &:hover{
+            &:hover {
                 text-decoration: underline;
-                text-decoration-thickness: 3px;
-                text-underline-offset: 10px;
+                text-decoration-thickness: vw(3);
+                text-underline-offset: vw(10);
             }
+        }
 
+        @include mobile {
+            margin-right: vw-mobile(16);
+            line-height: vw-mobile(26);
+            font-size: vw-mobile(16);
         }
     }
 }

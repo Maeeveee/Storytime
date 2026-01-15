@@ -34,21 +34,33 @@ const article = computed(() => {
 <style scoped lang="scss">
 .story-detail {
     &__container {
-        max-width: 1700px;
         margin: auto;
 
+        @include desktop {
+            max-width: vw(1700);
+
+        }
+
         @include mobile {
-            padding-inline: 8px;
+            max-width: vw-mobile(1700);
+            padding-inline: vw-mobile(8);
         }
     }
 
     &__story-content {
-        margin-bottom: 60px;
+        @include desktop {
+            margin-bottom: vw(60);
+        }
+
+        @include mobile {
+            margin-bottom: vw-mobile(60);
+        }
+
     }
 
     &__breadcrumb {
         @include desktop {
-            margin-top: 100px;
+            margin-top: vw(100);
         }
     }
 
@@ -58,21 +70,28 @@ const article = computed(() => {
         justify-content: center;
         align-items: center;
 
-        @include mobile {
-            margin-block: 30px;
-            gap: 20px;
+        @include desktop {
+            margin-top: vw(30);
+            gap: vw(50);
+            margin-bottom: vw(30);
         }
 
-        @include desktop {
-            margin-top: 30px;
-            gap: 50px;
-            margin-bottom: 30px;
+        @include mobile {
+            margin-block: vw-mobile(30);
+            gap: vw-mobile(20);
         }
 
         &__sub {
             display: flex;
             align-items: center;
-            gap: 20px;
+
+            @include desktop {
+                gap: vw(20);
+            }
+
+            @include mobile {
+                gap: vw-mobile(20);
+            }
         }
     }
 
@@ -80,14 +99,14 @@ const article = computed(() => {
         font-weight: 400;
         color: var(--color-text-secondary);
 
-        @include mobile {
-            font-size: 12px;
-            line-height: 26px;
+        @include desktop {
+            font-size: vw(24);
+            line-height: vw(32);
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
+        @include mobile {
+            font-size: vw-mobile(12);
+            line-height: vw-mobile(26);
         }
     }
 
@@ -96,15 +115,15 @@ const article = computed(() => {
         font-weight: 700;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 24px;
-            line-height: 30px;
-            text-align: center;
+        @include desktop {
+            font-size: vw(60);
+            line-height: vw(74);
         }
 
-        @include desktop {
-            font-size: 60px;
-            line-height: 74px;
+        @include mobile {
+            font-size: vw-mobile(24);
+            line-height: vw-mobile(30);
+            text-align: center;
         }
     }
 
@@ -112,40 +131,54 @@ const article = computed(() => {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+
+        @include desktop {
+            gap: vw(10);
+        }
+
+        @include mobile {
+            gap: vw-mobile(10);
+        }
     }
 
     &__author-name {
         font-weight: 500;
 
-        @include mobile {
-            font-size: 16px;
-            line-height: 20px;
+        @include desktop {
+            font-size: vw(20);
+            line-height: vw(26);
         }
 
-        @include desktop {
-            font-size: 20px;
-            line-height: 26px;
+        @include mobile {
+            font-size: vw-mobile(16);
+            line-height: vw-mobile(20);
         }
     }
 
     &__author-avatar {
         border-radius: 50%;
 
-        @include mobile {
-            height: 30px;
-            width: 30px;
+        @include desktop {
+            height: vw(50);
+            width: vw(50);
         }
 
-        @include desktop {
-            height: 50px;
-            width: 50px;
+        @include mobile {
+            height: vw-mobile(30);
+            width: vw-mobile(30);
         }
     }
 
     &__carousel-width {
-        max-width: 1700px;
         margin: auto;
+
+        @include desktop {
+            max-width: vw(1700);
+        }
+
+        @include mobile {
+            max-width: vw-mobile(1700);
+        }
     }
 
     &__genre-badge {
@@ -155,16 +188,16 @@ const article = computed(() => {
         font-weight: 400;
         color: var(--color-primary);
 
-        @include mobile {
-            padding: 4px 8px;
-            font-size: 12px;
-            line-height: 23px;
+        @include desktop {
+            padding: vw(8) vw(12);
+            font-size: vw(18);
+            line-height: vw(23);
         }
 
-        @include desktop {
-            padding: 8px 12px;
-            font-size: 18px;
-            line-height: 23px;
+        @include mobile {
+            padding: vw-mobile(4) vw-mobile(8);
+            font-size: vw-mobile(12);
+            line-height: vw-mobile(23);
         }
     }
 }
