@@ -115,4 +115,5 @@ const errorData = computed(() => {
         }
     }
 }
+
 </style>
