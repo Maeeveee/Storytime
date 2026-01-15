@@ -20,18 +20,24 @@ defineProps<{ to?: string, variant?: 'primary' | 'secondary' }>()
     text-decoration: none;
     cursor: pointer;
 
-    @include mobile {
-        padding: 10px 24px;
-        font-size: 18px;
+    @include desktop {
+        padding: vw(14) vw(30);
+        font-size: vw(24);
     }
 
-    @include desktop {
-        padding: 14px 30px;
-        font-size: 24px;
+    @include mobile {
+        padding: vw-mobile(10) vw-mobile(24);
+        font-size: vw-mobile(18);
     }
 
     &__navigation {
-        height: 32px;
+        @include desktop {
+            height: vw(32);
+        }
+
+        @include mobile {
+            height: vw-mobile(32);
+        }
     }
 
     &--primary {
