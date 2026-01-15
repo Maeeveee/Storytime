@@ -62,13 +62,14 @@ const filteredArticles = computed(() => {
 </template>
 <style scoped lang="scss">
 .my-story {
-    @include mobile {
-        margin-block: 30px;
-        margin-inline: 20px;
+    @include desktop {
+        margin-block: vw(65) vw(40);
+        margin-inline: vw(110);
     }
 
-    @include desktop {
-        margin: 65px 110px 40px 110px;
+    @include mobile {
+        margin-block: vw-mobile(30);
+        margin-inline: vw-mobile(20);
     }
 
     &__write-content {
@@ -79,18 +80,18 @@ const filteredArticles = computed(() => {
         justify-content: center;
         align-items: center;
 
-        @include mobile {
-            width: 200px;
-            height: 50px;
-            padding: 80px 77px 70px 78px;
+        @include desktop {
+            width: 546px vw(546);
+            height: 250px vw(250);
+            padding: vw(80) vw(77) vw(110) vw(78);
+            position: sticky;
+            top: vw(120);
         }
 
-        @include desktop {
-            width: 546px;
-            height: 250px;
-            padding: 80px 77px 110px 78px;
-            position: sticky;
-            top: 120px;
+        @include mobile {
+            width: vw-mobile(200);
+            height: vw-mobile(50);
+            padding: vw-mobile(80) vw-mobile(77) vw-mobile(70) vw-mobile(78);
         }
     }
 
@@ -100,12 +101,12 @@ const filteredArticles = computed(() => {
         align-items: center;
         text-align: center;
 
-        @include mobile {
-            max-width: 300px;
+        @include desktop {
+            max-width: vw(390);
         }
 
-        @include desktop {
-            max-width: 390px;
+        @include mobile {
+            max-width: vw-mobile(300);
         }
     }
 
@@ -113,66 +114,79 @@ const filteredArticles = computed(() => {
         font-weight: 700;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 24px;
-            line-height: 20px;
+        @include desktop {
+            font-size: vw(36);
+            line-height: vw(46);
         }
 
-        @include desktop {
-            font-size: 36px;
-            line-height: 46px;
+        @include mobile {
+            font-size: vw-mobile(24);
+            line-height: vw-mobile(20);
         }
     }
 
     &__quote {
         font-weight: 400;
         color: var(--color-text);
-        margin-top: 20px;
-
-        @include mobile {
-            font-size: 14px;
-            line-height: 20px;
-            margin-bottom: 10px;
-        }
 
         @include desktop {
-            font-size: 18px;
-            line-height: 27px;
-            margin-bottom: 30px;
+            font-size: vw(18);
+            line-height: vw(27);
+            margin-bottom: vw(30);
+            margin-top: vw(20);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(14);
+            line-height: vw-mobile(20);
+            margin-bottom: vw-mobile(10);
+            margin-top: vw-mobile(20);
         }
     }
 
     &__content-wrapper {
         display: flex;
 
+        @include desktop {
+            gap: vw(30);
+            margin-top: vw(99);
+        }
+
         @include mobile {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        @include desktop {
-            gap: 30px;
-            margin-top: 99px;
+            gap: vw-mobile(30);
+            margin-top: vw-mobile(30);
         }
     }
 
     &__content-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 29px;
+
+        @include desktop {
+            gap: vw(29);
+        }
+
+        @include mobile {
+            gap: vw-mobile(29);
+        }
     }
 
     &__no-story-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 20px;
 
         @include desktop {
+            gap: vw(20);
             align-items: center;
-            margin-left: 200px;
+            margin-left: vw(200);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+
         }
     }
 
@@ -180,15 +194,21 @@ const filteredArticles = computed(() => {
         text-align: center;
 
         @include desktop {
-            margin-bottom: 60px;
+            margin-bottom: vw(60);
         }
     }
 
     &__no-story-image {
-        width: 529px;
-        height: 546px;
+
+        @include desktop {
+            width: vw(529);
+            height: vw(546);
+
+        }
 
         @include mobile {
+            width: vw-mobile(529);
+            height: vw-mobile(546);
             display: none;
         }
     }
@@ -196,17 +216,18 @@ const filteredArticles = computed(() => {
     &__no-story-title {
         font-family: var(--font-display);
         font-weight: 600;
-        margin-bottom: 30px;
         color: var(--color-text);
-
-        @include mobile {
-            font-size: 22px;
-            line-height: 29px;
-        }
-
+        
         @include desktop {
-            font-size: 44px;
-            line-height: 58px;
+            font-size: vw(44);
+            line-height: vw(58);
+            margin-bottom: vw(30);
+        }
+        
+        @include mobile {
+            font-size: vw-mobile(22);
+            line-height: vw-mobile(29);
+            margin-bottom: vw-mobile(30);
         }
     }
 
@@ -214,14 +235,14 @@ const filteredArticles = computed(() => {
         font-weight: 400;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 16px;
-            line-height: 18px;
+        @include desktop {
+            font-size: vw(24);
+            line-height: vw(32);
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
+        @include mobile {
+            font-size: vw-mobile(16);
+            line-height: vw-mobile(18);
         }
     }
 }
