@@ -49,81 +49,133 @@ const handleLogin = async () => {
 
 <style lang="scss" scoped>
 .section-wrapper {
-    width: 825px;
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 8px;
 
-    @include mobile {
-        margin: 20px;
+    @include desktop {
+        width: vw(825);
+        height: vw(910);
+        margin: vw(20);
+        padding: vw(16) vw(32);
     }
 
-    @include desktop {
-        height: 910px;
-        margin: 20px;
-        padding: 2rem 4rem;
+    @include mobile {
+        width: vw-mobile(825);
+        margin: vw-mobile(20);
     }
 }
 
 .login {
     &__wrapper {
-        max-width: 577px;
         display: flex;
         flex-direction: column;
         margin-left: auto;
-        margin-top: 100px;
+
+        @include desktop {
+            max-width: vw(577);
+            margin-top: vw(100);
+        }
+
+        @include mobile {
+            max-width: vw-mobile(577);
+            margin-top: vw-mobile(100);
+        }
     }
 
     &__title {
         font-weight: 700;
-        font-size: 44px;
-        line-height: 58px;
         color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(44);
+            line-height: vw(58);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(44);
+            line-height: vw-mobile(58);
+        }
     }
 
     &__label {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 23px;
         color: var(--color-text-secondary);
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
+
+
+        @include desktop {
+            font-size: vw(18);
+            line-height: vw(23);
+            gap: vw(20);
+            margin-top: vw(20);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(23);
+            gap: vw-mobile(20);
+            margin-top: vw-mobile(20);
+        }
     }
 
     &__navigate-register {
         font-weight: 700;
         text-decoration: none;
         color: var(--color-primary);
-        margin-top: 30px;
+
+
+        @include desktop {
+            margin-top: vw(30);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(30);
+        }
     }
 
     &__navigate-text {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 23px;
         color: var(--color-text-secondary);
+
+        @include desktop {
+            font-size: vw(18);
+            line-height: vw(23);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(18);
+            line-height: vw-mobile(23);
+        }
     }
 
     &__button {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        max-width: 120px;
-        max-height: 60px;
+        @include desktop {
+            margin-top: vw(20);
+            margin-bottom: vw(20);
+            max-width: vw(120);
+            max-height: vw(60);
+        }
+
+        @include mobile {
+            margin-top: vw-mobile(20);
+            margin-bottom: vw-mobile(20);
+            max-width: vw-mobile(120);
+            max-height: vw-mobile(60);
+        }
     }
 
     &__logo {
-        @include mobile {
-            width: 150px;
-            height: 30px;
-            margin: auto;
+        @include desktop {
+            width: vw(256);
+            height: vw(59);
+            margin-bottom: vw(50);
         }
 
-        @include desktop {
-            width: 256px;
-            height: 59px;
-            margin-bottom: 50px;
+        @include mobile {
+            height: vw-mobile(30);
+            margin: auto;
         }
     }
 }

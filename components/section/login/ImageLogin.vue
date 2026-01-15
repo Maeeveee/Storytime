@@ -16,51 +16,51 @@
 .login {
     &__image-wrapper {
         background-color: #F0F5ED;
-        margin: 20px;
-        border-radius: 8px;
-        max-width: 960px;
         width: 100%;
-        max-height: 980px;
         height: 100%;
+        border-radius: 8px;
+        margin: vw(20);
+        max-width: vw(960);
+        max-height: vw(980);
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
 
     &__image-header {
-        max-width: 686px;
-        padding: 4rem 4rem 0rem 4rem;
+        display: flex;
+        gap: vw(30);
         margin-left: auto;
         margin-right: auto;
-        display: flex;
+        max-width: vw(686);
         flex-direction: column;
-        gap: 30px;
+        padding-block: vw(32) vw(0);
+        padding-inline: vw(32);
     }
 
     &__image-title {
-        max-width: 549px;
+        max-width: vw(549);
         font-family: "Playfair Display", serif;
         font-weight: 700;
-        font-size: 60px;
-        line-height: 74px;
-        color: #222222;
+        font-size: vw(60);
+        line-height: vw(74);
+        color: var(--color-text);
     }
 
     &__image-subtitle {
         font-weight: 400;
-        font-size: 28px;
-        line-height: 38px;
-        color: #4B4B4B;
+        font-size: vw(28);
+        line-height: vw(38);
+        color: var(--color-text-secondary);
     }
 
     &__image {
-        width: 752px;
-        height: 547px;
-        margin: 4rem 4rem 4rem 4rem;
+        width: vw(752);
+        height: vw(547);
+        margin: vw(32);
         display: flex;
         justify-content: left;
         align-items: start;
     }
-
 }
 </style>
