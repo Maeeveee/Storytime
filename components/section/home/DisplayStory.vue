@@ -97,7 +97,7 @@ const displayTitle = computed(() => {
         align-items: center;
 
         @include desktop {
-            margin-top: 160px;
+            margin-top: vw(160);
         }
     }
 
@@ -105,29 +105,29 @@ const displayTitle = computed(() => {
         font-family: var(--font-display);
         font-weight: 600;
 
-        @include mobile {
-            font-size: 30px;
-            line-height: 50px;
+        @include desktop {
+            font-size: vw(44);
+            line-height: vw(58);
         }
 
-        @include desktop {
-            font-size: 44px;
-            line-height: 58px;
+        @include mobile {
+            font-size: vw-mobile(30);
+            line-height: vw-mobile(50);
         }
     }
 
     &__grid {
         display: grid;
 
-        @include mobile {
-            max-width: 400px;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
         @include desktop {
             display: flex;
-            gap: 30px;
+            gap: vw(30);
+        }
+
+        @include mobile {
+            max-width: vw-mobile(400);
+            grid-template-columns: 1fr 1fr;
+            gap: vw-mobile(15);
         }
 
         &__desktop {
@@ -150,7 +150,14 @@ const displayTitle = computed(() => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 46px;
+
+            @include desktop {
+                gap: vw(46);
+            }
+
+            @include mobile {
+                gap: vw-mobile(46);
+            }
         }
     }
 
@@ -160,15 +167,16 @@ const displayTitle = computed(() => {
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-        padding-bottom: 16px;
-
-        @include mobile {
-            gap: 20px;
-        }
 
         @include desktop {
-            gap: 29px;
+            padding-bottom: vw(16);
+            gap: vw(29);
             overflow-x: visible;
+        }
+
+        @include mobile {
+            padding-bottom: vw-mobile(16);
+            gap: vw-mobile(20);
         }
 
         >* {
@@ -179,12 +187,21 @@ const displayTitle = computed(() => {
 
     &__carousel {
         display: flex;
-        gap: 20px;
         overflow-x: auto;
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-        padding-bottom: 16px;
+
+        @include desktop {
+            gap: vw(20);
+            padding-bottom: vw(16);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+            padding-bottom: vw-mobile(16);
+        }
+
 
         >* {
             scroll-snap-align: start;

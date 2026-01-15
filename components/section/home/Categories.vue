@@ -25,52 +25,43 @@ const categories = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-    .more-categories {
-        &__title {
-            margin-top: 100px;
-            font-family: "Playfair Display", serif;
-            font-size: 30px;
-            font-weight: 600;
-            line-height: 50px;
+.more-categories {
+    &__title {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+
+        @include desktop {
+            font-size: vw(44);
+            line-height: vw(58);
+            margin-top: vw(100);
         }
 
-        &__display {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+        @include mobile {
+            font-size: vw-mobile(30);
+            line-height: vw-mobile(50);
+            margin-top: vw-mobile(100);
         }
     }
 
-    hr {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        border: none;
-        border-top: 1px solid #ccc;
+    &__display {
+        grid-template-columns: 1fr 1fr;
+        
+        @include desktop {
+            display: flex;
+            gap: vw(8);
+        }
+        
+        @include mobile {
+            display: grid;
+            gap: vw-mobile(8);
+        }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .more-categories {
-        &__title {
-            margin-top: 100px;
-            font-family: "Playfair Display", serif;
-            font-size: 44px;
-            font-weight: 600;
-            line-height: 58px;
-        }
-
-        &__display {
-            display: flex;
-            gap: 8px;
-        }
-    }
-
-    hr {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        border: none;
-        border-top: 1px solid #ccc;
-    }
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 </style>
