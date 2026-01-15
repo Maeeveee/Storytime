@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { articles } from '~/data/articles';
-import StorySection from '~/components/section/storyDetail/StorySection.vue';
+import StorySection from '~/components/section/story-detail/StorySection.vue';
 import DisplayStory from '~/components/section/home/DisplayStory.vue';
 const route = useRoute();
 const title = route.params.title;
