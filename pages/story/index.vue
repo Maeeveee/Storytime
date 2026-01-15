@@ -87,11 +87,15 @@ const categories = computed(() => {
 
         @include desktop {
             margin: 170px 110px 40px 110px;
+            font-size: 44px;
+            line-height: 58px;
         }
 
         @include mobile {
             margin: 0 10px;
             display: none;
+            font-size: 44px;
+            line-height: 58px;
         }
     }
 
@@ -104,10 +108,14 @@ const categories = computed(() => {
         @include desktop {
             padding: 40px 110px;
             max-width: 1700px;
+            font-size: 44px;
+            line-height: 58px;
         }
 
         @include mobile {
             padding: 20px;
+            font-size: 44px;
+            line-height: 58px;
         }
     }
 
@@ -211,10 +219,19 @@ const categories = computed(() => {
     }
 
     &__pagination {
-        margin-top: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include desktop {
+            margin-top: 50px;
+
+        }
+
+        @include mobile {
+            margin-top: 50px;
+
+        }
     }
 }
 </style>
