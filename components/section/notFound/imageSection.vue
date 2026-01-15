@@ -1,3 +1,7 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
     <section class="image-section">
         <img src="/img/404.webp" alt="not found image" class="image-section__image" />
