@@ -36,7 +36,7 @@ function editProfile() {
 <style lang="scss" scoped>
 .dashboard {
     @include desktop {
-        margin-top: 100px;
+        margin-top: vw(100);
     }
 
     &__header {
@@ -46,13 +46,13 @@ function editProfile() {
         justify-content: center;
         align-items: center;
 
-        @include mobile {
-            height: 150px;
+        @include desktop {
+            width: vw(1920);
+            height: vw(400);
         }
 
-        @include desktop {
-            width: 1920px;
-            height: 400px;
+        @include mobile {
+            height: vw-mobile(150);
         }
     }
 
@@ -60,18 +60,18 @@ function editProfile() {
         margin: auto;
         align-items: center;
 
+        @include desktop {
+            max-width: vw(1700);
+            display: flex;
+            gap: vw(39);
+            padding: vw(100) vw(240);
+        }
+
         @include mobile {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             justify-content: space-between;
-            gap: 10px;
-        }
-
-        @include desktop {
-            max-width: 1700px;
-            display: flex;
-            gap: 39px;
-            padding: 100px 240px;
+            gap: vw-mobile(10);
         }
     }
 
@@ -79,15 +79,15 @@ function editProfile() {
         border-radius: 50%;
         border: 1px solid var(--color-primary);
 
-        @include mobile {
-            margin: auto;
-            width: 70px;
-            height: 70px;
+        @include desktop {
+            width: vw(200);
+            height: vw(200);
         }
 
-        @include desktop {
-            width: 200px;
-            height: 200px;
+        @include mobile {
+            margin: auto;
+            width: vw-mobile(70);
+            height: vw-mobile(70);
         }
     }
 
@@ -96,7 +96,7 @@ function editProfile() {
         flex-direction: column;
 
         @include desktop {
-            width: 976.5px;
+            width: vw(976.5);
         }
     }
 
@@ -104,16 +104,16 @@ function editProfile() {
         font-weight: 700;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 24px;
-            line-height: 24px;
-            margin-bottom: 8px;
+        @include desktop {
+            font-size: vw(36);
+            line-height: vw(46);
+            margin-bottom: vw(10);
         }
 
-        @include desktop {
-            font-size: 36px;
-            line-height: 46px;
-            margin-bottom: 10px;
+        @include mobile {
+            font-size: vw-mobile(24);
+            line-height: vw-mobile(24);
+            margin-bottom: vw-mobile(8);
         }
     }
 
@@ -121,16 +121,16 @@ function editProfile() {
         font-weight: 400;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 16px;
-            line-height: 16px;
-            margin-bottom: 8px;
+        @include desktop {
+            font-size: vw(24);
+            line-height: vw(32);
+            margin-bottom: vw(30);
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
-            margin-bottom: 30px;
+        @include mobile {
+            font-size: vw-mobile(16);
+            line-height: vw-mobile(16);
+            margin-bottom: vw-mobile(8);
         }
     }
 
@@ -138,14 +138,14 @@ function editProfile() {
         font-weight: 400;
         color: var(--color-text-secondary);
 
-        @include mobile {
-            font-size: 16px;
-            line-height: 16px;
+        @include desktop {
+            font-size: vw(24);
+            line-height: vw(32);
         }
 
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
+        @include mobile {
+            font-size: vw-mobile(16);
+            line-height: vw-mobile(16);
         }
     }
 }
