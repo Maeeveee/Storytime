@@ -17,6 +17,7 @@ const model = defineModel<string>();
     border-radius: 8px;
     width: 100%;
     height: 100%;
+    font-family: var(--font-primary);
 
     @include desktop {
         padding: vw(24) vw(30);

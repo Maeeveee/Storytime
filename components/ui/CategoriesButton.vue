@@ -18,18 +18,19 @@ defineProps<{ category?: string }>();
         align-items: center;
         border-radius: 12px;
         text-decoration: none;
-        font-size: 28px;
         font-weight: 500;
 
-        @include mobile {
-            padding-inline: 20px;
-            padding-block: 40px;
+        @include desktop {
+            font-size: vw(28);
+            width: vw(135);
+            height: vw(38);
+            padding: vw(60);
         }
 
-        @include desktop {
-            width: 135px;
-            height: 38px;
-            padding: 60px;
+        @include mobile {
+            font-size: vw-mobile(28);
+            padding-inline: vw-mobile(20);
+            padding-block: vw-mobile(40);
         }
 
         &:hover {

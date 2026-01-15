@@ -15,7 +15,7 @@ const items = [1, 2, 3, 4, 5];
     display: flex;
 
     @include mobile {
-        gap: 20px;
+        gap: vw-mobile(20);
     }
 
     &__pagination {
@@ -26,16 +26,16 @@ const items = [1, 2, 3, 4, 5];
         font-weight: 700;
         transition: background-color 0.3s, color 0.3s;
 
-        @include mobile {
-            font-size: 14px;
-            line-height: 19px;
-            padding: 8px 15px;
+        @include desktop {
+            font-size: vw(28);
+            line-height: vw(38);
+            padding: vw(16) vw(30);
         }
 
-        @include desktop {
-            font-size: 28px;
-            line-height: 38px;
-            padding: 16px 30px;
+        @include mobile {
+            font-size: vw-mobile(14);
+            line-height: vw-mobile(19);
+            padding: vw-mobile(8) vw-mobile(15);
         }
 
         &--active {

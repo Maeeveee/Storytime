@@ -19,6 +19,7 @@ defineProps<{ to?: string, variant?: 'primary' | 'secondary' }>()
     border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
+    font-family: var(--font-primary);
 
     @include desktop {
         padding: vw(14) vw(30);
