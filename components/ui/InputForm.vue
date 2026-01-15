@@ -18,20 +18,27 @@ const model = defineModel<string>();
     width: 100%;
     height: 100%;
 
-    @include mobile {
-        padding: 15px;
-        font-size: 18px;
-        line-height: 20px;
+    @include desktop {
+        padding: vw(24) vw(30);
+        font-size: vw(24);
+        line-height: vw(32);
     }
 
-    @include desktop {
-        padding: 24px 30px;
-        font-size: 24px;
-        line-height: 32px;
+    @include mobile {
+        padding: vw-mobile(15);
+        font-size: vw-mobile(18);
+        line-height: vw-mobile(20);
     }
 
     &--primary {
-        max-height: 23px;
+        @include desktop {
+            max-height: vw(23);
+        }
+
+        @include mobile {
+            max-height: vw-mobile(23);
+        }
+
 
         &:focus {
             border-color: var(--color-primary);
@@ -39,16 +46,22 @@ const model = defineModel<string>();
     }
 
     &--secondary {
-        max-height: 32px;
+        @include desktop {
+            max-height: vw(32);
+        }
+
+        @include mobile {
+            max-height: vw-mobile(32);
+        }
     }
 
     &--with-icon {
-        @include mobile {
-            padding-right: 50px;
+        @include desktop {
+            padding-right: vw(60);
         }
 
-        @include desktop {
-            padding-right: 60px;
+        @include mobile {
+            padding-right: vw-mobile(50);
         }
     }
 
@@ -58,17 +71,18 @@ const model = defineModel<string>();
 
     &__icon {
         position: absolute;
-        right: 20px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--color-text-secondary);
 
-        @include mobile {
-            font-size: 25px;
+        @include desktop {
+            font-size: vw(30);
+            right: vw(20);
         }
 
-        @include desktop {
-            font-size: 30px;
+        @include mobile {
+            font-size: vw-mobile(25);
+            right: vw-mobile(20);
         }
     }
 
