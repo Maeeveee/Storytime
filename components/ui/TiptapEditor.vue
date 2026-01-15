@@ -40,9 +40,18 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .custom-input {
-    padding: 10px;
     border: 2px solid var(--color-border);
     border-radius: 8px;
+
+    @include desktop {
+        padding: vw(10);
+
+    }
+
+    @include mobile {
+        padding: vw-mobile(10);
+
+    }
 
     &:focus {
         border: 2px solid var(--color-primary);
@@ -50,21 +59,37 @@ onBeforeUnmount(() => {
 }
 
 .button {
-    padding: 5px;
     border: none;
     background-color: var(--color-white);
     cursor: pointer;
     border-radius: 8px;
-    margin-bottom: 5px;
-    margin-right: 5px;
+
+    @include desktop {
+        padding: vw(5);
+        margin-bottom: vw(5);
+        margin-right: vw(5);
+    }
+
+    @include mobile {
+        padding: vw-mobile(5);
+        margin-bottom: vw-mobile(5);
+        margin-right: vw-mobile(5);
+    }
 
     &:hover {
         background-color: var(--color-border);
     }
 
     &__icon {
-        font-size: 20px;
         color: var(--color-text);
+
+        @include desktop {
+            font-size: vw(20);
+        }
+
+        @include mobile {
+            font-size: vw-mobile(20);
+        }
     }
 }
 </style>

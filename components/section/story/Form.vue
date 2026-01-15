@@ -20,9 +20,7 @@ function handleStory() {
     } else {
         toast.success('Successfully edit a story')
         navigateTo('/dashboard')
-
     }
-
 }
 
 
@@ -33,10 +31,10 @@ function handleStory() {
             <NuxtLink to="/dashboard/">
                 <Icon name="formkit:arrowleft" class="create__back-icon" />
             </NuxtLink>
-            <h1 v-if="title === 'write'" class="">
+            <h1 v-if="title === 'write'">
                 Write Story
             </h1>
-            <h1 v-else class="">
+            <h1 v-else>
                 Edit Story
             </h1>
         </div>
@@ -63,7 +61,6 @@ function handleStory() {
                         </div> -->
                     <Icon name="ph:image-thin" class="create__input-icon" />
                     <span>Choose Image</span>
-                    <input type="file">
                 </div>
             </label>
             <div class="create__button">
@@ -76,12 +73,12 @@ function handleStory() {
 </template>
 <style scoped lang="scss">
 .create {
-    @include mobile {
-        padding: 20px;
+    @include desktop {
+        padding: vw(220) vw(110) vw(60);
     }
 
-    @include desktop {
-        padding: 220px 110px 60px;
+    @include mobile {
+        padding: vw-mobile(20);
     }
 
     &__cancel {
@@ -90,8 +87,8 @@ function handleStory() {
             align-items: center;
             justify-content: center;
             position: absolute;
-            bottom: 130px;
-            left: 550px;
+            bottom: vw(130);
+            left: vw(550);
 
             &__button {
                 background-color: var(--color-primary);
@@ -99,7 +96,7 @@ function handleStory() {
             }
 
             &__icon {
-                font-size: 35px;
+                font-size: vw(35);
                 color: var(--color-white);
             }
         }
@@ -107,8 +104,16 @@ function handleStory() {
 
     &__button {
         display: flex;
-        gap: 41px;
-        margin-top: 60px;
+
+        @include desktop {
+            gap: vw(41);
+            margin-top: vw(60);
+        }
+
+        @include mobile {
+            gap: vw-mobile(41);
+            margin-top: vw-mobile(60);
+        }
     }
 
     &__navigation-wrapper {
@@ -116,19 +121,20 @@ function handleStory() {
         font-weight: 600;
         display: flex;
         align-items: center;
-        margin-bottom: 60px;
         color: var(--color-text);
 
-        @include mobile {
-            font-size: 30px;
-            line-height: 29px;
-            gap: 30px;
+        @include desktop {
+            gap: vw(84);
+            font-size: vw(44);
+            line-height: vw(58);
+            margin-bottom: vw(60);
         }
 
-        @include desktop {
-            font-size: 44px;
-            line-height: 58px;
-            gap: 84px;
+        @include mobile {
+            gap: vw-mobile(30);
+            font-size: vw-mobile(30);
+            line-height: vw-mobile(29);
+            margin-bottom: vw-mobile(60);
         }
     }
 
@@ -139,14 +145,31 @@ function handleStory() {
     &__label {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        margin-top: 30px;
+
+        @include desktop {
+            gap: vw(20);
+            margin-top: vw(30);
+        }
+
+        @include mobile {
+            gap: vw-mobile(20);
+            margin-top: vw-mobile(30);
+
+        }
 
         &__title {
             font-weight: 400;
-            font-size: 18px;
-            line-height: 23px;
             color: var(--color-text-secondary);
+
+            @include desktop {
+                font-size: vw(18);
+                line-height: vw(23);
+            }
+
+            @include mobile {
+                font-size: vw-mobile(18);
+                line-height: vw-mobile(23);
+            }
         }
     }
 
@@ -159,20 +182,27 @@ function handleStory() {
         color: var(--color-text-secondary);
         flex-direction: column;
 
-        @include mobile {
-            width: 300px;
-            height: 250px;
+        @include desktop {
+            width: vw(500);
+            height: vw(400);
         }
 
-        @include desktop {
-            width: 500px;
-            height: 400px;
+        @include mobile {
+            width: vw-mobile(300);
+            height: vw-mobile(250);
         }
     }
 
     &__input-icon {
-        width: 100px;
-        height: 100px;
+        @include desktop {
+            width: vw(100);
+            height: vw(100);
+        }
+
+        @include mobile {
+            width: vw-mobile(100);
+            height: vw-mobile(100);
+        }
     }
 }
 </style>
