@@ -42,6 +42,7 @@ $max-viewport: 1920px;
     @return $value;
 }
  
+
 @function fluid($min-px, $max-px, $min-vw: $min-viewport, $max-vw: $max-viewport) {
     $min-value: ensure-px($min-px);
     $max-value: ensure-px($max-px);
