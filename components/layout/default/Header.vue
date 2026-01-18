@@ -71,8 +71,10 @@ function handleLogout() {
                         </button>
                         <Transition name="dropdown">
                             <div v-if="isDropdownOpen" class="dropdown__content">
-                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
-                                <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
+                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile
+                                </NuxtLink>
+                                <button class="dropdown__item dropdown__item--button"
+                                    @click="handleLogout">Logout</button>
                             </div>
                         </Transition>
                     </div>
