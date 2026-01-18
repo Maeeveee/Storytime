@@ -11,26 +11,24 @@ const article = computed(() => {
 </script>
 
 <template>
-    <ClientOnly>
-        <main>
-            <UiBreadcrumb class="story-detail__breadcrumb" :title="article?.title" />
-            <div class="story-detail__container">
-                <div class="story-detail__header">
-                    <div class="story-detail__header__sub">
-                        <h4 class="story-detail__date">{{ article?.createdDate }}</h4>
-                        <span class="story-detail__genre-badge">{{ article?.category }}</span>
-                    </div>
-                    <h1 class="story-detail__title">{{ article?.title }}</h1>
-                    <div class="story-detail__author-info">
-                        <img :src="article?.authorAvatar" alt="author avatar" class="story-detail__author-avatar">
-                        <span class="story-detail__author-name">{{ article?.authorName }}</span>
-                    </div>
+    <main>
+        <UiBreadcrumb class="story-detail__breadcrumb" :title="article?.title" />
+        <div class="story-detail__container">
+            <div class="story-detail__header">
+                <div class="story-detail__header__sub">
+                    <h4 class="story-detail__date">{{ article?.createdDate }}</h4>
+                    <span class="story-detail__genre-badge">{{ article?.category }}</span>
                 </div>
-                <StorySection v-if="article" :article-item="article" class="story-detail__story-content" />
-                <DisplayStory :category="article?.category" display="flex" title="Similar Story" />
+                <h1 class="story-detail__title">{{ article?.title }}</h1>
+                <div class="story-detail__author-info">
+                    <img :src="article?.authorAvatar" alt="author avatar" class="story-detail__author-avatar">
+                    <span class="story-detail__author-name">{{ article?.authorName }}</span>
+                </div>
             </div>
-        </main>
-    </ClientOnly>
+            <StorySection v-if="article" :article-item="article" class="story-detail__story-content" />
+            <DisplayStory :category="article?.category" display="flex" title="Similar Story" />
+        </div>
+    </main>
 </template>
 
 <style scoped lang="scss">
