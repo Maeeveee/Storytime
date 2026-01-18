@@ -95,50 +95,57 @@ const displayTitle = computed(() => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: fluid(80, 160);
 
-        @include desktop {
-            margin-top: vw(160);
+        @include tablet {
+            margin-top: fluid(60, 100);
         }
     }
 
     &__title {
         font-family: var(--font-display);
         font-weight: 600;
-
-        @include desktop {
-            font-size: vw(44);
-            line-height: vw(58);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(30);
-            line-height: vw-mobile(50);
-        }
+        font-size: fluid(30, 44);
+        line-height: fluid(50, 58);
     }
 
     &__grid {
         display: grid;
+        gap: fluid(15, 30);
 
         @include desktop {
             display: flex;
-            gap: vw(30);
+        }
+
+        @include tablet {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
         }
 
         @include mobile {
             max-width: vw-mobile(400);
             grid-template-columns: 1fr 1fr;
-            gap: vw-mobile(15);
         }
 
         &__desktop {
             @include mobile {
                 display: none;
             }
+
+            @include tablet {
+                display: none;
+            }
         }
 
         &__mobile {
-            @include desktop {
-                display: none;
+            display: none;
+
+            @include mobile {
+                display: block;
+            }
+
+            @include tablet {
+                display: block;
             }
         }
 
@@ -150,14 +157,7 @@ const displayTitle = computed(() => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-
-            @include desktop {
-                gap: vw(46);
-            }
-
-            @include mobile {
-                gap: vw-mobile(46);
-            }
+            gap: fluid(46, 46);
         }
     }
 
@@ -167,16 +167,15 @@ const displayTitle = computed(() => {
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
+        padding-bottom: fluid(16, 16);
+        gap: fluid(20, 29);
 
         @include desktop {
-            padding-bottom: vw(16);
-            gap: vw(29);
             overflow-x: visible;
         }
 
-        @include mobile {
-            padding-bottom: vw-mobile(16);
-            gap: vw-mobile(20);
+        @include tablet {
+            overflow-x: auto;
         }
 
         >* {
@@ -191,17 +190,8 @@ const displayTitle = computed(() => {
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-
-        @include desktop {
-            gap: vw(20);
-            padding-bottom: vw(16);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
-            padding-bottom: vw-mobile(16);
-        }
-
+        gap: fluid(20, 20);
+        padding-bottom: fluid(16, 16);
 
         >* {
             scroll-snap-align: start;

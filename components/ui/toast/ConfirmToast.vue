@@ -12,45 +12,29 @@ defineProps<{ text: string }>();
 </template>
 <style scoped lang="scss">
 .toast {
-    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
+    border-radius: fluid(8, 8);
+    width: fluid(600, 600);
+    height: fluid(70, 70);
 
-    @include desktop {
-        width: vw(600);
-        height: vw(70);
-    }
-
-    @include mobile {
-        width: vw-mobile(600);
-        height: vw-mobile(70);
+    @include tablet {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        padding: fluid(15, 20);
     }
 
     &__content {
         display: flex;
         align-items: center;
-
-        @include desktop {
-            gap: vw(16);
-        }
-
-        @include mobile {
-            gap: vw-mobile(16);
-        }
+        gap: fluid(16, 16);
 
         &__icon {
-
-            @include desktop {
-                width: vw(30);
-                height: vw(30);
-            }
-
-            @include mobile {
-                width: vw-mobile(30);
-                height: vw-mobile(30);
-            }
+            width: fluid(30, 30);
+            height: fluid(30, 30);
 
             &--primary {
                 color: var(--color-primary);
@@ -58,28 +42,21 @@ defineProps<{ text: string }>();
 
             &--secondary {
                 color: var(--color-text-secondary);
+                margin-left: fluid(104.5, 104.5);
 
-                @include desktop {
-                    margin-left: vw(104.5);
-                }
-
-                @include mobile {
-                    margin-left: vw-mobile(104.5);
+                @include tablet {
+                    margin-left: fluid(20, 40);
                 }
             }
         }
 
         &__text {
             font-weight: 700;
+            font-size: fluid(20, 20);
+            line-height: fluid(26, 26);
 
-            @include desktop {
-                font-size: vw(20);
-                line-height: vw(26);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(20);
-                line-height: vw-mobile(26);
+            @include tablet {
+                font-size: fluid(16, 18);
             }
         }
     }

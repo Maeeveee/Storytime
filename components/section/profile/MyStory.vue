@@ -62,36 +62,31 @@ const filteredArticles = computed(() => {
 </template>
 <style scoped lang="scss">
 .my-story {
-    @include desktop {
-        margin-block: vw(65) vw(40);
-        margin-inline: vw(110);
-    }
-
-    @include mobile {
-        margin-block: vw-mobile(30);
-        margin-inline: vw-mobile(20);
-    }
+    margin-block: fluid(30, 65) fluid(30, 40);
+    margin-inline: auto;
+    padding-inline: fluid(20, 40);
+    max-width: fluid(375, 1700);
 
     &__write-content {
         border: 1px solid var(--color-border);
-        border-radius: 8px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        border-radius: fluid(8, 8);
+        width: fluid(200, 546);
+        height: fluid(50, 250);
+        padding: fluid(80, 80) fluid(77, 77) fluid(70, 110) fluid(78, 78);
 
         @include desktop {
-            width: vw(546);
-            height: vw(250);
-            padding: vw(80) vw(77) vw(110) vw(78);
             position: sticky;
             top: vw(120);
         }
 
-        @include mobile {
-            width: vw-mobile(200);
-            height: vw-mobile(50);
-            padding: vw-mobile(80) vw-mobile(77) vw-mobile(70) vw-mobile(78);
+        @include tablet {
+            width: 100%;
+            height: auto;
+            padding: fluid(40, 60);
         }
     }
 
@@ -100,115 +95,94 @@ const filteredArticles = computed(() => {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        max-width: fluid(300, 390);
 
-        @include desktop {
-            max-width: vw(390);
-        }
-
-        @include mobile {
-            max-width: vw-mobile(300);
+        @include tablet {
+            max-width: 100%;
         }
     }
 
     &__title {
         font-weight: 700;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(36);
-            line-height: vw(46);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(24);
-            line-height: vw-mobile(20);
-        }
+        font-size: fluid(24, 36);
+        line-height: fluid(20, 46);
     }
 
     &__quote {
         font-weight: 400;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(27);
-            margin-bottom: vw(30);
-            margin-top: vw(20);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(14);
-            line-height: vw-mobile(20);
-            margin-bottom: vw-mobile(10);
-            margin-top: vw-mobile(20);
-        }
+        font-size: fluid(14, 18);
+        line-height: fluid(20, 27);
+        margin-bottom: fluid(10, 30);
+        margin-top: fluid(20, 20);
     }
 
     &__content-wrapper {
         display: flex;
+        gap: fluid(30, 30);
+        margin-top: fluid(30, 99);
 
-        @include desktop {
-            gap: vw(30);
-            margin-top: vw(99);
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         @include mobile {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: vw-mobile(30);
-            margin-top: vw-mobile(30);
         }
     }
 
     &__content-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: fluid(29, 29);
 
-        @include desktop {
-            gap: vw(29);
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
         }
 
         @include mobile {
-            gap: vw-mobile(29);
+            grid-template-columns: 1fr;
         }
     }
 
     &__no-story-wrapper {
         display: flex;
         flex-direction: column;
+        gap: fluid(20, 20);
 
         @include desktop {
-            gap: vw(20);
             align-items: center;
             margin-left: vw(200);
         }
 
-        @include mobile {
-            gap: vw-mobile(20);
-
+        @include tablet {
+            align-items: center;
+            margin-left: 0;
         }
     }
 
     &__no-story-header {
         text-align: center;
-
-        @include desktop {
-            margin-bottom: vw(60);
-        }
+        margin-bottom: fluid(30, 60);
     }
 
     &__no-story-image {
+        width: fluid(529, 529);
+        height: fluid(546, 546);
 
-        @include desktop {
-            width: vw(529);
-            height: vw(546);
-
+        @include tablet {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
         }
 
         @include mobile {
-            width: vw-mobile(529);
-            height: vw-mobile(546);
             display: none;
         }
     }
@@ -217,33 +191,16 @@ const filteredArticles = computed(() => {
         font-family: var(--font-display);
         font-weight: 600;
         color: var(--color-text);
-        
-        @include desktop {
-            font-size: vw(44);
-            line-height: vw(58);
-            margin-bottom: vw(30);
-        }
-        
-        @include mobile {
-            font-size: vw-mobile(22);
-            line-height: vw-mobile(29);
-            margin-bottom: vw-mobile(30);
-        }
+        font-size: fluid(22, 44);
+        line-height: fluid(29, 58);
+        margin-bottom: fluid(30, 30);
     }
 
     &__no-story-text {
         font-weight: 400;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(24);
-            line-height: vw(32);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(16);
-            line-height: vw-mobile(18);
-        }
+        font-size: fluid(16, 24);
+        line-height: fluid(18, 32);
     }
 }
 </style>

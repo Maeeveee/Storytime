@@ -41,14 +41,21 @@ $max-viewport: 1920px;
 
     @return $value;
 }
- 
+
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
 @function fluid($min-px, $max-px, $min-vw: $min-viewport, $max-vw: $max-viewport) {
     $min-value: ensure-px($min-px);
     $max-value: ensure-px($max-px);
     $min-vw-value: ensure-px($min-vw);
     $max-vw-value: ensure-px($max-vw);
 
-    @return clamp(#{$min-value}, calc(#{$min-value} + (#{$max-value} - #{$min-value}) * ((100vw - #{$min-vw-value}) / (#{$max-vw-value} - #{$min-vw-value}))), #{$max-value});
+    $slope: math.div(strip-unit($max-value) - strip-unit($min-value), strip-unit($max-vw-value) - strip-unit($min-vw-value));
+    $intersection: strip-unit($min-value) - $slope * strip-unit($min-vw-value);
+
+    @return clamp(#{$min-value}, #{$intersection * 1px} + #{$slope * 100vw}, #{$max-value});
 }
 
 @function fluid-type($min-px, $max-px) {

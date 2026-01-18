@@ -9,13 +9,7 @@
 <style scoped lang="scss">
 .explore-more {
     &__icon {
-        @include desktop {
-            font-size: vw(24);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-        }
+        font-size: fluid(18, 24);
     }
 
     &__text {
@@ -24,17 +18,8 @@
         font-weight: 400;
         display: flex;
         align-items: center;
-
-        @include desktop {
-            font-size: vw(24);
-            line-height: vw(32);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(32);
-        }
-
+        font-size: fluid(18, 24);
+        line-height: fluid(32, 32);
 
         &:hover {
             color: var(--color-primary);
@@ -43,8 +28,8 @@
 
             &:hover {
                 text-decoration: underline;
-                text-decoration-thickness: 3px;
-                text-underline-offset: 10px;
+                text-decoration-thickness: fluid(3, 3);
+                text-underline-offset: fluid(10, 10);
             }
         }
     }

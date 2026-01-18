@@ -16,35 +16,21 @@
 .register {
     &__image-section {
         background-color: #F0F5ED;
-        border-radius: 8px;
+        border-radius: fluid(8, 8);
+        height: fluid(910, 910);
+        max-width: fluid(805, 805);
+        margin: fluid(20, 20);
+        padding-block: fluid(16, 16);
+        padding-inline: fluid(32, 32);
 
-        @include desktop {
-            height: vw(910);
-            max-width: vw(805);
-            margin: vw(20);
-            padding-block: vw(16);
-            padding-inline: vw(32);
-        }
-
-        @include mobile {
-            height: vw-mobile(910);
-            max-width: vw-mobile(805);
-            margin: vw-mobile(20);
-            padding-block: vw(16);
-            padding-inline: vw(32);
+        @include tablet {
+            display: none;
         }
     }
 
     &__image {
-        @include desktop {
-            width: vw(752);
-            height: vw(547);
-        }
-
-        @include mobile {
-            width: vw-mobile(752);
-            height: vw-mobile(547);
-        }
+        width: fluid(752, 752);
+        height: fluid(547, 547);
     }
 
     &__title {
@@ -52,20 +38,10 @@
         font-weight: 700;
         font-style: normal;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(60);
-            line-height: vw(74);
-            width: vw(835);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(60);
-            line-height: vw-mobile(74);
-            width: vw-mobile(835);
-            margin-bottom: vw-mobile(30);
-        }
+        font-size: fluid(60, 60);
+        line-height: fluid(74, 74);
+        width: fluid(835, 835);
+        margin-bottom: fluid(30, 30);
     }
 
     &__text {
@@ -73,32 +49,15 @@
         font-weight: 400;
         font-style: normal;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: vw(28);
-            line-height: vw(38);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(28);
-            line-height: vw-mobile(38);
-            margin-bottom: vw-mobile(30);
-        }
+        font-size: fluid(28, 28);
+        line-height: fluid(38, 38);
+        margin-bottom: fluid(30, 30);
     }
 
     &__logo {
-        @include desktop {
-            width: vw(256);
-            height: vw(59);
-            margin-bottom: vw(50);
-        }
-
-        @include mobile {
-            width: vw-mobile(256);
-            height: vw-mobile(59);
-            margin-bottom: vw-mobile(50);
-        }
+        width: fluid(256, 256);
+        height: fluid(59, 59);
+        margin-bottom: fluid(50, 50);
     }
 }
 </style>

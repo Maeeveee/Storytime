@@ -73,12 +73,13 @@ function handleStory() {
 </template>
 <style scoped lang="scss">
 .create {
-    @include desktop {
-        padding: vw(220) vw(110) vw(60);
-    }
+    padding: fluid(100, 180) fluid(20, 40) fluid(20, 60);
+    max-width: fluid(375, 1700);
+    margin-left: auto;
+    margin-right: auto;
 
-    @include mobile {
-        padding: vw-mobile(20);
+    @include tablet {
+        padding-top: fluid(80, 120);
     }
 
     &__cancel {
@@ -104,15 +105,16 @@ function handleStory() {
 
     &__button {
         display: flex;
+        gap: fluid(41, 41);
+        margin-top: fluid(60, 60);
 
-        @include desktop {
-            gap: vw(41);
-            margin-top: vw(60);
+        @include tablet {
+            justify-content: center;
         }
 
         @include mobile {
-            gap: vw-mobile(41);
-            margin-top: vw-mobile(60);
+            flex-direction: column;
+            gap: fluid(20, 20);
         }
     }
 
@@ -122,19 +124,13 @@ function handleStory() {
         display: flex;
         align-items: center;
         color: var(--color-text);
+        gap: fluid(30, 84);
+        font-size: fluid(30, 44);
+        line-height: fluid(29, 58);
+        margin-bottom: fluid(60, 60);
 
-        @include desktop {
-            gap: vw(84);
-            font-size: vw(44);
-            line-height: vw(58);
-            margin-bottom: vw(60);
-        }
-
-        @include mobile {
-            gap: vw-mobile(30);
-            font-size: vw-mobile(30);
-            line-height: vw-mobile(29);
-            margin-bottom: vw-mobile(60);
+        @include tablet {
+            gap: fluid(20, 40);
         }
     }
 
@@ -145,64 +141,38 @@ function handleStory() {
     &__label {
         display: flex;
         flex-direction: column;
-
-        @include desktop {
-            gap: vw(20);
-            margin-top: vw(30);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
-            margin-top: vw-mobile(30);
-
-        }
+        gap: fluid(20, 20);
+        margin-top: fluid(30, 30);
 
         &__title {
             font-weight: 400;
             color: var(--color-text-secondary);
-
-            @include desktop {
-                font-size: vw(18);
-                line-height: vw(23);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(18);
-                line-height: vw-mobile(23);
-            }
+            font-size: fluid(18, 18);
+            line-height: fluid(23, 23);
         }
     }
 
     &__input-image {
-        border-radius: 8px;
         border: 2px solid var(--color-border);
         display: flex;
         justify-content: center;
         align-items: center;
         color: var(--color-text-secondary);
         flex-direction: column;
+        border-radius: fluid(8, 8);
+        width: fluid(300, 500);
+        height: fluid(250, 400);
 
-        @include desktop {
-            width: vw(500);
-            height: vw(400);
-        }
-
-        @include mobile {
-            width: vw-mobile(300);
-            height: vw-mobile(250);
+        @include tablet {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
         }
     }
 
     &__input-icon {
-        @include desktop {
-            width: vw(100);
-            height: vw(100);
-        }
-
-        @include mobile {
-            width: vw-mobile(100);
-            height: vw-mobile(100);
-        }
+        width: fluid(100, 100);
+        height: fluid(100, 100);
     }
 }
 </style>

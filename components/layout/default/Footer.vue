@@ -22,47 +22,46 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
         align-items: center;
         justify-content: space-between;
         border-top: 1px solid var(--color-text-secondary);
+        margin-top: fluid(59, 200);
+        padding: fluid(10, 25) fluid(20, 40) fluid(10, 35);
+        max-width: fluid(375, 1700);
+        margin-left: auto;
+        margin-right: auto;
 
-        @include desktop {
-            margin-top: vw(200);
-            padding: vw(25) vw(110) vw(35);
+        @include tablet {
+            flex-direction: column;
+            gap: fluid(15, 20);
         }
 
         @include mobile {
             flex-direction: column;
-            margin-top: vw-mobile(59);
-            padding: vw-mobile(10);
         }
     }
 
     &__text {
         font-weight: 500;
         color: var(--color-text-secondary);
+        font-size: fluid(14, 20);
+        line-height: fluid(20, 26);
 
-        @include desktop {
-            font-size: vw(20);
-            line-height: vw(26);
+        @include tablet {
+            order: 2;
+            margin-top: fluid(10, 15);
         }
 
         @include mobile {
-            margin-top: vw-mobile(30);
-            margin-bottom: vw-mobile(20);
-            font-size: vw-mobile(15);
-            line-height: vw-mobile(26);
+            margin-top: fluid(20, 30);
+            margin-bottom: fluid(15, 20);
         }
     }
 
     &__icons {
         display: flex;
+        font-size: fluid(30, 40);
+        gap: fluid(20, 20);
 
-        @include desktop {
-            font-size: vw(40);
-            gap: vw(20);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(30);
-            gap: vw-mobile(20);
+        @include tablet {
+            order: 1;
         }
 
         &__icon {
@@ -70,7 +69,6 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
                 color: var(--color-primary);
             }
         }
-
     }
 }
 </style>

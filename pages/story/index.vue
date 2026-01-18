@@ -81,21 +81,19 @@ const categories = computed(() => {
     &__title {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 44px;
-        line-height: 58px;
         color: var(--color-text);
+        margin: fluid(100, 170) auto fluid(20, 40);
+        padding-inline: fluid(20, 40);
+        max-width: fluid(375, 1700);
+        font-size: fluid(30, 44);
+        line-height: fluid(40, 58);
 
-        @include desktop {
-            margin: 170px 110px 40px 110px;
-            font-size: 44px;
-            line-height: 58px;
+        @include tablet {
+            margin-top: fluid(80, 120);
         }
 
         @include mobile {
-            margin: 0 10px;
             display: none;
-            font-size: 44px;
-            line-height: 58px;
         }
     }
 
@@ -104,59 +102,60 @@ const categories = computed(() => {
         justify-content: space-between;
         align-items: center;
         margin: auto;
+        padding: fluid(20, 40) fluid(20, 40);
+        max-width: fluid(375, 1700);
+        font-size: fluid(30, 44);
+        line-height: fluid(40, 58);
 
-        @include desktop {
-            padding: 40px 110px;
-            max-width: 1700px;
-            font-size: 44px;
-            line-height: 58px;
-        }
-
-        @include mobile {
-            padding: 20px;
-            font-size: 44px;
-            line-height: 58px;
+        @include tablet {
+            flex-wrap: wrap;
+            gap: fluid(15, 20);
         }
     }
 
     &__input {
         &--mobile {
+            padding: fluid(10, 10) fluid(15, 15);
 
             @include desktop {
                 display: none;
             }
 
+            @include tablet {
+                display: block;
+            }
+
             @include mobile {
-                padding: 10px 15px;
                 display: block;
             }
         }
 
         &--desktop {
+            max-width: fluid(300, 547);
+
             @include desktop {
-                max-width: 547px;
                 display: block;
+            }
+
+            @include tablet {
+                display: none;
             }
 
             @include mobile {
                 display: none;
             }
-
         }
     }
 
     &__dropdown {
         display: flex;
         align-items: center;
+        gap: fluid(10, 30);
 
-        @include desktop {
-            gap: 30px;
+        @include tablet {
+            width: 100%;
+            justify-content: flex-start;
         }
-
-        @include mobile {
-            gap: 10px;
-        }
-
     }
 
     &__selected-item {
@@ -164,17 +163,8 @@ const categories = computed(() => {
         background-color: transparent;
         border: none;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
-        }
-
-        @include mobile {
-            font-size: 18px;
-            line-height: 20px;
-        }
-
+        font-size: fluid(16, 24);
+        line-height: fluid(20, 32);
 
         &:hover {
             color: var(--color-primary);
@@ -188,50 +178,35 @@ const categories = computed(() => {
     &__label {
         font-weight: 400;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: 24px;
-            line-height: 32px;
-        }
-
-        @include mobile {
-            font-size: 18px;
-            line-height: 20px;
-        }
-
+        font-size: fluid(16, 24);
+        line-height: fluid(20, 32);
     }
 
     &__content {
         display: grid;
+        margin: fluid(20, 66) auto;
+        padding-inline: fluid(20, 40);
+        max-width: fluid(375, 1700);
+        gap: fluid(15, 29);
 
         @include desktop {
-            margin: 66px 110px;
             grid-template-columns: repeat(3, 1fr);
-            gap: 29px;
+        }
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         @include mobile {
-            margin: 20px;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
         }
-
     }
 
     &__pagination {
         display: flex;
         justify-content: center;
         align-items: center;
-
-        @include desktop {
-            margin-top: 50px;
-
-        }
-
-        @include mobile {
-            margin-top: 50px;
-
-        }
+        margin-top: fluid(50, 50);
     }
 }
 </style>

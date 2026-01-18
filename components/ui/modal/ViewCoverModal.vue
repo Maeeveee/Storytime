@@ -42,18 +42,24 @@ function handleCancel() {
 }
 
 .modal {
+    padding: fluid(30, 60);
+    border-radius: fluid(8, 8);
+    z-index: 1;
+    margin: auto;
+    max-width: fluid(350, 900);
+    width: 100%;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+
     @include desktop {
-        padding: 60px;
-        border-radius: 8px;
-        z-index: 1;
-        top: 120px;
-        left: 500px;
-        margin: auto;
-        max-width: 900px;
-        width: 100%;
+        top: vw(120);
+        left: vw(500);
         position: fixed;
-        background-color: var(--color-white);
-        border: 1px solid var(--color-border);
+    }
+
+    @include tablet {
+        max-width: 90%;
+        padding: fluid(20, 40);
     }
 
     &__cancel {
@@ -61,39 +67,46 @@ function handleCancel() {
             display: flex;
             justify-content: end;
             position: fixed;
-            top: 140px;
-            right: 400px;
+            top: vw(140);
+            right: vw(400);
+        }
+
+        @include tablet {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            top: auto;
+            right: auto;
+            margin-bottom: fluid(10, 15);
         }
 
         &__button {
-            @include desktop {
-                width: 40px;
-                height: 40px;
-                background-color: var(--color-primary);
-                border-radius: 50%;
+            width: fluid(30, 40);
+            height: fluid(30, 40);
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--color-primary-dark);
+            }
+
+            @include tablet {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: var(--color-primary-dark);
-
-                }
             }
 
             @include mobile {
                 display: none;
             }
-
         }
 
         &__icon {
-            @include desktop {
-                font-size: 30px;
-                color: var(--color-white);
-            }
+            font-size: fluid(20, 30);
+            color: var(--color-white);
         }
     }
 
@@ -102,74 +115,67 @@ function handleCancel() {
             display: flex;
             flex-direction: column;
         }
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__main-image {
-        @include desktop {
-            margin: auto;
-            width: 900px;
-            height: 500px;
-            border-radius: 8px;
-        }
+        margin: auto;
+        width: fluid(300, 900);
+        height: fluid(200, 500);
+        border-radius: fluid(8, 8);
 
-        @include mobile {
-            margin: auto;
-            width: 300px;
-            height: 200px;
-            border-radius: 8px;
+        @include tablet {
+            width: 100%;
+            height: auto;
         }
     }
 
     &__secondary-image {
         &--active {
-            border-radius: 8px;
+            border-radius: fluid(8, 8);
             opacity: 1;
+            width: fluid(60, 202);
+            height: fluid(60, 200);
 
-            @include desktop {
-                width: 202px;
-                height: 200px;
-            }
-
-            @include mobile {
-                width: 60px;
-                height: 60px;
+            @include tablet {
+                width: 80px;
+                height: 80px;
             }
         }
 
         &--inactive {
-            border-radius: 8px;
+            border-radius: fluid(8, 8);
             opacity: 0.6;
+            width: fluid(60, 202);
+            height: fluid(60, 200);
+
+            @include tablet {
+                width: 80px;
+                height: 80px;
+            }
 
             @include desktop {
-                width: 202px;
-                height: 200px;
-
                 &:hover {
                     transform: scale(1.1);
                     transition: ease 0.2s;
                 }
             }
-
-            @include mobile {
-                width: 60px;
-                height: 60px;
-            }
         }
     }
 
     &__flex-image {
-        @include desktop {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
+        margin-top: fluid(20, 30);
+        display: flex;
+        justify-content: center;
+        gap: fluid(20, 30);
 
-        @include mobile {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        @include tablet {
+            gap: fluid(10, 15);
+            flex-wrap: wrap;
         }
     }
 }

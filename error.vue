@@ -17,6 +17,10 @@ const props = defineProps<{ error: NuxtError }>()
 <style scoped lang="scss">
 .device {
     &__mobile {
+        @include tablet {
+            display: none;
+        }
+
         @include mobile {
             display: none;
         }
@@ -28,16 +32,22 @@ const props = defineProps<{ error: NuxtError }>()
         display: flex;
         justify-content: center;
         align-items: center;
-
-        @include mobile {
-            padding-top: vw-mobile(150);
-        }
+        margin-top: fluid(100, 170);
+        padding-top: fluid(100, 170);
+        padding-inline: fluid(20, 40);
+        max-width: fluid(375, 1700);
+        margin-left: auto;
+        margin-right: auto;
 
         @include desktop {
             display: grid;
-            margin-top: vw(170);
-            padding-top: vw(170);
             grid-template-columns: 1fr 1fr;
+        }
+
+        @include tablet {
+            flex-direction: column;
+            margin-top: fluid(60, 100);
+            padding-top: fluid(60, 100);
         }
     }
 }

@@ -66,6 +66,10 @@ function handleRegister() {
         @include desktop {
             display: none;
         }
+
+        @include tablet {
+            display: block;
+        }
     }
 }
 
@@ -73,65 +77,55 @@ function handleRegister() {
     &__form-section {
         margin-top: auto;
         margin-bottom: auto;
-        border-radius: 8px;
+        border-radius: fluid(8, 8);
+        margin: fluid(20, 50);
 
         @include desktop {
             margin-right: auto;
             width: vw(825);
             margin-top: vw(77.5);
-            margin-left: vw(50);
         }
 
-        @include mobile {
-            margin: vw-mobile(20);
+        @include tablet {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            padding: fluid(30, 50);
         }
     }
 
     &__title {
         font-family: var(--font-primary);
         font-weight: 700;
+        margin-bottom: fluid(30, 50);
+        line-height: fluid(58, 58);
+        font-size: fluid(44, 44);
 
-        @include desktop {
-            margin-bottom: vw(50);
-            line-height: vw(58);
-            font-size: vw(44);
+        @include tablet {
+            font-size: fluid(32, 40);
+            text-align: center;
         }
 
         @include mobile {
             margin-block: vw-mobile(30);
-            line-height: vw-mobile(58);
-            font-size: vw-mobile(44);
         }
     }
 
     &__text {
         font-weight: 400;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(23);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(23);
-        }
+        font-size: fluid(18, 18);
+        line-height: fluid(23, 23);
     }
 
     &__button {
-        @include desktop {
-            margin-top: vw(50);
-            margin-bottom: vw(43);
-            max-width: vw(238);
-            max-height: vw(60);
-        }
+        margin-top: fluid(50, 50);
+        margin-bottom: fluid(43, 43);
+        max-width: fluid(238, 238);
+        max-height: fluid(60, 60);
 
-        @include mobile {
-            margin-top: vw-mobile(50);
-            margin-bottom: vw-mobile(43);
-            max-width: vw-mobile(238);
-            max-height: vw-mobile(60);
+        @include tablet {
+            max-width: 100%;
         }
     }
 
@@ -139,14 +133,7 @@ function handleRegister() {
         font-weight: 700;
         text-decoration: none;
         color: var(--color-primary);
-
-        @include desktop {
-            margin-top: vw(30);
-        }
-
-        @include mobile {
-            margin-top: vw-mobile(30);
-        }
+        margin-top: fluid(30, 30);
     }
 
     &__label {
@@ -154,23 +141,23 @@ function handleRegister() {
         height: 100%;
         display: flex;
         flex-direction: column;
+        margin-top: fluid(20, 20);
+        max-height: fluid(144, 144);
+        max-width: fluid(577, 577);
+        gap: fluid(10, 20);
 
-        @include desktop {
-            margin-top: vw(20);
-            max-height: vw(144);
-            max-width: vw(577);
-            gap: vw(20);
-        }
-
-        @include mobile {
-            margin-top: vw-mobile(20);
-            max-height: vw-mobile(144);
-            max-width: vw-mobile(577);
-            gap: vw-mobile(10);
+        @include tablet {
+            max-width: 100%;
         }
     }
 
     &__logo {
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            margin-bottom: fluid(20, 30);
+        }
+
         @include mobile {
             width: vw-mobile(150);
             height: vw-mobile(30);

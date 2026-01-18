@@ -16,29 +16,20 @@ defineProps<{ to?: string, variant?: 'primary' | 'secondary' }>()
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
     font-family: var(--font-primary);
+    border-radius: fluid(8, 8);
+    padding: fluid(10, 14) fluid(24, 30);
+    font-size: fluid(18, 24);
 
-    @include desktop {
-        padding: vw(14) vw(30);
-        font-size: vw(24);
-    }
-
-    @include mobile {
-        padding: vw-mobile(10) vw-mobile(24);
-        font-size: vw-mobile(18);
+    @include tablet {
+        padding: fluid(10, 12) fluid(20, 24);
+        font-size: fluid(16, 20);
     }
 
     &__navigation {
-        @include desktop {
-            height: vw(32);
-        }
-
-        @include mobile {
-            height: vw-mobile(32);
-        }
+        height: fluid(32, 32);
     }
 
     &--primary {

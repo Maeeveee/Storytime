@@ -55,16 +55,20 @@ onMounted(() => {
 <style lang="scss" scoped>
 .hero {
     text-align: center;
-
-    @include desktop {
-        padding: vw(170);
-    }
+    padding-top: fluid(100, 200);
+    padding-bottom: fluid(40, 80);
+    padding-inline: fluid(20, 40);
+    max-width: fluid(375, 1700);
+    margin-left: auto;
+    margin-right: auto;
 
     @include mobile {
-        padding-block: vw-mobile(80);
-        margin-bottom: vw-mobile(170);
+        margin-bottom: vw-mobile(50);
     }
 
+    @include tablet {
+        padding-top: fluid(80, 150);
+    }
 
     &__title {
         font-family: var(--font-display);
@@ -72,54 +76,38 @@ onMounted(() => {
         font-style: normal;
         letter-spacing: 0%;
         color: var(--color-text);
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-        @include desktop {
-            font-size: vw(60);
-            margin-bottom: vw(30);
-            line-height: vw(74);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(42);
-            margin-bottom: vw-mobile(25);
-            line-height: vw-mobile(54);
-        }
+        text-shadow: 0 fluid(4, 4) fluid(4, 4) rgba(0, 0, 0, 0.25);
+        font-size: fluid(42, 60);
+        margin-bottom: fluid(25, 30);
+        line-height: fluid(54, 74);
     }
 
     &__text-wrapper {
         margin: auto;
         display: flex;
         flex-direction: column;
-
-        @include desktop {
-            max-width: vw(1412);
-        }
+        max-width: fluid(335, 1200);
 
         @include mobile {
-            max-width: vw-mobile(700);
             width: 100%;
+        }
+
+        @include tablet {
+            max-width: 90%;
         }
 
         &__text {
             font-weight: 400;
             color: var(--color-text-secondary);
             margin: auto;
+            max-width: fluid(335, 1000);
+            margin-top: fluid(20, 25);
+            margin-bottom: fluid(25, 30);
+            font-size: fluid(16, 24);
+            line-height: fluid(22, 32);
 
-            @include desktop {
-                max-width: vw(1412);
-                margin-top: vw(25);
-                margin-bottom: vw(30);
-                font-size: vw(24);
-                line-height: vw(32);
-            }
-
-            @include mobile {
-                max-width: vw-mobile(1412);
-                margin-top: vw-mobile(25);
-                margin-bottom: vw-mobile(30);
-                font-size: vw-mobile(18);
-                line-height: vw-mobile(24);
+            @include tablet {
+                max-width: 85%;
             }
         }
     }
@@ -127,41 +115,33 @@ onMounted(() => {
     &__image {
         display: flex;
         margin: auto;
+        width: fluid(90%, 45%);
 
-        @include desktop {
-            width: 45%;
-        }
-
-        @include mobile {
-            width: 90%;
+        @include tablet {
+            width: 70%;
         }
     }
 
     &__wrapper {
         margin-left: auto;
         margin-right: auto;
+        max-width: fluid(335, 800);
+        margin-top: fluid(30, 40);
+        margin-bottom: fluid(20, 30);
 
-        @include desktop {
-            max-width: vw(1002);
-            margin-top: vw(40);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            max-width: vw-mobile(1002);
-            margin-top: vw-mobile(40);
-            margin-bottom: vw-mobile(30);
+        @include tablet {
+            max-width: 70%;
         }
     }
 }
 
 .toast-wrapper {
     position: fixed;
-    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
     animation: slideInCenter 0.3s ease-out;
+    top: fluid(20, 20);
 }
 
 @keyframes slideInCenter {

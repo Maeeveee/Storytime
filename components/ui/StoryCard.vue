@@ -80,12 +80,8 @@ function handleDelete() {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    margin-bottom: vw(40);
+    margin-bottom: fluid(24, 40);
     position: relative;
-
-    @include mobile {
-        margin-bottom: vw-mobile(24);
-    }
 
     &__link {
         position: absolute;
@@ -109,16 +105,32 @@ function handleDelete() {
     }
 
     &--default {
-        width: vw(547);
+        width: fluid(335, 547);
         max-width: 100%;
         height: auto;
+        box-sizing: border-box;
+
+        @include tablet {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @include mobile {
+            width: 100%;
+            max-width: 100%;
+        }
 
         .card__image {
             width: 100%;
             height: auto;
+            max-width: 100%;
 
             @include mobile {
                 aspect-ratio: 500/420;
+            }
+
+            @include tablet {
+                aspect-ratio: 4/3;
             }
 
             @include desktop {
@@ -129,69 +141,105 @@ function handleDelete() {
         .card__title {
             font-size: fluid-type(24, 36);
             line-height: 1.3;
-            margin-bottom: vw(20);
-
-            @include mobile {
-                margin-bottom: vw-mobile(12);
-            }
+            margin-bottom: fluid(12, 20);
         }
 
         .card__description {
-            min-height: vw(54);
+            min-height: fluid(40, 54);
 
             @include mobile {
                 text-align: justify;
-                min-height: vw-mobile(40);
             }
-        }
 
-        @include mobile {
-            width: 100%;
+            @include tablet {
+                text-align: justify;
+            }
         }
     }
 
     &--large {
-        width: vw(1123);
+        width: fluid(335, 1123);
         max-width: 100%;
         height: auto;
+        box-sizing: border-box;
+
+        @include tablet {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @include mobile {
+            width: 100%;
+            max-width: 100%;
+        }
 
         .card__image {
             width: 100%;
             height: auto;
+            max-width: 100%;
             aspect-ratio: 1123/1066;
+
+            @include tablet {
+                aspect-ratio: 4/3;
+            }
+
+            @include mobile {
+                aspect-ratio: 4/3;
+            }
         }
 
         .card__title {
-            min-height: vw(92);
+            min-height: fluid(46, 92);
 
             @include mobile {
+                min-height: auto;
+            }
+
+            @include tablet {
                 min-height: auto;
             }
         }
 
         .card__description {
-            min-height: vw(54);
+            min-height: fluid(40, 54);
 
             @include mobile {
                 text-align: justify;
-                min-height: vw-mobile(40);
             }
-        }
 
-        @include mobile {
-            width: 100%;
+            @include tablet {
+                text-align: justify;
+            }
         }
     }
 
     &--small {
-        width: vw(547);
+        width: fluid(160, 547);
         max-width: 100%;
         height: auto;
+        box-sizing: border-box;
+
+        @include tablet {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @include mobile {
+            width: 100%;
+            max-width: 100%;
+        }
 
         .card__image {
             @include mobile {
-                width: vw-mobile(160);
-                height: vw-mobile(160);
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1/1;
+            }
+
+            @include tablet {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4/3;
             }
 
             @include desktop {
@@ -203,46 +251,47 @@ function handleDelete() {
 
         .card__title {
             line-height: 1.3;
+            font-size: fluid(18, 36);
+            min-height: fluid(46, 46);
+            margin-top: fluid(12, 12);
+            margin-bottom: fluid(20, 50);
 
             @include mobile {
-                width: vw-mobile(160);
-                font-size: vw-mobile(18);
-                min-height: vw-mobile(46);
-                margin-top: vw-mobile(12);
+                width: 100%;
             }
 
-            @include desktop {
-                font-size: fluid-type(24, 36);
-                min-height: vw(46);
-                margin-top: vw(12);
-                margin-bottom: vw(50);
+            @include tablet {
+                width: 100%;
             }
         }
 
         .card__description {
             font-weight: 400;
-            min-height: vw(80);
+            min-height: fluid(60, 80);
+            font-size: fluid(14, 18);
+            line-height: 1.5;
 
             @include mobile {
-                width: vw-mobile(160);
-                font-size: vw-mobile(14);
+                width: 100%;
                 max-height: 3.6em;
-                min-height: vw-mobile(60);
                 display: block;
                 text-overflow: ellipsis;
                 word-wrap: break-word;
                 overflow: hidden;
             }
 
-            @include desktop {
-                font-size: vw(18);
-                line-height: 1.5;
+            @include tablet {
+                width: 100%;
             }
         }
 
         .card__author-avatar {
             @include mobile {
                 display: none;
+            }
+
+            @include tablet {
+                display: block;
             }
         }
 
@@ -269,32 +318,16 @@ function handleDelete() {
                 color: var(--color-primary);
             }
         }
-
-        @include mobile {
-            width: 100%;
-        }
     }
 
     &__icon-wrapper {
         z-index: 2;
         position: absolute;
         display: flex;
-
-        @include desktop {
-            gap: vw(30);
-            margin-bottom: vw(40);
-            margin-right: vw(39);
-
-        }
-
-        @include mobile {
-            gap: vw-mobile(15);
-            margin-bottom: vw-mobile(15);
-            margin-right: vw-mobile(15);
-        }
-
+        gap: fluid(15, 30);
+        margin-bottom: fluid(15, 40);
+        margin-right: fluid(15, 39);
     }
-
 
     &__icon {
         &__background {
@@ -305,16 +338,8 @@ function handleDelete() {
             display: flex;
             justify-content: center;
             align-items: center;
-
-            @include desktop {
-                width: vw(65);
-                height: vw(65);
-            }
-
-            @include mobile {
-                width: vw-mobile(40);
-                height: vw-mobile(40);
-            }
+            width: fluid(40, 65);
+            height: fluid(40, 65);
 
             &:hover {
                 background-color: var(--color-primary-dark);
@@ -322,14 +347,7 @@ function handleDelete() {
         }
 
         &__text {
-
-            @include desktop {
-                font-size: vw(42);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(22);
-            }
+            font-size: fluid(22, 42);
         }
     }
 
@@ -338,24 +356,16 @@ function handleDelete() {
         display: flex;
         justify-content: end;
         align-items: end;
-        border-radius: vw(8);
+        border-radius: fluid(8, 8);
         flex-shrink: 0;
-
-        @include mobile {
-            border-radius: vw-mobile(8);
-        }
     }
 
     &__image {
         width: 100%;
         height: 100%;
-        border-radius: vw(8);
+        border-radius: fluid(8, 8);
         object-fit: cover;
         transition: opacity 0.3s, transform 0.3s;
-
-        @include mobile {
-            border-radius: vw-mobile(8);
-        }
     }
 
     &__content {
@@ -370,130 +380,81 @@ function handleDelete() {
 
     &__title {
         font-weight: 700;
-        font-size: vw(36);
-        line-height: vw(46);
+        font-size: fluid(24, 36);
+        line-height: fluid(32, 46);
         color: var(--color-text-secondary);
-        margin-top: vw(20);
-        margin-bottom: vw(20);
-
-        @include mobile {
-            font-size: vw-mobile(24);
-            line-height: vw-mobile(32);
-            margin-top: vw-mobile(12);
-            margin-bottom: vw-mobile(12);
-        }
+        margin-top: fluid(12, 20);
+        margin-bottom: fluid(12, 20);
     }
 
     &__description {
-        max-height: vw(80);
+        max-height: fluid(60, 80);
         font-weight: 400;
-        font-size: vw(18);
-        line-height: vw(27);
+        font-size: fluid(14, 18);
+        line-height: fluid(21, 27);
         color: var(--color-text-secondary);
-
-        @include mobile {
-            max-height: vw-mobile(60);
-            font-size: vw-mobile(14);
-            line-height: vw-mobile(21);
-        }
     }
 
     &__footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: vw(20);
-
-        @include mobile {
-            margin-top: vw-mobile(12);
-        }
+        margin-top: fluid(12, 20);
     }
 
     &__author-info {
         display: flex;
         align-items: center;
-        gap: vw(12);
-
-        @include mobile {
-            gap: vw-mobile(8);
-        }
+        gap: fluid(8, 12);
     }
 
     &__author-avatar {
-        width: vw(50);
-        height: vw(50);
+        width: fluid(36, 50);
+        height: fluid(36, 50);
         border-radius: 50%;
         object-fit: cover;
-
-        @include mobile {
-            width: vw-mobile(36);
-            height: vw-mobile(36);
-        }
     }
 
     &__author-name {
         font-weight: 500;
         color: var(--color-text);
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(20);
-        }
-
-        @include desktop {
-            font-size: vw(20);
-            line-height: vw(26);
-        }
+        font-size: fluid(18, 20);
+        line-height: fluid(20, 26);
     }
 
     &__story-info {
         display: flex;
         align-items: center;
-        gap: vw(20);
-
-        @include mobile {
-            gap: vw-mobile(12);
-        }
+        gap: fluid(12, 20);
     }
 
     &__created-at {
         font-weight: 400;
         color: var(--color-text);
+        font-size: fluid(14, 18);
+        line-height: fluid(20, 23);
 
         @include mobile {
-            font-size: vw-mobile(14);
-            line-height: vw-mobile(20);
             display: none;
         }
 
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(23);
+        @include tablet {
+            display: block;
         }
     }
 
     &__genre-badge {
         background-color: var(--color-primary-light);
-        border-radius: vw(8);
-        padding: vw(8) vw(12);
+        border-radius: fluid(8, 8);
+        padding: fluid(4, 8) fluid(8, 12);
         display: inline-block;
-
-        @include mobile {
-            border-radius: vw-mobile(8);
-            padding: vw-mobile(4) vw-mobile(8);
-        }
     }
 
     &__genre {
         font-weight: 400;
-        font-size: vw(18);
-        line-height: vw(23);
+        font-size: fluid(14, 18);
+        line-height: fluid(18, 23);
         color: var(--color-primary);
-
-        @include mobile {
-            font-size: vw-mobile(14);
-            line-height: vw-mobile(18);
-        }
     }
 }
 </style>

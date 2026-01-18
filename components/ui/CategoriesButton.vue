@@ -16,21 +16,17 @@ defineProps<{ category?: string }>();
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 12px;
         text-decoration: none;
         font-weight: 500;
+        border-radius: fluid(12, 12);
+        font-size: fluid(28, 28);
+        width: fluid(135, 135);
+        height: fluid(38, 38);
+        padding: fluid(40, 60);
 
-        @include desktop {
-            font-size: vw(28);
-            width: vw(135);
-            height: vw(38);
-            padding: vw(60);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(28);
-            padding-inline: vw-mobile(20);
-            padding-block: vw-mobile(40);
+        @include tablet {
+            font-size: fluid(20, 24);
+            padding: fluid(30, 40);
         }
 
         &:hover {

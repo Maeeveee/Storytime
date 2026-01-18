@@ -17,6 +17,10 @@ definePageMeta({
 <style scoped lang="scss">
 .device {
     &__mobile {
+        @include tablet {
+            display: none;
+        }
+
         @include mobile {
             display: none;
         }

@@ -34,15 +34,16 @@ function viewCover() {
 .story-section {
     &__content-wrapper {
         display: flex;
+        gap: fluid(40, 40);
+        padding-left: fluid(16, 16);
+        padding-right: fluid(16, 16);
 
-        @include desktop {
-            gap: vw(40);
-            padding-left: vw(16);
-            padding-right: vw(16);
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
         }
 
         @include mobile {
-            gap: vw-mobile(40);
             flex-direction: column;
         }
     }
@@ -53,35 +54,34 @@ function viewCover() {
     }
 
     &__image {
-        border-radius: 8px;
+        border-radius: fluid(8, 8);
+        width: fluid(320, 547);
+        height: fluid(254, 600);
+
+        @include tablet {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
 
         @include desktop {
-            width: vw(547);
-            height: vw(600);
-
             &:hover {
                 cursor: pointer;
             }
-        }
-
-        @include mobile {
-            width: vw-mobile(320);
-            height: vw-mobile(254);
         }
     }
 
     &__article-text {
         font-weight: 400;
         color: var(--color-text);
+        font-size: fluid(16, 18);
+        line-height: fluid(27, 27);
 
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(27);
+        @include tablet {
+            text-align: justify;
         }
 
         @include mobile {
-            font-size: vw-mobile(16);
-            line-height: vw-mobile(27);
             text-align: justify;
         }
     }

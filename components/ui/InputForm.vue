@@ -14,32 +14,16 @@ const model = defineModel<string>();
 <style scoped lang="scss">
 .input {
     border: 2px solid var(--color-border);
-    border-radius: 8px;
     width: 100%;
     height: 100%;
     font-family: var(--font-primary);
-
-    @include desktop {
-        padding: vw(24) vw(30);
-        font-size: vw(24);
-        line-height: vw(32);
-    }
-
-    @include mobile {
-        padding: vw-mobile(15);
-        font-size: vw-mobile(18);
-        line-height: vw-mobile(20);
-    }
+    border-radius: fluid(8, 8);
+    padding: fluid(15, 24) fluid(15, 30);
+    font-size: fluid(18, 24);
+    line-height: fluid(20, 32);
 
     &--primary {
-        @include desktop {
-            max-height: vw(23);
-        }
-
-        @include mobile {
-            max-height: vw-mobile(23);
-        }
-
+        max-height: fluid(23, 23);
 
         &:focus {
             border-color: var(--color-primary);
@@ -47,23 +31,11 @@ const model = defineModel<string>();
     }
 
     &--secondary {
-        @include desktop {
-            max-height: vw(32);
-        }
-
-        @include mobile {
-            max-height: vw-mobile(32);
-        }
+        max-height: fluid(32, 32);
     }
 
     &--with-icon {
-        @include desktop {
-            padding-right: vw(60);
-        }
-
-        @include mobile {
-            padding-right: vw-mobile(50);
-        }
+        padding-right: fluid(50, 60);
     }
 
     &:focus {
@@ -75,16 +47,8 @@ const model = defineModel<string>();
         top: 50%;
         transform: translateY(-50%);
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: vw(30);
-            right: vw(20);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(25);
-            right: vw-mobile(20);
-        }
+        font-size: fluid(25, 30);
+        right: fluid(20, 20);
     }
 
     &__wrapper {

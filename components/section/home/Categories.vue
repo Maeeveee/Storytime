@@ -29,31 +29,30 @@ const categories = computed(() => {
     &__title {
         font-family: "Playfair Display", serif;
         font-weight: 600;
+        font-size: fluid(30, 44);
+        line-height: fluid(50, 58);
+        margin-top: fluid(100, 100);
 
-        @include desktop {
-            font-size: vw(44);
-            line-height: vw(58);
-            margin-top: vw(100);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(30);
-            line-height: vw-mobile(50);
-            margin-top: vw-mobile(100);
+        @include tablet {
+            margin-top: fluid(60, 80);
         }
     }
 
     &__display {
         grid-template-columns: 1fr 1fr;
+        gap: fluid(8, 8);
 
         @include desktop {
             display: flex;
-            gap: vw(8);
+        }
+
+        @include tablet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
         }
 
         @include mobile {
             display: grid;
-            gap: vw-mobile(8);
         }
     }
 }
@@ -61,15 +60,7 @@ const categories = computed(() => {
 hr {
     border: none;
     border-top: 1px solid #ccc;
-
-    @include desktop {
-        margin-top: vw(16);
-        margin-bottom: vw(16);
-    }
-
-    @include mobile {
-        margin-top: vw-mobile(16);
-        margin-bottom: vw-mobile(16);
-    }
+    margin-top: fluid(16, 16);
+    margin-bottom: fluid(16, 16);
 }
 </style>

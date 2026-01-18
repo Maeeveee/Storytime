@@ -51,18 +51,20 @@ const handleLogin = async () => {
 .section-wrapper {
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: 8px;
+    border-radius: fluid(8, 8);
+    width: fluid(825, 825);
+    margin: fluid(20, 20);
+    padding: fluid(16, 16) fluid(32, 32);
 
     @include desktop {
-        width: vw(825);
         height: vw(910);
-        margin: vw(20);
-        padding: vw(16) vw(32);
     }
 
-    @include mobile {
-        width: vw-mobile(825);
-        margin: vw-mobile(20);
+    @include tablet {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        padding: fluid(30, 40);
     }
 }
 
@@ -71,30 +73,25 @@ const handleLogin = async () => {
         display: flex;
         flex-direction: column;
         margin-left: auto;
+        max-width: fluid(577, 577);
+        margin-top: fluid(100, 100);
 
-        @include desktop {
-            max-width: vw(577);
-            margin-top: vw(100);
-        }
-
-        @include mobile {
-            max-width: vw-mobile(577);
-            margin-top: vw-mobile(100);
+        @include tablet {
+            max-width: 100%;
+            margin-left: 0;
+            margin-top: fluid(40, 60);
         }
     }
 
     &__title {
         font-weight: 700;
         color: var(--color-text);
+        font-size: fluid(44, 44);
+        line-height: fluid(58, 58);
 
-        @include desktop {
-            font-size: vw(44);
-            line-height: vw(58);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(44);
-            line-height: vw-mobile(58);
+        @include tablet {
+            font-size: fluid(32, 40);
+            text-align: center;
         }
     }
 
@@ -103,78 +100,52 @@ const handleLogin = async () => {
         color: var(--color-text-secondary);
         display: flex;
         flex-direction: column;
-
-
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(23);
-            gap: vw(20);
-            margin-top: vw(20);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(23);
-            gap: vw-mobile(20);
-            margin-top: vw-mobile(20);
-        }
+        font-size: fluid(18, 18);
+        line-height: fluid(23, 23);
+        gap: fluid(20, 20);
+        margin-top: fluid(20, 20);
     }
 
     &__navigate-register {
         font-weight: 700;
         text-decoration: none;
         color: var(--color-primary);
-
-
-        @include desktop {
-            margin-top: vw(30);
-        }
-
-        @include mobile {
-            margin-top: vw-mobile(30);
-        }
+        margin-top: fluid(30, 30);
     }
 
     &__navigate-text {
         font-weight: 400;
         color: var(--color-text-secondary);
+        font-size: fluid(18, 18);
+        line-height: fluid(23, 23);
 
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(23);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(23);
+        @include tablet {
+            text-align: center;
+            display: block;
         }
     }
 
     &__button {
-        @include desktop {
-            margin-top: vw(20);
-            margin-bottom: vw(20);
-            max-width: vw(120);
-            max-height: vw(60);
-        }
+        margin-top: fluid(20, 20);
+        margin-bottom: fluid(20, 20);
+        max-width: fluid(120, 120);
+        max-height: fluid(60, 60);
 
-        @include mobile {
-            margin-top: vw-mobile(20);
-            margin-bottom: vw-mobile(20);
-            max-width: vw-mobile(120);
-            max-height: vw-mobile(60);
+        @include tablet {
+            max-width: 100%;
         }
     }
 
     &__logo {
-        @include desktop {
-            width: vw(256);
-            height: vw(59);
-            margin-bottom: vw(50);
+        width: fluid(150, 256);
+        height: fluid(30, 59);
+        margin-bottom: fluid(20, 50);
+
+        @include tablet {
+            margin: auto;
         }
 
         @include mobile {
-            height: vw-mobile(30);
             margin: auto;
         }
     }

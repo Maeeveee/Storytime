@@ -35,8 +35,10 @@ function editProfile() {
 </template>
 <style lang="scss" scoped>
 .dashboard {
-    @include desktop {
-        margin-top: vw(100);
+    margin-top: fluid(50, 100);
+
+    @include tablet {
+        margin-top: fluid(20, 60);
     }
 
     &__header {
@@ -45,108 +47,86 @@ function editProfile() {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        height: fluid(150, 400);
 
-        @include desktop {
-            width: vw(1920);
-            height: vw(400);
-        }
-
-        @include mobile {
-            height: vw-mobile(150);
+        @include tablet {
+            height: fluid(200, 300);
         }
     }
 
     &__profile-section {
         margin: auto;
         align-items: center;
+        max-width: fluid(375, 1700);
+        gap: fluid(10, 39);
+        padding: fluid(20, 100) fluid(20, 40);
 
         @include desktop {
-            max-width: vw(1700);
             display: flex;
-            gap: vw(39);
-            padding: vw(100) vw(240);
+        }
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
         }
 
         @include mobile {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             justify-content: space-between;
-            gap: vw-mobile(10);
         }
     }
 
     &__profile-image {
         border-radius: 50%;
         border: 1px solid var(--color-primary);
-
-        @include desktop {
-            width: vw(200);
-            height: vw(200);
-        }
+        width: fluid(70, 200);
+        height: fluid(70, 200);
 
         @include mobile {
             margin: auto;
-            width: vw-mobile(70);
-            height: vw-mobile(70);
+        }
+
+        @include tablet {
+            width: 120px;
+            height: 120px;
         }
     }
 
     &__profile-user {
         display: flex;
         flex-direction: column;
+        width: fluid(200, 976.5);
 
-        @include desktop {
-            width: vw(976.5);
+        @include tablet {
+            width: 100%;
+            align-items: center;
         }
     }
 
     &__title {
         font-weight: 700;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(36);
-            line-height: vw(46);
-            margin-bottom: vw(10);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(24);
-            line-height: vw-mobile(24);
-            margin-bottom: vw-mobile(8);
-        }
+        font-size: fluid(24, 36);
+        line-height: fluid(24, 46);
+        margin-bottom: fluid(8, 10);
     }
 
     &__email {
         font-weight: 400;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(24);
-            line-height: vw(32);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(16);
-            line-height: vw-mobile(16);
-            margin-bottom: vw-mobile(8);
-        }
+        font-size: fluid(16, 24);
+        line-height: fluid(16, 32);
+        margin-bottom: fluid(8, 30);
     }
 
     &__user-description {
         font-weight: 400;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: vw(24);
-            line-height: vw(32);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(16);
-            line-height: vw-mobile(16);
-        }
+        font-size: fluid(16, 24);
+        line-height: fluid(16, 32);
     }
 }
 </style>

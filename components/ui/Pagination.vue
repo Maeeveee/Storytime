@@ -13,30 +13,18 @@ const items = [1, 2, 3, 4, 5];
 <style scoped lang="scss">
 .container {
     display: flex;
-
-    @include mobile {
-        gap: vw-mobile(20);
-    }
+    gap: fluid(20, 20);
 
     &__pagination {
-        border-radius: 8px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-weight: 700;
         transition: background-color 0.3s, color 0.3s;
-
-        @include desktop {
-            font-size: vw(28);
-            line-height: vw(38);
-            padding: vw(16) vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(14);
-            line-height: vw-mobile(19);
-            padding: vw-mobile(8) vw-mobile(15);
-        }
+        border-radius: fluid(8, 8);
+        font-size: fluid(14, 28);
+        line-height: fluid(19, 38);
+        padding: fluid(8, 16) fluid(15, 30);
 
         &--active {
             background-color: var(--color-primary);

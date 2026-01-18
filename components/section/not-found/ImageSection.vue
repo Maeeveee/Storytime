@@ -4,17 +4,18 @@
     </section>
 </template>
 <style scoped lang="scss">
-    .image-section{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        &__image{
-            @include desktop{
-                max-width: vw(832);
-                max-height: vw(512);
-            }
-        }
+    @include tablet {
+        display: none;
     }
-    
+
+    &__image {
+        max-width: fluid(400, 832);
+        max-height: fluid(256, 512);
+    }
+}
 </style>

@@ -15,72 +15,48 @@ import Button from '../Button.vue';
 </template>
 <style scoped lang="scss">
 .modal {
-    @include desktop {
-        width: vw(401);
-        height: vw(263);
-        padding: vw(40);
-    }
+    width: fluid(401, 401);
+    height: fluid(263, 263);
+    padding: fluid(40, 40);
 
-    @include mobile {
-        width: vw-mobile(401);
-        height: vw-mobile(263);
-        padding: vw-mobile(40);
+    @include tablet {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
     }
 
     &__header {
         display: flex;
         flex-direction: column;
-
-        @include desktop {
-            gap: vw(20);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
-            margin-bottom: vw-mobile(30);
-        }
+        gap: fluid(20, 20);
+        margin-bottom: fluid(30, 30);
 
         &__title {
             font-weight: 700;
             color: var(--color-text);
+            font-size: fluid(36, 36);
+            line-height: fluid(46, 46);
 
-            @include desktop {
-                font-size: vw(36);
-                line-height: vw(46);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(36);
-                line-height: vw-mobile(46);
+            @include tablet {
+                font-size: fluid(28, 32);
             }
         }
 
         &__description {
             font-weight: 400;
             color: var(--color-text);
-
-            @include desktop {
-                font-size: vw(18);
-                line-height: vw(27);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(18);
-                line-height: vw-mobile(27);
-            }
+            font-size: fluid(18, 18);
+            line-height: fluid(27, 27);
         }
     }
 
     &__button {
         display: flex;
+        gap: fluid(44, 44);
 
-        @include desktop {
-            gap: vw(44);
-        }
-
-        @include mobile {
-            gap: vw-mobile(44);
+        @include tablet {
+            gap: fluid(20, 30);
+            justify-content: center;
         }
     }
 

@@ -29,20 +29,22 @@ const iconMap: Record<string, string> = {
 <style scoped lang="scss">
 .toast-container {
     position: fixed;
-    top: 20px;
     left: 35%;
     z-index: 2000;
     display: flex;
     flex-direction: column;
+    top: fluid(20, 20);
+    gap: fluid(12, 12);
+    width: fluid(300, 600);
 
-    @include desktop {
-        gap: vw(12);
-        width: vw(600);
+    @include tablet {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
     }
 
     @include mobile {
-        gap: vw-mobile(12);
-        width: vw-mobile(300);
         left: vw-mobile(20);
         right: vw-mobile(20);
     }
@@ -52,23 +54,25 @@ const iconMap: Record<string, string> = {
     display: flex;
     align-items: center;
     background-color: var(--color-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: fluid(8, 8);
+    box-shadow: 0 fluid(4, 4) fluid(12, 12) rgba(0, 0, 0, 0.15);
+    gap: fluid(12, 12);
+    padding: fluid(16, 16) fluid(20, 20);
+    max-width: fluid(500, 500);
 
-    @include desktop {
-        gap: vw(12);
-        padding: vw(16) vw(20);
-        min-width: vw(300);
-        max-width: vw(500);
-
+    @include tablet {
+        min-width: unset;
+        width: 100%;
+        max-width: 100%;
     }
 
     @include mobile {
-        gap: vw-mobile(12);
-        padding: vw-mobile(16) vw-mobile(20);
         min-width: unset;
-        max-width: vw-mobile(500);
         width: 100%;
+    }
+
+    @include desktop {
+        min-width: fluid(300, 300);
     }
 
     &--success {
@@ -96,23 +100,15 @@ const iconMap: Record<string, string> = {
     }
 
     &__icon {
-        font-size: 24px;
         flex-shrink: 0;
+        font-size: fluid(24, 24);
     }
 
     &__message {
         flex-grow: 1;
         font-weight: 500;
         color: var(--color-text);
-
-        @include desktop {
-            font-size: vw(16);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(16);
-
-        }
+        font-size: fluid(16, 16);
     }
 
     &__close {
@@ -121,17 +117,8 @@ const iconMap: Record<string, string> = {
         cursor: pointer;
         color: var(--color-text-secondary);
         flex-shrink: 0;
-
-        @include desktop {
-            font-size: vw(18);
-            padding: vw(4);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            padding: vw-mobile(4);
-        }
-
+        font-size: fluid(18, 18);
+        padding: fluid(4, 4);
 
         &:hover {
             color: var(--color-text);

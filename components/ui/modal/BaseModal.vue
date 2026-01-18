@@ -56,21 +56,12 @@ function handleBackdropClick(e: MouseEvent) {
 .modal-container {
     position: relative;
     background-color: var(--color-white);
-    border-radius: 8px;
-    padding: 40px;
     max-width: 90vw;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-
-    @include desktop {
-        padding: vw(40);
-    }
-
-    @include mobile {
-        padding: vw-mobile(40);
-    }
-
+    border-radius: fluid(8, 8);
+    padding: fluid(40, 40);
+    box-shadow: 0 fluid(4, 4) fluid(20, 20) rgba(0, 0, 0, 0.15);
 }
 
 .modal-close {
@@ -82,20 +73,9 @@ function handleBackdropClick(e: MouseEvent) {
     cursor: pointer;
     color: var(--color-text-secondary);
     transition: color 0.2s;
-
-    @include desktop {
-        font-size: vw(24);
-        margin-top: vw(10);
-        margin-right: vw(10);
-
-    }
-
-    @include mobile {
-        font-size: vw-mobile(24);
-        margin-top: vw-mobile(10);
-        margin-right: vw-mobile(10);
-
-    }
+    font-size: fluid(24, 24);
+    margin-top: fluid(10, 10);
+    margin-right: fluid(10, 10);
 
     &:hover {
         color: var(--color-text);

@@ -48,24 +48,22 @@ const errorData = computed(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: fluid(80, 180);
 
-    @include desktop {
-        margin-bottom: vw(180);
+    @include tablet {
+        margin-bottom: fluid(60, 100);
     }
 
     &__title {
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--color-text);
+        font-size: fluid(160, 160);
+        line-height: fluid(194, 194);
 
-        @include desktop {
-            font-size: vw(160);
-            line-height: vw(194);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(160);
-            line-height: vw-mobile(194);
+        @include tablet {
+            font-size: fluid(100, 140);
+            line-height: fluid(120, 160);
         }
     }
 
@@ -73,17 +71,13 @@ const errorData = computed(() => {
         font-family: var(--font-display);
         font-weight: 600;
         color: var(--color-text);
+        font-size: fluid(44, 44);
+        line-height: fluid(58, 58);
+        margin-bottom: fluid(20, 20);
 
-        @include desktop {
-            font-size: vw(44);
-            line-height: vw(58);
-            margin-bottom: vw(20);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(44);
-            line-height: vw-mobile(58);
-            margin-bottom: vw-mobile(20);
+        @include tablet {
+            font-size: fluid(32, 40);
+            line-height: fluid(40, 50);
         }
     }
 
@@ -91,29 +85,18 @@ const errorData = computed(() => {
         font-weight: 400;
         color: var(--color-text-secondary);
         text-align: center;
+        max-width: fluid(835, 835);
+        line-height: fluid(32, 32);
+        font-size: fluid(18, 24);
 
-        @include desktop {
-            max-width: vw(835);
-            line-height: vw(32);
-            font-size: vw(24);
-        }
-
-        @include mobile {
-            max-width: vw-mobile(835);
-            line-height: vw-mobile(32);
-            font-size: vw-mobile(18);
+        @include tablet {
+            max-width: 90%;
+            font-size: fluid(16, 20);
         }
     }
 
     &__button {
-        @include desktop {
-            margin-top: vw(40);
-        }
-
-        @include mobile {
-            margin-top: vw-mobile(40);
-        }
+        margin-top: fluid(40, 40);
     }
 }
-
 </style>

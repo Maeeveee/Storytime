@@ -82,101 +82,79 @@ function handleCancel() {
 <style scoped lang="scss">
 .edit-profile {
     width: 100%;
+    min-width: fluid(800, 800);
+    max-width: fluid(1200, 1200);
 
-    @include desktop {
-        min-width: vw(800);
-        max-width: vw(1200);
+    @include tablet {
+        min-width: auto;
+        max-width: 100%;
     }
 
     &__title {
         font-weight: 700;
         color: var(--color-text);
+        font-size: fluid(36, 36);
+        line-height: fluid(46, 46);
+        margin-bottom: fluid(40, 40);
 
-        @include desktop {
-            font-size: vw(36);
-            line-height: vw(46);
-            margin-bottom: vw(40);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(36);
-            line-height: vw-mobile(46);
-            margin-bottom: vw-mobile(40);
-
+        @include tablet {
+            font-size: fluid(28, 32);
+            text-align: center;
         }
     }
 
     &__subtitle {
         font-weight: 700;
+        font-size: fluid(28, 28);
+        line-height: fluid(36, 36);
+        margin-bottom: fluid(30, 30);
 
-        @include desktop {
-            font-size: vw(28);
-            line-height: vw(36);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(28);
-            line-height: vw-mobile(36);
-            margin-bottom: vw-mobile(30);
+        @include tablet {
+            font-size: fluid(22, 26);
         }
     }
 
     &__content {
         display: grid;
+        gap: fluid(30, 30);
 
         @include desktop {
             grid-template-columns: 1fr 1fr;
-            gap: vw(30);
         }
 
-        @include mobile {
-            gap: vw-mobile(30);
-
+        @include tablet {
+            grid-template-columns: 1fr;
         }
     }
 
     &__image-section {
         display: flex;
         align-items: center;
+        gap: fluid(30, 30);
+        margin-bottom: fluid(30, 30);
 
-        @include desktop {
-            gap: vw(30);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            gap: vw-mobile(30);
-            margin-bottom: vw-mobile(30);
+        @include tablet {
+            flex-direction: column;
+            text-align: center;
         }
     }
 
     &__avatar {
         border-radius: 50%;
         object-fit: cover;
+        width: fluid(150, 150);
+        height: fluid(150, 150);
 
-        @include desktop {
-            width: vw(150);
-            height: vw(150);
-        }
-
-        @include mobile {
-            width: vw-mobile(150);
-            height: vw-mobile(150);
+        @include tablet {
+            width: 100px;
+            height: 100px;
         }
     }
 
     &__fields {
         display: flex;
         flex-direction: column;
-
-        @include desktop {
-            gap: vw(20);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
-        }
+        gap: fluid(20, 20);
     }
 
     &__label {
@@ -184,30 +162,19 @@ function handleCancel() {
         flex-direction: column;
         font-weight: 400;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            gap: vw(8);
-            font-size: vw(16);
-        }
-
-        @include mobile {
-            gap: vw-mobile(8);
-            font-size: vw-mobile(16);
-        }
+        gap: fluid(8, 8);
+        font-size: fluid(16, 16);
     }
 
     &__actions {
         display: flex;
         justify-content: flex-start;
+        gap: fluid(20, 20);
+        margin-top: fluid(40, 40);
 
-        @include desktop {
-            gap: vw(20);
-            margin-top: vw(40);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
-            margin-top: vw-mobile(40);
+        @include tablet {
+            justify-content: center;
+            flex-wrap: wrap;
         }
     }
 }

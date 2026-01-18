@@ -45,35 +45,37 @@ function handleLogout() {
 }
 </script>
 <template>
-    <div class="nav" ref="dropdownRef">
-        <Logo class="nav__logo" />
+    <div class="nav-wrapper">
+        <div class="nav" ref="dropdownRef">
+            <Logo class="nav__logo" />
 
-        <div class="dropdown dropdown--mobile">
-            <button class="dropdown__button" @click="isDropdownMobileOpen = !isDropdownMobileOpen">
-                <Icon name="formkit:open" class="nav__hamburger" />
-            </button>
-            <Transition name="dropdown">
-                <div v-if="isDropdownMobileOpen" class="dropdown__content">
-                    <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
-                    <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
-                </div>
-            </Transition>
-        </div>
+            <div class="dropdown dropdown--mobile">
+                <button class="dropdown__button" @click="isDropdownMobileOpen = !isDropdownMobileOpen">
+                    <Icon name="formkit:open" class="nav__hamburger" />
+                </button>
+                <Transition name="dropdown">
+                    <div v-if="isDropdownMobileOpen" class="dropdown__content">
+                        <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
+                        <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
+                    </div>
+                </Transition>
+            </div>
 
-        <div class="nav__button-container">
-            <div class="nav__login">
-                <img class="nav__login__image" src="public/img/user.webp" alt="User avatar">
-                <div class="dropdown">
-                    <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
-                        <h4 class="nav__login__name">Rizal</h4>
-                        <Icon class="nav__login__icon" name="mdi:chevron-down" />
-                    </button>
-                    <Transition name="dropdown">
-                        <div v-if="isDropdownOpen" class="dropdown__content">
-                            <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
-                            <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
-                        </div>
-                    </Transition>
+            <div class="nav__button-container">
+                <div class="nav__login">
+                    <img class="nav__login__image" src="public/img/user.webp" alt="User avatar">
+                    <div class="dropdown">
+                        <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
+                            <h4 class="nav__login__name">Rizal</h4>
+                            <Icon class="nav__login__icon" name="mdi:chevron-down" />
+                        </button>
+                        <Transition name="dropdown">
+                            <div v-if="isDropdownOpen" class="dropdown__content">
+                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
+                                <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
+                            </div>
+                        </Transition>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,22 +99,13 @@ function handleLogout() {
         top: 100%;
         right: 0;
         background-color: var(--color-white);
-        border-radius: 8px;
         border: 1px solid var(--color-border);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         z-index: 100;
-
-        @include desktop {
-            margin-top: vw(20);
-            min-width: vw(150);
-        }
-
-        @include mobile {
-            margin-top: vw-mobile(8);
-            min-width: vw-mobile(100);
-        }
-
+        border-radius: fluid(8, 8);
+        box-shadow: 0 fluid(4, 4) fluid(12, 12) rgba(0, 0, 0, 0.1);
+        margin-top: fluid(8, 20);
+        min-width: fluid(100, 150);
     }
 
     &__item {
@@ -121,15 +114,7 @@ function handleLogout() {
         color: var(--color-text);
         font-weight: 500;
         transition: background-color 0.2s;
-
-        @include desktop {
-            padding: vw(12) vw(20);
-        }
-
-        @include mobile {
-            padding: vw-mobile(8) vw-mobile(16);
-        }
-
+        padding: fluid(8, 12) fluid(16, 20);
 
         &:hover {
             background-color: var(--color-border-light);
@@ -142,16 +127,8 @@ function handleLogout() {
             border: none;
             cursor: pointer;
             font-family: inherit;
-
-            @include desktop {
-                font-size: vw(20);
-                max-width: vw(150);
-            }
-
-            @include mobile {
-                font-size: vw-mobile(15);
-                max-width: vw-mobile(150);
-            }
+            font-size: fluid(15, 20);
+            max-width: fluid(150, 150);
         }
 
     }
@@ -168,61 +145,60 @@ function handleLogout() {
     transform: translateY(-10px);
 }
 
+.nav-wrapper {
+    width: 100%;
+    background-color: var(--color-white);
+    border-bottom: var(--color-border-light) 3px solid;
+    z-index: 100;
+
+    @include desktop {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background-color: var(--color-white);
-    border-bottom: var(--color-border-light) 3px solid;
-
-    @include desktop {
-        padding: vw(23) vw(110);
-        max-width: vw(1700);
-        height: vw(60);
-        position: fixed;
-    }
-
-    @include mobile {
-        align-items: center;
-        height: vw-mobile(40);
-        padding: vw-mobile(20);
-    }
+    align-items: center;
+    padding: fluid(15, 23) fluid(20, 40);
+    height: fluid(60, 100);
+    width: 100%;
+    max-width: 1700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 
     &__button-container {
-        @include desktop {
-            display: flex;
-            gap: vw(30);
-        }
+        display: flex;
+        gap: fluid(20, 30);
 
         @include mobile {
+            display: none;
+        }
+
+        @include tablet {
             display: none;
         }
     }
 
     &__logo {
-        @include desktop {
-            width: vw(254);
-            height: vw(59);
-        }
-
-        @include mobile {
-            width: vw-mobile(150);
-            height: vw-mobile(30);
-        }
+        width: fluid(120, 200);
+        height: fluid(28, 46);
     }
 
     &__hamburger {
-        @include desktop {
-            display: none;
-        }
+        font-size: fluid-type(30, 30);
+        display: none;
 
         @include mobile {
             display: block;
-            font-size: vw-mobile(30);
+        }
+
+        @include tablet {
+            display: block;
         }
     }
 
@@ -231,24 +207,18 @@ function handleLogout() {
         align-items: center;
 
         &__image {
-            @include desktop {
-                width: vw(65);
-                margin-left: vw(10);
-            }
+            width: fluid(50, 65);
+            margin-left: fluid(8, 10);
         }
 
         &__name {
-            @include desktop {
-                font-weight: 700;
-                font-size: vw(24);
-                line-height: vw(32);
-            }
+            font-weight: 700;
+            font-size: fluid(18, 24);
+            line-height: fluid(24, 32);
         }
 
         &__icon {
-            @include desktop {
-                font-size: vw(30);
-            }
+            font-size: fluid(24, 30);
         }
     }
 }

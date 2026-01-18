@@ -39,53 +39,41 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 .confirm-modal {
-    min-width: 320px;
     text-align: center;
+    min-width: fluid(320, 320);
+
+    @include tablet {
+        min-width: auto;
+        max-width: 100%;
+    }
 
     &__title {
         font-weight: 700;
         color: var(--color-text);
+        font-size: fluid(28, 28);
+        line-height: fluid(36, 36);
+        margin-bottom: fluid(16, 16);
 
-        @include desktop {
-            font-size: vw(28);
-            line-height: vw(36);
-            margin-bottom: vw(16);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(28);
-            line-height: vw-mobile(36);
-            margin-bottom: vw-mobile(16);
+        @include tablet {
+            font-size: fluid(24, 26);
         }
     }
 
     &__message {
         font-weight: 400;
         color: var(--color-text-secondary);
-
-        @include desktop {
-            font-size: vw(18);
-            line-height: vw(27);
-            margin-bottom: vw(30);
-        }
-
-        @include mobile {
-            font-size: vw-mobile(18);
-            line-height: vw-mobile(27);
-            margin-bottom: vw-mobile(30);
-        }
+        font-size: fluid(18, 18);
+        line-height: fluid(27, 27);
+        margin-bottom: fluid(30, 30);
     }
 
     &__actions {
         display: flex;
         justify-content: center;
+        gap: fluid(20, 20);
 
-        @include desktop {
-            gap: vw(20);
-        }
-
-        @include mobile {
-            gap: vw-mobile(20);
+        @include tablet {
+            flex-wrap: wrap;
         }
     }
 }
