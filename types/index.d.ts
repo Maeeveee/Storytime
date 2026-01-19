@@ -1,4 +1,4 @@
-import AuthRepository from '~/repositories/authRepository'
+import AuthRepository from '~/repositories/modules/authRepository'
 import StoryRepository from '~/repositories/storyRepository'
 import CategoryRepository from '~/repositories/categoryRepository'
 import UserRepository from '~/repositories/userRepository'

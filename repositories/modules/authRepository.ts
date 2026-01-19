@@ -4,7 +4,7 @@ import type {
     RegisterPayload,
     AuthResponse
 } from '~/types/api'
-import HttpFactory from './factory'
+import HttpFactory from '../factory'
 
 class AuthRepository extends HttpFactory{
 

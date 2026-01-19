@@ -1,9 +1,10 @@
 import { defineNuxtPlugin } from '#app'
 import HttpFactory from '~/repositories/factory'
-import AuthRepository from '~/repositories/authRepository'
-import StoryRepository from '~/repositories/storyRepository'
-import CategoryRepository from '~/repositories/categoryRepository'
-import UserRepository from '~/repositories/userRepository'
+
+import AuthRepository from '~/repositories/modules/authRepository'
+import StoryRepository from '~/repositories/modules/storyRepository'
+import CategoryRepository from '~/repositories/modules/categoryRepository'
+import UserRepository from '~/repositories/modules/userRepository'
 import type { $Fetch } from 'ofetch'
 
 export default defineNuxtPlugin((nuxtApp) => {
