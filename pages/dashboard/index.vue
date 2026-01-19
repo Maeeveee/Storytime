@@ -3,24 +3,23 @@ import MyStory from '~/components/section/profile/MyStory.vue';
 import Button from '~/components/ui/Button.vue';
 import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
 
-import type { User } from '~/types/api';
+// import type { User } from '~/types/api';
 
-const { $api } = useNuxtApp()
-const user = ref<User>()
+// const { $api } = useNuxtApp()
+// const user = ref<User>()
 
-const fetchUser = async () => {
-    try {
-        const response = await $api.user.me()
-        user.value = response.data
-    } catch (error) {
-        console.error('failed to fetch user', error)
-    }
-}
+// const fetchUser = async () => {
+//     try {
+//         const response = await $api.user.me()
+//         user.value = response.data
+//     } catch (error) {
+//         console.error('failed to fetch user', error)
+//     }
+// }
 
-onMounted(() => {
-    fetchUser()
-})
-
+// onMounted(() => {
+//     fetchUser()
+// })
 
 const modal = useModal();
 const toast = useToast();

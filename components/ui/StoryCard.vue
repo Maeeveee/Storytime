@@ -63,7 +63,7 @@ function handleDelete() {
                     </div>
                     <div class="card__story-info">
                         <span class="card__created-at">{{ $dayjs(props.articleItem.created_at).format('DD MMMM YYYY')
-                            }}</span>
+                        }}</span>
                         <div v-if="!hideCategory" class="card__genre-badge">
                             <span class="card__genre">{{ props.articleItem.category.name }}</span>
                         </div>
@@ -148,6 +148,7 @@ function handleDelete() {
 
         .card__description {
             min-height: fluid(40, 54);
+            @include clamp-text-3;
 
             @include mobile {
                 text-align: justify;
@@ -272,11 +273,7 @@ function handleDelete() {
             min-height: fluid(60, 80);
             font-size: fluid(14, 18);
             line-height: 1.5;
-            display: -webkit-box;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-            overflow: hidden;
+            @include clamp-text-3;
 
             @include mobile {
                 width: 100%;
@@ -303,11 +300,7 @@ function handleDelete() {
         }
 
         .card__author-name {
-            display: -webkit-box;
-            line-clamp: 1;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
+            @include clamp-text-1;
 
             @include mobile {
                 font-size: vw-mobile(14);

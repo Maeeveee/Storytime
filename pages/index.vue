@@ -7,6 +7,9 @@ import InputForm from '~/components/ui/InputForm.vue';
 const route = useRoute()
 const router = useRouter()
 const showLoginToast = ref(false)
+const { $api } = useNuxtApp()
+
+
 
 onMounted(() => {
     if (route.query.login === 'success') {
