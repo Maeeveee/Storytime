@@ -9,15 +9,15 @@ import HttpFactory from '../factory'
 class AuthRepository extends HttpFactory{
 
     async register(payload: RegisterPayload) {
-        return this.post<ApiResponse<AuthResponse>>('/auth/register', payload)
+        return this.post<ApiResponse<AuthResponse>>('/register', payload)
     }
 
     async login(payload: LoginPayload) {
-        return this.post<ApiResponse<AuthResponse>>('/auth/login', payload)
+        return this.post<ApiResponse<AuthResponse>>('/login', payload)
     }
 
     async logout() {
-        return this.delete<ApiResponse<null>>('/auth/logout')
+        return this.delete<ApiResponse<null>>('/logout')
     }
 }
 

@@ -2,22 +2,33 @@
 import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import Logo from '~/components/ui/Logo.vue';
+import type { LoginPayload } from '~/types/api';
 
 const email = ref('')
 const password = ref('')
 const isLoading = ref(false)
 const toast = useToast();
+const { $api } = useNuxtApp();
 
 const handleLogin = async () => {
     isLoading.value = true
     await new Promise(resolve => setTimeout(resolve, 800))
 
-    if (email.value === 'user@test.com' && password.value === 'password') {
+    try{
+        const payload: LoginPayload = {
+            email: email.value,
+            password: password.value,
+        };
+
+        const response = await $api.auth.login(payload);
+        console.log(response)
         toast.success('You have successfully logged in')
         navigateTo('/')
-    } else {
-        toast.error('Invalid credentials. Try: user@test.com / password')
+    }catch(error){
+        console.error(error)
+        toast.error('Invalid credentials.')
     }
+
     isLoading.value = false
 }
 </script>

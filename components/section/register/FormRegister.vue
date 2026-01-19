@@ -2,21 +2,33 @@
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 import Logo from '~/components/ui/Logo.vue';
+import type { RegisterPayload } from '~/types/api';
 
 const toast = useToast();
-
 const name = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const { $api } = useNuxtApp();
 
-function handleRegister() {
-    if (name.value && email.value && password.value && confirmPassword.value === password.value) {
+const handleRegister = async() => {
+    try {
+        const payload: RegisterPayload = {
+            name: name.value,
+            email: email.value,
+            password: password.value,
+            password_confirmation: confirmPassword.value
+        }
+
+        const response = await $api.auth.register(payload);
+        console.log(response)
         toast.success('You have successfully registered')
         navigateTo('/')
-    } else {
-        toast.error('please fill form below correctly')
+    } catch (error) {
+        console.error('error register',error)
+        toast.error('Invalid credentials.')
     }
+
 }
 
 </script>

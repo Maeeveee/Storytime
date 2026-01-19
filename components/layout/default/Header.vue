@@ -4,11 +4,10 @@ import ConfirmContent from '~/components/ui/modal/ConfirmContent.vue';
 
 const isDropdownOpen = ref(false);
 const isDropdownMobileOpen = ref(false)
-
 const modal = useModal();
 const toast = useToast();
-
 const dropdownRef = ref<HTMLElement | null>(null);
+const { $api } = useNuxtApp();
 
 onMounted(() => {
     document.addEventListener('click', handleClickOutside);
@@ -38,6 +37,8 @@ function handleLogout() {
             cancelText: 'Cancel'
         },
         onConfirm: () => {
+            const response = $api.auth.logout();
+            console.log(response)
             toast.success('You have successfully logged out');
             navigateTo('/login')
         },
