@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<IProps>(), {
     variant: 'default',
     isEdit: false,
 });
-
+const { $api } = useNuxtApp();
 const modal = useModal();
 const toast = useToast();
 
@@ -29,6 +29,7 @@ function handleDelete() {
             cancelText: 'Cancel'
         },
         onConfirm: () => {
+            const response = $api.story.deleteStory();
             toast.success('Successfully delete a story')
         },
     })
@@ -63,7 +64,7 @@ function handleDelete() {
                     </div>
                     <div class="card__story-info">
                         <span class="card__created-at">{{ $dayjs(props.articleItem.created_at).format('DD MMMM YYYY')
-                        }}</span>
+                            }}</span>
                         <div v-if="!hideCategory" class="card__genre-badge">
                             <span class="card__genre">{{ props.articleItem.category.name }}</span>
                         </div>

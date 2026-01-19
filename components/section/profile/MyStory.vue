@@ -2,12 +2,10 @@
 import { articles } from '~/data/articles';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Button from '~/components/ui/Button.vue';
-interface Props {
-    category?: string;
-    title?: string;
-    hideCategory?: boolean;
-    limit?: number;
-}
+import type { StoryListItem } from '~/types/api';
+
+const { $api } = useNuxtApp()
+const stories = ref<StoryListItem[]>([])
 
 const props = withDefaults(defineProps<Props>(), {
     category: '',
@@ -16,18 +14,36 @@ const props = withDefaults(defineProps<Props>(), {
     limit: 4
 })
 
+const fetchStories = async () => {
+    try {
+        const params: any = {
+            limit: props.limit
+        }
+
+        if (props.category) {
+            params.search = props.category
+        }
+
+        const response = await $api.story.getStories(params)
+        stories.value = response.data
+    } catch (error) {
+        console.error('failed to fetch stories', error)
+    }
+}
+
+onMounted(() => {
+    fetchStories()
+})
+
+interface Props {
+    category?: string;
+    title?: string;
+    hideCategory?: boolean;
+    limit?: number;
+}
+
 const filteredArticles = computed(() => {
-    let result = [...articles];
-
-    if (props.category) {
-        result = result.filter(article => article.category === props.category);
-    }
-
-    if (props.limit > 0) {
-        result = result.slice(0, props.limit);
-    }
-
-    return result;
+    return stories.value
 });
 </script>
 
@@ -44,19 +60,19 @@ const filteredArticles = computed(() => {
                     <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
-            <div class="my-story__no-story-wrapper">
+            <!-- <div class="my-story__no-story-wrapper">
                 <div class="my-story__no-story-header">
                     <h1 class="my-story__no-story-title">No Stories Yet</h1>
                     <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your fitness journey
                         today!</h4>
                 </div>
                 <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
-            </div>
-            <!-- <div class="my-story__content-grid">
+            </div> -->
+            <div class="my-story__content-grid">
                 <div v-for="article in filteredArticles" :key="article.id">
                     <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true" />
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
 </template>

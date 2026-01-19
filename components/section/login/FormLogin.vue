@@ -14,7 +14,7 @@ const handleLogin = async () => {
     isLoading.value = true
     await new Promise(resolve => setTimeout(resolve, 800))
 
-    try{
+    try {
         const payload: LoginPayload = {
             email: email.value,
             password: password.value,
@@ -24,7 +24,7 @@ const handleLogin = async () => {
         console.log(response)
         toast.success('You have successfully logged in')
         navigateTo('/')
-    }catch(error){
+    } catch (error) {
         console.error(error)
         toast.error('Invalid credentials.')
     }

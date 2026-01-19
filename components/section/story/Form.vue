@@ -2,8 +2,16 @@
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 import TiptapEditor from '~/components/ui/TiptapEditor.vue';
+import type { CreateStoryPayload, UpdateStoryPayload } from '~/types/api';
 
 const toast = useToast();
+const title = ref('')
+const content = ref('')
+const category = ref(1)
+const cover_image = ref('')
+const { $api } = useNuxtApp()
+
+
 
 interface Props {
     title: 'write' | 'edit'
@@ -13,13 +21,41 @@ const props = withDefaults(defineProps<Props>(), {
     title: 'write'
 });
 
-function handleStory() {
-    if (props.title === 'write') {
+const handleCreateStory = async () => {
+    try {
+        const payload: CreateStoryPayload = {
+            title: title.value,
+            category_id: category.value,
+            content: content.value,
+            cover_image: cover_image.value
+        }
+
+        const response = await $api.story.createStory(payload);
+        console.log(response)
         toast.success('Successfully post a story')
         navigateTo('/dashboard')
-    } else {
-        toast.success('Successfully edit a story')
+    } catch (error) {
+        console.error(error)
+        toast.error('invalid format')
+    }
+
+}
+const handleUpdateStory = async () => {
+    try {
+        const payload: UpdateStoryPayload = {
+            title: title.value,
+            category_id: category.value,
+            content: content.value,
+            cover_image: cover_image.value
+        }
+
+        const response = await $api.story.updateStory(payload);
+        console.log(response)
+        toast.success('Successfully update a story')
         navigateTo('/dashboard')
+    } catch (error) {
+        console.error(error)
+        toast.error('invalid format')
     }
 }
 
@@ -41,7 +77,7 @@ function handleStory() {
         <div>
             <label for="title" class="create__label">
                 <span class="create__label__title">Title</span>
-                <InputForm id="title" placeholder="Enter a story title" />
+                <InputForm v-model="title" id="title" placeholder="Enter a story title" />
             </label>
             <label for="category" class="create__label">
                 <span class="create__label__title">Category</span>
@@ -65,8 +101,8 @@ function handleStory() {
             </label>
             <div class="create__button">
                 <Button action="#" variant="secondary">cancel</Button>
-                <Button v-if="title === 'write'" @click="handleStory" variant="primary">Post Story</Button>
-                <Button v-else @click="handleStory" variant="primary">Update Story</Button>
+                <Button v-if="title === 'write'" @click="handleCreateStory" variant="primary">Post Story</Button>
+                <Button v-else @click="handleUpdateStory" variant="primary">Update Story</Button>
             </div>
         </div>
     </main>
