@@ -54,14 +54,16 @@ function handleDelete() {
                 <h2 class="card__title">{{ props.articleItem.title }}</h2>
             </div>
             <div>
-                <p class="card__description">{{ props.articleItem.content_preview }}</p>
+                <div v-html="props.articleItem.content_preview" class="card__description"></div>
                 <div class="card__footer">
                     <div class="card__author-info">
-                        <img :src="props.articleItem.author.profile_image || 'https://ui-avatars.com/api/?name=' + props.articleItem.author.name" alt="Author Avatar" class="card__author-avatar">
+                        <img :src="props.articleItem.author.profile_image || 'https://ui-avatars.com/api/?name=' + props.articleItem.author.name"
+                            alt="Author Avatar" class="card__author-avatar">
                         <span class="card__author-name">{{ props.articleItem.author.name }}</span>
                     </div>
                     <div class="card__story-info">
-                        <span class="card__created-at">{{ props.articleItem.created_at }}</span>
+                        <span class="card__created-at">{{ $dayjs(props.articleItem.created_at).format('DD MMMM YYYY')
+                            }}</span>
                         <div v-if="!hideCategory" class="card__genre-badge">
                             <span class="card__genre">{{ props.articleItem.category.name }}</span>
                         </div>
@@ -270,6 +272,11 @@ function handleDelete() {
             min-height: fluid(60, 80);
             font-size: fluid(14, 18);
             line-height: 1.5;
+            display: -webkit-box;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
 
             @include mobile {
                 width: 100%;
@@ -296,6 +303,12 @@ function handleDelete() {
         }
 
         .card__author-name {
+            display: -webkit-box;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+
             @include mobile {
                 font-size: vw-mobile(14);
             }

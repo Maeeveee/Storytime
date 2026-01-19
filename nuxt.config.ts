@@ -3,7 +3,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/styles/main.scss'],
-  modules: ['@nuxt/icon', 'nuxt-tiptap-editor'],
+  modules: ['@nuxt/icon', 'nuxt-tiptap-editor', 'dayjs-nuxt'],
+
+  runtimeConfig: {
+    apiSecret: '',
+    public: {
+      apiBase: import.meta.env.NUXT_PUBLIC_API_BASE_URL
+    }
+  },
+
   tiptap: {
     prefix: 'Tiptap'
   },

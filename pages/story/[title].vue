@@ -4,7 +4,7 @@ import DisplayStory from '~/components/section/home/DisplayStory.vue';
 import type { StoryDetail } from '~/types/api';
 
 const route = useRoute();;
-const { $api } =useNuxtApp();
+const { $api } = useNuxtApp();
 const slug = route.params.title as string;
 const story = ref<StoryDetail | null>(null);
 const isLoading = ref(true);
@@ -15,8 +15,8 @@ const fetchStory = async () => {
         const response = await $api.story.getStory(slug);
         story.value = response.data;
     } catch (error) {
-        console.log('failed to fetch story',error);
-        showError({statusCode: 404, statusMessage: 'story not found'})
+        console.log('failed to fetch story', error);
+        showError({ statusCode: 404, statusMessage: 'story not found' })
     } finally {
         isLoading.value = false;
     }
@@ -33,12 +33,13 @@ onMounted(() => {
         <div class="story-detail__container">
             <div class="story-detail__header">
                 <div class="story-detail__header__sub">
-                    <h4 class="story-detail__date">{{ story?.created_at }}</h4>
+                    <h4 class="story-detail__date">{{ $dayjs(story?.created_at).format('DD MMMM YYYY') }}</h4>
                     <span class="story-detail__genre-badge">{{ story?.category.name }}</span>
                 </div>
                 <h1 class="story-detail__title">{{ story?.title }}</h1>
                 <div class="story-detail__author-info">
-                    <img :src="story?.author.profile_image || 'https://ui-avatars.com/api/?name=' + story?.author.name" alt="author avatar" class="story-detail__author-avatar">
+                    <img :src="story?.author.profile_image || 'https://ui-avatars.com/api/?name=' + story?.author.name"
+                        alt="author avatar" class="story-detail__author-avatar">
                     <span class="story-detail__author-name">{{ story?.author.name }}</span>
                 </div>
             </div>

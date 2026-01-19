@@ -4,6 +4,7 @@ import AuthRepository from '~/repositories/authRepository'
 import StoryRepository from '~/repositories/storyRepository'
 import CategoryRepository from '~/repositories/categoryRepository'
 import UserRepository from '~/repositories/userRepository'
+import type { $Fetch } from 'ofetch'
 
 export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig()
@@ -12,15 +13,13 @@ export default defineNuxtPlugin((nuxtApp) => {
         baseURL: config.public.apiBase,
         onRequest({ request, options }) {
         }
-    })
-
-    const httpFactory = new HttpFactory(fetcher as any)
+    }) as $Fetch
 
     const modules = {
-        auth: new AuthRepository(httpFactory),
-        story: new StoryRepository(httpFactory),
-        category: new CategoryRepository(httpFactory),
-        user: new UserRepository(httpFactory)
+        auth: new AuthRepository(fetcher),
+        story: new StoryRepository(fetcher),
+        category: new CategoryRepository(fetcher),
+        user: new UserRepository(fetcher)
     }
 
     return {
