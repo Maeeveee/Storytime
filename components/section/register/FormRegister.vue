@@ -4,6 +4,8 @@ import Button from '~/components/ui/Button.vue';
 import Logo from '~/components/ui/Logo.vue';
 import type { RegisterPayload } from '~/types/api';
 
+const token = useCookie('token')
+
 const toast = useToast();
 const name = ref('')
 const email = ref('')
@@ -20,10 +22,18 @@ const handleRegister = async() => {
             password_confirmation: confirmPassword.value
         }
 
+        await $api.auth.csrf()
         const response = await $api.auth.register(payload);
-        console.log(response)
-        toast.success('You have successfully registered')
-        navigateTo('/')
+
+        if (response.data.token) {
+            token.value = response.data.token;
+            toast.success('You have successfully registered')
+            await navigateTo('/')
+        } else {
+            toast.success('Registration successful, please login')
+            await navigateTo('/login')
+        }
+
     } catch (error) {
         console.error('error register',error)
         toast.error('Invalid credentials.')

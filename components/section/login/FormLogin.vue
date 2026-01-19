@@ -4,6 +4,8 @@ import InputForm from '~/components/ui/InputForm.vue';
 import Logo from '~/components/ui/Logo.vue';
 import type { LoginPayload } from '~/types/api';
 
+const token = useCookie('token')
+
 const email = ref('')
 const password = ref('')
 const isLoading = ref(false)
@@ -20,13 +22,26 @@ const handleLogin = async () => {
             password: password.value,
         };
 
+        await $api.auth.csrf()
         const response = await $api.auth.login(payload);
-        console.log(response)
-        toast.success('You have successfully logged in')
-        navigateTo('/')
-    } catch (error) {
-        console.error(error)
-        toast.error('Invalid credentials.')
+
+        if  (response.data.token){
+            token.value = response.data.token;
+            toast.success('you have successfully logged in')
+            navigateTo('/')
+        } 
+    } catch (error: any) {
+        console.log('Full Error Object:', error)
+        console.log('Error Data:', error.data)
+        console.log('Error Response:', error.response)
+        
+        const message = error.response?._data?.message || error.data?.message || error.message;
+
+        if (message) {
+             toast.error(message)
+        } else {
+             toast.error('Invalid credentials or server error. Check Console.')
+        }
     }
 
     isLoading.value = false

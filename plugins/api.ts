@@ -13,7 +13,22 @@ export default defineNuxtPlugin((nuxtApp) => {
     const fetcher = $fetch.create({
         baseURL: config.public.apiBase,
         onRequest({ request, options }) {
-        }
+            const headers = new Headers(options.headers)
+            headers.set('Accept', 'application/json')
+
+            const xsrfToken = useCookie('XSRF-TOKEN').value
+            if (xsrfToken) {
+                headers.set('X-XSRF-TOKEN', xsrfToken)
+            }
+
+            const authToken = useCookie('token').value
+            if (authToken) {
+                headers.set('Authorization', `Bearer ${authToken}`)
+            }
+
+            options.headers = headers
+        },
+        credentials: 'include'
     }) as $Fetch
 
     const modules = {

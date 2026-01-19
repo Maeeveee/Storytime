@@ -9,15 +9,15 @@ import type {
 class UserRepository extends HttpFactory {
 
     async me() {
-        return this.get<ApiResponse<User>>('/users/me')
+        return this.get<ApiResponse<User>>('/me')
     }
 
     async updateProfile(payload: UpdateProfilePayload) {
-        return this.put<ApiResponse<User>>('/users/profile', payload)
+        return this.put<ApiResponse<User>>('/me', payload)
     }
 
     async changePassword(payload: ChangePasswordPayload) {
-        return this.put<ApiResponse<null>>('/users/password', payload)
+        return this.put<ApiResponse<null>>('/me/change-password', payload)
     }
 }
 

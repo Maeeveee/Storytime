@@ -8,6 +8,12 @@ import type {
 
 class AuthRepository extends HttpFactory {
 
+    async csrf() {
+        return $fetch('/sanctum/csrf-cookie', {
+            credentials: 'include'
+        })
+    }
+
     async register(payload: RegisterPayload) {
         return this.post<ApiResponse<AuthResponse>>('/register', payload)
     }

@@ -15,6 +15,10 @@ class StoryRepository extends HttpFactory {
         return this.get<PaginatedResponse<StoryListItem>>('/stories', params)
     }
 
+    async getMyStories(params?: StoryParams) {
+        return this.get<PaginatedResponse<StoryListItem>>('/me/stories', params)
+    }
+
     async getStory(slug: string) {
         return this.get<ApiResponse<StoryDetail>>(`/stories/${slug}`)
     }
@@ -32,8 +36,8 @@ class StoryRepository extends HttpFactory {
     async uploadCover(file: File) {
         const formData = new FormData()
         formData.append('cover', file)
-        
-        return this.post<ApiResponse<{ url: string }>>('/stories/upload-cover', formData as any)
+
+        return this.post<ApiResponse<{ url: string }>>(`/stories/upload-cover`, formData as any)
     }
 }
 

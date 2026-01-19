@@ -1,7 +1,7 @@
 import AuthRepository from '~/repositories/modules/authRepository'
-import StoryRepository from '~/repositories/storyRepository'
-import CategoryRepository from '~/repositories/categoryRepository'
-import UserRepository from '~/repositories/userRepository'
+import StoryRepository from '~/repositories/modules/storyRepository'
+import CategoryRepository from '~/repositories/modules/categoryRepository'
+import UserRepository from '~/repositories/modules/userRepository'
 
 interface IApiInstance {
     auth: AuthRepository

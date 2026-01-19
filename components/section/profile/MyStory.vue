@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Button from '~/components/ui/Button.vue';
 import type { StoryListItem } from '~/types/api';
 
 const { $api } = useNuxtApp()
 const stories = ref<StoryListItem[]>([])
+const isLoading = ref(true)
 
 const props = withDefaults(defineProps<Props>(), {
     category: '',
@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const fetchStories = async () => {
     try {
+        isLoading.value = true
         const params: any = {
             limit: props.limit
         }
@@ -24,10 +25,12 @@ const fetchStories = async () => {
             params.search = props.category
         }
 
-        const response = await $api.story.getStories(params)
+        const response = await $api.story.getMyStories(params)
         stories.value = response.data
     } catch (error) {
         console.error('failed to fetch stories', error)
+    } finally {
+        isLoading.value = false
     }
 }
 
@@ -42,9 +45,7 @@ interface Props {
     limit?: number;
 }
 
-const filteredArticles = computed(() => {
-    return stories.value
-});
+const hasStories = computed(() => stories.value.length > 0)
 </script>
 
 <template>
@@ -60,19 +61,26 @@ const filteredArticles = computed(() => {
                     <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
-            <!-- <div class="my-story__no-story-wrapper">
-                <div class="my-story__no-story-header">
-                    <h1 class="my-story__no-story-title">No Stories Yet</h1>
-                    <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your fitness journey
-                        today!</h4>
+            
+            <template v-if="isLoading">
+                <div class="my-story__loading">Loading stories...</div>
+            </template>
+            <template v-else-if="hasStories">
+                <div class="my-story__content-grid">
+                    <div v-for="article in stories" :key="article.id">
+                        <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true" />
+                    </div>
                 </div>
-                <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
-            </div> -->
-            <div class="my-story__content-grid">
-                <div v-for="article in filteredArticles" :key="article.id">
-                    <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true" />
+            </template>
+            <template v-else>
+                <div class="my-story__no-story-wrapper">
+                    <div class="my-story__no-story-header">
+                        <h1 class="my-story__no-story-title">No Stories Yet</h1>
+                        <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your journey today!</h4>
+                    </div>
+                    <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
                 </div>
-            </div>
+            </template>
         </div>
     </section>
 </template>

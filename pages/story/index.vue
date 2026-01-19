@@ -6,37 +6,44 @@ import Pagination from '~/components/ui/Pagination.vue';
 import type { StoryListItem } from '~/types/api';
 import type { Category } from '~/types/api';
 
-interface Props {
-    category?: string;
-    title?: string;
-    hideCategory?: boolean;
-    limit?: number;
-}
-
 const { $api } = useNuxtApp();
 const stories = ref<StoryListItem[]>([]);
 const categories = ref<Category[]>([])
 const isLoading = ref(false);
 
-const props = withDefaults(defineProps<Props>(), {
-    category: '',
-    title: '',
-    hideCategory: false,
-    limit: 12
-})
+const searchQuery = ref('')
+const selectedCategory = ref('')
+const sortOrder = ref('newest')
+const currentPage = ref(1)
+const totalPages = ref(1)
+const limit = 12
 
 const fetchStories = async () => {
     isLoading.value = true
     try {
         const params: any = {
-            limit: props.limit
+            limit: limit,
+            page: currentPage.value
         }
 
-        if (props.category) {
-            params.search = props.category
+        if (searchQuery.value) {
+            params.search = searchQuery.value
         }
+
+        if (selectedCategory.value) {
+            params.category_id = selectedCategory.value
+        }
+
+        if (sortOrder.value) {
+            params.sort_by = sortOrder.value
+        }
+
         const response = await $api.story.getStories(params)
         stories.value = response.data
+        if (response.meta) {
+            totalPages.value = response.meta.last_page
+            currentPage.value = response.meta.current_page
+        }
     } catch (error) {
         console.error('failed to fetch stories', error)
     } finally {
@@ -45,25 +52,31 @@ const fetchStories = async () => {
 }
 
 const fetchCategories = async () => {
-    isLoading.value = true
     try {
         const response = await $api.category.getCategories()
         categories.value = response.data
     } catch (error) {
         console.error('failed to fetch categories', error)
-    } finally {
-        isLoading.value = false
     }
 }
+
+let searchTimeout: ReturnType<typeof setTimeout> | null = null
+const handleSearch = (value: string | undefined) => {
+    if (searchTimeout) clearTimeout(searchTimeout)
+    searchTimeout = setTimeout(() => {
+        searchQuery.value = value || ''
+    }, 500)
+}
+
+watch([selectedCategory, sortOrder, searchQuery], () => {
+    currentPage.value = 1
+    fetchStories()
+})
 
 onMounted(() => {
     fetchStories()
     fetchCategories()
 })
-
-const filteredArticles = computed(() => {
-    return stories.value;
-});
 
 </script>
 <template>
@@ -71,36 +84,57 @@ const filteredArticles = computed(() => {
         <h1 class="all-story__title">All Story</h1>
         <Breadcrumb />
         <div class="all-story__input--mobile">
-            <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+            <InputForm 
+                placeholder="Search Story" 
+                variant="secondary" 
+                icon-name="formkit:search"
+                @update:modelValue="handleSearch"
+            />
         </div>
         <div class="all-story__filter">
             <div class="all-story__dropdown">
                 <label for="order" class="all-story__label">Sort By</label>
-                <select name="sort by order" id="order" class="all-story__selected-item">
+                <select v-model="sortOrder" name="sort by order" id="order" class="all-story__selected-item">
                     <option value="newest" class="all-story__item">Newest</option>
                     <option value="popular" class="all-story__item">Popular</option>
-                    <option value="ascending" class="all-story__item">A - Z</option>
-                    <option value="descending" class="all-story__item">Z - A</option>
+                    <option value="a-z" class="all-story__item">A - Z</option>
+                    <option value="z-a" class="all-story__item">Z - A</option>
                 </select>
                 <label for="category" class="all-story__label">Category</label>
-                <select name="sort by category" id="category" class="all-story__selected-item">
-                    <option v-for="category in categories" :key="category.id" :value="category.name"
+                <select v-model="selectedCategory" name="sort by category" id="category" class="all-story__selected-item">
+                    <option value="" class="all-story__item">All Categories</option>
+                    <option v-for="category in categories" :key="category.id" :value="category.id"
                         class="all-story__item">{{ category.name }}</option>
                 </select>
             </div>
 
             <div class="all-story__input--desktop">
-                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+                <InputForm 
+                    placeholder="Search Story" 
+                    variant="secondary" 
+                    icon-name="formkit:search"
+                    @update:modelValue="handleSearch"
+                />
             </div>
         </div>
 
-        <div class="all-story__content">
-            <div v-for="article in filteredArticles" :key="article.id">
-                <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" />
+        <div v-if="isLoading" class="all-story__loading">
+            <p>Loading stories...</p>
+        </div>
+        <div v-else-if="stories.length === 0" class="all-story__empty">
+            <p>No stories found.</p>
+        </div>
+        <div v-else class="all-story__content">
+            <div v-for="article in stories" :key="article.id">
+                <StoryCard :article-item="article" variant="small" />
             </div>
         </div>
         <div class="all-story__pagination">
-            <Pagination />
+            <Pagination 
+                :current-page="currentPage" 
+                :total-pages="totalPages"
+                @page-change="(page: number) => { currentPage = page; fetchStories(); }"
+            />
         </div>
     </main>
 </template>

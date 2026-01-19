@@ -26,5 +26,18 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: `${import.meta.env.NUXT_API_TARGET_URL}/api`,
+        changeOrigin: true,
+      },
+      '/sanctum': {
+        target: `${import.meta.env.NUXT_API_TARGET_URL}/sanctum`,
+        changeOrigin: true,
+      }
+    }
   }
 })

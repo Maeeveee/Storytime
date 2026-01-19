@@ -9,6 +9,9 @@ const toast = useToast();
 const dropdownRef = ref<HTMLElement | null>(null);
 const { $api } = useNuxtApp();
 
+const token = useCookie('token')
+const isLoggedIn = computed(() => !!token.value)
+
 onMounted(() => {
     document.addEventListener('click', handleClickOutside);
 });
@@ -36,11 +39,16 @@ function handleLogout() {
             confirmText: 'Logout',
             cancelText: 'Cancel'
         },
-        onConfirm: () => {
-            const response = $api.auth.logout();
-            console.log(response)
-            toast.success('You have successfully logged out');
-            navigateTo('/login')
+        onConfirm: async () => {
+            try {
+                await $api.auth.logout();
+                token.value = null
+                toast.success('You have successfully logged out');
+                navigateTo('/login')
+            } catch (error) {
+                token.value = null
+                navigateTo('/login')
+            }
         },
     })
 }
@@ -50,37 +58,51 @@ function handleLogout() {
         <div class="nav" ref="dropdownRef">
             <Logo class="nav__logo" />
 
-            <div class="dropdown dropdown--mobile">
-                <button class="dropdown__button" @click="isDropdownMobileOpen = !isDropdownMobileOpen">
-                    <Icon name="formkit:open" class="nav__hamburger" />
-                </button>
-                <Transition name="dropdown">
-                    <div v-if="isDropdownMobileOpen" class="dropdown__content">
-                        <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
-                        <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
-                    </div>
-                </Transition>
-            </div>
-
-            <div class="nav__button-container">
-                <div class="nav__login">
-                    <img class="nav__login__image" src="public/img/user.webp" alt="User avatar">
-                    <div class="dropdown">
-                        <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
-                            <h4 class="nav__login__name">Rizal</h4>
-                            <Icon class="nav__login__icon" name="mdi:chevron-down" />
-                        </button>
-                        <Transition name="dropdown">
-                            <div v-if="isDropdownOpen" class="dropdown__content">
-                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile
-                                </NuxtLink>
-                                <button class="dropdown__item dropdown__item--button"
-                                    @click="handleLogout">Logout</button>
-                            </div>
-                        </Transition>
-                    </div>
+            <ClientOnly>
+                <div class="dropdown dropdown--mobile">
+                    <button class="dropdown__button" @click="isDropdownMobileOpen = !isDropdownMobileOpen">
+                        <Icon name="formkit:open" class="nav__hamburger" />
+                    </button>
+                    <Transition name="dropdown">
+                        <div v-if="isDropdownMobileOpen" class="dropdown__content">
+                            <template v-if="isLoggedIn">
+                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
+                                <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
+                            </template>
+                            <template v-else>
+                                <NuxtLink to="/login" class="dropdown__item dropdown__item--button">Login</NuxtLink>
+                                <NuxtLink to="/register" class="dropdown__item dropdown__item--button">Register</NuxtLink>
+                            </template>
+                        </div>
+                    </Transition>
                 </div>
-            </div>
+
+                <div class="nav__button-container">
+                    <template v-if="isLoggedIn">
+                        <div class="nav__login">
+                            <img class="nav__login__image" src="/img/user.webp" alt="User avatar">
+                            <div class="dropdown">
+                                <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
+                                    <h4 class="nav__login__name">User</h4>
+                                    <Icon class="nav__login__icon" name="mdi:chevron-down" />
+                                </button>
+                                <Transition name="dropdown">
+                                    <div v-if="isDropdownOpen" class="dropdown__content">
+                                        <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile
+                                        </NuxtLink>
+                                        <button class="dropdown__item dropdown__item--button"
+                                            @click="handleLogout">Logout</button>
+                                    </div>
+                                </Transition>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <NuxtLink to="/login" class="nav__auth-button nav__auth-button--login">Login</NuxtLink>
+                        <NuxtLink to="/register" class="nav__auth-button nav__auth-button--register">Register</NuxtLink>
+                    </template>
+                </div>
+            </ClientOnly>
         </div>
     </div>
 </template>
