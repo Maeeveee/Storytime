@@ -58,6 +58,7 @@ function viewCover() {
         border-radius: fluid(8, 8);
         width: fluid(320, 547);
         height: fluid(254, 600);
+        object-fit:cover;
 
         @include tablet {
             width: 100%;

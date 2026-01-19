@@ -115,7 +115,7 @@ onMounted(() => {
     &__image {
         display: flex;
         margin: auto;
-        width: fluid(90%, 45%);
+        width: fluid(45%, 90%);
 
         @include tablet {
             width: 70%;

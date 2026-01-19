@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import type { Article } from "~/types/article";
 import type { StoryListItem } from '~/types/api';
 import ConfirmContent from "./modal/ConfirmContent.vue";
 
@@ -70,7 +69,7 @@ function handleDelete() {
                 </div>
             </div>
         </div>
-        <NuxtLink :to="`/story/${props.articleItem.title}`" class="card__link"></NuxtLink>
+        <NuxtLink :to="`/story/${props.articleItem.slug}`" class="card__link"></NuxtLink>
     </article>
 </template>
 

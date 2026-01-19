@@ -3,11 +3,9 @@ import StorySection from '~/components/section/story-detail/StorySection.vue';
 import DisplayStory from '~/components/section/home/DisplayStory.vue';
 import type { StoryDetail } from '~/types/api';
 
-const route = useRoute();
+const route = useRoute();;
 const { $api } =useNuxtApp();
-
 const slug = route.params.title as string;
-
 const story = ref<StoryDetail | null>(null);
 const isLoading = ref(true);
 
