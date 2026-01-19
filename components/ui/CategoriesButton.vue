@@ -23,6 +23,7 @@ defineProps<{ category?: string }>();
         width: fluid(135, 135);
         height: fluid(38, 38);
         padding: fluid(40, 60);
+        margin: auto;
 
         @include tablet {
             font-size: fluid(20, 24);

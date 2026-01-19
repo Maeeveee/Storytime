@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
 import Breadcrumb from '~/components/ui/Breadcrumb.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Pagination from '~/components/ui/Pagination.vue';
+import type { StoryListItem } from '~/types/api';
+import type { Category } from '~/types/api';
+
 interface Props {
     category?: string;
     title?: string;
     hideCategory?: boolean;
     limit?: number;
 }
+
+const { $api } = useNuxtApp();
+const stories = ref<StoryListItem[]>([]);
+const categories = ref<Category[]>([])
+const isLoading = ref(false);
 
 const props = withDefaults(defineProps<Props>(), {
     category: '',
@@ -18,24 +25,45 @@ const props = withDefaults(defineProps<Props>(), {
     limit: 12
 })
 
-const filteredArticles = computed(() => {
-    let result = [...articles];
+const fetchStories = async () => {
+    isLoading.value = true
+    try {
+        const params: any = {
+            limit: props.limit
+        }
 
-    if (props.category) {
-        result = result.filter(article => article.category === props.category);
+        if (props.category) {
+            params.search = props.category
+        }
+        const response = await $api.story.getStories(params)
+        stories.value = response.data
+    } catch (error) {
+        console.error('failed to fetch stories', error)
+    } finally {
+        isLoading.value = false
     }
+}
 
-    if (props.limit > 0) {
-        result = result.slice(0, props.limit);
+const fetchCategories = async () => {
+    isLoading.value = true
+    try {
+        const response = await $api.category.getCategories()
+        categories.value = response.data
+    } catch (error) {
+        console.error('failed to fetch categories', error)
+    } finally {
+        isLoading.value = false
     }
+}
 
-    return result;
-});
-
-const categories = computed(() => {
-    const uniqueCategories = Array.from(new Set(articles.map(article => article.category)));
-    return uniqueCategories.map(category => ({ category }));
+onMounted(() => {
+    fetchStories()
+    fetchCategories()
 })
+
+const filteredArticles = computed(() => {
+    return stories.value;
+});
 
 </script>
 <template>
@@ -56,8 +84,8 @@ const categories = computed(() => {
                 </select>
                 <label for="category" class="all-story__label">Category</label>
                 <select name="sort by category" id="category" class="all-story__selected-item">
-                    <option v-for="category in categories" :key="category.category" :value="category.category"
-                        class="all-story__item">{{ category.category }}</option>
+                    <option v-for="category in categories" :key="category.id" :value="category.name"
+                        class="all-story__item">{{ category.name }}</option>
                 </select>
             </div>
 

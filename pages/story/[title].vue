@@ -1,32 +1,51 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
 import StorySection from '~/components/section/story-detail/StorySection.vue';
 import DisplayStory from '~/components/section/home/DisplayStory.vue';
-const route = useRoute();
-const title = route.params.title;
+import type { StoryDetail } from '~/types/api';
 
-const article = computed(() => {
-    return articles.find(article => article.title === title);
-});
+const route = useRoute();
+const { $api } =useNuxtApp();
+
+const slug = route.params.title as string;
+
+const story = ref<StoryDetail | null>(null);
+const isLoading = ref(true);
+
+const fetchStory = async () => {
+    isLoading.value = true
+    try {
+        const response = await $api.story.getStory(slug);
+        story.value = response.data;
+    } catch (error) {
+        console.log('failed to fetch story',error);
+        showError({statusCode: 404, statusMessage: 'story not found'})
+    } finally {
+        isLoading.value = false;
+    }
+}
+
+onMounted(() => {
+    fetchStory();
+})
 </script>
 
 <template>
     <main>
-        <UiBreadcrumb class="story-detail__breadcrumb" :title="article?.title" />
+        <UiBreadcrumb class="story-detail__breadcrumb" :title="story?.title" />
         <div class="story-detail__container">
             <div class="story-detail__header">
                 <div class="story-detail__header__sub">
-                    <h4 class="story-detail__date">{{ article?.createdDate }}</h4>
-                    <span class="story-detail__genre-badge">{{ article?.category }}</span>
+                    <h4 class="story-detail__date">{{ story?.created_at }}</h4>
+                    <span class="story-detail__genre-badge">{{ story?.category.name }}</span>
                 </div>
-                <h1 class="story-detail__title">{{ article?.title }}</h1>
+                <h1 class="story-detail__title">{{ story?.title }}</h1>
                 <div class="story-detail__author-info">
-                    <img :src="article?.authorAvatar" alt="author avatar" class="story-detail__author-avatar">
-                    <span class="story-detail__author-name">{{ article?.authorName }}</span>
+                    <img :src="story?.author.profile_image || 'https://ui-avatars.com/api/?name=' + story?.author.name" alt="author avatar" class="story-detail__author-avatar">
+                    <span class="story-detail__author-name">{{ story?.author.name }}</span>
                 </div>
             </div>
-            <StorySection v-if="article" :article-item="article" class="story-detail__story-content" />
-            <DisplayStory :category="article?.category" display="flex" title="Similar Story" />
+            <StorySection v-if="story" :article-item="story" class="story-detail__story-content" />
+            <DisplayStory :category="story?.category.name" display="flex" title="Similar Story" />
         </div>
     </main>
 </template>

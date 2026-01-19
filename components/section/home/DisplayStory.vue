@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import NavigationButton from '~/components/ui/NavigationButton.vue';
+import type { StoryListItem } from '~/types/api';
+
 interface Props {
     category?: string;
     title?: string;
@@ -16,23 +17,38 @@ const props = withDefaults(defineProps<Props>(), {
     limit: 6
 });
 
-const filteredArticles = computed(() => {
-    let result = [...articles];
+const { $api } = useNuxtApp()
+const stories = ref<StoryListItem[]>([])
+const isLoading = ref(false)
 
-    if (props.display === 'carousel') {
+const fetchStories = async () => {
+    isLoading.value = true
+    try {
+        const params: any = {
+            limit: props.limit
+        }
+
         if (props.category) {
-            result = result.filter(article => article.category === props.category);
+
+            params.search = props.category 
         }
 
-        if (props.limit > 0) {
-            result = result.slice(0, props.limit);
-        }
-
-    } else {
-        result = articles.filter(article => article.category === props.category).slice(0, 4);
+        const response = await $api.story.getStories(params)
+        stories.value = response.data
+    } catch (error) {
+        console.error('Failed to fetch stories', error)
+    } finally {
+        isLoading.value = false
     }
+}
 
-    return result;
+onMounted(() => {
+    fetchStories()
+})
+
+
+const filteredArticles = computed(() => {
+    return stories.value
 });
 
 const displayTitle = computed(() => {
@@ -42,8 +58,6 @@ const displayTitle = computed(() => {
     }
     return 'Similar Story'
 });
-
-
 </script>
 
 <template>

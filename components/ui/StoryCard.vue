@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { Article } from "~/types/article";
+// import type { Article } from "~/types/article";
+import type { StoryListItem } from '~/types/api';
 import ConfirmContent from "./modal/ConfirmContent.vue";
 
 
 interface IProps {
-    articleItem: Article;
+    articleItem: StoryListItem;
     hideCategory?: boolean;
     variant?: 'default' | 'large' | 'small';
     isEdit?: boolean;
@@ -47,23 +48,23 @@ function handleDelete() {
                     <Icon class="card__icon__text" name="lucide:trash-2" />
                 </button>
             </div>
-            <img :src="props.articleItem.image" alt="Story Image" class="card__image">
+            <img :src="props.articleItem.cover_image" alt="Story Image" class="card__image">
         </div>
         <div class="card__content">
             <div class="card__header">
                 <h2 class="card__title">{{ props.articleItem.title }}</h2>
             </div>
             <div>
-                <p class="card__description">{{ props.articleItem.shortContent }}</p>
+                <p class="card__description">{{ props.articleItem.content_preview }}</p>
                 <div class="card__footer">
                     <div class="card__author-info">
-                        <img :src="props.articleItem.authorAvatar" alt="Author Avatar" class="card__author-avatar">
-                        <span class="card__author-name">{{ props.articleItem.authorName }}</span>
+                        <img :src="props.articleItem.author.profile_image || 'https://ui-avatars.com/api/?name=' + props.articleItem.author.name" alt="Author Avatar" class="card__author-avatar">
+                        <span class="card__author-name">{{ props.articleItem.author.name }}</span>
                     </div>
                     <div class="card__story-info">
-                        <span class="card__created-at">{{ props.articleItem.createdDate }}</span>
+                        <span class="card__created-at">{{ props.articleItem.created_at }}</span>
                         <div v-if="!hideCategory" class="card__genre-badge">
-                            <span class="card__genre">{{ props.articleItem.category }}</span>
+                            <span class="card__genre">{{ props.articleItem.category.name }}</span>
                         </div>
                     </div>
                 </div>

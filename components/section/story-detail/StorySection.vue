@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Article } from '~/types/article';
+import type { StoryDetail } from '~/types/api';
 import ViewCoverModal from '~/components/ui/modal/ViewCoverModal.vue';
-defineProps<{ articleItem: Article; }>()
+
+defineProps<{ articleItem: StoryDetail; }>()
 
 const modal = useModal();
 
@@ -18,12 +19,12 @@ function viewCover() {
         <div class="story-section__content-wrapper">
             <div class="story-section__image-wrapper">
                 <button @click="viewCover" class="story-section__hide-button">
-                    <img :src="articleItem.image" :alt="articleItem.title" class="story-section__image">
+                    <img :src="articleItem.cover_image" :alt="articleItem.title" class="story-section__image">
                 </button>
             </div>
             <div class="story-section__content-wrapper">
                 <article class="story-section__article-text">
-                    {{ articleItem.shortContent }}
+                    <div v-html="articleItem.content"></div>
                 </article>
             </div>
         </div>

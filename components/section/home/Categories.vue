@@ -1,10 +1,25 @@
 <script setup lang="ts">
-import { articles } from '~/data/articles';
+import type { Category } from '~/types/api';
 import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 
-const categories = computed(() => {
-    const uniqueCategories = Array.from(new Set(articles.map(article => article.category)));
-    return uniqueCategories.map(category => ({ category }));
+const { $api } = useNuxtApp()
+const categories = ref<Category[]>([])
+const isLoading = ref(false)
+
+const fetchCategories = async () => {
+    isLoading.value = true
+    try {
+        const response = await $api.category.getCategories()
+        categories.value = response.data
+    } catch (error) {
+        console.error('failed to fetch categories', error)
+    } finally {
+        isLoading.value = false
+    }
+}
+
+onMounted(() => {
+    fetchCategories()
 })
 
 </script>
@@ -17,8 +32,8 @@ const categories = computed(() => {
     <UiDivider />
 
     <div class="more-categories__display">
-        <div v-for="category in categories" :key="category.category">
-            <CategoriesButton :category="category.category" />
+        <div v-for="category in categories" :key="category.id">
+            <CategoriesButton :category="category.name" />
         </div>
     </div>
 
@@ -41,9 +56,10 @@ const categories = computed(() => {
     &__display {
         grid-template-columns: 1fr 1fr;
         gap: fluid(8, 8);
-
+        
         @include desktop {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
         }
 
         @include tablet {
