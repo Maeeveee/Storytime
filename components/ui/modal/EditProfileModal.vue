@@ -16,12 +16,10 @@ const newPassword = ref('');
 const confirmPassword = ref('');
 
 const selectedFile = ref<File | null>(null);
-const files = ref();
-const success = ref();
-const error = ref();
 
-function onFileChange(e: any) {
-  const file = e.target.files[0];
+function onFileChange(e: Event) {
+  const target = e.target as HTMLInputElement;
+  const file = target.files?.[0];
   if (file) {
     selectedFile.value = file;
     profileImage.value = URL.createObjectURL(file);
@@ -101,15 +99,15 @@ function handleCancel() {
                 <div class="edit-profile__fields">
                     <label class="edit-profile__label">
                         <span>Name</span>
-                        <InputForm v-model="name" :placeholder=user?.name! variant="primary" />
+                        <InputForm v-model="name" :placeholder="user?.name ?? ''" variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>Email</span>
-                        <InputForm v-model="email" :placeholder=user?.email! variant="primary" />
+                        <InputForm v-model="email" :placeholder="user?.email ?? ''" variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about!" :placeholder=user?.about! variant="primary" />
+                        <InputForm v-model="about" :placeholder="user?.about ?? ''" variant="primary" />
                     </label>
                 </div>
             </div>

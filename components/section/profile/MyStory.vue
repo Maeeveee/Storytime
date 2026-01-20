@@ -3,6 +3,13 @@ import StoryCard from '~/components/ui/StoryCard.vue';
 import Button from '~/components/ui/Button.vue';
 import type { StoryListItem } from '~/types/api';
 
+interface Props {
+    category?: string;
+    title?: string;
+    hideCategory?: boolean;
+    limit?: number;
+}
+
 const { $api } = useNuxtApp()
 const stories = ref<StoryListItem[]>([])
 const isLoading = ref(true)
@@ -17,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
 const fetchStories = async () => {
     try {
         isLoading.value = true
-        const params: any = {
+        const params: Record<string, string | number> = {
             limit: props.limit
         }
 
@@ -38,12 +45,6 @@ onMounted(() => {
     fetchStories()
 })
 
-interface Props {
-    category?: string;
-    title?: string;
-    hideCategory?: boolean;
-    limit?: number;
-}
 
 const hasStories = computed(() => stories.value.length > 0)
 </script>

@@ -18,16 +18,14 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const route = useRoute();
-const slug = route.params.title as string
+const slug = computed(() => route.params.title as string)
 const { $api } = useNuxtApp()
 const stories = ref<StoryListItem[]>([])
-const similarStories = ref()
-const isLoading = ref(false)
+const similarStories = ref<StoryListItem[]>([])
 
 const fetchStories = async () => {
-    isLoading.value = true
     try {
-        const params: any = {
+        const params: Record<string, string | number> = {
             limit: props.limit
         }
 
@@ -39,33 +37,26 @@ const fetchStories = async () => {
         stories.value = response.data
     } catch (error) {
         console.error('Failed to fetch stories', error)
-    } finally {
-        isLoading.value = false
     }
 }
 
 const fetchSimilarStory = async () => {
-    isLoading.value = true
+    if (!slug.value) return
     try {
-        const response = await $api.story.getSimilarStory(slug)
+        const response = await $api.story.getSimilarStory(slug.value)
         similarStories.value = response.data
-    } finally {
-        isLoading.value = false
+    } catch (error) {
+        console.error('Failed to fetch similar stories', error)
     }
 }
 
 onMounted(() => {
-    fetchStories()
-    fetchSimilarStory()
+    if (props.display === 'similar') {
+        fetchSimilarStory()
+    } else {
+        fetchStories()
+    }
 })
-
-const similar = computed(() => {
-    return similarStories.value
-})
-
-const filteredArticles = computed(() => {
-    return stories.value
-});
 
 const displayTitle = computed(() => {
     if (props.title) return props.title;
@@ -88,37 +79,37 @@ const displayTitle = computed(() => {
         <div class="display__grid__desktop">
             <div class="display__grid">
                 <div class="display__grid__left">
-                    <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="large" />
+                    <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="large" />
                 </div>
                 <div class="display__grid__left">
-                    <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
-                    <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
+                    <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="small" />
+                    <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="small" />
                 </div>
             </div>
         </div>
 
         <div class="display__grid__mobile">
             <div class="display__grid">
-                <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="small" />
-                <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="small" />
-                <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="small" />
-                <StoryCard v-if="filteredArticles[3]" :article-item="filteredArticles[3]" variant="small" />
+                <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="small" />
+                <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="small" />
+                <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="small" />
+                <StoryCard v-if="stories[3]" :article-item="stories[3]" variant="small" />
             </div>
         </div>
     </div>
 
     <div v-if="props.display === 'flex'" class="display__flex">
-        <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="default" />
-        <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="default" />
-        <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="default" />
+        <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="default" />
+        <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="default" />
+        <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="default" />
     </div>
 
     <div v-if="$props.display === 'similar'" class="display__flex">
-        <StoryCard v-for="article in similar" :key="article.id" :article-item="article" variant="default" />
+        <StoryCard v-for="article in similarStories" :key="article.id" :article-item="article" variant="default" />
     </div>
 
     <div v-if="props.display === 'carousel'" class="display__carousel">
-        <StoryCard v-for="article in filteredArticles" :key="article.id" :article-item="article" variant="default" />
+        <StoryCard v-for="article in stories" :key="article.id" :article-item="article" variant="default" />
     </div>
 
 </template>
