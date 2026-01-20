@@ -78,8 +78,8 @@ function handleCancel() {
         <div class="edit-profile__content">
             <div class="edit-profile__left">
                 <div class="edit-profile__image-section">
-                    <img id="imagePreview" v-model="profileImage" alt="user profile" class="edit-profile__avatar">
-                    <label class="button">
+                    <img id="imagePreview" :src="profileImage" alt="user profile" class="edit-profile__avatar">
+                    <label class="pictureButton">
                         <input type="file" id="fileInput" @change="onFileChange" accept="image/png, image/jpg, image/jpeg">
                         Change Picture
                     </label>
@@ -134,7 +134,7 @@ input[type="file"] {
     display: none;
 }
 
-.button {
+.pictureButton {
     display: flex;
     justify-content: center;
     align-items: center;
