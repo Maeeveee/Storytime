@@ -20,8 +20,10 @@ class UserRepository extends HttpFactory {
         return this.post<ApiResponse<null>>('/me/change-password', payload)
     }
 
-    async updateProfileImage(payload: ChangePasswordPayload) {
-        return this.post<ApiResponse<null>>('/me/profile-image', payload)
+    async updateProfileImage(file: File) {
+        const formData = new FormData()
+        formData.append('profile_image', file)
+        return this.post<void>('/me/profile-image', formData as any)
     }
 }
 

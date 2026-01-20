@@ -40,6 +40,4 @@ export default class HttpFactory {
             method: 'DELETE'
         })
     }
-
-
 }

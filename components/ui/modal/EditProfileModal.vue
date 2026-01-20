@@ -15,13 +15,17 @@ const oldPassword = ref('');
 const newPassword = ref('');
 const confirmPassword = ref('');
 
+const selectedFile = ref<File | null>(null);
 const files = ref();
 const success = ref();
 const error = ref();
 
 function onFileChange(e: any) {
   const file = e.target.files[0];
-  profileImage.value = URL.createObjectURL(file);
+  if (file) {
+    selectedFile.value = file;
+    profileImage.value = URL.createObjectURL(file);
+  }
 }
 
 const fetchUser = async () => {
@@ -52,18 +56,27 @@ const handleUpdate = async () => {
             name: name.value,
             about: about.value!,
         }
-        const payload2: ChangePasswordPayload = {
-            old_password: oldPassword.value,
-            new_password: newPassword.value,
-            new_password_confirmation: confirmPassword.value
-        }
-        const response = await $api.user.updateProfile(payload)
-        const response2 = await $api.user.changePassword(payload2)
-    } catch (error) {
-        console.error('error update profle', error)
-    }
+        await $api.user.updateProfile(payload)
 
-    emit('confirm');
+        if (selectedFile.value) {
+            await $api.user.updateProfileImage(selectedFile.value)
+        }
+
+        if (oldPassword.value && newPassword.value && confirmPassword.value) {
+            const passwordPayload: ChangePasswordPayload = {
+                old_password: oldPassword.value,
+                new_password: newPassword.value,
+                new_password_confirmation: confirmPassword.value
+            }
+            await $api.user.changePassword(passwordPayload)
+        }
+        
+        emit('confirm');
+    } catch (err) {
+        console.error('error update profile', err)
+    } finally {
+        isLoading.value = false
+    }
 }
 
 function handleCancel() {
