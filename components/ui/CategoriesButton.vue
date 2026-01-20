@@ -1,10 +1,20 @@
 <script setup lang="ts">
-defineProps<{ category?: string }>();
+const props = defineProps<{ category?: string, categoryId?: any}>();
+
+const category = props.categoryId
+ 
+const router = useRouter()
+
+const handleCategories = async () => {
+    await router.push({ path: '/story/', query: { categoryType: category } })
+}
+console.log(props.category)
+console.log(category)
 </script>
 
 <template>
     <div class="categories">
-        <NuxtLink to="/story/" class="categories__button">{{ category }}</NuxtLink>
+        <button v-on:click="handleCategories" class="categories__button">{{ $props.category }}</button>
     </div>
 </template>
 

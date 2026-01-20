@@ -3,16 +3,18 @@ import Breadcrumb from '~/components/ui/Breadcrumb.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Pagination from '~/components/ui/Pagination.vue';
-import type { StoryListItem } from '~/types/api';
-import type { Category } from '~/types/api';
+import type { StoryListItem, Category } from '~/types/api';
 
 const { $api } = useNuxtApp();
 const stories = ref<StoryListItem[]>([]);
 const categories = ref<Category[]>([])
 const isLoading = ref(false);
 
+const route = useRoute()
+const router = useRouter()
+
 const searchQuery = ref('')
-const selectedCategory = ref('')
+const selectedCategory = ref(route.query.categoryType)
 const sortOrder = ref('newest')
 const currentPage = ref(1)
 const totalPages = ref(1)
@@ -74,22 +76,22 @@ watch([selectedCategory, sortOrder, searchQuery], () => {
 })
 
 onMounted(() => {
+    if (route.query.categoryType) {
+        router.replace({ query: {} })
+        setTimeout(() => {
+        }, 3000)
+    }
     fetchStories()
     fetchCategories()
 })
-
 </script>
 <template>
     <main class="all-story">
         <h1 class="all-story__title">All Story</h1>
         <Breadcrumb />
         <div class="all-story__input--mobile">
-            <InputForm 
-                placeholder="Search Story" 
-                variant="secondary" 
-                icon-name="formkit:search"
-                @update:modelValue="handleSearch"
-            />
+            <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"
+                @update:modelValue="handleSearch" />
         </div>
         <div class="all-story__filter">
             <div class="all-story__dropdown">
@@ -101,7 +103,8 @@ onMounted(() => {
                     <option value="z-a" class="all-story__item">Z - A</option>
                 </select>
                 <label for="category" class="all-story__label">Category</label>
-                <select v-model="selectedCategory" name="sort by category" id="category" class="all-story__selected-item">
+                <select v-model="selectedCategory" name="sort by category" id="category"
+                    class="all-story__selected-item">
                     <option value="" class="all-story__item">All Categories</option>
                     <option v-for="category in categories" :key="category.id" :value="category.id"
                         class="all-story__item">{{ category.name }}</option>
@@ -109,12 +112,8 @@ onMounted(() => {
             </div>
 
             <div class="all-story__input--desktop">
-                <InputForm 
-                    placeholder="Search Story" 
-                    variant="secondary" 
-                    icon-name="formkit:search"
-                    @update:modelValue="handleSearch"
-                />
+                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"
+                    @update:modelValue="handleSearch" />
             </div>
         </div>
 
@@ -130,11 +129,8 @@ onMounted(() => {
             </div>
         </div>
         <div class="all-story__pagination">
-            <Pagination 
-                :current-page="currentPage" 
-                :total-pages="totalPages"
-                @page-change="(page: number) => { currentPage = page; fetchStories(); }"
-            />
+            <Pagination :current-page="currentPage" :total-pages="totalPages"
+                @page-change="(page: number) => { currentPage = page; fetchStories(); }" />
         </div>
     </main>
 </template>

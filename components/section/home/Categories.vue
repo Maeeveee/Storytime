@@ -33,7 +33,7 @@ onMounted(() => {
 
     <div class="more-categories__display">
         <div v-for="category in categories" :key="category.id">
-            <CategoriesButton :category="category.name" />
+            <CategoriesButton :category="category.name" :category-id="category.id" />
         </div>
     </div>
 

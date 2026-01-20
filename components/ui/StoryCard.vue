@@ -29,7 +29,7 @@ function handleDelete() {
             cancelText: 'Cancel'
         },
         onConfirm: () => {
-            const response = $api.story.deleteStory();
+            // const response = $api.story.deleteStory();
             toast.success('Successfully delete a story')
         },
     })
