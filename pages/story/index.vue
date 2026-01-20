@@ -31,9 +31,10 @@ const fetchStories = async () => {
         if (searchQuery.value) {
             params.search = searchQuery.value
         }
-
+        
         if (selectedCategory.value) {
             params.category_id = selectedCategory.value
+            router.push({path: '/story/', query:{categoryId: params.category_id} })
         }
 
         if (sortOrder.value) {
