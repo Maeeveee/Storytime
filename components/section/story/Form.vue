@@ -27,7 +27,6 @@ const handleCreateStory = async () => {
             title: title.value,
             category_id: category.value,
             content: content.value,
-            cover_image: cover_image.value
         }
 
         const response = await $api.story.createStory(payload);

@@ -95,7 +95,6 @@ export interface CreateStoryPayload {
     title: string
     content: string
     category_id: number
-    cover_image?: string
 }
 
 export interface UpdateStoryPayload {
