@@ -3,13 +3,34 @@ import DisplayStory from '~/components/section/home/DisplayStory.vue';
 import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
 import Categories from '~/components/section/home/Categories.vue';
 import InputForm from '~/components/ui/InputForm.vue';
+import type { User } from '~/types/api';
 
 const route = useRoute()
 const router = useRouter()
 const showLoginToast = ref(false)
+
+const token = useCookie('token')
+const isLoggedIn = computed(() => !!token.value)
+
 const { $api } = useNuxtApp()
+const user = ref<User | null>(null)
+const isLoading = ref(true)
 
+const fetchUser = async () => {
+    try {
+        isLoading.value = true
+        const response = await $api.user.me()
+        user.value = response.data
+    } catch (error) {
+        console.error('failed to fetch user', error)
+    } finally {
+        isLoading.value = false
+    }
+}
 
+onMounted(() => {
+    fetchUser()
+})
 
 onMounted(() => {
     if (route.query.login === 'success') {
@@ -35,7 +56,8 @@ onMounted(() => {
 
         <div class="hero">
             <div class="hero__text-wrapper">
-                <span class="hero__title">Hi, Rizal <br> Welcome to Storytime</span>
+                <span v-if="isLoggedIn" class="hero__title-user">Hi, {{ user?.name || 'user' }}</span>
+                <span class="hero__title-welcome">Welcome to Storytime</span>
                 <p class="hero__text-wrapper__text">The world's most-loved social storytelling platform. Story time
                     connects a global
                     community of 90 million
@@ -73,7 +95,18 @@ onMounted(() => {
         padding-top: fluid(80, 150);
     }
 
-    &__title {
+    &__title-user {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-style: normal;
+        letter-spacing: 0%;
+        color: var(--color-text);
+        text-shadow: 0 fluid(4, 4) fluid(4, 4) rgba(0, 0, 0, 0.25);
+        font-size: fluid(42, 60);
+        line-height: fluid(54, 74);
+    }
+
+    &__title-welcome {
         font-family: var(--font-display);
         font-weight: 700;
         font-style: normal;

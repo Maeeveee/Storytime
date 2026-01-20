@@ -1,18 +1,35 @@
 <script setup lang="ts">
 import Logo from '~/components/ui/Logo.vue';
 import ConfirmContent from '~/components/ui/modal/ConfirmContent.vue';
+import type { User } from '~/types/api';
 
 const isDropdownOpen = ref(false);
 const isDropdownMobileOpen = ref(false)
 const modal = useModal();
 const toast = useToast();
 const dropdownRef = ref<HTMLElement | null>(null);
+
 const { $api } = useNuxtApp();
+const user = ref<User | null>(null)
+const isLoading = ref(true)
 
 const token = useCookie('token')
 const isLoggedIn = computed(() => !!token.value)
 
+const fetchUser = async () => {
+    try {
+        isLoading.value = true
+        const response = await $api.user.me()
+        user.value = response.data
+    } catch (error) {
+        console.error('failed to fetch user', error)
+    } finally {
+        isLoading.value = false
+    }
+}
+
 onMounted(() => {
+    fetchUser();
     document.addEventListener('click', handleClickOutside);
 });
 
@@ -66,12 +83,15 @@ function handleLogout() {
                     <Transition name="dropdown">
                         <div v-if="isDropdownMobileOpen" class="dropdown__content">
                             <template v-if="isLoggedIn">
-                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile</NuxtLink>
-                                <button class="dropdown__item dropdown__item--button" @click="handleLogout">Logout</button>
+                                <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile
+                                </NuxtLink>
+                                <button class="dropdown__item dropdown__item--button"
+                                    @click="handleLogout">Logout</button>
                             </template>
                             <template v-else>
                                 <NuxtLink to="/login" class="dropdown__item dropdown__item--button">Login</NuxtLink>
-                                <NuxtLink to="/register" class="dropdown__item dropdown__item--button">Register</NuxtLink>
+                                <NuxtLink to="/register" class="dropdown__item dropdown__item--button">Register
+                                </NuxtLink>
                             </template>
                         </div>
                     </Transition>
@@ -83,7 +103,7 @@ function handleLogout() {
                             <img class="nav__login__image" src="/img/user.webp" alt="User avatar">
                             <div class="dropdown">
                                 <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
-                                    <h4 class="nav__login__name">User</h4>
+                                    <h4 class="nav__login__name">{{ user?.name }}</h4>
                                     <Icon class="nav__login__icon" name="mdi:chevron-down" />
                                 </button>
                                 <Transition name="dropdown">
