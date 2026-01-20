@@ -33,7 +33,7 @@ const fetchStories = async () => {
         }
         
         if (selectedCategory.value) {
-            params.category_id = selectedCategory.value
+            params.category_id = String(selectedCategory.value)
             router.push({path: '/story/', query:{categoryId: params.category_id} })
         }
 
