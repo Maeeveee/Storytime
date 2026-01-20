@@ -77,6 +77,9 @@ watch([selectedCategory, sortOrder, searchQuery], () => {
 })
 
 onMounted(() => {
+    if (route.query.query) {
+        searchQuery.value = route.query.query as string
+    }
     fetchStories()
     fetchCategories()
 })

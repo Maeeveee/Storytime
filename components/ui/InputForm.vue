@@ -1,13 +1,37 @@
 <script setup lang="ts">
-defineProps<{ placeholder: string, iconName?: string, variant?: 'primary' | 'secondary' }>();
+const props = defineProps<{ 
+    placeholder: string, 
+    iconName?: string, 
+    variant?: 'primary' | 'secondary',
+    type?: string
+}>();
 const model = defineModel<string>();
+
+const emit = defineEmits<{
+    search: [value: string]
+}>();
+
+const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' && model.value) {
+        emit('search', model.value)
+    }
+}
+
+const handleIconClick = () => {
+    if (model.value) {
+        emit('search', model.value)
+    }
+}
 </script>
 
 <template>
     <div class="input__wrapper">
-        <input v-model="model" type="text" :placeholder="placeholder" class="input"
-            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']" />
-        <Icon class="input__icon" v-if="iconName" :name="iconName" />
+        <input v-model="model" :type="type ?? 'text'" :placeholder="placeholder" class="input"
+            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']"
+            @keydown="handleKeydown" />
+        <button v-if="iconName" type="button" class="input__icon-btn" @click="handleIconClick">
+            <Icon class="input__icon" :name="iconName" />
+        </button>
     </div>
 </template>
 
@@ -42,13 +66,28 @@ const model = defineModel<string>();
         outline: none;
     }
 
-    &__icon {
+    &__icon-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        right: fluid(15, 15);
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover .input__icon {
+            color: var(--color-primary);
+        }
+    }
+
+    &__icon {
         color: var(--color-text-secondary);
         font-size: fluid(25, 30);
-        right: fluid(20, 20);
+        transition: color 0.2s;
     }
 
     &__wrapper {
