@@ -1,16 +1,36 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
+import type { User } from '~/types/api';
 
 const emit = defineEmits<{
     close: [];
     confirm: [];
 }>();
 
+const { $api } = useNuxtApp()
+const user = ref<User | null>(null)
+const isLoading = ref(true)
 
-const name = ref('Rizal');
-const email = ref('rizalabrarfsl@gmail.com')
-const about = ref('Avid reader and aspiring writer...');
+const fetchUser = async () => {
+    try {
+        isLoading.value = true
+        const response = await $api.user.me()
+        user.value = response.data
+    } catch (error) {
+        console.error('failed to fetch user', error)
+    } finally {
+        isLoading.value = false
+    }
+}
+
+onMounted(() => {
+    fetchUser()
+})
+
+const name = ref('');
+const email = ref('')
+const about = ref('');
 const oldPassword = ref('');
 const newPassword = ref('');
 const confirmPassword = ref('');
@@ -38,15 +58,15 @@ function handleCancel() {
                 <div class="edit-profile__fields">
                     <label class="edit-profile__label">
                         <span>Name</span>
-                        <InputForm v-model="name" placeholder="Rizal" variant="primary" />
+                        <InputForm v-model="name" :placeholder=user?.name! variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>Email</span>
-                        <InputForm v-model="email" placeholder="rizalabrarfsl@gmail.com" variant="primary" />
+                        <InputForm v-model="email" :placeholder=user?.email! variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about" placeholder="Write about you" variant="primary" />
+                        <InputForm v-model="about" :placeholder=user?.about! variant="primary" />
                     </label>
                 </div>
             </div>
