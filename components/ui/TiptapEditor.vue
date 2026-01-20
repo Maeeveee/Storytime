@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import InputForm from './InputForm.vue';
 
 const model = defineModel<string>({ default: '' });
 

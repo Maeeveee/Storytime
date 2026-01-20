@@ -20,7 +20,6 @@ const storyId = ref<number | string | null>(null)
 const storyTitle = ref('')
 const content = ref('')
 const categoryId = ref<number | string>('')
-const coverImageUrl = ref('')
 const coverFile = ref<File | null>(null)
 const coverPreview = ref('')
 const categories = ref<Category[]>([])
@@ -43,7 +42,6 @@ onMounted(() => {
         storyTitle.value = props.story.title
         content.value = props.story.content
         categoryId.value = props.story.category.id
-        coverImageUrl.value = props.story.cover_image || ''
         coverPreview.value = props.story.cover_image || ''
     }
 })
