@@ -53,6 +53,7 @@ export interface Author {
 export interface UpdateProfilePayload {
     name?: string
     about?: string
+    profile_image?: File
 }
 
 export interface ChangePasswordPayload {

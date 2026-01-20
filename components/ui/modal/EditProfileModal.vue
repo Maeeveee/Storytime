@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
-import type { User, UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
+import type { User, UpdateProfilePayload, ChangePasswordPayload} from '~/types/api';
 
 const { $api } = useNuxtApp()
 const user = ref<User | null>(null)
@@ -10,9 +10,19 @@ const isLoading = ref(true)
 const name = ref(user.value?.name);
 const email = ref(user.value?.email);
 const about = ref(user.value?.about);
+const profileImage = ref(user.value?.profile_image)
 const oldPassword = ref('');
 const newPassword = ref('');
 const confirmPassword = ref('');
+
+const files = ref();
+const success = ref();
+const error = ref();
+
+function onFileChange(e: any) {
+  const file = e.target.files[0];
+  profileImage.value = URL.createObjectURL(file);
+}
 
 const fetchUser = async () => {
     try {
@@ -37,13 +47,12 @@ const emit = defineEmits<{
 
 const handleUpdate = async () => {
     isLoading.value = true
-
     try {
         const payload: UpdateProfilePayload = {
             name: name.value,
-            about: about.value!
+            about: about.value!,
         }
-        const payload2: ChangePasswordPayload ={
+        const payload2: ChangePasswordPayload = {
             old_password: oldPassword.value,
             new_password: newPassword.value,
             new_password_confirmation: confirmPassword.value
@@ -69,8 +78,11 @@ function handleCancel() {
         <div class="edit-profile__content">
             <div class="edit-profile__left">
                 <div class="edit-profile__image-section">
-                    <img src="/img/user.webp" alt="user profile" class="edit-profile__avatar">
-                    <Button variant="secondary">Change Picture</Button>
+                    <img id="imagePreview" :src="profileImage!" alt="user profile" class="edit-profile__avatar">
+                    <label class="button">
+                        <input type="file" id="fileInput" @change="onFileChange" accept="image/png, image/jpg, image/jpeg">
+                        Change Picture
+                    </label>
                 </div>
 
                 <div class="edit-profile__fields">
@@ -118,6 +130,35 @@ function handleCancel() {
     </div>
 </template>
 <style scoped lang="scss">
+input[type="file"] {
+    display: none;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    border-radius: fluid(8, 8);
+    padding: fluid(10, 14) fluid(24, 30);
+    font-size: fluid(18, 24);
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover {
+        border-color: var(--color-text);
+        color: var(--color-text);
+    }
+
+    @include tablet {
+        padding: fluid(10, 12) fluid(20, 24);
+        font-size: fluid(16, 20);
+    }
+}
+
 .edit-profile {
     width: 100%;
     min-width: fluid(800, 800);

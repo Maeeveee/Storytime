@@ -19,6 +19,10 @@ class UserRepository extends HttpFactory {
     async changePassword(payload: ChangePasswordPayload) {
         return this.post<ApiResponse<null>>('/me/change-password', payload)
     }
+
+    async updateProfileImage(payload: ChangePasswordPayload) {
+        return this.post<ApiResponse<null>>('/me/profile-image', payload)
+    }
 }
 
 export default UserRepository
