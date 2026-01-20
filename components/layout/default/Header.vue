@@ -2,6 +2,7 @@
 import Logo from '~/components/ui/Logo.vue';
 import ConfirmContent from '~/components/ui/modal/ConfirmContent.vue';
 import type { User } from '~/types/api';
+import Button from '~/components/ui/Button.vue';
 
 const isDropdownOpen = ref(false);
 const isDropdownMobileOpen = ref(false)
@@ -118,8 +119,8 @@ function handleLogout() {
                         </div>
                     </template>
                     <template v-else>
-                        <NuxtLink to="/login" class="nav__auth-button nav__auth-button--login">Login</NuxtLink>
-                        <NuxtLink to="/register" class="nav__auth-button nav__auth-button--register">Register</NuxtLink>
+                        <Button to="/register" variant="secondary">Register</Button>
+                        <Button to="/login" variant="primary">Login</Button>
                     </template>
                 </div>
             </ClientOnly>
