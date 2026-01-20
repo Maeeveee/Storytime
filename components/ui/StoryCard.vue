@@ -2,7 +2,6 @@
 import type { StoryListItem } from '~/types/api';
 import ConfirmContent from "./modal/ConfirmContent.vue";
 
-
 interface IProps {
     articleItem: StoryListItem;
     hideCategory?: boolean;
@@ -15,37 +14,56 @@ const props = withDefaults(defineProps<IProps>(), {
     variant: 'default',
     isEdit: false,
 });
+
+const emit = defineEmits<{
+    deleted: []
+}>()
+
 const { $api } = useNuxtApp();
 const modal = useModal();
 const toast = useToast();
+const isDeleting = ref(false)
+
+async function deleteStory() {
+    isDeleting.value = true
+    try {
+        await $api.story.deleteStory(props.articleItem.id)
+        toast.success('Successfully deleted the story')
+        emit('deleted')
+    } catch (error) {
+        console.error('Failed to delete story', error)
+        toast.error('Failed to delete story')
+    } finally {
+        isDeleting.value = false
+        modal.close()
+    }
+}
 
 function handleDelete() {
     modal.open({
         component: ConfirmContent,
         props: {
             title: 'Delete Story',
-            message: 'Are you sure want to delete this story?',
+            message: 'Are you sure you want to delete this story? This action cannot be undone.',
             confirmText: 'Delete',
             cancelText: 'Cancel'
         },
-        onConfirm: () => {
-            // const response = $api.story.deleteStory();
-            toast.success('Successfully delete a story')
-        },
+        onConfirm: deleteStory,
     })
 }
 
+const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
 </script>
 
 <template>
     <article class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <div v-if="isEdit" class="card__icon-wrapper">
-                <NuxtLink to="/dashboard/edit" class="card__icon__background">
+                <NuxtLink :to="editLink" class="card__icon__background">
                     <Icon class="card__icon__text" name="lucide:edit" />
                 </NuxtLink>
-                <button class="card__icon__background" @click="handleDelete">
-                    <Icon class="card__icon__text" name="lucide:trash-2" />
+                <button class="card__icon__background" @click.prevent="handleDelete" :disabled="isDeleting">
+                    <Icon class="card__icon__text" :name="isDeleting ? 'eos-icons:loading' : 'lucide:trash-2'" />
                 </button>
             </div>
             <img :src="props.articleItem.cover_image" alt="Story Image" class="card__image">

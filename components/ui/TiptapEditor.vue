@@ -1,12 +1,25 @@
-<script setup>
+<script setup lang="ts">
 import InputForm from './InputForm.vue';
+
+const model = defineModel<string>({ default: '' });
+
 const editor = useEditor({
-    content: "<p>type your wonderful story here!</p>",
+    content: model.value || "<p>Type your wonderful story here!</p>",
     extensions: [TiptapStarterKit],
+    onUpdate: ({ editor }) => {
+        model.value = editor.getHTML();
+    },
+});
+
+watch(model, (newValue) => {
+    const currentContent = unref(editor)?.getHTML();
+    if (newValue !== currentContent) {
+        unref(editor)?.commands.setContent(newValue || '');
+    }
 });
 
 onBeforeUnmount(() => {
-    unref(editor).destroy();
+    unref(editor)?.destroy();
 });
 </script>
 <template>

@@ -31,17 +31,17 @@ class StoryRepository extends HttpFactory {
         return this.post<ApiResponse<StoryDetail>>('/stories', payload)
     }
     async updateStory(id: number | string, payload: UpdateStoryPayload) {
-        return this.put<ApiResponse<StoryDetail>>(`/stories/${id}`, payload)
+        return this.patch<ApiResponse<StoryDetail>>(`/stories/${id}`, payload)
     }
 
     async deleteStory(id: number | string) {
         return this.delete<ApiResponse<null>>(`/stories/${id}`)
     }
-    async uploadCover(file: File) {
+    async uploadCover(storyIdOrSlug: number | string, file: File) {
         const formData = new FormData()
-        formData.append('cover', file)
+        formData.append('cover_image', file)
 
-        return this.post<ApiResponse<{ url: string }>>(`/stories/upload-cover`, formData as any)
+        return this.post<void>(`/stories/${storyIdOrSlug}/cover`, formData as any)
     }
 }
 

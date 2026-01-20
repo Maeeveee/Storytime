@@ -69,7 +69,13 @@ const hasStories = computed(() => stories.value.length > 0)
             <template v-else-if="hasStories">
                 <div class="my-story__content-grid">
                     <div v-for="article in stories" :key="article.id">
-                        <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true" />
+                        <StoryCard 
+                            :article-item="article" 
+                            :hide-category="hideCategory" 
+                            variant="small" 
+                            :is-edit="true" 
+                            @deleted="fetchStories"
+                        />
                     </div>
                 </div>
             </template>
