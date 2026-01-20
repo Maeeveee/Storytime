@@ -52,14 +52,13 @@ export interface Author {
 
 export interface UpdateProfilePayload {
     name?: string
-    email?: string
     about?: string
 }
 
 export interface ChangePasswordPayload {
-    current_password: string
+    old_password: string
     new_password: string
-    confirm_password: string
+    new_password_confirmation: string
 }
 
 export interface StoryListItem {

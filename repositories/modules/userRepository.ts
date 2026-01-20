@@ -13,11 +13,11 @@ class UserRepository extends HttpFactory {
     }
 
     async updateProfile(payload: UpdateProfilePayload) {
-        return this.put<ApiResponse<User>>('/me', payload)
+        return this.patch<ApiResponse<User>>('/me', payload)
     }
 
     async changePassword(payload: ChangePasswordPayload) {
-        return this.put<ApiResponse<null>>('/me/change-password', payload)
+        return this.post<ApiResponse<null>>('/me/change-password', payload)
     }
 }
 

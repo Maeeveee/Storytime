@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
-import type { User } from '~/types/api';
-
-const emit = defineEmits<{
-    close: [];
-    confirm: [];
-}>();
+import type { User, UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
 
 const { $api } = useNuxtApp()
 const user = ref<User | null>(null)
 const isLoading = ref(true)
+
+const name = ref(user.value?.name);
+const email = ref(user.value?.email);
+const about = ref(user.value?.about);
+const oldPassword = ref('');
+const newPassword = ref('');
+const confirmPassword = ref('');
 
 const fetchUser = async () => {
     try {
@@ -28,14 +30,30 @@ onMounted(() => {
     fetchUser()
 })
 
-const name = ref('');
-const email = ref('')
-const about = ref('');
-const oldPassword = ref('');
-const newPassword = ref('');
-const confirmPassword = ref('');
+const emit = defineEmits<{
+    close: [];
+    confirm: [];
+}>();
 
-function handleUpdate() {
+const handleUpdate = async () => {
+    isLoading.value = true
+
+    try {
+        const payload: UpdateProfilePayload = {
+            name: name.value,
+            about: about.value!
+        }
+        const payload2: ChangePasswordPayload ={
+            old_password: oldPassword.value,
+            new_password: newPassword.value,
+            new_password_confirmation: confirmPassword.value
+        }
+        const response = await $api.user.updateProfile(payload)
+        const response2 = await $api.user.changePassword(payload2)
+    } catch (error) {
+        console.error('error update profle', error)
+    }
+
     emit('confirm');
 }
 
@@ -66,7 +84,7 @@ function handleCancel() {
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about" :placeholder=user?.about! variant="primary" />
+                        <InputForm v-model="about!" :placeholder=user?.about! variant="primary" />
                     </label>
                 </div>
             </div>
