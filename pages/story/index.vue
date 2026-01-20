@@ -8,13 +8,13 @@ import type { StoryListItem, Category } from '~/types/api';
 const { $api } = useNuxtApp();
 const stories = ref<StoryListItem[]>([]);
 const categories = ref<Category[]>([])
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 const route = useRoute()
 const router = useRouter()
 
 const searchQuery = ref('')
-const selectedCategory = ref(route.query.categoryType)
+const selectedCategory = ref(route.query.categoryId)
 const sortOrder = ref('newest')
 const currentPage = ref(1)
 const totalPages = ref(1)
@@ -76,11 +76,6 @@ watch([selectedCategory, sortOrder, searchQuery], () => {
 })
 
 onMounted(() => {
-    if (route.query.categoryType) {
-        router.replace({ query: {} })
-        setTimeout(() => {
-        }, 3000)
-    }
     fetchStories()
     fetchCategories()
 })

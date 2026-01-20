@@ -31,10 +31,6 @@ const handleLogin = async () => {
             navigateTo('/')
         } 
     } catch (error: any) {
-        console.log('Full Error Object:', error)
-        console.log('Error Data:', error.data)
-        console.log('Error Response:', error.response)
-        
         const message = error.response?._data?.message || error.data?.message || error.message;
 
         if (message) {

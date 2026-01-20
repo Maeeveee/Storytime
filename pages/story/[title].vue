@@ -15,7 +15,6 @@ const fetchStory = async () => {
         const response = await $api.story.getStory(slug);
         story.value = response.data;
     } catch (error) {
-        console.log('failed to fetch story', error);
         showError({ statusCode: 404, statusMessage: 'story not found' })
     } finally {
         isLoading.value = false;
@@ -44,7 +43,7 @@ onMounted(() => {
                 </div>
             </div>
             <StorySection v-if="story" :article-item="story" class="story-detail__story-content" />
-            <DisplayStory :category="story?.category.name" display="flex" title="Similar Story" />
+            <DisplayStory display="similar" title="Similar Story" />
         </div>
     </main>
 </template>

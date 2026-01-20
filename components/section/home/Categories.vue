@@ -59,7 +59,7 @@ onMounted(() => {
         
         @include desktop {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(7, 1fr);
         }
 
         @include tablet {

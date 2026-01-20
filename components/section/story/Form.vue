@@ -31,7 +31,6 @@ const handleCreateStory = async () => {
         }
 
         const response = await $api.story.createStory(payload);
-        console.log(response)
         toast.success('Successfully post a story')
         navigateTo('/dashboard')
     } catch (error) {
@@ -49,8 +48,7 @@ const handleUpdateStory = async () => {
             cover_image: cover_image.value
         }
 
-        const response = await $api.story.updateStory(payload);
-        console.log(response)
+        // const response = await $api.story.updateStory(payload);
         toast.success('Successfully update a story')
         navigateTo('/dashboard')
     } catch (error) {

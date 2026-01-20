@@ -23,6 +23,10 @@ class StoryRepository extends HttpFactory {
         return this.get<ApiResponse<StoryDetail>>(`/stories/${slug}`)
     }
 
+    async getSimilarStory(slug: string) {
+        return this.get<ApiResponse<StoryDetail>>(`/stories/${slug}/similar`)
+    }
+
     async createStory(payload: CreateStoryPayload) {
         return this.post<ApiResponse<StoryDetail>>('/stories', payload)
     }

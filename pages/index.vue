@@ -16,6 +16,8 @@ const { $api } = useNuxtApp()
 const user = ref<User | null>(null)
 const isLoading = ref(true)
 
+const querySearch = ref('')
+
 const fetchUser = async () => {
     try {
         isLoading.value = true
@@ -42,7 +44,9 @@ onMounted(() => {
     }
 })
 
-
+const handleSearch = (value: string | undefined) => {
+    
+}
 
 </script>
 

@@ -6,10 +6,8 @@ const category = props.categoryId
 const router = useRouter()
 
 const handleCategories = async () => {
-    await router.push({ path: '/story/', query: { categoryType: category } })
+    await router.push({ path: '/story/', query: { categoryId: category } })
 }
-console.log(props.category)
-console.log(category)
 </script>
 
 <template>
@@ -30,11 +28,11 @@ console.log(category)
         font-weight: 500;
         border-radius: fluid(12, 12);
         font-size: fluid(28, 28);
-        width: fluid(135, 135);
+        width: fluid(135, 200);
         height: fluid(38, 38);
         padding: fluid(40, 60);
         margin: auto;
-
+        border: none;
         @include tablet {
             font-size: fluid(20, 24);
             padding: fluid(30, 40);

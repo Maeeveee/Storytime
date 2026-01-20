@@ -6,7 +6,7 @@ import type { StoryListItem } from '~/types/api';
 interface Props {
     category?: string;
     title?: string;
-    display: 'bento' | 'flex' | 'carousel';
+    display?: 'bento' | 'flex' | 'carousel' | 'similar';
     limit?: number;
 }
 
@@ -14,11 +14,14 @@ const props = withDefaults(defineProps<Props>(), {
     category: '',
     title: '',
     display: 'flex',
-    limit: 6
+    limit: 6,
 });
 
+const route = useRoute();
+const slug = route.params.title as string
 const { $api } = useNuxtApp()
 const stories = ref<StoryListItem[]>([])
+const similarStories = ref()
 const isLoading = ref(false)
 
 const fetchStories = async () => {
@@ -29,8 +32,7 @@ const fetchStories = async () => {
         }
 
         if (props.category) {
-
-            params.search = props.category 
+            params.search = props.category
         }
 
         const response = await $api.story.getStories(params)
@@ -42,10 +44,24 @@ const fetchStories = async () => {
     }
 }
 
+const fetchSimilarStory = async () => {
+    isLoading.value = true
+    try {
+        const response = await $api.story.getSimilarStory(slug)
+        similarStories.value = response.data
+    } finally {
+        isLoading.value = false
+    }
+}
+
 onMounted(() => {
     fetchStories()
+    fetchSimilarStory()
 })
 
+const similar = computed(() => {
+    return similarStories.value
+})
 
 const filteredArticles = computed(() => {
     return stories.value
@@ -95,6 +111,10 @@ const displayTitle = computed(() => {
         <StoryCard v-if="filteredArticles[0]" :article-item="filteredArticles[0]" variant="default" />
         <StoryCard v-if="filteredArticles[1]" :article-item="filteredArticles[1]" variant="default" />
         <StoryCard v-if="filteredArticles[2]" :article-item="filteredArticles[2]" variant="default" />
+    </div>
+
+    <div v-if="$props.display === 'similar'" class="display__flex">
+        <StoryCard v-for="article in similar" :key="article.id" :article-item="article" variant="default" />
     </div>
 
     <div v-if="props.display === 'carousel'" class="display__carousel">
