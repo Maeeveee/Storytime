@@ -30,6 +30,10 @@ const fetchUser = async () => {
     }
 }
 
+const pushQuery = async () => {
+    await router.push({ path: '/story/', query: { query: querySearch.value } })
+}
+
 onMounted(() => {
     fetchUser()
 })
@@ -44,8 +48,12 @@ onMounted(() => {
     }
 })
 
+let searchTimeout: ReturnType<typeof setTimeout> | null = null
 const handleSearch = (value: string | undefined) => {
-    
+    if (searchTimeout) clearTimeout(searchTimeout)
+    searchTimeout = setTimeout(() => {
+        querySearch.value = value || ''
+    }, 500)
 }
 
 </script>
@@ -68,7 +76,7 @@ const handleSearch = (value: string | undefined) => {
                     readers and writers through the power of story.</p>
             </div>
             <div class="hero__wrapper">
-                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
+                <InputForm v-model="querySearch" placeholder="Search Story" variant="secondary" icon-name="formkit:search" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
