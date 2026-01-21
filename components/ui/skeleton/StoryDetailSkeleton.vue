@@ -13,25 +13,16 @@
                     <div class="story-detail__author-name skeleton-pulse skeleton-name"></div>
                 </div>
             </div>
-            
-            <div class="story-detail__cover skeleton-pulse"></div>
-            
+
+
             <div class="story-detail__content">
+                <div class="story-detail__cover skeleton-pulse"></div>
                 <div class="skeleton-paragraph">
                     <div class="skeleton-line skeleton-pulse"></div>
                     <div class="skeleton-line skeleton-pulse"></div>
                     <div class="skeleton-line skeleton-line--short skeleton-pulse"></div>
                 </div>
-                <div class="skeleton-paragraph">
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-line--medium skeleton-pulse"></div>
-                </div>
-                <div class="skeleton-paragraph">
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-line--short skeleton-pulse"></div>
-                </div>
+
             </div>
         </div>
     </main>
@@ -42,18 +33,22 @@
 
 <style scoped lang="scss">
 .skeleton-pulse {
-    background: linear-gradient(90deg, 
-        var(--color-border-light) 25%, 
-        var(--color-border) 50%, 
-        var(--color-border-light) 75%
-    );
+    background: linear-gradient(90deg,
+            var(--color-border-light) 25%,
+            var(--color-border) 50%,
+            var(--color-border-light) 75%);
     background-size: 200% 100%;
     animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .skeleton-date {
@@ -161,10 +156,11 @@
     }
 
     &__cover {
-        width: 100%;
-        aspect-ratio: 16/9;
+        width: fluid(320, 547);
+        height: fluid(254, 600);
         border-radius: fluid(12, 16);
         margin-bottom: fluid(30, 50);
+        margin-right: fluid(40, 40);
 
         @include mobile {
             aspect-ratio: 4/3;
@@ -172,8 +168,9 @@
     }
 
     &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         max-width: fluid(335, 900);
-        margin: 0 auto;
     }
 
     &__genre-badge {
