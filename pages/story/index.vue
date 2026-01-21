@@ -2,6 +2,7 @@
 import Breadcrumb from '~/components/ui/Breadcrumb.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import StoryCard from '~/components/ui/StoryCard.vue';
+import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import Pagination from '~/components/ui/Pagination.vue';
 import type { StoryListItem, Category } from '~/types/api';
 
@@ -116,8 +117,10 @@ onMounted(() => {
             </div>
         </div>
 
-        <div v-if="isLoading" class="all-story__loading">
-            <p>Loading stories...</p>
+        <div v-if="isLoading" class="all-story__content">
+            <div v-for="i in 6" :key="i">
+                <StoryCardSkeleton variant="small" />
+            </div>
         </div>
         <div v-else-if="stories.length === 0" class="all-story__empty">
             <p>No stories found.</p>

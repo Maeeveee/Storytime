@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import StoryCard from '~/components/ui/StoryCard.vue';
+import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import NavigationButton from '~/components/ui/NavigationButton.vue';
 import type { StoryListItem } from '~/types/api';
 
@@ -22,8 +23,10 @@ const slug = computed(() => route.params.title as string)
 const { $api } = useNuxtApp()
 const stories = ref<StoryListItem[]>([])
 const similarStories = ref<StoryListItem[]>([])
+const isLoading = ref(true)
 
 const fetchStories = async () => {
+    isLoading.value = true
     try {
         const params: Record<string, string | number> = {
             limit: props.limit
@@ -37,16 +40,21 @@ const fetchStories = async () => {
         stories.value = response.data
     } catch (error) {
         console.error('Failed to fetch stories', error)
+    } finally {
+        isLoading.value = false
     }
 }
 
 const fetchSimilarStory = async () => {
+    isLoading.value = true
     if (!slug.value) return
     try {
         const response = await $api.story.getSimilarStory(slug.value)
         similarStories.value = response.data
     } catch (error) {
         console.error('Failed to fetch similar stories', error)
+    } finally {
+        isLoading.value = false
     }
 }
 
@@ -77,11 +85,21 @@ const displayTitle = computed(() => {
 
     <div v-if="props.display === 'bento'">
         <div class="display__grid__desktop">
-            <div class="display__grid">
+            <div v-if="isLoading" class="display__grid">
+                <div class="display__grid__left">
+                    <StoryCardSkeleton variant="large" />
+                </div>
+                <div class="display__grid__right">
+                    <StoryCardSkeleton variant="small" />
+                    <StoryCardSkeleton variant="small" />
+                </div>
+            </div>
+
+            <div v-else class="display__grid">
                 <div class="display__grid__left">
                     <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="large" />
                 </div>
-                <div class="display__grid__left">
+                <div class="display__grid__right">
                     <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="small" />
                     <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="small" />
                 </div>
@@ -89,7 +107,14 @@ const displayTitle = computed(() => {
         </div>
 
         <div class="display__grid__mobile">
-            <div class="display__grid">
+            <div v-if="isLoading" class="display__grid">
+                <StoryCardSkeleton variant="small" />
+                <StoryCardSkeleton variant="small" />
+                <StoryCardSkeleton variant="small" />
+                <StoryCardSkeleton variant="small" />
+            </div>
+
+            <div v-else class="display__grid">
                 <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="small" />
                 <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="small" />
                 <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="small" />
@@ -98,18 +123,36 @@ const displayTitle = computed(() => {
         </div>
     </div>
 
-    <div v-if="props.display === 'flex'" class="display__flex">
-        <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="default" />
-        <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="default" />
-        <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="default" />
+    <div v-if="props.display === 'flex'">
+        <div v-if="isLoading" class="display__flex">
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+        </div>
+        <div v-else class="display__flex">
+            <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="default" />
+            <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="default" />
+            <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="default" />
+        </div>
     </div>
 
     <div v-if="$props.display === 'similar'" class="display__flex">
-        <StoryCard v-for="article in similarStories" :key="article.id" :article-item="article" variant="default" />
+        <div v-if="isLoading" class="display__flex">
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+        </div>
+        <StoryCard v-else v-for="article in similarStories" :key="article.id" :article-item="article"
+            variant="default" />
     </div>
 
     <div v-if="props.display === 'carousel'" class="display__carousel">
-        <StoryCard v-for="article in stories" :key="article.id" :article-item="article" variant="default" />
+        <div v-if="isLoading" class="display__flex">
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="default" />
+        </div>
+        <StoryCard v-else v-for="article in stories" :key="article.id" :article-item="article" variant="default" />
     </div>
 
 </template>

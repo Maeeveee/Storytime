@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import StorySection from '~/components/section/story-detail/StorySection.vue';
 import DisplayStory from '~/components/section/home/DisplayStory.vue';
+import StoryDetailSkeleton from '~/components/ui/skeleton/StoryDetailSkeleton.vue';
 import type { StoryDetail } from '~/types/api';
 
 const route = useRoute();
@@ -28,23 +29,28 @@ onMounted(() => {
 
 <template>
     <main>
-        <UiBreadcrumb class="story-detail__breadcrumb" :title="story?.title" />
-        <div class="story-detail__container">
-            <div class="story-detail__header">
-                <div class="story-detail__header__sub">
-                    <h4 class="story-detail__date">{{ $dayjs(story?.created_at).format('DD MMMM YYYY') }}</h4>
-                    <span class="story-detail__genre-badge">{{ story?.category.name }}</span>
+        <template v-if="isLoading">
+            <StoryDetailSkeleton />
+        </template>
+        <template v-else-if="story">
+            <UiBreadcrumb class="story-detail__breadcrumb" :title="story?.title" />
+            <div class="story-detail__container">
+                <div class="story-detail__header">
+                    <div class="story-detail__header__sub">
+                        <h4 class="story-detail__date">{{ $dayjs(story?.created_at).format('DD MMMM YYYY') }}</h4>
+                        <span class="story-detail__genre-badge">{{ story?.category.name }}</span>
+                    </div>
+                    <h1 class="story-detail__title">{{ story?.title }}</h1>
+                    <div class="story-detail__author-info">
+                        <img :src="story?.author.profile_image || 'https://ui-avatars.com/api/?name=' + story?.author.name"
+                            alt="author avatar" class="story-detail__author-avatar">
+                        <span class="story-detail__author-name">{{ story?.author.name }}</span>
+                    </div>
                 </div>
-                <h1 class="story-detail__title">{{ story?.title }}</h1>
-                <div class="story-detail__author-info">
-                    <img :src="story?.author.profile_image || 'https://ui-avatars.com/api/?name=' + story?.author.name"
-                        alt="author avatar" class="story-detail__author-avatar">
-                    <span class="story-detail__author-name">{{ story?.author.name }}</span>
-                </div>
+                <StorySection :article-item="story" class="story-detail__story-content" />
+                <DisplayStory display="similar" title="Similar Story" />
             </div>
-            <StorySection v-if="story" :article-item="story" class="story-detail__story-content" />
-            <DisplayStory display="similar" title="Similar Story" />
-        </div>
+        </template>
     </main>
 </template>
 
