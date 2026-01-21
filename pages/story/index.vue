@@ -32,10 +32,10 @@ const fetchStories = async () => {
         if (searchQuery.value) {
             params.search = searchQuery.value
         }
-        
+
         if (selectedCategory.value) {
             params.category_id = String(selectedCategory.value)
-            router.push({path: '/story/', query:{categoryId: params.category_id} })
+            router.push({ path: '/story/', query: { categoryId: params.category_id } })
         }
 
         if (sortOrder.value) {
@@ -123,7 +123,7 @@ onMounted(() => {
             </div>
         </div>
         <div v-else-if="stories.length === 0" class="all-story__empty">
-            <p>No stories found.</p>
+            <p class="all-story__not-found">No stories found.</p>
         </div>
         <div v-else class="all-story__content">
             <div v-for="article in stories" :key="article.id">
@@ -138,6 +138,14 @@ onMounted(() => {
 </template>
 <style scoped lang="scss">
 .all-story {
+    &__empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: fluid(30, 44);
+        margin-block: fluid(150, 80);
+    }
+
     &__title {
         font-family: var(--font-display);
         font-weight: 600;
