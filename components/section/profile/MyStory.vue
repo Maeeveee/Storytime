@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import StoryCard from '~/components/ui/StoryCard.vue';
 import Button from '~/components/ui/Button.vue';
+import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import type { StoryListItem } from '~/types/api';
 
 interface Props {
@@ -62,20 +63,17 @@ const hasStories = computed(() => stories.value.length > 0)
                     <Button to="/dashboard/create" variant="primary">Write Story</Button>
                 </div>
             </div>
-            
+
             <template v-if="isLoading">
-                <div class="my-story__loading">Loading stories...</div>
+                <div class="my-story__content-grid">
+                    <StoryCardSkeleton v-for="i in 2" variant="small" />
+                </div>
             </template>
             <template v-else-if="hasStories">
                 <div class="my-story__content-grid">
                     <div v-for="article in stories" :key="article.id">
-                        <StoryCard 
-                            :article-item="article" 
-                            :hide-category="hideCategory" 
-                            variant="small" 
-                            :is-edit="true" 
-                            @deleted="fetchStories"
-                        />
+                        <StoryCard :article-item="article" :hide-category="hideCategory" variant="small" :is-edit="true"
+                            @deleted="fetchStories" />
                     </div>
                 </div>
             </template>
@@ -83,7 +81,8 @@ const hasStories = computed(() => stories.value.length > 0)
                 <div class="my-story__no-story-wrapper">
                     <div class="my-story__no-story-header">
                         <h1 class="my-story__no-story-title">No Stories Yet</h1>
-                        <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your journey today!</h4>
+                        <h4 class="my-story__no-story-text">You haven't shared any stories yet. Start your journey
+                            today!</h4>
                     </div>
                     <img src="/img/NoStoryImage.webp" alt="no story yet" class="my-story__no-story-image" />
                 </div>

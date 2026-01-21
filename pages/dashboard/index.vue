@@ -61,10 +61,12 @@ function editProfile() {
 </template>
 <style lang="scss" scoped>
 .dashboard {
-    margin-top: fluid(50, 100);
+    @include desktop{
+        margin-top: vw(50);
+    }
 
     @include tablet {
-        margin-top: fluid(20, 60);
+        margin-top: fluid(40, 60);
     }
 
     &__header {
