@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
+import ImageCropperModal from './ImageCropperModal.vue';
 import type { User, UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
 
 const { $api } = useNuxtApp()
@@ -16,13 +17,36 @@ const newPassword = ref('');
 const confirmPassword = ref('');
 
 const selectedFile = ref<File | null>(null);
+const showCropperModal = ref(false);
+const tempImageSrc = ref('');
 
 function onFileChange(e: Event) {
     const target = e.target as HTMLInputElement;
     const file = target.files?.[0];
     if (file) {
-        selectedFile.value = file;
-        profileImage.value = URL.createObjectURL(file);
+        tempImageSrc.value = URL.createObjectURL(file);
+        showCropperModal.value = true;
+    }
+    target.value = '';
+}
+
+function onCropComplete(blob: Blob) {
+    const file = new File([blob], 'profile-image.jpg', { type: 'image/jpeg' });
+    selectedFile.value = file;
+    profileImage.value = URL.createObjectURL(blob);
+    showCropperModal.value = false;
+    
+    if (tempImageSrc.value) {
+        URL.revokeObjectURL(tempImageSrc.value);
+        tempImageSrc.value = '';
+    }
+}
+
+function onCropCancel() {
+    showCropperModal.value = false;
+    if (tempImageSrc.value) {
+        URL.revokeObjectURL(tempImageSrc.value);
+        tempImageSrc.value = '';
     }
 }
 
@@ -140,6 +164,20 @@ function handleCancel() {
             <Button variant="primary" @click="handleUpdate">Update Profile</Button>
         </div>
     </div>
+
+    <Teleport to="body">
+        <Transition name="cropper-modal">
+            <div v-if="showCropperModal" class="cropper-backdrop" @click.self="onCropCancel">
+                <div class="cropper-modal-box">
+                    <ImageCropperModal 
+                        :image-src="tempImageSrc" 
+                        @confirm="onCropComplete" 
+                        @close="onCropCancel" 
+                    />
+                </div>
+            </div>
+        </Transition>
+    </Teleport>
 </template>
 <style scoped lang="scss">
 input[type="file"] {
