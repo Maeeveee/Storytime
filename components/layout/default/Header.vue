@@ -101,7 +101,7 @@ function handleLogout() {
                 <div class="nav__button-container">
                     <template v-if="isLoggedIn">
                         <div class="nav__login">
-                            <img class="nav__login__image" src="/img/user.webp" alt="User avatar">
+                            <img class="nav__login__image" :src="user?.profile_image!" alt="User avatar">
                             <div class="dropdown">
                                 <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
                                     <h4 class="nav__login__name">{{ user?.name }}</h4>
@@ -254,7 +254,9 @@ function handleLogout() {
 
         &__image {
             width: fluid(50, 65);
+            height: fluid(50, 65);
             margin-left: fluid(8, 10);
+            border-radius: 50%;
         }
 
         &__name {
