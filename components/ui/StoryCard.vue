@@ -44,7 +44,7 @@ function handleDelete() {
         component: ConfirmContent,
         props: {
             title: 'Delete Story',
-            message: 'Are you sure you want to delete this story? This action cannot be undone.',
+            message: 'Are you sure you want to delete this story?',
             confirmText: 'Delete',
             cancelText: 'Cancel'
         },
