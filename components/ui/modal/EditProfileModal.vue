@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
-import type { User, UpdateProfilePayload, ChangePasswordPayload} from '~/types/api';
+import type { User, UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
 
 const { $api } = useNuxtApp()
 const user = ref<User | null>(null)
@@ -18,12 +18,12 @@ const confirmPassword = ref('');
 const selectedFile = ref<File | null>(null);
 
 function onFileChange(e: Event) {
-  const target = e.target as HTMLInputElement;
-  const file = target.files?.[0];
-  if (file) {
-    selectedFile.value = file;
-    profileImage.value = URL.createObjectURL(file);
-  }
+    const target = e.target as HTMLInputElement;
+    const file = target.files?.[0];
+    if (file) {
+        selectedFile.value = file;
+        profileImage.value = URL.createObjectURL(file);
+    }
 }
 
 const fetchUser = async () => {
@@ -68,7 +68,7 @@ const handleUpdate = async () => {
             }
             await $api.user.changePassword(passwordPayload)
         }
-        
+
         emit('confirm');
     } catch (err) {
         console.error('error update profile', err)
@@ -91,7 +91,8 @@ function handleCancel() {
                 <div class="edit-profile__image-section">
                     <img id="imagePreview" :src="profileImage!" alt="user profile" class="edit-profile__avatar">
                     <label class="pictureButton">
-                        <input type="file" id="fileInput" @change="onFileChange" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" id="fileInput" @change="onFileChange"
+                            accept="image/png, image/jpg, image/jpeg">
                         Change Picture
                     </label>
                 </div>
@@ -107,7 +108,7 @@ function handleCancel() {
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about" :placeholder="user?.about ?? ''" variant="primary" />
+                        <InputForm v-model="about!" :placeholder="user?.about ?? ''" variant="primary" />
                     </label>
                 </div>
             </div>
