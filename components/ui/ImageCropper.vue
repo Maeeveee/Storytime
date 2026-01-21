@@ -131,6 +131,10 @@ defineExpose({
 }
 
 :deep(.cropper-point) {
-  display: none;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #39f !important;
+  border-radius: 50%;
+  opacity: 1 !important;
 }
 </style>
