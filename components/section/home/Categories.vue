@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { Category } from '~/types/api';
 import CategoriesButton from '~/components/ui/CategoriesButton.vue';
+import CategoriesSkeleton from '~/components/ui/skeleton/CategoriesSkeleton.vue';
 
 const { $api } = useNuxtApp()
 const categories = ref<Category[]>([])
-const isLoading = ref(false)
+const isLoading = ref(true)
 
 const fetchCategories = async () => {
     isLoading.value = true
@@ -32,7 +33,11 @@ onMounted(() => {
     <UiDivider />
 
     <div class="more-categories__display">
-        <div v-for="category in categories" :key="category.id">
+        <div v-if="isLoading" v-for="i in 5">
+            <CategoriesSkeleton />
+        </div>
+
+        <div v-else v-for="category in categories" :key="category.id">
             <CategoriesButton :category="category.name" :category-id="category.id" />
         </div>
     </div>
@@ -56,7 +61,7 @@ onMounted(() => {
     &__display {
         grid-template-columns: 1fr 1fr;
         gap: fluid(8, 8);
-        
+
         @include desktop {
             display: grid;
             grid-template-columns: repeat(7, 1fr);

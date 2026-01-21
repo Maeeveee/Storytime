@@ -38,18 +38,22 @@ withDefaults(defineProps<Props>(), {
 
 <style scoped lang="scss">
 .skeleton-pulse {
-    background: linear-gradient(90deg, 
-        var(--color-border-light) 25%, 
-        var(--color-border) 50%, 
-        var(--color-border-light) 75%
-    );
+    background: linear-gradient(90deg,
+            var(--color-border-light) 25%,
+            var(--color-border) 50%,
+            var(--color-border-light) 75%);
     background-size: 200% 100%;
     animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .skeleton-text {
@@ -67,7 +71,7 @@ withDefaults(defineProps<Props>(), {
     height: fluid(14, 18);
     border-radius: fluid(4, 4);
     margin-bottom: fluid(8, 10);
-    
+
     &--short {
         width: 60%;
     }
