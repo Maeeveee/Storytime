@@ -15,7 +15,7 @@ const route = useRoute()
 const router = useRouter()
 
 const searchQuery = ref('')
-const selectedCategory = ref(route.query.categoryId)
+const selectedCategory = ref(route.query.categoryId || '')
 const sortOrder = ref('newest')
 const currentPage = ref(1)
 const totalPages = ref(1)
