@@ -18,7 +18,7 @@ function editProfile() {
         },
         onConfirm: () => {
             toast.success('Successfully edit your profile')
-            userStore.fetchUser
+            userStore.fetchUser()
         },
     });
 }
