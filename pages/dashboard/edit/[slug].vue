@@ -2,6 +2,10 @@
 import Form from '~/components/section/story/Form.vue';
 import type { StoryDetail } from '~/types/api';
 
+definePageMeta({
+    middleware: 'auth'
+})
+
 const route = useRoute()
 const { $api } = useNuxtApp()
 
