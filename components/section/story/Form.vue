@@ -2,7 +2,7 @@
 import InputForm from '~/components/ui/InputForm.vue';
 import Button from '~/components/ui/Button.vue';
 import TiptapEditor from '~/components/ui/TiptapEditor.vue';
-import type { CreateStoryPayload, UpdateStoryPayload, Category, StoryDetail } from '~/types/api';
+import type { CreateStoryPayload, UpdateStoryPayload, StoryDetail } from '~/types/api';
 
 interface Props {
     title: 'write' | 'edit'
@@ -22,21 +22,11 @@ const content = ref('')
 const categoryId = ref<number | string>('')
 const coverFile = ref<File | null>(null)
 const coverPreview = ref('')
-const categories = ref<Category[]>([])
 const isLoading = ref(false)
 
-const fetchCategories = async () => {
-    try {
-        const response = await $api.category.getCategories()
-        categories.value = response.data
-    } catch (error) {
-        console.error('Failed to fetch categories', error)
-    }
-}
+const storyStore = useStoryStore()
 
 onMounted(() => {
-    fetchCategories()
-    
     if (props.story && props.title === 'edit') {
         storyId.value = props.story.id
         storyTitle.value = props.story.title
@@ -81,11 +71,11 @@ const handleCreateStory = async () => {
         }
 
         const response = await $api.story.createStory(payload)
-        
+
         if (coverFile.value && response.data?.id) {
             await uploadCover(response.data.id)
         }
-        
+
         toast.success('Successfully posted a story!')
         navigateTo('/dashboard')
     } catch (error) {
@@ -101,7 +91,7 @@ const handleUpdateStory = async () => {
         toast.error('Story ID not found')
         return
     }
-    
+
     isLoading.value = true
     try {
         const payload: UpdateStoryPayload = {
@@ -111,11 +101,11 @@ const handleUpdateStory = async () => {
         }
 
         await $api.story.updateStory(storyId.value, payload)
-        
+
         if (coverFile.value) {
             await uploadCover(storyId.value)
         }
-        
+
         toast.success('Successfully updated a story!')
         navigateTo('/dashboard')
     } catch (error) {
@@ -146,12 +136,15 @@ const handleCancel = () => {
             </label>
             <label for="category" class="create__label">
                 <span class="create__label__title">Category</span>
-                <select v-model="categoryId" id="category" class="create__select">
-                    <option value="" disabled>Select a category</option>
-                    <option v-for="cat in categories" :key="cat.id" :value="cat.id">
-                        {{ cat.name }}
-                    </option>
-                </select>
+                <div class="create__select-wrapper">
+                    <select v-model="categoryId" id="category" class="create__select">
+                        <option value="" disabled>Select a category</option>
+                        <option v-for="cat in storyStore.categories.values()" :key="cat.id" :value="cat.id">
+                            {{ cat.name }}
+                        </option>
+                    </select>
+                    <Icon class="create__arrow" name="mdi:chevron-down" />
+                </div>
             </label>
             <label for="content" class="create__label">
                 <span class="create__label__title">Content</span>
@@ -174,20 +167,11 @@ const handleCancel = () => {
             </label>
             <div class="create__button">
                 <Button @click="handleCancel" variant="secondary">Cancel</Button>
-                <Button 
-                    v-if="props.title === 'write'" 
-                    @click="handleCreateStory" 
-                    variant="primary"
-                    :disabled="isLoading"
-                >
+                <Button v-if="props.title === 'write'" @click="handleCreateStory" variant="primary"
+                    :disabled="isLoading">
                     {{ isLoading ? 'Posting...' : 'Post Story' }}
                 </Button>
-                <Button 
-                    v-else 
-                    @click="handleUpdateStory" 
-                    variant="primary"
-                    :disabled="isLoading"
-                >
+                <Button v-else @click="handleUpdateStory" variant="primary" :disabled="isLoading">
                     {{ isLoading ? 'Updating...' : 'Update Story' }}
                 </Button>
             </div>
@@ -195,6 +179,12 @@ const handleCancel = () => {
     </main>
 </template>
 <style scoped lang="scss">
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 .create {
     padding: fluid(100, 180) fluid(20, 40) fluid(20, 60);
     max-width: fluid(375, 1700);
@@ -203,6 +193,17 @@ const handleCancel = () => {
 
     @include tablet {
         padding-top: fluid(80, 120);
+    }
+
+    &__arrow {
+        font-size: fluid(24, 30);
+        position: absolute;
+        right: fluid(50, 120);
+    }
+
+    &__select-wrapper {
+        display: flex;
+        align-items: center;
     }
 
     &__cancel {
@@ -278,12 +279,12 @@ const handleCancel = () => {
     &__select {
         border: 2px solid var(--color-border);
         width: 100%;
-        max-width: fluid(300, 400);
         font-family: var(--font-primary);
         border-radius: fluid(8, 8);
         padding: fluid(15, 20) fluid(15, 20);
-        font-size: fluid(16, 18);
-        line-height: fluid(20, 24);
+        font-size: fluid(18, 24);
+        line-height: fluid(20, 32);
+        color: var(--color-text-secondary);
         background-color: var(--color-white);
         cursor: pointer;
 
