@@ -11,6 +11,23 @@ const emit = defineEmits<{
     search: [value: string]
 }>();
 
+const isPasswordVisible = ref(false)
+const isPasswordType = computed(() => props.type === 'password')
+
+const inputType = computed(() => {
+    if (isPasswordType.value) {
+        return isPasswordVisible.value ? 'text' : 'password'
+    }
+    return props.type ?? 'text'
+})
+
+const currentIcon = computed(() => {
+    if (isPasswordType.value) {
+        return isPasswordVisible.value ? 'formkit:eye' : 'formkit:hidden'
+    }
+    return props.iconName
+})
+
 const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' && model.value) {
         emit('search', model.value)
@@ -18,7 +35,9 @@ const handleKeydown = (e: KeyboardEvent) => {
 }
 
 const handleIconClick = () => {
-    if (model.value) {
+    if (isPasswordType.value) {
+        isPasswordVisible.value = !isPasswordVisible.value
+    } else if (model.value) {
         emit('search', model.value)
     }
 }
@@ -26,10 +45,10 @@ const handleIconClick = () => {
 
 <template>
     <div class="input__wrapper">
-        <input v-model="model" :type="type ?? 'text'" :placeholder="placeholder" class="input"
-            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']" @keydown="handleKeydown" />
-        <button v-if="iconName" type="button" class="input__icon-btn" @click="handleIconClick">
-            <Icon class="input__icon" :name="iconName" />
+        <input v-model="model" :type="inputType" :placeholder="placeholder" class="input"
+            :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']" @keydown="handleKeydown" />
+        <button v-if="iconName || isPasswordType" type="button" class="input__icon-btn" @click="handleIconClick">
+            <Icon class="input__icon" :name="currentIcon!" />
         </button>
     </div>
 </template>
