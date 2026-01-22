@@ -15,21 +15,22 @@ const passwordSpecialChar = /(?=.*?[!@#$%^&*?])/
 const whiteSpaceChecker = /^\S+$/
 
 const schema = yup.object({
-    name: yup.string().required(),
-    email: yup.string().required('email is requierd').email('must be a valid email'),
+    name: yup.string().required('Name is required'),
+    email: yup.string().required('Email is required').email('Must be a valid email'),
     password: yup.string()
-        .matches(passwordLowerCase, { message: "your password must have at least 1 lowercase" })
-        .matches(passwordUpperCase, { message: "your password must have at least 1 uppercase" })
-        .matches(passwordNumber, { message: "your password must have at least 1 number" })
-        .matches(passwordSpecialChar, { message: "your password must have at least 1 special character" })
-        .matches(whiteSpaceChecker, { message: "your password must not have whitespace " })
-        .required("Required").min(8, 'your password at least 8 character long'),
-    confirmPassword: yup.string().oneOf([yup.ref("password")], "Passwords must match").required("Required"),
+        .required('Password is required')
+        .min(8, 'Password must be at least 8 characters')
+        .matches(passwordLowerCase, { message: 'Password must have at least 1 lowercase letter' })
+        .matches(passwordUpperCase, { message: 'Password must have at least 1 uppercase letter' })
+        .matches(passwordNumber, { message: 'Password must have at least 1 number' })
+        .matches(passwordSpecialChar, { message: 'Password must have at least 1 special character (!@#$%^&*?)' })
+        .matches(whiteSpaceChecker, { message: 'Password must not contain whitespace' }),
+    confirmPassword: yup.string().required('Please confirm your password').oneOf([yup.ref('password')], 'Passwords must match'),
 })
 
 const validationSchema = toTypedSchema(schema)
 
-const { values, errors, defineField } = useForm({
+const { values, errors, defineField, handleSubmit } = useForm({
     validationSchema
 })
 
@@ -41,14 +42,17 @@ const [email, emailProps] = defineField('email')
 const [password, passwordProps] = defineField('password')
 const [confirmPassword, confirmPasswordProps] = defineField('confirmPassword')
 const { $api } = useNuxtApp();
+const isLoading = ref(false)
 
-const handleRegister = async () => {
+const handleRegister = handleSubmit(async (formValues) => {
+    isLoading.value = true
+    
     try {
         const payload: RegisterPayload = {
-            name: name.value!,
-            email: email.value!,
-            password: password.value!,
-            password_confirmation: confirmPassword.value!
+            name: formValues.name,
+            email: formValues.email,
+            password: formValues.password,
+            password_confirmation: formValues.confirmPassword
         }
 
         await $api.auth.csrf()
@@ -63,11 +67,13 @@ const handleRegister = async () => {
             toast.success('Registration successful, please login')
             await navigateTo('/login')
         }
-
-    } catch (error) {
-        toast.error('Invalid credentials.')
+    } catch (error: any) {
+        const message = error.response?._data?.message || error.data?.message || error.message
+        toast.error(message || 'Registration failed. Please try again.')
+    } finally {
+        isLoading.value = false
     }
-}
+})
 
 </script>
 <template>
@@ -91,18 +97,20 @@ const handleRegister = async () => {
                 <label class="register__label">
                     <span class="register__text">Password</span>
                     <span v-if="errors.password" class="register__error-message">{{ errors.password }}</span>
-                    <InputForm v-model="password" v-bind="passwordProps" placeholder="Enter Your Chosen Password"
-                        variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="password" v-bind="passwordProps" type="password" placeholder="Enter Your Chosen Password"
+                        variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
                     <span v-if="errors.confirmPassword" class="register__error-message">{{ errors.confirmPassword
                     }}</span>
-                    <InputForm v-model="confirmPassword" v-bind="confirmPasswordProps"
-                        placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
+                    <InputForm v-model="confirmPassword" v-bind="confirmPasswordProps" type="password"
+                        placeholder="Re-enter Your Chosen Password" variant="primary" />
                 </label>
             </div>
-            <Button @click="handleRegister" variant="primary" class="register__button"> Create Account</Button>
+            <Button :disabled="isLoading" @click="handleRegister" variant="primary" class="register__button">
+                {{ isLoading ? 'Creating...' : 'Create Account' }}
+            </Button>
             <div>
                 <span class="register__text">Already have an account? <NuxtLink href="/Login"
                         class="register__navigate-login">Login</NuxtLink></span>

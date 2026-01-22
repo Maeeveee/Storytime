@@ -8,13 +8,13 @@ import * as yup from 'yup'
 import { toTypedSchema } from '@vee-validate/yup';
 
 const schema = yup.object({
-    email: yup.string().required('email is requierd').email('must be a valid email'),
-    password: yup.string().required('password is required').min(8, 'password at least 8 character')
+    email: yup.string().required('Email is required').email('Must be a valid email'),
+    password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
 })
 
 const validationSchema = toTypedSchema(schema)
 
-const { values, errors, defineField } = useForm({
+const { values, errors, defineField, handleSubmit, validate } = useForm({
     validationSchema
 })
 
@@ -26,14 +26,13 @@ const isLoading = ref(false)
 const toast = useToast();
 const { $api } = useNuxtApp();
 
-const handleLogin = async () => {
+const handleLogin = handleSubmit(async (formValues) => {
     isLoading.value = true
-    await new Promise(resolve => setTimeout(resolve, 800))
-
+    
     try {
         const payload: LoginPayload = {
-            email: values.email!,
-            password: password.value!,
+            email: formValues.email,
+            password: formValues.password,
         };
 
         await $api.auth.csrf()
@@ -42,7 +41,7 @@ const handleLogin = async () => {
         if (response.data.token) {
             userStore.setToken(response.data.token)
             userStore.setUser(response.data.user)
-            toast.success('you have successfully logged in')
+            toast.success('You have successfully logged in')
             navigateTo('/')
         }
     } catch (error: any) {
@@ -51,12 +50,12 @@ const handleLogin = async () => {
         if (message) {
             toast.error(message)
         } else {
-            toast.error('Invalid credentials or server error. Check Console.')
+            toast.error('Invalid credentials or server error')
         }
+    } finally {
+        isLoading.value = false
     }
-
-    isLoading.value = false
-}
+})
 </script>
 <template>
     <section class="section-wrapper">
