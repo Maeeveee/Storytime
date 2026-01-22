@@ -4,22 +4,49 @@ import Button from '~/components/ui/Button.vue';
 import Logo from '~/components/ui/Logo.vue';
 import type { RegisterPayload } from '~/types/api';
 
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { toTypedSchema } from '@vee-validate/yup';
+
+const passwordLowerCase = /(?=.*[a-z])/;
+const passwordUpperCase = /(?=.*[A-Z])/
+const passwordNumber = /(?=.*[0-9])/
+const passwordSpecialChar = /(?=.*?[!@#$%^&*?])/
+
+const schema = yup.object({
+    name: yup.string().required(),
+    email: yup.string().required('email is requierd').email('must be a valid email'),
+    password: yup.string()
+        .matches(passwordLowerCase, { message: "your password must have at least 1 lowercase" })
+        .matches(passwordUpperCase, {message: "your password must have at least 1 uppercase"})
+        .matches(passwordNumber, {message: "your password must have at least 1 number"})
+        .matches(passwordSpecialChar, {message: "your password must have at least 1 special character"})
+        .required("Required").min(8, 'your password at least 8 character long'),
+    confirmPassword: yup.string().oneOf([yup.ref("password")], "Passwords must match").required("Required"),
+})
+
+const validationSchema = toTypedSchema(schema)
+
+const { values, errors, defineField } = useForm({
+    validationSchema
+})
+
 const token = useCookie('token')
 
 const toast = useToast();
-const name = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
+const [name, nameProps] = defineField('name')
+const [email, emailProps] = defineField('email')
+const [password, passwordProps] = defineField('password')
+const [confirmPassword, confirmPasswordProps] = defineField('confirmPassword')
 const { $api } = useNuxtApp();
 
-const handleRegister = async() => {
+const handleRegister = async () => {
     try {
         const payload: RegisterPayload = {
-            name: name.value,
-            email: email.value,
-            password: password.value,
-            password_confirmation: confirmPassword.value
+            name: name.value!,
+            email: email.value!,
+            password: password.value!,
+            password_confirmation: confirmPassword.value!
         }
 
         await $api.auth.csrf()
@@ -35,10 +62,8 @@ const handleRegister = async() => {
         }
 
     } catch (error) {
-        console.error('error register',error)
         toast.error('Invalid credentials.')
     }
-
 }
 
 </script>
@@ -51,21 +76,25 @@ const handleRegister = async() => {
             <h2 class="register__title">Create Account</h2>
             <div>
                 <label class="register__label">
-                    <span class="register__text">Name</span>
-                    <InputForm v-model="name" placeholder="Enter Your name" variant="primary" />
+                    <span class="register__text">Name <br></span>
+                    <span>{{ errors.name }}</span>
+                    <InputForm v-model="name" v-bind="nameProps" placeholder="Enter Your name" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Email</span>
-                    <InputForm v-model="email" placeholder="Enter Your Email" variant="primary" />
+                    <span>{{ errors.email }}</span>
+                    <InputForm v-model="email" v-bind="emailProps" placeholder="Enter Your Email" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <InputForm v-model="password" placeholder="Enter Your Chosen Password" variant="primary"
+                    <span>{{ errors.password }}</span>
+                    <InputForm v-model="password" v-bind="passwordProps" placeholder="Enter Your Chosen Password" variant="primary"
                         icon-name="formkit:eye" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <InputForm v-model="confirmPassword" placeholder="Re-enter Your Chosen Password" variant="primary"
+                    <span>{{ errors.confirmPassword }}</span>
+                    <InputForm v-model="confirmPassword" v-bind="confirmPasswordProps" placeholder="Re-enter Your Chosen Password" variant="primary"
                         icon-name="formkit:eye" />
                 </label>
             </div>
