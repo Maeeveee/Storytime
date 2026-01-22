@@ -22,10 +22,10 @@ const tempImageSrc = ref('')
 
 function initFormData() {
     if (userStore.user) {
-        name.value = userStore.user.name ?? ''
-        email.value = userStore.user.email ?? ''
-        about.value = userStore.user.about ?? ''
-        profileImage.value = userStore.user.profile_image ?? '/img/user.webp'
+        name.value = userStore.userName ?? ''
+        email.value = userStore.userEmail ?? ''
+        about.value = userStore.userAbout ?? ''
+        profileImage.value = userStore.userProfileImage ?? '/img/user.webp'
     }
 }
 
