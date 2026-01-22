@@ -3,52 +3,20 @@ import DisplayStory from '~/components/section/home/DisplayStory.vue';
 import ConfirmToast from '~/components/ui/toast/ConfirmToast.vue';
 import Categories from '~/components/section/home/Categories.vue';
 import InputForm from '~/components/ui/InputForm.vue';
-import type { User } from '~/types/api';
 
-const route = useRoute()
 const router = useRouter()
 const showLoginToast = ref(false)
 
 const token = useCookie('token')
 const isLoggedIn = computed(() => !!token.value)
 
-const { $api } = useNuxtApp()
-const user = ref<User | null>(null)
-const isLoading = ref(true)
+const userStore = useUserStore();
 
 const querySearch = ref('')
-
-const fetchUser = async () => {
-    try {
-        isLoading.value = true
-        const response = await $api.user.me()
-        user.value = response.data
-    } catch (error) {
-        console.error('failed to fetch user', error)
-    } finally {
-        isLoading.value = false
-    }
-}
 
 const handleSearch = (value: string) => {
     router.push({ path: '/story/', query: { query: value } })
 }
-
-onMounted(() => {
-    fetchUser()
-})
-
-onMounted(() => {
-    if (route.query.login === 'success') {
-        showLoginToast.value = true
-        router.replace({ query: {} })
-        setTimeout(() => {
-            showLoginToast.value = false
-        }, 3000)
-    }
-})
-
-
 
 </script>
 
@@ -62,7 +30,7 @@ onMounted(() => {
 
         <div class="hero">
             <div class="hero__text-wrapper">
-                <span v-if="isLoggedIn" class="hero__title-user">Hi, {{ user?.name || 'user' }}</span>
+                <span v-if="isLoggedIn" class="hero__title-user">Hi, {{ userStore.userName }}</span>
                 <span class="hero__title-welcome">Welcome to Storytime</span>
                 <p class="hero__text-wrapper__text">The world's most-loved social storytelling platform. Story time
                     connects a global
@@ -70,7 +38,8 @@ onMounted(() => {
                     readers and writers through the power of story.</p>
             </div>
             <div class="hero__wrapper">
-                <InputForm v-model="querySearch" placeholder="Search Story" variant="secondary" icon-name="formkit:search" @search="handleSearch" />
+                <InputForm v-model="querySearch" placeholder="Search Story" variant="secondary"
+                    icon-name="formkit:search" @search="handleSearch" />
             </div>
             <img src="/img/HeroSection.webp" alt="hero section image" class="hero__image">
         </div>
