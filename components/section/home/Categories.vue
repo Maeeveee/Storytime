@@ -1,28 +1,8 @@
 <script setup lang="ts">
-import type { Category } from '~/types/api';
 import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 import CategoriesSkeleton from '~/components/ui/skeleton/CategoriesSkeleton.vue';
 
-const { $api } = useNuxtApp()
-const categories = ref<Category[]>([])
-const isLoading = ref(true)
-
-const fetchCategories = async () => {
-    isLoading.value = true
-    try {
-        const response = await $api.category.getCategories()
-        categories.value = response.data
-    } catch (error) {
-        console.error('failed to fetch categories', error)
-    } finally {
-        isLoading.value = false
-    }
-}
-
-onMounted(() => {
-    fetchCategories()
-})
-
+const storyStore = useStoryStore()
 </script>
 
 <template>
@@ -33,11 +13,11 @@ onMounted(() => {
     <UiDivider />
 
     <div class="more-categories__display">
-        <div v-if="isLoading" v-for="i in 5">
+        <div v-if="storyStore.isLoading" v-for="i in 6">
             <CategoriesSkeleton />
         </div>
 
-        <div v-else v-for="category in categories" :key="category.id">
+        <div v-else v-for="category in storyStore.categories.values()" :key="category.id">
             <CategoriesButton :category="category.name" :category-id="category.id" />
         </div>
     </div>
