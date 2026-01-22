@@ -21,20 +21,16 @@ onMounted(async () => {
         if (route.path === '/dashboard/edit/' && route.params) {
             try {
                 await storyStore.fetchCategories()
-                console.log('fetch categories')
             } catch (error) {
                 console.error('failed fetch', error)
             }
         }
         try {
             await storyStore.fetchCategories()
-            console.log('fetch categories')
         } catch (error) {
             console.error('failed fetch', error)
         }
     }
-    console.log(route.params)
-    console.log('halo')
 });
 </script>
 <template>
