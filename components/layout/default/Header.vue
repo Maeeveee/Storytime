@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Logo from '~/components/ui/Logo.vue';
 import ConfirmContent from '~/components/ui/modal/ConfirmContent.vue';
-import type { User } from '~/types/api';
 import Button from '~/components/ui/Button.vue';
 
 const isDropdownOpen = ref(false);
@@ -11,28 +10,10 @@ const toast = useToast();
 const dropdownRef = ref<HTMLElement | null>(null);
 
 const { $api } = useNuxtApp();
-const user = ref<User | null>(null)
-const isLoading = ref(true)
-
+const userStore = useUserStore()
 const token = useCookie('token')
+
 const isLoggedIn = computed(() => !!token.value)
-
-const fetchUser = async () => {
-    try {
-        isLoading.value = true
-        const response = await $api.user.me()
-        user.value = response.data
-    } catch (error) {
-        console.error('failed to fetch user', error)
-    } finally {
-        isLoading.value = false
-    }
-}
-
-onMounted(() => {
-    fetchUser();
-    document.addEventListener('click', handleClickOutside);
-});
 
 onUnmounted(() => {
     document.removeEventListener('click', handleClickOutside);
@@ -61,10 +42,12 @@ function handleLogout() {
             try {
                 await $api.auth.logout();
                 token.value = null
+                userStore.logout()
                 toast.success('You have successfully logged out');
                 navigateTo('/login')
             } catch (error) {
                 token.value = null
+                userStore.logout()
                 navigateTo('/login')
             }
         },
@@ -101,10 +84,10 @@ function handleLogout() {
                 <div class="nav__button-container">
                     <template v-if="isLoggedIn">
                         <div class="nav__login">
-                            <img class="nav__login__image" :src="user?.profile_image!" alt="User avatar">
+                            <img class="nav__login__image" :src="userStore.userProfileImage" alt="User avatar">
                             <div class="dropdown">
                                 <button class="dropdown__button" @click="isDropdownOpen = !isDropdownOpen">
-                                    <h4 class="nav__login__name">{{ user?.name }}</h4>
+                                    <h4 class="nav__login__name">{{ userStore.userName }}</h4>
                                     <Icon class="nav__login__icon" name="mdi:chevron-down" />
                                 </button>
                                 <Transition name="dropdown">
