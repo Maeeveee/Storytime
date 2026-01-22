@@ -17,20 +17,20 @@ onMounted(async () => {
             console.error('failed to fetch user', error)
         }
     }
-    if (route.path === '/' || route.path === '/story/' || route.path === '/dashboard/create' || route.path === '/dashboard/edit/') {
-        if (route.path === '/dashboard/edit/' && route.params) {
-            try {
-                await storyStore.fetchCategories()
-            } catch (error) {
-                console.error('failed fetch', error)
-            }
-        }
-        try {
-            await storyStore.fetchCategories()
-        } catch (error) {
-            console.error('failed fetch', error)
-        }
-    }
+    storyStore.fetchCategories()
+    // if (route.path === '/' || route.path === '/story/' || route.path === '/dashboard/create' || route.path === '/dashboard/edit/') {
+    //     if (route.path === '/dashboard/edit/' && route.params) {
+    //         try {
+    //         } catch (error) {
+    //             console.error('failed fetch', error)
+    //         }
+    //     }
+    //     try {
+    //         await storyStore.fetchCategories()
+    //     } catch (error) {
+    //         console.error('failed fetch', error)
+    //     }
+    // }
 });
 </script>
 <template>
