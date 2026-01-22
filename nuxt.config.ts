@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/styles/main.scss'],
   modules: ['@nuxt/icon', 'nuxt-tiptap-editor', 'dayjs-nuxt', '@pinia/nuxt'],
-
+  components: false,
   runtimeConfig: {
     apiSecret: '',
     public: {
