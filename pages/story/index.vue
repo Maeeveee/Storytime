@@ -4,12 +4,12 @@ import InputForm from '~/components/ui/InputForm.vue';
 import StoryCard from '~/components/ui/StoryCard.vue';
 import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import Pagination from '~/components/ui/Pagination.vue';
-import type { StoryListItem, Category } from '~/types/api';
+import type { StoryListItem } from '~/types/api';
 
 const { $api } = useNuxtApp();
 const stories = ref<StoryListItem[]>([]);
-const categories = ref<Category[]>([])
 const isLoading = ref(true);
+const storyStore = useStoryStore()
 
 const route = useRoute()
 const router = useRouter()
@@ -55,14 +55,6 @@ const fetchStories = async () => {
     }
 }
 
-const fetchCategories = async () => {
-    try {
-        const response = await $api.category.getCategories()
-        categories.value = response.data
-    } catch (error) {
-        console.error('failed to fetch categories', error)
-    }
-}
 
 let searchTimeout: ReturnType<typeof setTimeout> | null = null
 const handleSearch = (value: string | undefined) => {
@@ -82,7 +74,6 @@ onMounted(() => {
         searchQuery.value = route.query.query as string
     }
     fetchStories()
-    fetchCategories()
 })
 </script>
 <template>
@@ -106,7 +97,7 @@ onMounted(() => {
                 <select v-model="selectedCategory" name="sort by category" id="category"
                     class="all-story__selected-item">
                     <option value="" class="all-story__item">All Categories</option>
-                    <option v-for="category in categories" :key="category.id" :value="category.id"
+                    <option v-for="category in storyStore.categories.values()" :key="category.id" :value="category.id"
                         class="all-story__item">{{ category.name }}</option>
                 </select>
             </div>
