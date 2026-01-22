@@ -54,12 +54,15 @@ export const useStoryStore = defineStore('story', () => {
     }
 
     async function fetchCategories() {
+        isLoading.value = true
         try {
             const response = await $api.category.getCategories()
             categories.value = response.data
         } catch (error) {
             console.error('Failed to fetch categories:', error)
             throw error
+        }finally{
+            isLoading.value = false
         }
     }
 
