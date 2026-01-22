@@ -69,6 +69,16 @@ watch([selectedCategory, sortOrder, searchQuery], () => {
     fetchStories()
 })
 
+const handlePageChange = async (page: number) => {
+    currentPage.value = page
+    await fetchStories()
+    
+    nextTick(() => {
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+    })
+}
+
 onMounted(() => {
     if (route.query.query) {
         searchQuery.value = route.query.query as string
@@ -77,7 +87,7 @@ onMounted(() => {
 })
 </script>
 <template>
-    <main class="all-story">
+    <main class="all-story" ref="mainContent">
         <h1 class="all-story__title">All Story</h1>
         <Breadcrumb />
         <div class="all-story__input--mobile">
@@ -123,7 +133,7 @@ onMounted(() => {
         </div>
         <div class="all-story__pagination">
             <Pagination :current-page="currentPage" :total-pages="totalPages"
-                @page-change="(page: number) => { currentPage = page; fetchStories(); }" />
+                @page-change="handlePageChange" />
         </div>
     </main>
 </template>
