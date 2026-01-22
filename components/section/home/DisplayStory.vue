@@ -4,7 +4,7 @@ import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import NavigationButton from '~/components/ui/NavigationButton.vue';
 import type { StoryListItem } from '~/types/api';
 import 'vue3-carousel/carousel.css'
-import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const carouselConfig = {
     itemsToShow: 3,
@@ -142,7 +142,7 @@ const displayTitle = computed(() => {
         </div>
     </div>
 
-    <div v-if="$props.display === 'similar'" class="display__flex">
+    <div v-if="props.display === 'similar'" class="display__flex">
         <div v-if="isLoading" class="display__flex">
             <StoryCardSkeleton variant="default" />
             <StoryCardSkeleton variant="default" />
@@ -152,15 +152,24 @@ const displayTitle = computed(() => {
             variant="default" />
     </div>
 
-    <div v-if="props.display === 'carousel'" class="">
+    <div v-if="props.display === 'carousel'">
         <div v-if="isLoading" class="display__flex">
             <StoryCardSkeleton variant="default" />
             <StoryCardSkeleton variant="default" />
             <StoryCardSkeleton variant="default" />
         </div>
-        <Carousel v-else v-bind="carouselConfig">
+        <Carousel v-else v-bind="carouselConfig" :autoplay="2000" breakpoint-mode="carousel" :breakpoints="{
+            300: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            1440: {
+                itemsToShow: 3,
+                snapAlign: 'center',
+            },
+        }">
             <Slide v-for="story in stories" :key="story.id">
-                <StoryCard :article-item="story" />
+                <StoryCard :article-item="story" variant="default" />
             </Slide>
         </Carousel>
     </div>
