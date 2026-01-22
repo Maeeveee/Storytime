@@ -2,81 +2,86 @@
 import Button from '../Button.vue';
 import InputForm from '../InputForm.vue';
 import ImageCropperModal from './ImageCropperModal.vue';
-import type { User, UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
+import type { UpdateProfilePayload, ChangePasswordPayload } from '~/types/api';
 
 const { $api } = useNuxtApp()
-const user = ref<User | null>(null)
-const isLoading = ref(true)
+const userStore = useUserStore()
+const isLoading = ref(false)
 
-const name = ref(user.value?.name);
-const email = ref(user.value?.email);
-const about = ref(user.value?.about);
-const profileImage = ref(user.value?.profile_image)
-const oldPassword = ref('');
-const newPassword = ref('');
-const confirmPassword = ref('');
+const name = ref('')
+const email = ref('')
+const about = ref('')
+const profileImage = ref('')
+const oldPassword = ref('')
+const newPassword = ref('')
+const confirmPassword = ref('')
 
-const selectedFile = ref<File | null>(null);
-const showCropperModal = ref(false);
-const tempImageSrc = ref('');
+const selectedFile = ref<File | null>(null)
+const showCropperModal = ref(false)
+const tempImageSrc = ref('')
+
+function initFormData() {
+    if (userStore.user) {
+        name.value = userStore.user.name ?? ''
+        email.value = userStore.user.email ?? ''
+        about.value = userStore.user.about ?? ''
+        profileImage.value = userStore.user.profile_image ?? '/img/user.webp'
+    }
+}
 
 function onFileChange(e: Event) {
-    const target = e.target as HTMLInputElement;
-    const file = target.files?.[0];
+    const target = e.target as HTMLInputElement
+    const file = target.files?.[0]
     if (file) {
-        tempImageSrc.value = URL.createObjectURL(file);
-        showCropperModal.value = true;
+        tempImageSrc.value = URL.createObjectURL(file)
+        showCropperModal.value = true
     }
-    target.value = '';
+    target.value = ''
 }
 
 function onCropComplete(blob: Blob) {
-    const file = new File([blob], 'profile-image.jpg', { type: 'image/jpeg' });
-    selectedFile.value = file;
-    profileImage.value = URL.createObjectURL(blob);
-    showCropperModal.value = false;
+    const file = new File([blob], 'profile-image.jpg', { type: 'image/jpeg' })
+    selectedFile.value = file
+    profileImage.value = URL.createObjectURL(blob)
+    showCropperModal.value = false
     
     if (tempImageSrc.value) {
-        URL.revokeObjectURL(tempImageSrc.value);
-        tempImageSrc.value = '';
+        URL.revokeObjectURL(tempImageSrc.value)
+        tempImageSrc.value = ''
     }
 }
 
 function onCropCancel() {
-    showCropperModal.value = false;
+    showCropperModal.value = false
     if (tempImageSrc.value) {
-        URL.revokeObjectURL(tempImageSrc.value);
-        tempImageSrc.value = '';
+        URL.revokeObjectURL(tempImageSrc.value)
+        tempImageSrc.value = ''
     }
 }
 
-const fetchUser = async () => {
-    try {
+onMounted(async () => {
+    if (!userStore.user) {
         isLoading.value = true
-        const response = await $api.user.me()
-        user.value = response.data
-    } catch (error) {
-        console.error('failed to fetch user', error)
-    } finally {
-        isLoading.value = false
+        try {
+            await userStore.fetchUser()
+        } finally {
+            isLoading.value = false
+        }
     }
-}
-
-onMounted(() => {
-    fetchUser()
+    initFormData()
 })
 
 const emit = defineEmits<{
-    close: [];
-    confirm: [];
-}>();
+    close: []
+    confirm: []
+}>()
 
 const handleUpdate = async () => {
     isLoading.value = true
     try {
         const payload: UpdateProfilePayload = {
             name: name.value,
-            about: about.value!,
+            about: about.value,
         }
         await $api.user.updateProfile(payload)
 
@@ -93,7 +98,13 @@ const handleUpdate = async () => {
             await $api.user.changePassword(passwordPayload)
         }
 
-        emit('confirm');
+        userStore.updateProfile({
+            name: name.value,
+            about: about.value,
+            profile_image: profileImage.value
+        })
+
+        emit('confirm')
     } catch (err) {
         console.error('error update profile', err)
     } finally {
@@ -102,7 +113,7 @@ const handleUpdate = async () => {
 }
 
 function handleCancel() {
-    emit('close');
+    emit('close')
 }
 </script>
 
@@ -124,15 +135,15 @@ function handleCancel() {
                 <div class="edit-profile__fields">
                     <label class="edit-profile__label">
                         <span>Name</span>
-                        <InputForm v-model="name" :placeholder="user?.name ?? ''" variant="primary" />
+                        <InputForm v-model="name" :placeholder="userStore.user?.name ?? ''" variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>Email</span>
-                        <InputForm v-model="email" :placeholder="user?.email ?? ''" variant="primary" />
+                        <InputForm v-model="email" :placeholder="userStore.user?.email ?? ''" variant="primary" />
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about!" :placeholder="user?.about ?? ''" variant="primary" />
+                        <InputForm v-model="about" :placeholder="userStore.user?.about ?? ''" variant="primary" />
                     </label>
                 </div>
             </div>
