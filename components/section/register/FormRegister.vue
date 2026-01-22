@@ -12,15 +12,17 @@ const passwordLowerCase = /(?=.*[a-z])/;
 const passwordUpperCase = /(?=.*[A-Z])/
 const passwordNumber = /(?=.*[0-9])/
 const passwordSpecialChar = /(?=.*?[!@#$%^&*?])/
+const whiteSpaceChecker = /^\S+$/
 
 const schema = yup.object({
     name: yup.string().required(),
     email: yup.string().required('email is requierd').email('must be a valid email'),
     password: yup.string()
         .matches(passwordLowerCase, { message: "your password must have at least 1 lowercase" })
-        .matches(passwordUpperCase, {message: "your password must have at least 1 uppercase"})
-        .matches(passwordNumber, {message: "your password must have at least 1 number"})
-        .matches(passwordSpecialChar, {message: "your password must have at least 1 special character"})
+        .matches(passwordUpperCase, { message: "your password must have at least 1 uppercase" })
+        .matches(passwordNumber, { message: "your password must have at least 1 number" })
+        .matches(passwordSpecialChar, { message: "your password must have at least 1 special character" })
+        .matches(whiteSpaceChecker, { message: "your password must not have whitespace " })
         .required("Required").min(8, 'your password at least 8 character long'),
     confirmPassword: yup.string().oneOf([yup.ref("password")], "Passwords must match").required("Required"),
 })
@@ -76,26 +78,27 @@ const handleRegister = async () => {
             <h2 class="register__title">Create Account</h2>
             <div>
                 <label class="register__label">
-                    <span class="register__text">Name <br></span>
-                    <span>{{ errors.name }}</span>
+                    <span class="register__text">Name</span>
+                    <span class="register__error-message">{{ errors.name }}</span>
                     <InputForm v-model="name" v-bind="nameProps" placeholder="Enter Your name" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Email</span>
-                    <span>{{ errors.email }}</span>
+                    <span v-if="errors.email" class="register__error-message">{{ errors.email }}</span>
                     <InputForm v-model="email" v-bind="emailProps" placeholder="Enter Your Email" variant="primary" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Password</span>
-                    <span>{{ errors.password }}</span>
-                    <InputForm v-model="password" v-bind="passwordProps" placeholder="Enter Your Chosen Password" variant="primary"
-                        icon-name="formkit:eye" />
+                    <span v-if="errors.password" class="register__error-message">{{ errors.password }}</span>
+                    <InputForm v-model="password" v-bind="passwordProps" placeholder="Enter Your Chosen Password"
+                        variant="primary" icon-name="formkit:eye" />
                 </label>
                 <label class="register__label">
                     <span class="register__text">Confirm Password</span>
-                    <span>{{ errors.confirmPassword }}</span>
-                    <InputForm v-model="confirmPassword" v-bind="confirmPasswordProps" placeholder="Re-enter Your Chosen Password" variant="primary"
-                        icon-name="formkit:eye" />
+                    <span v-if="errors.confirmPassword" class="register__error-message">{{ errors.confirmPassword
+                    }}</span>
+                    <InputForm v-model="confirmPassword" v-bind="confirmPasswordProps"
+                        placeholder="Re-enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
                 </label>
             </div>
             <Button @click="handleRegister" variant="primary" class="register__button"> Create Account</Button>
@@ -160,6 +163,10 @@ const handleRegister = async () => {
         @include mobile {
             margin-block: vw-mobile(30);
         }
+    }
+
+    &__error-message {
+        color: red;
     }
 
     &__text {
