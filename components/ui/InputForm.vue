@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{ 
-    placeholder: string, 
-    iconName?: string, 
+const props = defineProps<{
+    placeholder: string,
+    iconName?: string,
     variant?: 'primary' | 'secondary',
     type?: string
 }>();
@@ -27,8 +27,7 @@ const handleIconClick = () => {
 <template>
     <div class="input__wrapper">
         <input v-model="model" :type="type ?? 'text'" :placeholder="placeholder" class="input"
-            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']"
-            @keydown="handleKeydown" />
+            :class="[`input--${variant ?? 'primary'}`, iconName ? 'input--with-icon' : '']" @keydown="handleKeydown" />
         <button v-if="iconName" type="button" class="input__icon-btn" @click="handleIconClick">
             <Icon class="input__icon" :name="iconName" />
         </button>
@@ -78,7 +77,7 @@ const handleIconClick = () => {
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         &:hover .input__icon {
             color: var(--color-primary);
         }

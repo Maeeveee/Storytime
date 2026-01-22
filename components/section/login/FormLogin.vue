@@ -3,11 +3,25 @@ import Button from '~/components/ui/Button.vue';
 import InputForm from '~/components/ui/InputForm.vue';
 import Logo from '~/components/ui/Logo.vue';
 import type { LoginPayload } from '~/types/api';
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { toTypedSchema } from '@vee-validate/yup';
+
+const schema = yup.object({
+    email: yup.string().required('email is requierd').email('must be a valid email'),
+    password: yup.string().required('password is required').min(8, 'password at least 8 character')
+})
+
+const validationSchema = toTypedSchema(schema)
+
+const { values, errors, defineField } = useForm({
+    validationSchema
+})
 
 const token = useCookie('token')
 
-const email = ref('')
-const password = ref('')
+const [email, emailProps] = defineField('email')
+const [password, passwordProps] = defineField('password')
 const isLoading = ref(false)
 const toast = useToast();
 const { $api } = useNuxtApp();
@@ -18,25 +32,25 @@ const handleLogin = async () => {
 
     try {
         const payload: LoginPayload = {
-            email: email.value,
-            password: password.value,
+            email: values.email!,
+            password: password.value!,
         };
 
         await $api.auth.csrf()
         const response = await $api.auth.login(payload);
 
-        if  (response.data.token){
+        if (response.data.token) {
             token.value = response.data.token;
             toast.success('you have successfully logged in')
             navigateTo('/')
-        } 
+        }
     } catch (error: any) {
         const message = error.response?._data?.message || error.data?.message || error.message;
 
         if (message) {
-             toast.error(message)
+            toast.error(message)
         } else {
-             toast.error('Invalid credentials or server error. Check Console.')
+            toast.error('Invalid credentials or server error. Check Console.')
         }
     }
 
@@ -52,12 +66,15 @@ const handleLogin = async () => {
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <InputForm v-model="email" id="Email" placeholder="Enter Your Email" variant="primary" />
+                <span v-if="errors.email">{{ errors.email }}</span>
+                <InputForm v-model="email" v-bind="emailProps" type="email" id="Email" placeholder="Enter Your Email"
+                    variant="primary" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <InputForm v-model="password" type="password" id="Password" placeholder="Enter Your Chosen Password"
-                    variant="primary" icon-name="formkit:eye" />
+                <span v-if="errors.password">{{ errors.password }}</span>
+                <InputForm v-model="password" v-bind="passwordProps" type="password" id="Password"
+                    placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
             <Button :disabled="isLoading" @click="handleLogin" variant="primary" class="login__button">
                 {{ isLoading ? 'Loading...' : 'Login' }}
