@@ -3,27 +3,9 @@ import MyStory from '~/components/section/profile/MyStory.vue';
 import Button from '~/components/ui/Button.vue';
 import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
 
-import type { User } from '~/types/api';
-
-const { $api } = useNuxtApp()
-const user = ref<User | null>(null)
 const isLoading = ref(true)
 
-const fetchUser = async () => {
-    try {
-        isLoading.value = true
-        const response = await $api.user.me()
-        user.value = response.data
-    } catch (error) {
-        console.error('failed to fetch user', error)
-    } finally {
-        isLoading.value = false
-    }
-}
-
-onMounted(() => {
-    fetchUser()
-})
+const userStore = useUserStore();
 
 const modal = useModal();
 const toast = useToast();
@@ -32,11 +14,11 @@ function editProfile() {
     modal.open({
         component: EditProfileModal,
         props: {
-            user: user.value
+            user: userStore.user
         },
         onConfirm: () => {
             toast.success('Successfully edit your profile')
-            fetchUser()
+            userStore.fetchUser
         },
     });
 }
@@ -45,11 +27,11 @@ function editProfile() {
     <main class="dashboard">
         <div class="dashboard__header">
             <div class="dashboard__profile-section">
-                <img class="dashboard__profile-image" :src="user?.profile_image || '/img/user.webp'" alt="Profile image">
+                <img class="dashboard__profile-image" :src="userStore.userProfileImage" alt="Profile image">
                 <div class="dashboard__profile-user">
-                    <h2 class="dashboard__title">{{ user?.name || 'Loading...' }}</h2>
-                    <h4 class="dashboard__email">{{ user?.email || '' }}</h4>
-                    <h4 class="dashboard__user-description">{{ user?.about || '' }}</h4>
+                    <h2 class="dashboard__title">{{ userStore.userName}}</h2>
+                    <h4 class="dashboard__email">{{ userStore.userEmail}}</h4>
+                    <h4 class="dashboard__user-description">{{ userStore.userAbout }}</h4>
                 </div>
                 <Button @click="editProfile" variant="primary" :disabled="isLoading">Edit Profile</Button>
             </div>
@@ -109,7 +91,6 @@ function editProfile() {
 
     &__profile-image {
         border-radius: 50%;
-        border: 1px solid var(--color-primary);
         width: fluid(70, 200);
         height: fluid(70, 200);
 
