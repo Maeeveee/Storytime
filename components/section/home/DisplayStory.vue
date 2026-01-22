@@ -3,7 +3,13 @@ import StoryCard from '~/components/ui/StoryCard.vue';
 import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import NavigationButton from '~/components/ui/NavigationButton.vue';
 import type { StoryListItem } from '~/types/api';
+import 'vue3-carousel/carousel.css'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
 
+const carouselConfig = {
+    itemsToShow: 3,
+    wrapAround: true
+}
 interface Props {
     category?: string;
     title?: string;
@@ -146,13 +152,17 @@ const displayTitle = computed(() => {
             variant="default" />
     </div>
 
-    <div v-if="props.display === 'carousel'" class="display__carousel">
+    <div v-if="props.display === 'carousel'" class="">
         <div v-if="isLoading" class="display__flex">
             <StoryCardSkeleton variant="default" />
             <StoryCardSkeleton variant="default" />
             <StoryCardSkeleton variant="default" />
         </div>
-        <StoryCard v-else v-for="article in stories" :key="article.id" :article-item="article" variant="default" />
+        <Carousel v-else v-bind="carouselConfig">
+            <Slide v-for="story in stories" :key="story.id">
+                <StoryCard :article-item="story" />
+            </Slide>
+        </Carousel>
     </div>
 
 </template>
