@@ -5,9 +5,15 @@ export const useUserStore = defineStore('user', () => {
     const { $api } = useNuxtApp()
 
     const user = ref<User | null>(null)
-    const token = ref<string | null>(null)
     const isLoading = ref(false)
-    const isLoggedIn = computed(() => !!token.value)
+
+    const tokenCookie = useCookie<string | null>('token', {
+        maxAge: 60 * 60 * 24 * 7,
+        sameSite: 'lax'
+    })
+
+    const token = computed(() => tokenCookie.value)
+    const isLoggedIn = computed(() => !!tokenCookie.value)
 
     const userName = computed(() => user.value?.name ?? 'User')
     const userProfileImage = computed(() => user.value?.profile_image ?? '/img/user.webp')
@@ -27,32 +33,17 @@ export const useUserStore = defineStore('user', () => {
         }
     }
 
-    function setToken(newToken: string) {
-        token.value = newToken
-        if (import.meta.client) {
-            localStorage.setItem('auth_token', newToken)
-        }
+    function setToken(newToken: string | null) {
+        tokenCookie.value = newToken
     }
 
     function setUser(newUser: User) {
         user.value = newUser
     }
 
-    function loadTokenFromStorage() {
-        if (import.meta.client) {
-            const storedToken = localStorage.getItem('auth_token')
-            if (storedToken) {
-                token.value = storedToken
-            }
-        }
-    }
-
     function logout() {
         user.value = null
-        token.value = null
-        if (import.meta.client) {
-            localStorage.removeItem('auth_token')
-        }
+        tokenCookie.value = null
     }
 
     function updateProfile(updatedUser: Partial<User>) {
@@ -73,8 +64,8 @@ export const useUserStore = defineStore('user', () => {
         fetchUser,
         setToken,
         setUser,
-        loadTokenFromStorage,
         logout,
         updateProfile
     }
 })
+

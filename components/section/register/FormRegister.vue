@@ -33,7 +33,7 @@ const { values, errors, defineField } = useForm({
     validationSchema
 })
 
-const token = useCookie('token')
+const userStore = useUserStore()
 
 const toast = useToast();
 const [name, nameProps] = defineField('name')
@@ -55,7 +55,8 @@ const handleRegister = async () => {
         const response = await $api.auth.register(payload);
 
         if (response.data.token) {
-            token.value = response.data.token;
+            userStore.setToken(response.data.token)
+            userStore.setUser(response.data.user)
             toast.success('You have successfully registered')
             await navigateTo('/')
         } else {

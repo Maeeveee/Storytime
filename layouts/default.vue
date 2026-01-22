@@ -2,15 +2,11 @@
 import Header from '~/components/layout/default/Header.vue'
 import Footer from '~/components/layout/default/Footer.vue'
 
-const route = useRoute()
-
-const token = useCookie('token')
 const userStore = useUserStore()
 const storyStore = useStoryStore()
-const isLoggedIn = computed(() => !!token.value)
 
 onMounted(async () => {
-    if (isLoggedIn.value && !userStore.user) {
+    if (userStore.isLoggedIn && !userStore.user) {
         try {
             await userStore.fetchUser()
         } catch (error) {
@@ -18,19 +14,6 @@ onMounted(async () => {
         }
     }
     storyStore.fetchCategories()
-    // if (route.path === '/' || route.path === '/story/' || route.path === '/dashboard/create' || route.path === '/dashboard/edit/') {
-    //     if (route.path === '/dashboard/edit/' && route.params) {
-    //         try {
-    //         } catch (error) {
-    //             console.error('failed fetch', error)
-    //         }
-    //     }
-    //     try {
-    //         await storyStore.fetchCategories()
-    //     } catch (error) {
-    //         console.error('failed fetch', error)
-    //     }
-    // }
 });
 </script>
 <template>

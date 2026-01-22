@@ -7,10 +7,8 @@ import InputForm from '~/components/ui/InputForm.vue';
 const router = useRouter()
 const showLoginToast = ref(false)
 
-const token = useCookie('token')
-const isLoggedIn = computed(() => !!token.value)
-
 const userStore = useUserStore();
+const { isLoggedIn } = storeToRefs(userStore)
 
 const querySearch = ref('')
 

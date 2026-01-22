@@ -18,7 +18,7 @@ const { values, errors, defineField } = useForm({
     validationSchema
 })
 
-const token = useCookie('token')
+const userStore = useUserStore()
 
 const [email, emailProps] = defineField('email')
 const [password, passwordProps] = defineField('password')
@@ -40,7 +40,8 @@ const handleLogin = async () => {
         const response = await $api.auth.login(payload);
 
         if (response.data.token) {
-            token.value = response.data.token;
+            userStore.setToken(response.data.token)
+            userStore.setUser(response.data.user)
             toast.success('you have successfully logged in')
             navigateTo('/')
         }

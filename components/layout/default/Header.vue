@@ -11,9 +11,7 @@ const dropdownRef = ref<HTMLElement | null>(null);
 
 const { $api } = useNuxtApp();
 const userStore = useUserStore()
-const token = useCookie('token')
-
-const isLoggedIn = computed(() => !!token.value)
+const { isLoggedIn } = storeToRefs(userStore)
 
 onUnmounted(() => {
     document.removeEventListener('click', handleClickOutside);
@@ -41,12 +39,10 @@ function handleLogout() {
         onConfirm: async () => {
             try {
                 await $api.auth.logout();
-                token.value = null
                 userStore.logout()
                 toast.success('You have successfully logged out');
                 navigateTo('/login')
             } catch (error) {
-                token.value = null
                 userStore.logout()
                 navigateTo('/login')
             }
