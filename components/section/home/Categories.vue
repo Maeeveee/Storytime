@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CategoriesButton from '~/components/ui/CategoriesButton.vue';
 import CategoriesSkeleton from '~/components/ui/skeleton/CategoriesSkeleton.vue';
+import Divider from '~/components/ui/Divider.vue';
 
 const storyStore = useStoryStore()
 </script>
@@ -10,7 +11,7 @@ const storyStore = useStoryStore()
         More Categories
     </div>
 
-    <UiDivider />
+    <Divider />
 
     <div class="more-categories__display">
         <div v-if="storyStore.isLoading" v-for="i in 6">

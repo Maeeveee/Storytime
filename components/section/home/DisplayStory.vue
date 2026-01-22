@@ -2,9 +2,10 @@
 import StoryCard from '~/components/ui/StoryCard.vue';
 import StoryCardSkeleton from '~/components/ui/skeleton/StoryCardSkeleton.vue';
 import NavigationButton from '~/components/ui/NavigationButton.vue';
+import Divider from '~/components/ui/Divider.vue';
 import type { StoryListItem } from '~/types/api';
 import 'vue3-carousel/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import { Carousel, Slide } from 'vue3-carousel'
 
 const carouselConfig = {
     itemsToShow: 3,
@@ -87,7 +88,7 @@ const displayTitle = computed(() => {
         <NavigationButton />
     </div>
 
-    <UiDivider />
+    <Divider />
 
     <div v-if="props.display === 'bento'">
         <div class="display__grid__desktop">

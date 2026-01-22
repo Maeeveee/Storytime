@@ -3,7 +3,7 @@ import MyStory from '~/components/section/profile/MyStory.vue';
 import Button from '~/components/ui/Button.vue';
 import EditProfileModal from '~/components/ui/modal/EditProfileModal.vue';
 
-const isLoading = ref(true)
+const isLoading = ref(false)
 
 const userStore = useUserStore();
 
