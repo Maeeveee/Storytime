@@ -43,9 +43,23 @@ watch(() => route.path, async () => {
 })
 </script>
 <template>
-    <div>
+    <div class="layout-wrapper">
         <Header />
-        <slot />
+        <main class="layout-content">
+            <slot />
+        </main>
         <Footer />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout-content {
+    flex-grow: 1;
+}
+</style>
