@@ -24,25 +24,25 @@ onBeforeUnmount(() => {
 <template>
     <div class="custom-input">
         <div v-if="editor">
-            <button class="button" @click="editor.chain().focus().toggleBold().run()"
+            <button class="button" title="Bold" @click="editor.chain().focus().toggleBold().run()"
                 :disabled="!editor.can().chain().focus().toggleBold().run()">
                 <Icon class="button__icon" name="fluent:text-bold-16-filled" />
             </button>
-            <button class="button" @click="editor.chain().focus().toggleItalic().run()"
+            <button class="button" title="Italic" @click="editor.chain().focus().toggleItalic().run()"
                 :disabled="!editor.can().chain().focus().toggleItalic().run()">
                 <Icon class="button__icon" name="fluent:text-italic-16-filled" />
             </button>
-            <button class="button" @click="editor.chain().focus().toggleStrike().run()"
+            <button class="button" title="Strikethrough" @click="editor.chain().focus().toggleStrike().run()"
                 :disabled="!editor.can().chain().focus().toggleStrike().run()">
                 <Icon class="button__icon" name="fluent:text-strikethrough-16-filled" />
             </button>
-            <button class="button" @click="editor.chain().focus().toggleLink().run()">
+            <button class="button" title="Link" @click="editor.chain().focus().toggleLink().run()">
                 <Icon class="button__icon" name="heroicons:link-16-solid" />
             </button>
-            <button class="button" @click="editor.chain().focus().toggleBulletList().run()">
+            <button class="button" title="Bullet list" @click="editor.chain().focus().toggleBulletList().run()">
                 <Icon class="button__icon" name="fluent:text-bullet-list-16-filled" />
             </button>
-            <button class="button" @click="editor.chain().focus().toggleOrderedList().run()">
+            <button class="button" title="Ordered list" @click="editor.chain().focus().toggleOrderedList().run()">
                 <Icon class="button__icon" name="fluent:text-number-list-16-filled" />
             </button>
         </div>

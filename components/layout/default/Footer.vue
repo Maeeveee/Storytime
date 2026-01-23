@@ -7,13 +7,13 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
         <div class="footer__content">
             <h5 class="footer__text">{{ copyright }}</h5>
             <div class="footer__icons">
-                <span title="facebook">
+                <span title="Facebook">
                     <Icon name="entypo-social:facebook" class="footer__icons__icon" />
                 </span>
-                <span title="instagram">
+                <span title="Instagram">
                     <Icon name="entypo-social:instagram" class="footer__icons__icon" />
                 </span>
-                <span title="youtube">
+                <span title="Youtube">
                     <Icon name="entypo-social:youtube" class="footer__icons__icon" />
                 </span>
             </div>

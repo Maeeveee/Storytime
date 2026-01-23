@@ -59,10 +59,10 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
     <article class="card" :class="`card--${variant}`">
         <div class="card__image-wrapper">
             <div v-if="isEdit" class="card__icon-wrapper">
-                <NuxtLink :to="editLink" class="card__icon__background">
+                <NuxtLink :to="editLink" title="Edit story" class="card__icon__background">
                     <Icon class="card__icon__text" name="lucide:edit" />
                 </NuxtLink>
-                <button class="card__icon__background" @click.prevent="handleDelete" :disabled="isDeleting">
+                <button class="card__icon__background" title="Delete story" @click.prevent="handleDelete" :disabled="isDeleting">
                     <Icon class="card__icon__text" :name="isDeleting ? 'eos-icons:loading' : 'lucide:trash-2'" />
                 </button>
             </div>
@@ -368,6 +368,7 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
 
             &:hover {
                 background-color: var(--color-primary-dark);
+                cursor: pointer;
             }
         }
 
