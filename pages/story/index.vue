@@ -17,7 +17,7 @@ const router = useRouter()
 const searchQuery = ref('')
 const selectedCategory = ref(route.query.categoryId || '')
 const sortOrder = ref('newest')
-const currentPage = ref(1)
+const currentPage = ref(Number(route.query.page) || 1)
 const totalPages = ref(1)
 const limit = 12
 
@@ -35,7 +35,12 @@ const fetchStories = async () => {
 
         if (selectedCategory.value) {
             params.category_id = String(selectedCategory.value)
-            router.push({ path: '/story/', query: { categoryId: params.category_id } })
+            router.push({ path: '/story/', query: { categoryId: params.category_id, page: params.current_page } })
+        }
+
+        if (currentPage.value) {
+            params.current_page = String(currentPage.value)
+            router.push({ path: '/story/', query: { categoryId: params.category_id, page: params.current_page } })
         }
 
         if (sortOrder.value) {
@@ -64,15 +69,14 @@ const handleSearch = (value: string | undefined) => {
     }, 500)
 }
 
-watch([selectedCategory, sortOrder, searchQuery], () => {
-    currentPage.value = 1
+watch([selectedCategory, sortOrder, searchQuery, currentPage], () => {
     fetchStories()
 })
 
 const handlePageChange = async (page: number) => {
     currentPage.value = page
     await fetchStories()
-    
+
     nextTick(() => {
         document.documentElement.scrollTop = 0
         document.body.scrollTop = 0
@@ -132,8 +136,7 @@ onMounted(() => {
             </div>
         </div>
         <div class="all-story__pagination">
-            <Pagination :current-page="currentPage" :total-pages="totalPages"
-                @page-change="handlePageChange" />
+            <Pagination :current-page="currentPage" :total-pages="totalPages" @page-change="handlePageChange" />
         </div>
     </main>
 </template>
