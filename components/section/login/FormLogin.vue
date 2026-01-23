@@ -28,7 +28,7 @@ const { $api } = useNuxtApp();
 
 const handleLogin = handleSubmit(async (formValues) => {
     isLoading.value = true
-    
+
     try {
         const payload: LoginPayload = {
             email: formValues.email,
@@ -66,13 +66,13 @@ const handleLogin = handleSubmit(async (formValues) => {
             <h2 class="login__title">Login</h2>
             <label for="Email" class="login__label">
                 <span>Email</span>
-                <span v-if="errors.email">{{ errors.email }}</span>
+                <span v-if="errors.email" class="login__error-message">{{ errors.email }}</span>
                 <InputForm v-model="email" v-bind="emailProps" type="email" id="Email" placeholder="Enter Your Email"
                     variant="primary" />
             </label>
             <label for="Password" class="login__label">
                 <span>Password</span>
-                <span v-if="errors.password">{{ errors.password }}</span>
+                <span v-if="errors.password" class="login__error-message">{{ errors.password }}</span>
                 <InputForm v-model="password" v-bind="passwordProps" type="password" id="Password"
                     placeholder="Enter Your Chosen Password" variant="primary" icon-name="formkit:eye" />
             </label>
@@ -120,6 +120,10 @@ const handleLogin = handleSubmit(async (formValues) => {
             margin-left: 0;
             margin-top: fluid(40, 60);
         }
+    }
+
+    &__error-message {
+        color: red;
     }
 
     &__title {
