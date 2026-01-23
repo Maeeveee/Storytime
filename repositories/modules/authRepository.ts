@@ -9,7 +9,9 @@ import type {
 class AuthRepository extends HttpFactory {
 
     async csrf() {
-        return $fetch('/sanctum/csrf-cookie', {
+        const config = useRuntimeConfig()
+        const baseUrl = config.public.apiBase?.replace(/\/api\/?$/, '') || ''
+        return $fetch(`${baseUrl}/sanctum/csrf-cookie`, {
             credentials: 'include'
         })
     }
