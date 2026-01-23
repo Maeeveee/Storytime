@@ -36,16 +36,24 @@ function viewCover() {
     &__content-wrapper {
         display: flex;
         gap: fluid(40, 40);
-        padding-left: fluid(16, 16);
-        padding-right: fluid(16, 16);
+
+        @include desktop {
+            padding-left: fluid(16, 16);
+            padding-right: fluid(16, 16);
+        }
+
 
         @include tablet {
-            flex-direction: column;
             align-items: center;
+            flex-direction: column;
+            padding-left: fluid(16, 16);
+            padding-right: fluid(16, 16);
         }
 
         @include mobile {
             flex-direction: column;
+            padding-inline: vw-mobile(8);
+            align-items: center;
         }
     }
 
@@ -58,7 +66,7 @@ function viewCover() {
         border-radius: fluid(8, 8);
         width: fluid(320, 547);
         height: fluid(254, 600);
-        object-fit:cover;
+        object-fit: cover;
 
         @include tablet {
             width: 100%;

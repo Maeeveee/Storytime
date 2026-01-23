@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import Breadcrumb from '../Breadcrumb.vue';
+</script>
+
 <template>
     <main>
-        <UiBreadcrumb class="story-detail__breadcrumb" />
+        <Breadcrumb class="story-detail__breadcrumb" />
         <div class="story-detail__container">
             <div class="story-detail__header">
                 <div class="story-detail__header__sub">
@@ -18,11 +22,8 @@
             <div class="story-detail__content">
                 <div class="story-detail__cover skeleton-pulse"></div>
                 <div class="skeleton-paragraph">
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-pulse"></div>
-                    <div class="skeleton-line skeleton-line--short skeleton-pulse"></div>
+                    <div v-for="i in 17" class="skeleton-line skeleton-pulse"></div>
                 </div>
-
             </div>
         </div>
     </main>
@@ -84,7 +85,7 @@
 }
 
 .skeleton-line {
-    width: 100%;
+    width: fluid(335,1000);
     height: fluid(16, 22);
     border-radius: fluid(4, 4);
     margin-bottom: fluid(10, 14);

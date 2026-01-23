@@ -2,6 +2,7 @@
 import StorySection from '~/components/section/story-detail/StorySection.vue';
 import DisplayStory from '~/components/section/home/DisplayStory.vue';
 import StoryDetailSkeleton from '~/components/ui/skeleton/StoryDetailSkeleton.vue';
+import Breadcrumb from '~/components/ui/Breadcrumb.vue';
 import type { StoryDetail } from '~/types/api';
 
 const route = useRoute();
@@ -33,7 +34,7 @@ onMounted(() => {
             <StoryDetailSkeleton />
         </template>
         <template v-else-if="story">
-            <UiBreadcrumb class="story-detail__breadcrumb" :title="story?.title" />
+            <Breadcrumb class="story-detail__breadcrumb" :title="story?.title" />
             <div class="story-detail__container">
                 <div class="story-detail__header">
                     <div class="story-detail__header__sub">
