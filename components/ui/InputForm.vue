@@ -4,6 +4,7 @@ const props = defineProps<{
     iconName?: string,
     variant?: 'primary' | 'secondary',
     type?: string
+    title?: string
 }>();
 const model = defineModel<string>();
 
@@ -20,6 +21,14 @@ const inputType = computed(() => {
     }
     return props.type ?? 'text'
 })
+
+const currentTitle = computed(() => {
+    if (isPasswordType.value) {
+        return isPasswordVisible.value ? 'Hide password' : 'Show password'
+    }
+    return props.title ?? 'Hide password'
+})
+
 
 const currentIcon = computed(() => {
     if (isPasswordType.value) {
@@ -47,7 +56,7 @@ const handleIconClick = () => {
     <div class="input__wrapper">
         <input v-model="model" :type="inputType" :placeholder="placeholder" class="input"
             :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']" @keydown="handleKeydown" />
-        <button v-if="iconName || isPasswordType" type="button" class="input__icon-btn" @click="handleIconClick">
+        <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn" @click="handleIconClick">
             <Icon class="input__icon" :name="currentIcon!" />
         </button>
     </div>
