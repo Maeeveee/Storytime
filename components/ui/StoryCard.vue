@@ -62,7 +62,8 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
                 <NuxtLink :to="editLink" title="Edit story" class="card__icon__background">
                     <Icon class="card__icon__text" name="lucide:edit" />
                 </NuxtLink>
-                <button class="card__icon__background" title="Delete story" @click.prevent="handleDelete" :disabled="isDeleting">
+                <button class="card__icon__background" title="Delete story" @click.prevent="handleDelete"
+                    :disabled="isDeleting">
                     <Icon class="card__icon__text" :name="isDeleting ? 'eos-icons:loading' : 'lucide:trash-2'" />
                 </button>
             </div>
@@ -82,7 +83,7 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
                     </div>
                     <div class="card__story-info">
                         <span class="card__created-at">{{ $dayjs(props.articleItem.created_at).format('DD MMMM YYYY')
-                            }}</span>
+                        }}</span>
                         <div v-if="!hideCategory" class="card__genre-badge">
                             <span class="card__genre">{{ props.articleItem.category.name }}</span>
                         </div>
@@ -319,6 +320,8 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
         }
 
         .card__author-name {
+            width: fluid(90, 200);
+
             @include clamp-text-1;
 
             @include mobile {
