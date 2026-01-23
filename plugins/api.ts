@@ -27,8 +27,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             }
 
             options.headers = headers
-        },
-        credentials: 'include'
+        }
     }) as $Fetch
 
     const modules = {
