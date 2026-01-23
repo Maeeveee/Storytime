@@ -7,9 +7,15 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
         <div class="footer__content">
             <h5 class="footer__text">{{ copyright }}</h5>
             <div class="footer__icons">
-                <Icon name="entypo-social:facebook" class="footer__icons__icon" />
-                <Icon name="entypo-social:instagram" class="footer__icons__icon" />
-                <Icon name="entypo-social:youtube" class="footer__icons__icon" />
+                <span title="facebook">
+                    <Icon name="entypo-social:facebook" class="footer__icons__icon" />
+                </span>
+                <span title="instagram">
+                    <Icon name="entypo-social:instagram" class="footer__icons__icon" />
+                </span>
+                <span title="youtube">
+                    <Icon name="entypo-social:youtube" class="footer__icons__icon" />
+                </span>
             </div>
         </div>
     </div>
@@ -37,6 +43,31 @@ const copyright: string = `© ${currentyear} Timedoor Indonesia. All rights rese
             flex-direction: column;
         }
     }
+
+    &__tooltip-container {
+        position: relative;
+        display: inline-block;
+
+        &__text {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        &:hover {
+            visibility: visible;
+        }
+    }
+
 
     &__text {
         font-weight: 500;
