@@ -40,21 +40,21 @@ const storyStore = useStoryStore()
     }
 
     &__display {
-        grid-template-columns: 1fr 1fr;
         gap: fluid(8, 8);
-
+        
         @include desktop {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(6, 1fr);
         }
-
+        
         @include tablet {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
-
+        
         @include mobile {
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
