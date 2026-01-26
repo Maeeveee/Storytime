@@ -265,7 +265,7 @@ const displayTitle = computed(() => {
         gap: fluid(20, 29);
 
         @include desktop {
-            overflow-x: visible;
+            overflow-x: hidden;
         }
 
         @include tablet {

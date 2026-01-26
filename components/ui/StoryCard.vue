@@ -475,7 +475,7 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
         }
 
         @include tablet {
-            display: block;
+            display: none;
         }
     }
 
