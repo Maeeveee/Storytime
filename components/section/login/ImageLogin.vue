@@ -59,7 +59,7 @@
     }
 
     &__image {
-        width: fluid(752, 752);
+        width: fluid(452, 752);
         height: fluid(547, 547);
         margin: fluid(32, 32);
         display: flex;
