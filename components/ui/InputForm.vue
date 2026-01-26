@@ -53,7 +53,7 @@ const handleIconClick = () => {
 
 <template>
     <div v-if="$props.type === 'password'" class="input__wrapper">
-        <input v-model="model" :type="inputType" autocomplete="off" :placeholder="placeholder" class="input"
+        <input v-model="model" :type="inputType" autocomplete="new-password" :placeholder="placeholder" class="input"
             :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']"
             @keydown="handleKeydown" />
         <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn"
