@@ -19,6 +19,7 @@ const handleCategories = async () => {
 <style lang="scss" scoped>
 .categories {
     &__button {
+        font-family: var(--font-primary);
         color: var(--color-primary);
         background-color: var(--color-primary-light);
         display: flex;
