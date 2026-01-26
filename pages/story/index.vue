@@ -238,6 +238,10 @@ onMounted(() => {
         font-size: fluid(16, 24);
         line-height: fluid(20, 32);
 
+        &:focus{
+            outline: none;
+        }
+
         &:hover {
             color: var(--color-primary);
         }
