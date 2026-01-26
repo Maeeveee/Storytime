@@ -208,9 +208,8 @@ const displayTitle = computed(() => {
     &__grid {
         display: grid;
         gap: fluid(15, 30);
-
         @include desktop {
-            display: flex;
+            grid-template-columns: repeat(2, 1fr);
         }
 
         @include tablet {

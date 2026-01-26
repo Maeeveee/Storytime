@@ -186,7 +186,7 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
     }
 
     &--large {
-        width: fluid(335, 1123);
+        width: fluid(305, 1053);
         max-width: 100%;
         height: auto;
         box-sizing: border-box;
