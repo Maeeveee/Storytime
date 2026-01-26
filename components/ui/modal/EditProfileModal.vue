@@ -143,7 +143,7 @@ function handleCancel() {
                     </label>
                     <label class="edit-profile__label">
                         <span>About Me</span>
-                        <InputForm v-model="about" :placeholder="userStore.user?.about ?? ''" variant="primary" />
+                        <InputForm v-model="about" type="textarea" :placeholder="userStore.user?.about ?? ''" variant="primary" />
                     </label>
                 </div>
             </div>

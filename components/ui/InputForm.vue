@@ -62,6 +62,16 @@ const handleIconClick = () => {
         </button>
     </div>
 
+    <div v-else-if="$props.type === 'textarea'" class="input__wrapper">
+        <textarea v-model="model" :type="inputType" :placeholder="placeholder" class="input"
+            :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']"
+            @keydown="handleKeydown" />
+        <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn"
+            @click="handleIconClick">
+            <Icon class="input__icon" :name="currentIcon!" />
+        </button>
+    </div>
+
     <div v-else class="input__wrapper">
         <input v-model="model" :type="inputType" :placeholder="placeholder" class="input"
             :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']"
@@ -71,6 +81,7 @@ const handleIconClick = () => {
             <Icon class="input__icon" :name="currentIcon!" />
         </button>
     </div>
+
 </template>
 
 <style scoped lang="scss">
