@@ -95,7 +95,7 @@ onMounted(() => {
         <h1 class="all-story__title">All Story</h1>
         <Breadcrumb />
         <div class="all-story__input--mobile">
-            <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"
+            <InputForm v-model="searchQuery" placeholder="Search Story" variant="secondary" icon-name="formkit:search"
                 @update:modelValue="handleSearch" />
         </div>
         <div class="all-story__filter">
@@ -117,7 +117,7 @@ onMounted(() => {
             </div>
 
             <div class="all-story__input--desktop">
-                <InputForm placeholder="Search Story" variant="secondary" icon-name="formkit:search"
+                <InputForm v-model="searchQuery" placeholder="Search Story" variant="secondary" icon-name="formkit:search"
                     @update:modelValue="handleSearch" />
             </div>
         </div>
