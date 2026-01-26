@@ -13,17 +13,6 @@ const { $api } = useNuxtApp();
 const userStore = useUserStore()
 const { isLoggedIn } = storeToRefs(userStore)
 
-onUnmounted(() => {
-    document.removeEventListener('click', handleClickOutside);
-});
-
-function handleClickOutside(e: MouseEvent) {
-    if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
-        isDropdownOpen.value = false;
-        isDropdownMobileOpen.value = false;
-    }
-}
-
 function handleLogout() {
     isDropdownOpen.value = false
     isDropdownMobileOpen.value = false
