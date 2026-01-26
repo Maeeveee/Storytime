@@ -3,8 +3,8 @@ const props = defineProps<{
     placeholder: string,
     iconName?: string,
     variant?: 'primary' | 'secondary',
-    type?: string
-    title?: string
+    type?: string,
+    title?: string,
 }>();
 const model = defineModel<string>();
 
@@ -29,7 +29,6 @@ const currentTitle = computed(() => {
     return props.title ?? 'Hide password'
 })
 
-
 const currentIcon = computed(() => {
     if (isPasswordType.value) {
         return isPasswordVisible.value ? 'formkit:eye' : 'formkit:hidden'
@@ -53,10 +52,22 @@ const handleIconClick = () => {
 </script>
 
 <template>
-    <div class="input__wrapper">
+    <div v-if="$props.type === 'password'" class="input__wrapper">
+        <input v-model="model" :type="inputType" autocomplete="off" :placeholder="placeholder" class="input"
+            :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']"
+            @keydown="handleKeydown" />
+        <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn"
+            @click="handleIconClick">
+            <Icon class="input__icon" :name="currentIcon!" />
+        </button>
+    </div>
+
+    <div v-else class="input__wrapper">
         <input v-model="model" :type="inputType" :placeholder="placeholder" class="input"
-            :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']" @keydown="handleKeydown" />
-        <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn" @click="handleIconClick">
+            :class="[`input--${variant ?? 'primary'}`, iconName || isPasswordType ? 'input--with-icon' : '']"
+            @keydown="handleKeydown" />
+        <button v-if="iconName || isPasswordType" type="button" :title="currentTitle" class="input__icon-btn"
+            @click="handleIconClick">
             <Icon class="input__icon" :name="currentIcon!" />
         </button>
     </div>
