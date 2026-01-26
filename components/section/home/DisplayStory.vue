@@ -160,8 +160,16 @@ const displayTitle = computed(() => {
             <StoryCardSkeleton variant="default" />
         </div>
         <Carousel v-else v-bind="carouselConfig" :autoplay="2000" breakpoint-mode="carousel" :breakpoints="{
+            100: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
             300: {
                 itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            900: {
+                itemsToShow: 3,
                 snapAlign: 'center',
             },
             1440: {

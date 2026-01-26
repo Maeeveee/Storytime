@@ -132,14 +132,20 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
         height: auto;
         box-sizing: border-box;
 
+        @include desktop {
+            margin: vw(10);
+        }
+
         @include tablet {
             width: 100%;
             max-width: 100%;
+            margin: vw(10);
         }
 
         @include mobile {
             width: 100%;
             max-width: 100%;
+            margin: vw-mobile(10);
         }
 
         .card__image {
