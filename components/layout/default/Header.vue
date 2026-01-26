@@ -52,6 +52,8 @@ function handleLogout() {
 </script>
 <template>
     <div class="nav-wrapper">
+        <div v-if="isDropdownOpen === true" class="cover" @click="isDropdownOpen = false">
+        </div>
         <div class="nav" ref="dropdownRef">
             <Logo class="nav__logo" />
 
@@ -88,7 +90,8 @@ function handleLogout() {
                                 </button>
                                 <Transition name="dropdown">
                                     <div v-if="isDropdownOpen" class="dropdown__content">
-                                        <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">Profile
+                                        <NuxtLink to="/dashboard" class="dropdown__item dropdown__item--button">
+                                            Profile
                                         </NuxtLink>
                                         <button class="dropdown__item dropdown__item--button"
                                             @click="handleLogout">Logout</button>
@@ -108,6 +111,14 @@ function handleLogout() {
 </template>
 
 <style scoped lang="scss">
+.cover {
+    background-color:transparent;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
 .dropdown {
     position: relative;
 
