@@ -449,6 +449,7 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
     }
 
     &__author-name {
+        @include clamp-text-1;
         font-weight: 500;
         color: var(--color-text);
         font-size: fluid(18, 20);
@@ -462,6 +463,8 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
     }
 
     &__created-at {
+        @include clamp-text-1;
+
         font-weight: 400;
         color: var(--color-text);
         font-size: fluid(14, 18);
