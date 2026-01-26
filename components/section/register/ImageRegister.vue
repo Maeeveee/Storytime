@@ -18,7 +18,7 @@
         background-color: #F0F5ED;
         border-radius: fluid(8, 8);
         height: fluid(910, 910);
-        max-width: fluid(805, 805);
+        max-width: fluid(205, 805);
         margin: fluid(20, 20);
         padding-block: fluid(16, 16);
         padding-inline: fluid(32, 32);
@@ -29,8 +29,8 @@
     }
 
     &__image {
-        width: fluid(752, 752);
-        height: fluid(547, 547);
+        width: fluid(352, 752);
+        height: fluid(247, 547);
     }
 
     &__title {
@@ -38,9 +38,9 @@
         font-weight: 700;
         font-style: normal;
         color: var(--color-text);
-        font-size: fluid(60, 60);
-        line-height: fluid(74, 74);
-        width: fluid(835, 835);
+        font-size: fluid(30, 60);
+        line-height: fluid(34, 74);
+        width: fluid(235, 835);
         margin-bottom: fluid(30, 30);
     }
 
@@ -49,8 +49,8 @@
         font-weight: 400;
         font-style: normal;
         color: var(--color-text-secondary);
-        font-size: fluid(28, 28);
-        line-height: fluid(38, 38);
+        font-size: fluid(14, 28);
+        line-height: fluid(19, 38);
         margin-bottom: fluid(30, 30);
     }
 

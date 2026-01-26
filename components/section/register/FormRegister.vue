@@ -141,20 +141,22 @@ const handleRegister = handleSubmit(async (formValues) => {
         margin-top: auto;
         margin-bottom: auto;
         border-radius: fluid(8, 8);
-        margin: fluid(20, 50);
-
+        margin: fluid(10, 50);
         @include desktop {
             margin-right: auto;
-            width: vw(825);
+            max-width: vw(825);
+            width: 100%;
             margin-top: vw(77.5);
         }
-
+        
         @include tablet {
             width: 100%;
             max-width: 500px;
             margin: auto;
             padding: fluid(30, 50);
         }
+
+
     }
 
     &__title {
@@ -210,7 +212,7 @@ const handleRegister = handleSubmit(async (formValues) => {
         flex-direction: column;
         margin-top: fluid(20, 20);
         max-height: fluid(144, 144);
-        max-width: fluid(577, 577);
+        max-width: fluid(207, 577);
         gap: fluid(10, 20);
 
         @include tablet {
