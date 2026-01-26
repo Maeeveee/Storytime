@@ -169,7 +169,6 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
         .card__title {
             font-size: fluid-type(24, 36);
             line-height: 1.3;
-            margin-bottom: fluid(12, 20);
         }
 
         .card__description {
@@ -283,7 +282,6 @@ const editLink = computed(() => `/dashboard/edit/${props.articleItem.slug}`)
             font-size: fluid(18, 36);
             min-height: fluid(46, 46);
             margin-top: fluid(12, 12);
-            margin-bottom: fluid(20, 50);
 
             @include mobile {
                 width: 100%;
