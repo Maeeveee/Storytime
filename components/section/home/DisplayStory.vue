@@ -132,25 +132,25 @@ const displayTitle = computed(() => {
 
     <div v-if="props.display === 'flex'">
         <div v-if="isLoading" class="display__flex">
-            <StoryCardSkeleton variant="default" />
-            <StoryCardSkeleton variant="default" />
-            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="small" />
+            <StoryCardSkeleton variant="small" />
+            <StoryCardSkeleton variant="small" />
         </div>
         <div v-else class="display__flex">
-            <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="default" />
-            <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="default" />
-            <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="default" />
+            <StoryCard v-if="stories[0]" :article-item="stories[0]" variant="small" />
+            <StoryCard v-if="stories[1]" :article-item="stories[1]" variant="small" />
+            <StoryCard v-if="stories[2]" :article-item="stories[2]" variant="small" />
         </div>
     </div>
 
     <div v-if="props.display === 'similar'" class="display__flex">
         <div v-if="isLoading" class="display__flex">
-            <StoryCardSkeleton variant="default" />
-            <StoryCardSkeleton variant="default" />
-            <StoryCardSkeleton variant="default" />
+            <StoryCardSkeleton variant="small" />
+            <StoryCardSkeleton variant="small" />
+            <StoryCardSkeleton variant="small" />
         </div>
         <StoryCard v-else v-for="article in similarStories" :key="article.id" :article-item="article"
-            variant="default" />
+            variant="small" />
     </div>
 
     <div v-if="props.display === 'carousel'">
@@ -258,7 +258,6 @@ const displayTitle = computed(() => {
 
     &__flex {
         display: flex;
-        overflow-x: auto;
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
@@ -266,7 +265,7 @@ const displayTitle = computed(() => {
         gap: fluid(20, 29);
 
         @include desktop {
-            overflow-x: hidden;
+            overflow-x: visible;
         }
 
         @include tablet {
